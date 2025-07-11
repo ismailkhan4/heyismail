@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>heyIsmail</title>
+    <meta property="og:title" content="heyIsmail" />
+    <meta
+      property="og:description"
+      content="Turn any idea into a working web app"
+    />
+    <meta property="og:image" content="https://cpcty.xyz/capacity-og.png" />
+    <!-- Facebook & LinkedIn use Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://capacity.so/" />
+    <!-- Twitter (X) Card metadata -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Capacity" />
+    <meta
+      name="twitter:description"
+      content="Turn any idea into a working web app"
+    />
+    <meta name="twitter:image" content="https://cpcty.xyz/capacity-og.png" />
+    <meta name="twitter:url" content="https://capacity.so/" />
+    <!-- Discord uses Open Graph, but can also use twitter:card -->
+
+    <!-- Crisp Chat Integration -->
+    <script type="text/javascript">
+      window.$crisp = [];
+      window.CRISP_WEBSITE_ID = "8e0680c9-88e9-4591-b53c-901c350f82e3";
+      (function () {
+        d = document;
+        s = d.createElement("script");
+        s.src = "https://client.crisp.chat/l.js";
+        s.async = 1;
+        d.getElementsByTagName("head")[0].appendChild(s);
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
