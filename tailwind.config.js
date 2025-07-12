@@ -1,9 +1,17 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+const config = {
     darkMode: ["class"],
-    content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+    content: [
+        "./app/**/*.{js,ts,jsx,tsx}",       // for App Router (Next 13+)
+        "./pages/**/*.{js,ts,jsx,tsx}",     // for Pages Router
+        "./components/**/*.{js,ts,jsx,tsx}",// shared UI
+        "./src/**/*.{js,ts,jsx,tsx}"        // optional if using `src/`
+    ],
     theme: {
         extend: {
+            fontFamily: {
+                sans: ["var(--font-plusjakarta)", "sans-serif"],
+            },
             borderRadius: {
                 lg: 'var(--radius)',
                 md: 'calc(var(--radius) - 2px)',
@@ -63,20 +71,12 @@ export default {
             },
             keyframes: {
                 'accordion-down': {
-                    from: {
-                        height: '0'
-                    },
-                    to: {
-                        height: 'var(--radix-accordion-content-height)'
-                    }
+                    from: { height: '0' },
+                    to: { height: 'var(--radix-accordion-content-height)' }
                 },
                 'accordion-up': {
-                    from: {
-                        height: 'var(--radix-accordion-content-height)'
-                    },
-                    to: {
-                        height: '0'
-                    }
+                    from: { height: 'var(--radix-accordion-content-height)' },
+                    to: { height: '0' }
                 }
             },
             animation: {
@@ -85,5 +85,7 @@ export default {
             }
         }
     },
-    plugins: [require("tailwindcss-animate")],
+    plugins: [require("tailwindcss-animate")]
 };
+
+module.exports = config;
