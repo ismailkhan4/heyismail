@@ -8,7 +8,7 @@ import CaseStudies from "./components/CaseStudies";
 import Pricing from "./components/Pricing";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-import "./styles/index.css";
+import "./styles/globals.css";
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
