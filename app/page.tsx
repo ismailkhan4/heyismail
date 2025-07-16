@@ -8,7 +8,6 @@ import CaseStudies from "./components/CaseStudies";
 import Pricing from "./components/Pricing";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-import "./styles/index.css"; // Fonts, Tailwind base/utilities
 import "./styles/globals.css";
 
 export default function Home() {
