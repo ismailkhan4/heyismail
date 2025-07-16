@@ -5,7 +5,6 @@ import CaseStudies from "./CaseStudies";
 import Pricing from "./Pricing";
 import Contact from "./Contact";
 import Footer from "./Footer";
-import "../styles/globals.css";
 
 const HomePage = () => {
   return (
