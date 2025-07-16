@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
-import "./styles/globals.css";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import "./styles/index.css";
+import localFont from "next/font/local";
 
-const plusJakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-plusjakarta",
+const polysansBulky = localFont({
+  src: "../public/fonts/polysans-bulky.woff2",
+  variable: "--font-polysans-bulky",
+  display: "swap",
+});
+
+const polysansSlim = localFont({
+  src: "../public/fonts/polysans-slim.woff2",
+  variable: "--font-polysans-slim",
   display: "swap",
 });
 
@@ -22,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${plusJakarta.variable} font-sans bg-background text-foreground`}
+        className={`${polysansBulky.variable} ${polysansSlim.variable} font-body bg-background text-foreground`}
       >
         {children}
       </body>

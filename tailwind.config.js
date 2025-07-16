@@ -10,7 +10,8 @@ const config = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ["var(--font-plusjakarta)", "sans-serif"],
+                heading: ["var(--font-polysans-bulky)", "sans-serif"],
+                body: ["var(--font-polysans-slim)", "sans-serif"],
             },
             borderRadius: {
                 lg: 'var(--radius)',
