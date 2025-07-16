@@ -1,18 +1,6 @@
 import type { Metadata } from "next";
-import "./styles/index.css";
+import "./styles/globals.css";
 import localFont from "next/font/local";
-
-const polysansBulky = localFont({
-  src: "../public/fonts/polysans-bulky.woff2",
-  variable: "--font-polysans-bulky",
-  display: "swap",
-});
-
-const polysansSlim = localFont({
-  src: "../public/fonts/polysans-slim.woff2",
-  variable: "--font-polysans-slim",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -27,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${polysansBulky.variable} ${polysansSlim.variable} font-body bg-background text-foreground`}
+        className="font-sans bg-background text-foreground"
       >
         {children}
       </body>

@@ -6,7 +6,6 @@ import Pricing from "./Pricing";
 import Contact from "./Contact";
 import Footer from "./Footer";
 import "../styles/globals.css";
-import "../styles/index.css";
 
 const HomePage = () => {
   return (
