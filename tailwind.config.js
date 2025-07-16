@@ -9,10 +9,6 @@ const config = {
     ],
     theme: {
         extend: {
-            fontFamily: {
-                heading: ["var(--font-polysans-bulky)", "sans-serif"],
-                body: ["var(--font-polysans-slim)", "sans-serif"],
-            },
             borderRadius: {
                 lg: 'var(--radius)',
                 md: 'calc(var(--radius) - 2px)',
