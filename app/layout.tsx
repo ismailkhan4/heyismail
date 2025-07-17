@@ -5,8 +5,8 @@ import { Mona_Sans } from "next/font/google";
 
 const plusJakarta = Mona_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--sans",
+  weight: ["400", "600", "700", "900"],
+  variable: "--font-sans",
   display: "swap",
 });
 
