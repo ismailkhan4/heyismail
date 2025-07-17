@@ -9,9 +9,6 @@ const config = {
     ],
     theme: {
         extend: {
-            fontFamily: {
-                sans: ["var(--font-plusjakarta)", "sans-serif"],
-            },
             borderRadius: {
                 lg: 'var(--radius)',
                 md: 'calc(var(--radius) - 2px)',
