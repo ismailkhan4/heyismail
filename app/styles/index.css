@@ -74,14 +74,14 @@ body {
   }
 }
 
-@layer base {
+/* @layer base {
   * {
     @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
   }
-}
+} */
 
 @layer utilities {
   /* Grid pattern */
@@ -107,9 +107,9 @@ body {
   }
 
   /* Enhanced focus styles */
-  .focus-ring {
+  /* .focus-ring {
     @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background;
-  }
+  } */
 }
 
 /* Smooth scrolling */
@@ -148,14 +148,14 @@ html {
 }
 
 /* Enhanced button styles */
-.btn-gradient {
+/* .btn-gradient {
   @apply bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl transition-all duration-300;
-}
+} */
 
 /* Card hover effects */
-.card-hover {
+/* .card-hover {
   @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
-}
+} */
 
 /* Professional animations */
 @keyframes fadeInUp {
@@ -204,13 +204,13 @@ html {
 }
 
 /* Professional spacing */
-.section-padding {
-  @apply py-16 sm:py-20 lg:py-24;
-}
+/* .section-padding {
+  @apply py-16 lg:py-24;
+} */
 
-.container-padding {
+/* .container-padding {
   @apply px-4 sm:px-6 lg:px-8;
-}
+} */
 
 /* Professional shadows */
 .shadow-professional {
@@ -232,9 +232,9 @@ html {
 
 /* High contrast mode support */
 @media (prefers-contrast: high) {
-  .btn-gradient {
+  /* .btn-gradient {
     @apply bg-blue-700 border-2 border-blue-900;
-  }
+  } */
 }
 
 /* Reduced motion support */
