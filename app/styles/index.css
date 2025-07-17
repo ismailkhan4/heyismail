@@ -1,21 +1,4 @@
-@import "tailwindcss/preflight";
-/* @tailwind components; */
-@tailwind utilities;
-
-:root {
-  line-height: 1.5;
-  font-weight: 400;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-body {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
-}
+@import "tailwindcss";
 
 @layer base {
   :root {
@@ -44,6 +27,14 @@ body {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 1rem;
+    --sidebar: 0 0% 98%;
+    --sidebar-foreground: 222.2 84% 4.9%;
+    --sidebar-primary: 221.2 83.2% 53.3%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 210 40% 96%;
+    --sidebar-accent-foreground: 222.2 84% 4.9%;
+    --sidebar-border: 214.3 31.8% 91.4%;
+    --sidebar-ring: 221.2 83.2% 53.3%;
   }
 
   .dark {
@@ -71,17 +62,77 @@ body {
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    --sidebar: 222.2 84% 4.9%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 217.2 91.2% 59.8%;
+    --sidebar-primary-foreground: 222.2 84% 4.9%;
+    --sidebar-accent: 217.2 32.6% 17.5%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217.2 32.6% 17.5%;
+    --sidebar-ring: 224.3 76.3% 48%;
   }
 }
 
-/* @layer base {
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
   * {
-    @apply border-border;
+    @apply border-border outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;
   }
-} */
+  html {
+    @apply font-body;
+  }
+
+  /* Apply heading font to all heading elements */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
+}
 
 @layer utilities {
   /* Grid pattern */
@@ -107,9 +158,9 @@ body {
   }
 
   /* Enhanced focus styles */
-  /* .focus-ring {
+  .focus-ring {
     @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background;
-  } */
+  }
 }
 
 /* Smooth scrolling */
@@ -148,14 +199,14 @@ html {
 }
 
 /* Enhanced button styles */
-/* .btn-gradient {
+.btn-gradient {
   @apply bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl transition-all duration-300;
-} */
+}
 
 /* Card hover effects */
-/* .card-hover {
+.card-hover {
   @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
-} */
+}
 
 /* Professional animations */
 @keyframes fadeInUp {
@@ -204,13 +255,13 @@ html {
 }
 
 /* Professional spacing */
-/* .section-padding {
-  @apply py-16 lg:py-24;
-} */
+.section-padding {
+  @apply py-16 sm:py-20 lg:py-24;
+}
 
-/* .container-padding {
+.container-padding {
   @apply px-4 sm:px-6 lg:px-8;
-} */
+}
 
 /* Professional shadows */
 .shadow-professional {
@@ -232,9 +283,9 @@ html {
 
 /* High contrast mode support */
 @media (prefers-contrast: high) {
-  /* .btn-gradient {
+  .btn-gradient {
     @apply bg-blue-700 border-2 border-blue-900;
-  } */
+  }
 }
 
 /* Reduced motion support */
@@ -245,10 +296,5 @@ html {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-  }
-}
-@layer base {
-  html {
-    @apply font-sans;
   }
 }

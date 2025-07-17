@@ -93,7 +93,7 @@ const Hero = () => {
 
               {/* Headline */}
               <div className="space-y-4 lg:space-y-6">
-                <h1 className="text-4xl font-black sm:text-5xl lg:text-6xl xl:text-6xl leading-tight tracking-tight">
+                <h1 className="text-4xl font-extrabold sm:text-5xl lg:text-6xl xl:text-6xl leading-tight tracking-tight">
                   Stop getting stuck in{" "}
                   <span className="bg-gradient-to-r from-emerald-500 via-green-400 to-green-600 bg-clip-text text-transparent">
                     development hell
