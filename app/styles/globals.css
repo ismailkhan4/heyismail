@@ -1,7 +1,12 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
+
+body {
+  @apply bg-background text-foreground font-sans;
+}
 
 :root {
   --card: oklch(1 0 0);
@@ -120,4 +125,18 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+html,
+body {
+  overflow-x: hidden;
 }

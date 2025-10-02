@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+import typography from "@tailwindcss/typography";
 const config = {
     darkMode: ["class"],
     content: [
@@ -9,6 +10,17 @@ const config = {
     ],
     theme: {
         extend: {
+            typography: ({ theme }) => ({
+                DEFAULT: {
+                    css: {
+                        color: theme("colors.zinc.800"),
+                        a: { color: theme("colors.blue.600"), textDecoration: "underline" },
+                        h1: { fontWeight: "700", fontSize: "2.25rem" },
+                        h2: { fontWeight: "600", marginTop: "2rem" },
+                        code: { backgroundColor: theme("colors.zinc.100"), padding: "2px 4px", borderRadius: "4px" },
+                    },
+                },
+            }),
             borderRadius: {
                 lg: 'var(--radius)',
                 md: 'calc(var(--radius) - 2px)',
@@ -82,7 +94,10 @@ const config = {
             }
         }
     },
-    plugins: [require("tailwindcss-animate")]
+    plugins: [typography,
+        // require("tailwindcss-animate")
+
+    ]
 };
 
 module.exports = config;
