@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -8,8 +9,8 @@ import {
   Lightbulb,
   Play,
 } from "lucide-react";
-import { cn } from "../lib/utils";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 const Hero = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -44,37 +45,6 @@ const Hero = () => {
 
   return (
     <>
-      <nav
-        className={cn(
-          "fixed top-0 z-50 transition-all duration-300 ease-in-out px-6 py-4",
-          scrolled
-            ? "w-1/2 left-1/2 -translate-x-1/2 mt-4 rounded-xl shadow-lg bg-white/80 dark:bg-slate-900/80 backdrop-blur"
-            : "w-3/4 left-1/2 -translate-x-1/2 mt-4 bg-transparent"
-        )}
-      >
-        <div className="flex justify-between items-center text-sm font-semibold text-slate-900 dark:text-white">
-          <div className="text-lg font-bold">
-            <Link href="#">heyIsmail</Link>
-          </div>
-          <div className="flex gap-6">
-            <Link href="#about" className="hover:underline">
-              About
-            </Link>
-            <a href="#how-it-works" className="hover:underline">
-              How it works?
-            </a>
-            <a href="#case-studies" className="hover:underline">
-              Case Studies
-            </a>
-            <a href="#pricing" className="hover:underline">
-              Pricing
-            </a>
-            <a href="#contact" className="hover:underline">
-              Contact
-            </a>
-          </div>
-        </div>
-      </nav>
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-800">
         {/* Background Elements */}
         <div className="absolute inset-0 bg-grid-slate-100 dark:bg-grid-slate-800 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] dark:[mask-image:linear-gradient(0deg,rgba(255,255,255,0.1),rgba(255,255,255,0.5))]" />

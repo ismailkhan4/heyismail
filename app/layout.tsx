@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import "./styles/index.css";
 import "./styles/globals.css";
 import { Mona_Sans } from "next/font/google";
+import PageLayout from "./components/PageLayout";
 
-const plusJakarta = Mona_Sans({
+const monaSans = Mona_Sans({
   subsets: ["latin"],
   weight: ["400", "600", "700", "900"],
   variable: "--font-sans",
@@ -23,9 +23,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${plusJakarta.variable} font-sans bg-background text-foreground`}
+        className={`${monaSans.variable} font-sans bg-background text-foreground`}
       >
-        {children}
+        <PageLayout>{children}</PageLayout>
       </body>
     </html>
   );

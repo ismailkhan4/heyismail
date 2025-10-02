@@ -10,12 +10,45 @@ import {
   Users,
   ArrowRight,
 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const CaseStudies = () => {
   const [selectedCase, setSelectedCase] = useState<number | null>(null);
 
   const testimonials = [
+    {
+      name: "Sarah Chen",
+      role: "Founder",
+      company: "TaskFlow (YC W23)",
+      content:
+        "I was stuck for months trying to find the right developers. In exactly 40 days, he delivered our MVP and kept me sane throughout the process. We're now at $15K MRR and growing fast.",
+      metrics: { users: "2.5K+", revenue: "$15K MRR", timeline: "40 days" },
+      rating: 5,
+      beforeAfter: "From idea paralysis to paying customers",
+      avatar: "SC",
+    },
+    {
+      name: "Marcus Rodriguez",
+      role: "CEO",
+      company: "DevTools Pro (Techstars)",
+      content:
+        "Finally found someone who speaks both founder and developer language. No technical overwhelm, just clear execution and strategic guidance. Our beta has 500+ signups already.",
+      metrics: { users: "500+", growth: "+120% MoM", timeline: "38 days" },
+      rating: 5,
+      beforeAfter: "From technical confusion to market ready",
+      avatar: "MR",
+    },
+    {
+      name: "Emily Watson",
+      role: "Founder",
+      company: "HealthTrack (500 Startups)",
+      content:
+        "Best investment we made was hiring him as our MVP strategist. His team delivered while he kept us focused on what actually mattered. Raised our $500K seed round 2 months after launch.",
+      metrics: { raised: "$500K", users: "1.2K+", timeline: "42 days" },
+      rating: 5,
+      beforeAfter: "From funding struggles to successful seed round",
+      avatar: "EW",
+    },
     {
       name: "Sarah Chen",
       role: "Founder",
@@ -142,6 +175,45 @@ const CaseStudies = () => {
     },
   ];
 
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    console.log(container?.scrollLeft);
+
+    if (!container) return;
+
+    let animationFrameId: number;
+
+    const scrollSpeed = 1; // px per frame — adjust this to control speed
+
+    const scroll = () => {
+      if (!container) return;
+
+      container.scrollLeft += scrollSpeed;
+
+      // Reset to the start when halfway through the scroll
+      if (container.scrollLeft >= container.scrollWidth / 2) {
+        container.scrollLeft = 0;
+      }
+
+      animationFrameId = requestAnimationFrame(scroll);
+    };
+
+    animationFrameId = requestAnimationFrame(scroll);
+
+    return () => cancelAnimationFrame(animationFrameId);
+  }, []);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      console.log(containerRef.current?.scrollLeft);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const duplicated = [...testimonials, ...testimonials];
+  // Duplicate the testimonials
+
   const openCaseStudy = (caseId: number) => {
     setSelectedCase(caseId);
   };
@@ -182,69 +254,50 @@ const CaseStudies = () => {
         </div>
 
         {/* Testimonials Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-16 sm:mb-20 lg:mb-24">
-          {testimonials.map((testimonial, index) => (
-            <Card
-              key={index}
-              className="border-slate-200 dark:border-slate-700 hover:shadow-xl transition-all duration-300 group h-full bg-white dark:bg-slate-800"
-            >
-              <CardContent className="p-6 sm:p-8 space-y-6 h-full flex flex-col">
-                {/* Rating */}
-                <div className="flex gap-1">
-                  {Array.from({ length: testimonial.rating }).map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-5 h-5 fill-yellow-400 text-yellow-400"
-                    />
-                  ))}
-                </div>
-
-                {/* Before/After */}
-                <div className="bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800 rounded-xl p-3">
-                  <p className="text-sm font-medium text-emerald-700 dark:text-emerald-400">
-                    ✓ {testimonial.beforeAfter}
-                  </p>
-                </div>
-
-                {/* Content */}
-                <blockquote className="text-slate-600 dark:text-slate-300 leading-relaxed italic flex-1">
-                  "{testimonial.content}"
-                </blockquote>
-
-                {/* Metrics */}
-                <div className="grid grid-cols-3 gap-2 text-center text-sm border-t border-slate-200 dark:border-slate-700 pt-4">
-                  {Object.entries(testimonial.metrics).map(([key, value]) => (
-                    <div key={key}>
-                      <div className="font-bold text-slate-900 dark:text-white text-base">
-                        {value}
-                      </div>
-                      <div className="text-slate-500 dark:text-slate-400 capitalize text-xs">
-                        {key}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Author */}
-                <div className="border-t border-slate-200 dark:border-slate-700 pt-4 flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold text-sm">
-                    {testimonial.avatar}
+        <div className="overflow-hidden w-full grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-16 sm:mb-20 lg:mb-24">
+          <div
+            ref={containerRef}
+            className="flex gap-6 whitespace-nowrap"
+            style={{ width: "max-content" }}
+            // style={{ animation: "scroll 5s linear infinite" }}
+          >
+            {duplicated.map((testimonial, index) => (
+              <div
+                key={index}
+                className="min-w-[300px] max-w-[400px] mr-6 shrink-0 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-2"
+                // aria-hidden={index >= testimonials.length}
+              >
+                <div className="p-6 sm:p-8 space-y-6 h-full flex flex-col">
+                  <div className="bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800 rounded-xl p-3 flex gap-2 items-baseline">
+                    <p className="text-emerald-700 dark:text-emerald-400">✓</p>{" "}
+                    <p className="text-sm font-medium text-emerald-700 dark:text-emerald-400 break-words whitespace-normal">
+                      {testimonial.beforeAfter}
+                    </p>
                   </div>
-                  <div>
-                    <div className="font-semibold text-slate-900 dark:text-white">
-                      {testimonial.name}
+                  <blockquote className="text-slate-600 dark:text-slate-300 leading-relaxed italic flex-1 break-words whitespace-normal">
+                    “{testimonial.content}”
+                  </blockquote>
+                  <div className="border-t border-slate-200 dark:border-slate-700 pt-4 flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold text-sm">
+                      {testimonial.avatar}
                     </div>
-                    <div className="text-sm text-slate-500 dark:text-slate-400">
-                      {testimonial.role}
-                    </div>
-                    <div className="text-xs text-blue-600 dark:text-blue-400 font-medium">
-                      {testimonial.company}
+                    <div>
+                      <div className="font-semibold text-slate-900 dark:text-white">
+                        {testimonial.name}
+                      </div>
+                      <div className="text-sm text-slate-500 dark:text-slate-400">
+                        @{testimonial.name.toLowerCase().split(" ").slice(0, 1)}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
-          ))}
+              </div>
+            ))}
+          </div>
+          <p className="text-sm text-red-500">
+            Width: {containerRef.current?.scrollWidth}px | ScrollLeft:{" "}
+            {containerRef.current?.scrollLeft}px
+          </p>
         </div>
 
         {/* Case Studies */}

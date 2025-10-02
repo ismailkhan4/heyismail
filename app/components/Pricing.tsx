@@ -14,7 +14,7 @@ const Pricing = () => {
   const packages = [
     {
       name: "MVP Sprint",
-      price: "$15,000",
+      price: "$0,000",
       duration: "40 days",
       description: "Perfect for validated ideas ready for execution",
       features: [
@@ -32,7 +32,7 @@ const Pricing = () => {
     },
     {
       name: "Validation + MVP",
-      price: "$20,000",
+      price: "$0,000",
       duration: "50 days",
       description: "For early-stage ideas that need market validation first",
       features: [
@@ -50,7 +50,7 @@ const Pricing = () => {
     },
     {
       name: "Strategy Consulting",
-      price: "$2,500",
+      price: "$000",
       duration: "1 week",
       description: "Strategic guidance when you need direction, not execution",
       features: [
