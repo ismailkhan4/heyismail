@@ -66,7 +66,7 @@ export default function Home() {
               className="text-3xl font-bold mb-6"
               style={{ color: brand.primary }}
             >
-              About Me
+              Who I Am
             </h2>
             <p className="text-lg text-gray-700 leading-relaxed">
               I'm Ismail, a developer passionate about helping startups build
@@ -91,7 +91,7 @@ export default function Home() {
           className="text-3xl font-bold mb-12 text-center"
           style={{ color: brand.primary }}
         >
-          Services I Offer
+          How I Can Help You Win
         </h2>
         <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
           {[
@@ -143,7 +143,7 @@ export default function Home() {
           className="text-3xl font-bold mb-12 text-center"
           style={{ color: brand.primary }}
         >
-          My Portfolio
+          Ideas I've Already Brought to Life
         </h2>
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {[
@@ -207,7 +207,7 @@ export default function Home() {
           className="text-3xl font-bold mb-12 text-center"
           style={{ color: brand.primary }}
         >
-          Why Work With Me?
+          Why Founders Trust Me?
         </h2>
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {[
@@ -235,7 +235,7 @@ export default function Home() {
           className="text-3xl font-bold mb-12 text-center"
           style={{ color: brand.primary }}
         >
-          Testimonials
+          What Others Say About Working With Me
         </h2>
         <div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
           {[
@@ -281,9 +281,11 @@ export default function Home() {
         className="py-24 px-6 text-center"
         style={{ backgroundColor: brand.primary, color: "white" }}
       >
-        <h2 className="text-3xl font-bold mb-6">Let’s Build Your MVP</h2>
+        <h2 className="text-3xl font-bold mb-6">
+          Let's Build Something Together
+        </h2>
         <p className="max-w-xl mx-auto text-gray-200 mb-8">
-          Ready to bring your idea to life? Let’s talk about your project and
+          Ready to bring your idea to life? Let's talk about your project and
           make it happen.
         </p>
         <a
