@@ -151,26 +151,36 @@ export default function Home() {
               name: "Jobit",
               url: "https://jobit.world",
               img: "/1.png",
+              desc: "A job marketplace helping global talent connect with employers faster.",
+              tags: ["Marketplace", "Next.js", "Tailwind"],
             },
             {
               name: "Supervise",
               url: "https://supervise.work",
               img: "/2.png",
+              desc: "A smart workforce supervision platform to improve productivity.",
+              tags: ["SaaS", "React", "Node.js"],
             },
             {
               name: "Whatever AI",
               url: "https://whatever-ai.com",
               img: "/3.png",
+              desc: "AI-powered assistant platform built for automation and efficiency.",
+              tags: ["AI/ML", "Next.js", "API"],
             },
             {
               name: "TheFlex",
               url: "https://theflex.global",
               img: "/4.png",
+              desc: "A global freelance platform enabling talent discovery and hiring.",
+              tags: ["Freelance", "Full-stack", "Scalable"],
             },
             {
               name: "Graana",
               url: "https://graana.com",
               img: "/5.png",
+              desc: "Pakistan’s smartest property portal connecting buyers and sellers.",
+              tags: ["PropTech", "Enterprise", "High-Traffic"],
             },
           ].map((site, i) => (
             <a
@@ -178,23 +188,40 @@ export default function Home() {
               href={site.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="block bg-gray-50 hover:bg-gray-100 transition rounded-xl shadow overflow-hidden"
+              className="group block bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition"
             >
-              <Image
-                src={site.img}
-                alt={site.name}
-                width={500}
-                height={300}
-                className="h-48 w-full object-cover"
-              />
-              <div className="p-4">
+              {/* Project Image with Hover Overlay */}
+              <div className="relative h-48 w-full">
+                <Image
+                  src={site.img}
+                  alt={site.name}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white font-semibold">
+                  Visit {site.name}
+                </div>
+              </div>
+
+              {/* Project Content */}
+              <div className="p-6">
                 <h3
-                  className="font-semibold text-lg"
+                  className="font-semibold text-xl mb-2"
                   style={{ color: brand.primary }}
                 >
                   {site.name}
                 </h3>
-                <p className="text-gray-500 text-sm">{site.url}</p>
+                <p className="text-gray-600 text-sm mb-4">{site.desc}</p>
+                <div className="flex flex-wrap gap-2">
+                  {site.tags.map((tag, idx) => (
+                    <span
+                      key={idx}
+                      className="text-xs bg-gray-100 px-3 py-1 rounded-full text-gray-700"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             </a>
           ))}
