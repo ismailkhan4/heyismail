@@ -18,7 +18,7 @@ const PageLayout = ({ children }: { children: ReactNode }) => {
   }, []);
   return (
     <>
-      <nav
+      {/* <nav
         className={cn(
           "fixed top-0 z-50 transition-all duration-300 ease-in-out px-6 py-4",
           scrolled
@@ -49,7 +49,7 @@ const PageLayout = ({ children }: { children: ReactNode }) => {
             </Link>
           </div>
         </div>
-      </nav>
+      </nav> */}
       {children}
     </>
   );
