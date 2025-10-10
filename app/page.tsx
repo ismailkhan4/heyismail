@@ -9,6 +9,7 @@ const heyIsmailLanding = () => {
   const heroRef = useRef(null);
 
   useEffect(() => {
+    // if ("ontouchstart" in window) return;
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
     const handleMouseMove = (
       e: React.MouseEvent<Element, MouseEvent> | MouseEvent
@@ -94,7 +95,7 @@ const heyIsmailLanding = () => {
   const pricingPlans = [
     {
       name: "MVP Sprint",
-      price: "$4,999",
+      price: "$1,999",
       duration: "7 days",
       features: [
         "Core MVP features only",
@@ -110,7 +111,7 @@ const heyIsmailLanding = () => {
     },
     {
       name: "Launch Ready",
-      price: "$8,999",
+      price: "$3,999",
       duration: "10 days",
       features: [
         "Everything in MVP Sprint",
@@ -127,7 +128,7 @@ const heyIsmailLanding = () => {
     },
     {
       name: "Scale Package",
-      price: "$14,999",
+      price: "$5,999",
       duration: "14 days",
       features: [
         "Everything in Launch Ready",
@@ -314,7 +315,7 @@ const heyIsmailLanding = () => {
             whileHover={{ scale: 1.05 }}
           >
             <span className="text-2xl">👋</span>
-            <span>The MVP OS</span>
+            <span>heyIsmail</span>
           </motion.div>
 
           <div className="hidden md:flex items-center gap-1">
@@ -824,7 +825,7 @@ const heyIsmailLanding = () => {
                     Feature
                   </th>
                   <th className="py-4 px-6 text-emerald-400 font-semibold bg-emerald-500/5">
-                    The MVP OS
+                    heyIsmail
                   </th>
                   <th className="py-4 px-6 text-gray-400 font-medium">
                     Agency
@@ -1169,7 +1170,7 @@ const heyIsmailLanding = () => {
             <div>
               <div className="text-xl font-semibold mb-2 flex items-center gap-2">
                 <span className="text-2xl">👋</span>
-                <span>The MVP OS</span>
+                <span>heyIsmail</span>
               </div>
               <p className="text-sm text-gray-500">
                 Built for founders, not freelancers.
