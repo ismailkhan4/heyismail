@@ -41,7 +41,7 @@ const PageLayout = ({ children }: { children: ReactNode }) => {
               Portfolio
             </Link>
             <Link
-              href="https://wa.me/+92311196963"
+              href="https://wa.me/+923111961963"
               className="hover:underline"
               target="_blank"
             >
