@@ -834,7 +834,7 @@ const heyIsmailLanding = () => {
           >
             <p className="text-gray-400 mb-4">Still have questions?</p>
             <a
-              href="https://wa.me/92311196963"
+              href="https://wa.me/923111961963"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-colors"
@@ -907,7 +907,7 @@ const heyIsmailLanding = () => {
               </a>
 
               <a
-                href="https://wa.me/92311196963"
+                href="https://wa.me/923111961963"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-10 py-5 bg-white/5 border border-emerald-500/20 text-white text-lg font-semibold rounded-lg hover:bg-white/10 hover:border-emerald-500/40 transition-all"
@@ -962,7 +962,7 @@ const heyIsmailLanding = () => {
                 FAQ
               </button>
               <a
-                href="https://wa.me/92311196963"
+                href="https://wa.me/923111961963"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-emerald-400 transition text-sm"
