@@ -3,14 +3,23 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import {
-  FAQS as faqs,
+  FAQS,
   projects,
-  techStack,
-  whyNotOptions,
   testimonials,
-  pricingPlans,
-  comparisonData,
+  GAP_DATA,
+  PROCESS_DAYS,
+  WHAT_YOU_OWN,
+  STACK,
+  AI_TOOLS,
+  MVP_CHECKLIST,
+  FOUNDER_SERIES,
 } from "@/lib/data";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const heyIsmailLanding = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -51,25 +60,25 @@ const heyIsmailLanding = () => {
       {/* ── HERO ── */}
       <section
         ref={heroRef}
-        className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20"
+        className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 bg-[#0A0F0D]"
       >
         <div className="absolute inset-0 opacity-20">
           <div
             className="absolute inset-0"
             style={{
-              backgroundImage: `linear-gradient(rgba(16, 185, 129, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(16, 185, 129, 0.05) 1px, transparent 1px)`,
+              backgroundImage: `linear-gradient(rgba(0, 201, 107, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 201, 107, 0.05) 1px, transparent 1px)`,
               backgroundSize: "100px 100px",
             }}
           />
         </div>
 
         <motion.div
-          className="absolute top-1/4 -left-48 w-96 h-96 bg-emerald-500 filter blur-3xl opacity-20"
+          className="absolute top-1/4 -left-48 w-96 h-96 bg-[#00C96B] filter blur-3xl opacity-20"
           animate={{ x: [0, 100, 0], y: [0, -50, 0] }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
         />
         <motion.div
-          className="absolute bottom-1/4 -right-48 w-96 h-96 bg-teal-500 filter blur-3xl opacity-20"
+          className="absolute bottom-1/4 -right-48 w-96 h-96 bg-[#00C96B] filter blur-3xl opacity-20"
           animate={{ x: [0, -100, 0], y: [0, 50, 0] }}
           transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
         />
@@ -81,51 +90,50 @@ const heyIsmailLanding = () => {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            {/* Available badge */}
+            {/* Eyebrow badge */}
             <motion.div
               className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 mb-8"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2 }}
             >
-              <span className="w-2 h-2 bg-green-500 animate-pulse" />
+              <span className="w-2 h-2 bg-[#00C96B] animate-pulse" />
               <span className="text-sm text-gray-300">
-                Available for new projects
+                15+ MVPs Shipped · AI-Accelerated · 7 Days
               </span>
             </motion.div>
 
-            {/* ── HEADLINE — 7 days consistent ── */}
-            <h1 className="text-3xl md:text-6xl lg:text-7xl font-bold mb-6 leading-[1.1] tracking-tight">
-              Ship your MVP
+            {/* ── HEADLINE ── */}
+            <h1 className="text-3xl md:text-6xl lg:text-7xl font-bold mb-6 leading-[1.1] tracking-tight text-white">
+              I build SaaS MVPs
               <br />
-              <span className="bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-500 bg-clip-text text-transparent">
+              <span className="font-display italic text-[#00C96B]">
                 in 7 days.
+              </span>
+              <br />
+              <span className="text-gray-400 text-2xl md:text-4xl lg:text-5xl">
+                Not 7 months.
               </span>
             </h1>
 
-            {/* ── SUBHEADLINE — fear clause + method ── */}
+            {/* ── SUBHEADLINE ── */}
             <p className="text-lg md:text-xl text-gray-400 mb-4 max-w-2xl mx-auto leading-relaxed">
-              AI-accelerated product sprints for SaaS founders —
+              AI-accelerated development for non-technical founders who need to validate fast.
               <br className="hidden md:block" />
               <span className="text-gray-300">
                 {" "}
-                without wasting 6 months building the wrong thing.
+                Real code, real features, real results — in one week.
               </span>
             </p>
 
-            {/* ── SOCIAL PROOF LINE — sourced and specific ── */}
-            <p className="text-sm text-emerald-400/70 mb-10 max-w-xl mx-auto">
-              15+ MVPs shipped. Portfolio companies have raised $12M+ combined.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10">
               <a
-                href="https://cal.com/heyismail/15min"
+                href="https://heyismail.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group px-8 py-4 bg-white text-black font-medium hover:scale-105 transition-all flex items-center gap-2"
+                className="group px-8 py-4 bg-[#00C96B] text-[#0A0F0D] font-semibold hover:scale-105 transition-all flex items-center gap-2"
               >
-                See how the 7-day sprint works
+                Book Your Free Call
                 <svg
                   className="w-4 h-4 group-hover:translate-x-1 transition-transform"
                   fill="none"
@@ -145,16 +153,21 @@ const heyIsmailLanding = () => {
                 onClick={() => scrollToSection("work")}
                 className="px-8 py-4 bg-white/5 border border-white/10 text-white font-medium hover:bg-white/10 transition-all"
               >
-                View Our Work
+                See My Work
               </button>
             </div>
 
-            {/* ── METRICS — specific + sourced ── */}
+            {/* ── SOCIAL PROOF LINE ── */}
+            <p className="text-sm text-[#00C96B]/70 mb-16 max-w-xl mx-auto">
+              Next.js · Supabase · Stripe · Vercel · Real code. You own everything.
+            </p>
+
+            {/* ── METRICS ── */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8 }}
-              className="mt-16 flex flex-col items-center gap-4"
+              className="flex flex-col items-center gap-4"
             >
               <div className="flex items-center gap-2">
                 <div className="flex -space-x-2">
@@ -170,7 +183,7 @@ const heyIsmailLanding = () => {
                       key={i}
                       src={src}
                       alt={`Client ${i + 1}`}
-                      className="w-8 h-8 border-2 border-black"
+                      className="w-8 h-8 border-2 border-[#0A0F0D]"
                     />
                   ))}
                 </div>
@@ -188,8 +201,8 @@ const heyIsmailLanding = () => {
         </div>
       </section>
 
-      {/* ── WHY NOT THE OTHERS ── */}
-      <section className="py-24 relative border-t border-emerald-500/10">
+      {/* ── THE GAP SECTION ── */}
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -197,84 +210,67 @@ const heyIsmailLanding = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Why Founders Choose Us
-            </h2>
-            {/* ── Sharpened: names the real pain ── */}
-            <p className="text-xl text-gray-400">
-              Because every other option makes you wait — or waste money
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {whyNotOptions.map((option, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="bg-white/5 border border-red-500/20 p-6 hover:border-red-500/40 transition-all group"
-              >
-                <div className="text-red-400 text-4xl mb-4">❌</div>
-                <h3 className="text-xl font-bold mb-2">{option.title}</h3>
-                <div className="text-red-400 text-sm font-semibold mb-4">
-                  {option.pain}
-                </div>
-                <ul className="space-y-2">
-                  {option.problems.map((problem, j) => (
-                    <li
-                      key={j}
-                      className="text-sm text-gray-400 flex items-start gap-2"
-                    >
-                      <span className="text-red-400">•</span>
-                      <span>{problem}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mt-16 text-center"
-          >
-            <div className="inline-block bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-500/20 p-8">
-              <div className="text-emerald-400 text-5xl mb-4">✅</div>
-              <h3 className="text-2xl font-bold mb-3">The heyIsmail Sprint</h3>
-              {/* ── Mirrors LinkedIn headline directly ── */}
-              <p className="text-gray-400 mb-2 max-w-md">
-                Fixed price. Fixed timeline. Live MVP in 7 days.
-              </p>
-              <p className="text-gray-500 text-sm mb-6 max-w-md">
-                No surprises. No scope creep. You own the code on day 7.
-              </p>
-              <a
-                href="https://cal.com/heyismail/15min"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-500 text-black font-semibold hover:scale-105 transition-all"
-              >
-                Let's Build
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </a>
+            {/* Eyebrow */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#00C96B]/10 border border-[#00C96B]/20 mb-6">
+              <span className="text-sm font-medium text-[#00C96B] tracking-widest uppercase">
+                The Gap I Work In
+              </span>
             </div>
+
+            {/* Heading */}
+            <h2 className="text-4xl md:text-5xl font-display font-bold mb-4 text-[#0A0F0D]">
+              Every founder with a validated idea hits the same wall.
+            </h2>
           </motion.div>
+
+          {/* Two-column comparison */}
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* Problem Card */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="group bg-red-50/50 border-l-4 border-red-500 p-8 hover:bg-red-50/80 hover:border-red-600 transition-all duration-200"
+            >
+              <h3 className="text-2xl font-bold mb-6 text-[#0A0F0D]">
+                {GAP_DATA.problem.title}
+              </h3>
+              <ul className="space-y-4">
+                {GAP_DATA.problem.points.map((point, i) => (
+                  <li
+                    key={i}
+                    className="flex items-start gap-3 text-[#0A0F0D]/80"
+                  >
+                    <span className="text-red-500 text-lg mt-1">•</span>
+                    <span className="leading-relaxed">{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* Solution Card */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="group bg-[#E6FFF3]/50 border-l-4 border-[#00C96B] p-8 hover:bg-[#E6FFF3]/80 hover:border-[#00A855] transition-all duration-200"
+            >
+              <h3 className="text-2xl font-bold mb-6 text-[#0A0F0D]">
+                {GAP_DATA.solution.title}
+              </h3>
+              <ul className="space-y-4">
+                {GAP_DATA.solution.points.map((point, i) => (
+                  <li
+                    key={i}
+                    className="flex items-start gap-3 text-[#0A0F0D]/80"
+                  >
+                    <span className="text-[#00C96B] text-lg mt-1">•</span>
+                    <span className="leading-relaxed">{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -384,343 +380,371 @@ const heyIsmailLanding = () => {
       {/* ── PROCESS ── */}
       <section
         id="process"
-        className="py-32 relative border-t border-emerald-500/10"
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-emerald-500/5 to-transparent" />
-
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-20"
-          >
-            {/* ── Reframed to match LinkedIn "7-day sprint" language ── */}
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              The 7-Day Sprint, Explained.
-            </h2>
-            <p className="text-xl text-gray-400">
-              Every day has a deliverable. Nothing is vague.
-            </p>
-          </motion.div>
-
-          <div className="space-y-24 max-w-4xl mx-auto">
-            {[
-              {
-                day: "Day 1",
-                title: "Discovery & Scope",
-                desc: "We hop on a call, map your idea, define must-have features, and nail down your MVP scope. No fluff — just what you need to validate and get to paying customers.",
-                icon: "🎯",
-                deliverable: "Scope doc + timeline",
-              },
-              {
-                day: "Day 2–3",
-                title: "AI-Powered Build",
-                desc: "Our AI workflow generates the foundation: database schema, API routes, UI components. We handle architecture while you focus on your launch and customer acquisition strategy.",
-                icon: "⚡",
-                deliverable: "Working prototype",
-              },
-              {
-                day: "Day 4–5",
-                title: "Polish & Integration",
-                desc: "We add the human layer: custom logic, Stripe payments, auth, and any integrations your MVP needs. This is where it becomes investor-ready and customer-ready.",
-                icon: "✨",
-                deliverable: "Beta version",
-              },
-              {
-                day: "Day 6–7",
-                title: "Deploy & Hand Off",
-                desc: "Your MVP goes live. Hosting, analytics, monitoring — all set up and handed to you. You own 100% of the code, the deploy access, and the docs. No strings.",
-                icon: "🚀",
-                deliverable: "Live MVP + full handoff",
-              },
-            ].map((step, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="relative"
-              >
-                <div className="flex items-start gap-8">
-                  <motion.div
-                    className="flex-shrink-0 w-20 h-20 bg-gradient-to-br from-emerald-500/20 to-teal-500/20 border border-emerald-500/30 flex items-center justify-center text-3xl"
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                  >
-                    {step.icon}
-                  </motion.div>
-
-                  <div className="flex-1 pt-2">
-                    <div className="flex items-center gap-3 mb-3">
-                      <span className="px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 text-xs text-emerald-400 font-semibold">
-                        {step.day}
-                      </span>
-                      <h3 className="text-2xl font-bold">{step.title}</h3>
-                    </div>
-                    <p className="text-gray-400 text-lg leading-relaxed mb-4">
-                      {step.desc}
-                    </p>
-                    <div className="inline-flex items-center gap-2 text-sm text-emerald-400">
-                      <svg
-                        className="w-4 h-4"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                        />
-                      </svg>
-                      <span>{step.deliverable}</span>
-                    </div>
-                  </div>
-                </div>
-
-                {i < 3 && (
-                  <div className="absolute left-10 top-24 w-0.5 h-24 bg-gradient-to-b from-emerald-500/50 to-transparent" />
-                )}
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── TECH STACK ── */}
-      <section className="py-24 relative border-t border-emerald-500/10">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Built With Modern Tech
-            </h2>
-            <p className="text-xl text-gray-400">
-              Investor-ready stack. No legacy nonsense.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {techStack.map((tech, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                whileHover={{ y: -8, scale: 1.05 }}
-                className="bg-white/5 border border-emerald-500/10 p-6 hover:border-emerald-500/30 transition-all text-center group cursor-pointer"
-              >
-                <div className="text-4xl mb-3 group-hover:scale-110 transition-transform">
-                  {tech.icon}
-                </div>
-                <div className="font-semibold mb-1">{tech.name}</div>
-                <div className="text-xs text-gray-500">{tech.category}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── COMPARISON TABLE ── */}
-      <section className="py-32 relative border-t border-emerald-500/10">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              How We Stack Up
-            </h2>
-            <p className="text-xl text-gray-400">
-              Honest comparison with every other option you have
-            </p>
-          </motion.div>
-
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="border-b border-emerald-500/20">
-                  <th className="text-left py-4 px-6 text-gray-400 font-medium">
-                    Feature
-                  </th>
-                  <th className="py-4 px-6 text-emerald-400 font-semibold bg-emerald-500/5">
-                    heyIsmail
-                  </th>
-                  <th className="py-4 px-6 text-gray-400 font-medium">
-                    Agency
-                  </th>
-                  <th className="py-4 px-6 text-gray-400 font-medium">
-                    Freelancer
-                  </th>
-                  <th className="py-4 px-6 text-gray-400 font-medium">
-                    No-Code
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {comparisonData.map((row, i) => (
-                  <motion.tr
-                    key={i}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 }}
-                    className="border-b border-white/5 hover:bg-white/[0.02] transition-colors"
-                  >
-                    <td className="py-4 px-6 font-medium">{row.feature}</td>
-                    <td className="py-4 px-6 text-center text-emerald-400 font-semibold bg-emerald-500/5">
-                      {row.us}
-                    </td>
-                    <td className="py-4 px-6 text-center text-gray-400">
-                      {row.agency}
-                    </td>
-                    <td className="py-4 px-6 text-center text-gray-400">
-                      {row.freelancer}
-                    </td>
-                    <td className="py-4 px-6 text-center text-gray-400">
-                      {row.nocode}
-                    </td>
-                  </motion.tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      {/* ── PRICING ── */}
-      <section
-        id="pricing"
-        className="py-32 relative border-t border-emerald-500/10"
+        className="py-24 bg-[#F8F7F3]"
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-4"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Simple, Transparent Pricing
-            </h2>
-            <p className="text-xl text-gray-400">
-              No hourly rates. No surprise fees. Just results.
-            </p>
-          </motion.div>
-
-          {/* ── Added: pricing context note to close the credibility gap ── */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <p className="text-sm text-emerald-400/60 max-w-xl mx-auto mt-4">
-              Prices are low because AI handles 70% of the build. You get
-              senior-level output at a fraction of agency cost — and we keep
-              slots intentionally limited so quality never slips.
-            </p>
+            {/* Eyebrow */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#00C96B]/10 border border-[#00C96B]/20 mb-6">
+              <span className="text-sm font-medium text-[#00C96B] tracking-widest uppercase">
+                The Process
+              </span>
+            </div>
+
+            {/* Heading */}
+            <h2 className="text-4xl md:text-5xl font-display font-bold mb-4 text-[#0A0F0D]">
+              What happens every day of your sprint.
+            </h2>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {pricingPlans.map((plan, i) => (
+          {/* 5 Process Day Cards */}
+          <div className="grid md:grid-cols-5 gap-6 mb-16">
+            {PROCESS_DAYS.map((processDay, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className={`relative bg-white/5 border p-8 hover:border-emerald-500/30 transition-all ${plan.popular
-                  ? "border-emerald-500/40 bg-gradient-to-b from-emerald-500/10 to-transparent"
-                  : "border-emerald-500/10"
-                  }`}
+                className="group bg-white border border-[rgba(10,15,13,0.08)] p-6 hover:border-[rgba(0,201,107,0.30)] hover:shadow-[0_4px_16px_rgba(10,15,13,0.08),0_1px_4px_rgba(10,15,13,0.04)] transition-all duration-200"
               >
-                {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-emerald-500 to-teal-500 text-black text-xs font-bold">
-                    MOST POPULAR
+                <div className="text-center">
+                  <div className="text-sm font-medium text-[#00C96B] mb-3 tracking-wide">
+                    {processDay.day}
                   </div>
-                )}
-
-                <div className="mb-6">
-                  <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-4xl font-bold text-emerald-400">
-                      {plan.price}
-                    </span>
-                    <span className="text-gray-500">/ {plan.duration}</span>
-                  </div>
+                  <h3 className="text-xl font-bold mb-4 text-[#0A0F0D]">
+                    {processDay.title}
+                  </h3>
+                  <p className="text-[#52665E] leading-relaxed text-sm">
+                    {processDay.description}
+                  </p>
                 </div>
-
-                <ul className="space-y-4 mb-8">
-                  {plan.features.map((feature, j) => (
-                    <li
-                      key={j}
-                      className="flex items-start gap-3 text-sm text-gray-300"
-                    >
-                      <svg
-                        className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <a
-                  href="https://cal.com/heyismail/15min"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`block w-full py-3 font-semibold text-center transition-all ${plan.popular
-                    ? "bg-gradient-to-r from-emerald-500 to-teal-500 text-black hover:scale-105 shadow-lg shadow-emerald-500/50"
-                    : "bg-white/10 text-white hover:bg-white/20"
-                    }`}
-                >
-                  {plan.cta}
-                </a>
               </motion.div>
             ))}
           </div>
 
+          {/* Dark Ownership Strip */}
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mt-12 text-gray-400"
+            className="bg-[#0A0F0D] p-8 text-center"
           >
-            <p>
-              All packages include source code ownership, deployment, and
-              documentation.
-            </p>
-            <p className="mt-2">
-              Need custom features?{" "}
-              <a
-                href="https://cal.com/heyismail/15min"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-emerald-400 hover:underline"
+            <h3 className="text-2xl md:text-3xl font-display font-bold mb-6 text-white">
+              At the end of Day 7, you own everything.
+            </h3>
+
+            {/* 6 Ownership Pills */}
+            <div className="flex flex-wrap justify-center gap-3">
+              {WHAT_YOU_OWN.map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="px-4 py-2 bg-white/10 border border-white/20 text-white text-sm font-medium"
+                >
+                  {item}
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── TECH STACK ── */}
+      <section className="py-24 bg-white border-y border-[rgba(10,15,13,0.08)]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          {/* The stack that makes 7 days possible */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-8 text-[#0A0F0D] text-center">
+              The stack that makes 7 days possible
+            </h2>
+
+            <div className="flex flex-wrap justify-center gap-4">
+              {STACK.map((tech, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.05 }}
+                  className="group flex items-center gap-3 px-4 py-3 bg-[#EFEFEA] border border-[rgba(10,15,13,0.08)] hover:border-[rgba(0,201,107,0.30)] hover:bg-white transition-all duration-200"
+                >
+                  <div
+                    className="w-3 h-3 rounded-full"
+                    style={{ backgroundColor: tech.color }}
+                  />
+                  <div className="flex flex-col">
+                    <span className="font-semibold text-[#0A0F0D] text-sm">
+                      {tech.name}
+                    </span>
+                    <span className="text-xs text-[#52665E]">
+                      {tech.role}
+                    </span>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* The AI that makes it possible */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-8 text-[#0A0F0D] text-center">
+              The AI that makes it possible
+            </h2>
+
+            <div className="flex flex-wrap justify-center gap-4">
+              {AI_TOOLS.map((tool, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.05 }}
+                  className="group flex items-center gap-3 px-4 py-3 bg-[#EFEFEA] border border-[rgba(10,15,13,0.08)] hover:border-[rgba(0,201,107,0.30)] hover:bg-white transition-all duration-200"
+                >
+                  <div className="text-[#00C96B]">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="font-semibold text-[#0A0F0D] text-sm">
+                      {tool.name}
+                    </span>
+                    <span className="text-xs text-[#52665E]">
+                      {tool.role}
+                    </span>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── MVP CHECKLIST ── */}
+      <section className="py-24 bg-[#0A0F0D]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            {/* Eyebrow */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#00C96B]/10 border border-[#00C96B]/20 mb-6">
+              <span className="text-sm font-medium text-[#00C96B] tracking-widest uppercase">
+                The 7 Non-Negotiables
+              </span>
+            </div>
+
+            {/* Heading */}
+            <h2 className="text-4xl md:text-5xl font-display font-bold mb-4 text-white">
+              Every MVP I build passes this list. Most don't.
+            </h2>
+          </motion.div>
+
+          {/* 7 Checklist Items in 2-column grid */}
+          <div className="grid md:grid-cols-2 gap-6 mb-12">
+            {MVP_CHECKLIST.map((checklistItem, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="group flex items-start gap-4 p-6 bg-white/[0.05] border border-white/[0.08] hover:bg-white/[0.08] hover:border-white/[0.15] transition-all duration-200"
               >
-                Let's talk
-              </a>
-              .
+                {/* Primary checkmark circle */}
+                <div className="flex-shrink-0 w-6 h-6 bg-[#00C96B] flex items-center justify-center mt-1">
+                  <svg className="w-4 h-4 text-[#0A0F0D]" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                  </svg>
+                </div>
+
+                <div className="flex-1">
+                  {/* Item text */}
+                  <h3 className="text-lg font-semibold text-white mb-2">
+                    {checklistItem.item}
+                  </h3>
+                  {/* Detail text */}
+                  <p className="text-white/70 leading-relaxed">
+                    {checklistItem.detail}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Subtext */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <p className="text-white/60 text-lg">
+              I've reviewed 40+ founder MVPs. Only 6 passed the real usage test.
             </p>
           </motion.div>
+        </div>
+      </section>
+
+      {/* ── FOUNDER SERIES PREVIEW ── */}
+      <section className="py-24 bg-[#F8F7F3]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            {/* Eyebrow */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#00C96B]/10 border border-[#00C96B]/20 mb-6">
+              <span className="text-sm font-medium text-[#00C96B] tracking-widest uppercase">
+                Founder Series
+              </span>
+            </div>
+
+            {/* Heading */}
+            <h2 className="text-4xl md:text-5xl font-display font-bold mb-4 text-[#0A0F0D]">
+              Built for real founders. Not demos.
+            </h2>
+          </motion.div>
+
+          {/* Featured Case Study Card - Linkup OS */}
+          {FOUNDER_SERIES.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="max-w-6xl mx-auto"
+            >
+              <div className="bg-white border border-[rgba(10,15,13,0.08)] shadow-[0_4px_16px_rgba(10,15,13,0.08),0_1px_4px_rgba(10,15,13,0.04)] hover:border-[rgba(0,201,107,0.30)] hover:shadow-[0_12px_40px_rgba(10,15,13,0.10)] transition-all duration-200 overflow-hidden">
+                <div className="grid md:grid-cols-5">
+                  {/* Left Panel - 60% (3 columns) */}
+                  <div className="md:col-span-3 p-8 md:p-12">
+                    {/* Founder Info */}
+                    <div className="mb-6">
+                      <h3 className="text-2xl font-bold text-[#0A0F0D] mb-2">
+                        {FOUNDER_SERIES[0].founder}
+                      </h3>
+                      <p className="text-[#52665E] text-lg">
+                        {FOUNDER_SERIES[0].founder_bio}
+                      </p>
+                    </div>
+
+                    {/* Product Badge */}
+                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#00C96B]/10 border border-[#00C96B]/20 mb-4">
+                      <span className="text-sm font-semibold text-[#00C96B]">
+                        {FOUNDER_SERIES[0].product}
+                      </span>
+                    </div>
+
+                    {/* Tagline */}
+                    <h4 className="text-xl font-display font-bold text-[#0A0F0D] mb-4">
+                      {FOUNDER_SERIES[0].tagline}
+                    </h4>
+
+                    {/* Description */}
+                    <p className="text-[#52665E] leading-relaxed mb-6">
+                      {FOUNDER_SERIES[0].description}
+                    </p>
+
+                    {/* What I Built List */}
+                    <div className="mb-8">
+                      <h5 className="text-lg font-bold text-[#0A0F0D] mb-4">
+                        What I built:
+                      </h5>
+                      <ul className="space-y-2">
+                        {FOUNDER_SERIES[0].built.map((feature, i) => (
+                          <li
+                            key={i}
+                            className="flex items-start gap-3 text-[#52665E]"
+                          >
+                            <div className="w-1.5 h-1.5 bg-[#00C96B] mt-2.5 flex-shrink-0" />
+                            <span className="leading-relaxed">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* CTAs */}
+                    <div className="flex flex-col sm:flex-row gap-4">
+                      <a
+                        href={`/work/${FOUNDER_SERIES[0].slug}`}
+                        className="group px-6 py-3 bg-[#00C96B] text-[#0A0F0D] font-semibold hover:bg-[#00A855] transition-all flex items-center justify-center gap-2"
+                      >
+                        View Case Study
+                        <svg
+                          className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M17 8l4 4m0 0l-4 4m4-4H3"
+                          />
+                        </svg>
+                      </a>
+
+                      <a
+                        href={FOUNDER_SERIES[0].url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group px-6 py-3 bg-white border border-[rgba(10,15,13,0.12)] text-[#0A0F0D] font-semibold hover:border-[rgba(0,201,107,0.30)] hover:bg-[#F8F7F3] transition-all flex items-center justify-center gap-2"
+                      >
+                        Live Demo
+                        <svg
+                          className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                          />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Right Panel - 40% (2 columns) */}
+                  <div className="md:col-span-2 bg-[#0A0F0D] p-8 md:p-12 flex items-center justify-center">
+                    <div className="text-center">
+                      <h3 className="text-4xl md:text-6xl font-display font-bold text-white transform -rotate-12">
+                        {FOUNDER_SERIES[0].product}
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          )}
         </div>
       </section>
 
@@ -795,10 +819,72 @@ const heyIsmailLanding = () => {
         </div>
       </section>
 
+      {/* ── TESTIMONIAL SECTION ── */}
+      <section className="py-24 bg-white">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            {/* Large primary open quote SVG icon */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="mb-8"
+            >
+              <svg
+                className="w-16 h-16 mx-auto text-[#00C96B]"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z" />
+              </svg>
+            </motion.div>
+
+            {/* Quote in large italic serif */}
+            <motion.blockquote
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="text-4xl md:text-5xl lg:text-6xl font-display italic text-[#0A0F0D] mb-8 leading-tight text-balance"
+            >
+              "I can't believe it's actually real."
+            </motion.blockquote>
+
+            {/* Attribution */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="text-lg text-[#52665E] mb-8"
+            >
+              Founder, after Day 7 of their MVP sprint
+            </motion.p>
+
+            {/* Supporting proof line with stats */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
+              className="text-sm text-[#9BB0A7] max-w-2xl mx-auto"
+            >
+              15+ MVPs Shipped · 4+ Years Building · 500K+ App Downloads · Real Code You Own
+            </motion.p>
+          </motion.div>
+        </div>
+      </section>
+
       {/* ── FAQ ── */}
       <section
         id="faq"
-        className="py-32 relative border-t border-emerald-500/10"
+        className="py-24 bg-[#F8F7F3]"
       >
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <motion.div
@@ -807,29 +893,23 @@ const heyIsmailLanding = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Common Questions
+            <h2 className="text-4xl md:text-5xl font-display font-bold mb-4 text-[#0A0F0D]">
+              Common questions.
             </h2>
-            <p className="text-xl text-gray-400">Everything you need to know</p>
           </motion.div>
 
-          <div className="space-y-6">
-            {faqs.map((faq, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="bg-white/5 border border-emerald-500/10 p-6 hover:border-emerald-500/30 transition-all"
-              >
-                <h3 className="text-xl font-bold mb-3 text-emerald-400">
+          <Accordion type="single" collapsible className="space-y-0">
+            {FAQS.map((faq, i) => (
+              <AccordionItem key={i} value={`item-${i}`} className="bg-white border border-[rgba(10,15,13,0.08)] first:rounded-t-none last:rounded-b-none">
+                <AccordionTrigger className="text-lg font-bold text-[#0A0F0D] hover:no-underline">
                   {faq.q}
-                </h3>
-                <p className="text-gray-400 leading-relaxed">{faq.a}</p>
-              </motion.div>
+                </AccordionTrigger>
+                <AccordionContent className="text-[#52665E] leading-relaxed">
+                  {faq.a}
+                </AccordionContent>
+              </AccordionItem>
             ))}
-          </div>
+          </Accordion>
 
           <motion.div
             initial={{ opacity: 0 }}
@@ -837,7 +917,7 @@ const heyIsmailLanding = () => {
             viewport={{ once: true }}
             className="text-center mt-12"
           >
-            <p className="text-gray-400 mb-4">Still have questions?</p>
+            <p className="text-[#52665E] mb-4">Still have questions?</p>
             <a
               href="https://wa.me/923111961963"
               target="_blank"
@@ -863,46 +943,42 @@ const heyIsmailLanding = () => {
         </div>
       </section>
 
-      {/* ── CTA ── */}
-      <section className="py-32 relative overflow-hidden border-t border-emerald-500/10">
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-teal-500/10" />
-
-        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10">
+      {/* ── BOTTOM CTA ── */}
+      <section className="py-24 bg-[#0A0F0D]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 mb-8">
-              <span className="w-2 h-2 bg-emerald-500 animate-pulse" />
-              <span className="text-sm text-emerald-400">
-                Limited slots available
+            {/* Primary eyebrow */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#00C96B]/10 border border-[#00C96B]/20 mb-6">
+              <span className="text-sm font-medium text-[#00C96B] tracking-widest uppercase">
+                Ready to build?
               </span>
             </div>
 
-            {/* ── CTA headline mirrors 7-day positioning ── */}
-            <h2 className="text-4xl md:text-6xl font-bold mb-4">
-              Ready to move fast?
+            {/* Heading in italic serif */}
+            <h2 className="text-4xl md:text-5xl font-display italic font-bold mb-6 text-white text-balance">
+              One conversation. Zero commitment. Full clarity.
             </h2>
-            <p className="text-2xl text-emerald-400 font-semibold mb-6">
-              Idea → live MVP in 7 days.
-            </p>
-            <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
-              Book a free 15-minute call. We'll map your idea, define the sprint
-              scope, and show you exactly how we'll build it. No pitch. No
-              pressure.
+
+            {/* Subtext explaining 30-min Idea Call */}
+            <p className="text-xl text-white/70 mb-10 max-w-2xl mx-auto leading-relaxed">
+              Book a free 30-minute Idea Call. We'll map your concept, define the sprint scope, and show you exactly how we'll build it. No pitch. No pressure.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            {/* CTAs with sharp corners */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
               <a
-                href="https://cal.com/heyismail/15min"
+                href="https://heyismail.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group px-10 py-5 bg-gradient-to-r from-emerald-500 to-teal-500 text-black text-lg font-bold hover:scale-105 transition-all shadow-2xl shadow-emerald-500/50 flex items-center gap-2"
+                className="group px-8 py-4 bg-[#00C96B] text-[#0A0F0D] font-semibold hover:bg-[#00A855] transition-all flex items-center gap-2"
               >
-                Book Your Free Call
+                Book Your Free Call →
                 <svg
-                  className="w-5 h-5 group-hover:translate-x-1 transition-transform"
+                  className="w-4 h-4 group-hover:translate-x-1 transition-transform"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -917,17 +993,18 @@ const heyIsmailLanding = () => {
               </a>
 
               <a
-                href="https://wa.me/923111961963"
+                href="https://linkedin.com/in/heyismail"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-10 py-5 bg-white/5 border border-emerald-500/20 text-white text-lg font-semibold hover:bg-white/10 hover:border-emerald-500/40 transition-all"
+                className="px-8 py-4 bg-transparent border border-white/20 text-white font-semibold hover:bg-white/5 hover:border-white/30 transition-all"
               >
-                Message on WhatsApp
+                DM me on LinkedIn
               </a>
             </div>
 
-            <p className="text-sm text-gray-500 mt-8">
-              ⚡ Response time: Under 2 hours
+            {/* Reassurance text below */}
+            <p className="text-white/50 text-sm">
+              No pressure. No pitch. Just clarity on whether this is right for you.
             </p>
           </motion.div>
         </div>
@@ -962,10 +1039,10 @@ const heyIsmailLanding = () => {
                 Work
               </button>
               <button
-                onClick={() => scrollToSection("pricing")}
+                onClick={() => scrollToSection("process")}
                 className="text-gray-400 hover:text-emerald-400 transition text-sm"
               >
-                Pricing
+                Process
               </button>
               <button
                 onClick={() => scrollToSection("faq")}

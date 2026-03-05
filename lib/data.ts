@@ -263,49 +263,25 @@ export const EXPERIENCE: Experience[] = [
   }
 ]
 
-// Why not other options comparison
-export const whyNotOptions = [
-  {
-    title: "Traditional Agency",
-    pain: "$50K+ & 3-6 months",
-    problems: [
-      "Slow communication",
-      "Feature creep",
-      "Missing deadlines",
-      "Junior devs on your project",
-    ],
+// Gap section data (problem vs solution)
+export const GAP_DATA = {
+  problem: {
+    title: "The old way",
+    points: [
+      "Agencies take 3-6 months and charge $50K+ for basic MVPs",
+      "Freelancers disappear after payment with no accountability",
+      "You waste months building the wrong features while competitors ship"
+    ]
   },
-  {
-    title: "Freelancer",
-    pain: "Disappears after payment",
-    problems: [
-      "No accountability",
-      "Inconsistent quality",
-      "One-person risk",
-      "No support after launch",
-    ],
-  },
-  {
-    title: "Offshore Team",
-    pain: "Language barriers & timezone hell",
-    problems: [
-      "Misunderstood requirements",
-      "Code quality issues",
-      "Hard to manage",
-      "Hidden costs",
-    ],
-  },
-  {
-    title: "DIY No-Code",
-    pain: "Looks cheap, scales poorly",
-    problems: [
-      "Template limitations",
-      "No custom features",
-      "Not investor-ready",
-      "Can't handle growth",
-    ],
-  },
-]
+  solution: {
+    title: "The sprint way", 
+    points: [
+      "Get a live, investor-ready MVP in exactly 7 days",
+      "Fixed price, fixed timeline — no scope creep or surprises",
+      "You own 100% of the code and can iterate immediately"
+    ]
+  }
+}
 
 // Testimonials
 export const testimonials = [
@@ -332,106 +308,6 @@ export const testimonials = [
     role: "Founder @ MentorMatch",
     company: "500+ Active Users",
     avatar: "AT",
-  },
-]
-
-// Pricing plans
-export const pricingPlans = [
-  {
-    name: "MVP Sprint",
-    price: "$1,999",
-    duration: "7 days",
-    features: [
-      "Core MVP features only",
-      "AI-powered development",
-      "Modern UI/UX design",
-      "Mobile responsive",
-      "Basic analytics setup",
-      "7-day delivery guarantee",
-      "14 days of support",
-    ],
-    cta: "Start Building",
-    popular: false,
-  },
-  {
-    name: "Launch Ready",
-    price: "$3,999",
-    duration: "10 days",
-    features: [
-      "Everything in MVP Sprint",
-      "Payment integration (Stripe)",
-      "User authentication",
-      "Database architecture",
-      "API integrations",
-      "SEO optimization",
-      "30 days of support",
-      "Investor deck template",
-    ],
-    cta: "Most Popular",
-    popular: true,
-  },
-  {
-    name: "Scale Package",
-    price: "$5,999",
-    duration: "14 days",
-    features: [
-      "Everything in Launch Ready",
-      "Admin dashboard",
-      "Advanced analytics",
-      "Email automation",
-      "Multi-user support",
-      "AI/ML integration",
-      "60 days of support",
-      "Growth consultation",
-    ],
-    cta: "Go Enterprise",
-    popular: false,
-  },
-]
-
-// Comparison data
-export const comparisonData = [
-  {
-    feature: "Time to MVP",
-    us: "7 days",
-    agency: "3-6 months",
-    freelancer: "2-4 months",
-    nocode: "2 weeks",
-  },
-  {
-    feature: "Cost",
-    us: "$5K-15K",
-    agency: "$50K-200K",
-    freelancer: "$10K-40K",
-    nocode: "$0-500",
-  },
-  {
-    feature: "Quality",
-    us: "Investor-ready",
-    agency: "Enterprise",
-    freelancer: "Variable",
-    nocode: "Template",
-  },
-  {
-    feature: "Support",
-    us: "14-60 days",
-    agency: "Ongoing ($)",
-    freelancer: "None",
-    nocode: "Community",
-  },
-  {
-    feature: "Scalability",
-    us: "Built to scale",
-    agency: "Over-engineered",
-    freelancer: "Unknown",
-    nocode: "Limited",
-  },
-  {
-    feature: "Code ownership",
-    us: "100% yours",
-    agency: "100% yours",
-    freelancer: "100% yours",
-    nocode: "Platform locked",
   },
 ]
 
