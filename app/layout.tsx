@@ -1,34 +1,62 @@
 import type { Metadata } from "next";
 import "./styles/globals.css";
-import { DM_Sans, DM_Serif_Display } from "next/font/google";
+import { Inter } from "next/font/google";
 import PageLayout from "./components/PageLayout";
 import Script from "next/script";
 
-const dmSans = DM_Sans({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
   variable: "--font-sans",
-  display: "swap",
-});
-
-const dmSerifDisplay = DM_Serif_Display({
-  subsets: ["latin"],
-  weight: ["400"],
-  style: ["normal", "italic"],
-  variable: "--font-display",
   display: "swap",
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://heyismail.com'),
-  title: "Ismail Muhammad | SaaS MVP Developer",
+  title: "Ismail Muhammad — SaaS MVP Developer",
   description:
     "I build SaaS MVPs in 7 days for non-technical founders. AI-accelerated development with 100% code ownership. Real products, not demos.",
+  keywords: ["SaaS MVP", "AI development", "7-day sprint", "startup MVP", "Next.js developer"],
+  authors: [{ name: "Ismail Muhammad" }],
+  creator: "Ismail Muhammad",
+  publisher: "Ismail Muhammad",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+  },
   openGraph: {
-    title: "Ismail Muhammad | SaaS MVP Developer",
-    description: "I build SaaS MVPs in 7 days for non-technical founders",
+    type: "website",
+    locale: "en_US",
     url: "https://heyismail.com",
+    title: "Ismail Muhammad — SaaS MVP Developer",
+    description: "I build SaaS MVPs in 7 days for non-technical founders. AI-accelerated development with 100% code ownership.",
+    siteName: "heyismail.com",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Ismail Muhammad - SaaS MVP Developer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ismail Muhammad — SaaS MVP Developer",
+    description: "I build SaaS MVPs in 7 days for non-technical founders",
     images: ["/og-image.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
@@ -40,7 +68,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${dmSans.variable} ${dmSerifDisplay.variable} font-sans bg-white text-dark-text`}
+        className={`${inter.variable} font-sans bg-light text-dark antialiased`}
       >
         <PageLayout>{children}</PageLayout>
         <Script

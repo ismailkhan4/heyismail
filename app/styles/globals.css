@@ -1,20 +1,63 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-dark-primary: #1e473d;
-  --color-primary: #2f6d5e;
-  --color-light: #d9e8d5;
-  --color-dark-text: #222222;
+  /* Font family - Inter only */
+  --font-sans: "Inter", system-ui, sans-serif;
 
-  --font-display: "DM Serif Display", serif;
-  --font-sans: "DM Sans", system-ui, sans-serif;
+  /* heyismail three-color system */
+  --color-primary: #19453A;
+  --color-primary-mid: #2A5A4C;
+  --color-primary-tint: rgba(25,69,58,0.06);
+  --color-accent: #79CEB8;
+  --color-accent-hover: #6bbfaa;
+  --color-dark: #000807;
+  --color-light: #FBF9FF;
+  --color-danger: #EA2B1F;
+
+  /* Semantic colors for shadcn/ui compatibility */
+  --color-background: #FBF9FF;
+  --color-foreground: #000807;
+  --color-primary-foreground: #FBF9FF;
+  --color-accent-foreground: #19453A;
+  --color-secondary: rgba(25,69,58,0.06);
+  --color-secondary-foreground: #000807;
+  --color-muted: rgba(25,69,58,0.06);
+  --color-muted-foreground: #000807;
+  --color-destructive: #EA2B1F;
+  --color-destructive-foreground: #FBF9FF;
+  --color-border: rgba(25,69,58,0.10);
+  --color-input: rgba(25,69,58,0.10);
+  --color-ring: #79CEB8;
+
+  /* Custom shadow system */
+  --shadow-card: 0 1px 3px rgba(0,8,7,0.06), 0 1px 2px rgba(0,8,7,0.04);
+  --shadow-card-md: 0 4px 16px rgba(0,8,7,0.08), 0 1px 4px rgba(0,8,7,0.04);
+  --shadow-card-lg: 0 12px 40px rgba(0,8,7,0.10);
+
+  /* Typography scale */
+  --font-size-hero: clamp(44px, 6.5vw, 88px);
+  --font-size-section: clamp(32px, 4.5vw, 56px);
+  --font-size-card: 20px;
+  --font-size-body-lg: 18px;
+  --font-size-body: 15px;
+  --font-size-label: 11px;
+
+  /* Responsive breakpoints */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
 }
 
 @layer base {
   body {
-    @apply bg-white font-sans;
-    color: var(--color-dark-text);
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #FBF9FF;
+    color: #000807;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
@@ -24,48 +67,85 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #f8f9fa;
+  background: rgba(25,69,58,0.06);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-primary);
+  background: #79CEB8;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-dark-primary);
+  background: #6bbfaa;
 }
 
 /* Firefox scrollbar */
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--color-primary) #f8f9fa;
+  scrollbar-color: #79CEB8 rgba(25,69,58,0.06);
 }
 
 /* Selection color */
 ::selection {
-  background-color: var(--color-light);
-  color: var(--color-dark-text);
+  background: rgba(121,206,184,0.20);
+  color: #000807;
 }
 
 ::-moz-selection {
-  background-color: var(--color-light);
-  color: var(--color-dark-text);
+  background: rgba(121,206,184,0.20);
+  color: #000807;
 }
 
 /* Utility classes */
-.font-display {
-  font-family: var(--font-display);
-}
-
 .text-balance {
   text-wrap: balance;
+}
+
+/* Hero typography */
+.text-hero {
+  font-size: var(--font-size-hero);
+  font-weight: 800;
+  line-height: 0.95;
+}
+
+/* Section typography */
+.text-section {
+  font-size: var(--font-size-section);
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+/* Card typography */
+.text-card {
+  font-size: var(--font-size-card);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Body typography */
+.text-body-lg {
+  font-size: var(--font-size-body-lg);
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.text-body {
+  font-size: var(--font-size-body);
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+/* Label typography */
+.text-label {
+  font-size: var(--font-size-label);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
 }
 
 @keyframes scroll {
   0% {
     transform: translateX(0%);
   }
-
   100% {
     transform: translateX(-50%);
   }
@@ -75,6 +155,7 @@
   from {
     height: 0;
   }
+
   to {
     height: var(--radix-accordion-content-height);
   }
@@ -84,6 +165,7 @@
   from {
     height: var(--radix-accordion-content-height);
   }
+
   to {
     height: 0;
   }
