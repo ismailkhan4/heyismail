@@ -40,7 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${dmSans.variable} ${dmSerifDisplay.variable} font-sans bg-[#F8F7F3] text-[#0A0F0D]`}
+        className={`${dmSans.variable} ${dmSerifDisplay.variable} font-sans bg-white text-dark-text`}
       >
         <PageLayout>{children}</PageLayout>
         <Script

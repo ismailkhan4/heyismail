@@ -1,219 +1,69 @@
-import {
-  Calendar,
-  Mail,
-  MessageCircle,
-  Linkedin,
-  Twitter,
-  ArrowUp,
-} from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
+import Link from 'next/link'
+import { SITE_META } from '@/lib/data'
 
-const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
-  const links = {
-    services: [
-      { name: "MVP Development", href: "#how-it-works" },
-      { name: "Strategy Consulting", href: "#pricing" },
-      { name: "Technical Due Diligence", href: "#contact" },
-      { name: "Team Building Guidance", href: "#contact" },
-    ],
-    resources: [
-      { name: "Case Studies", href: "#case-studies" },
-      { name: "Founder's Guide to MVPs", href: "#" },
-      { name: "MVP Readiness Checklist", href: "#" },
-      { name: "Blog", href: "#" },
-    ],
-    contact: [
-      {
-        name: "Book Strategy Call",
-        href: "https://calendly.com/your-calendly-link",
-        icon: Calendar,
-        external: true,
-      },
-      {
-        name: "Send Message",
-        href: "mailto:hello@yourname.com?subject=MVP Project Inquiry",
-        icon: MessageCircle,
-      },
-      {
-        name: "Email Direct",
-        href: "mailto:hello@yourname.com",
-        icon: Mail,
-      },
-    ],
-  };
-
-  const socialLinks = [
-    {
-      name: "LinkedIn",
-      href: "https://linkedin.com/in/yourprofile",
-      icon: Linkedin,
-    },
-    {
-      name: "Twitter",
-      href: "https://twitter.com/yourhandle",
-      icon: Twitter,
-    },
-  ];
-
-  const handleLinkClick = (href: string, external?: boolean) => {
-    if (external) {
-      window.open(href, "_blank");
-    } else if (href.startsWith("#")) {
-      const element = document.getElementById(href.substring(1));
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
-    } else if (href.startsWith("mailto:")) {
-      window.location.href = href;
-    }
-  };
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
+export default function Footer() {
   return (
-    <footer className="bg-background border-t border-border/50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-        {/* Main footer content */}
-        <div className="py-12 sm:py-16 grid md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
-          {/* Brand section */}
-          <div className="lg:col-span-1 space-y-6">
-            <div className="space-y-4">
-              <h3 className="text-xl sm:text-2xl font-bold">
-                Your MVP Partner
-              </h3>
-              <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
-                Helping non-technical founders escape development hell and
-                launch successful SaaS MVPs in 40 days.
-              </p>
-            </div>
-
-            <div className="flex items-center gap-4">
-              {socialLinks.map((social, index) => (
-                <button
-                  key={index}
-                  onClick={() => handleLinkClick(social.href, true)}
-                  className="w-10 h-10 bg-muted hover:bg-muted/80 rounded-xl flex items-center justify-center transition-colors group"
-                  aria-label={social.name}
-                >
-                  <social.icon className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors" />
-                </button>
-              ))}
-            </div>
-
-            <Badge
-              variant="outline"
-              className="text-xs px-3 py-1 rounded-full w-fit"
+    <footer className="bg-dark-text border-t border-white/[0.08]">
+      <div className="max-w-[1100px] mx-auto px-6">
+        {/* Top row: Navigation + CTA */}
+        <div className="py-12 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+          {/* Navigation Links */}
+          <nav className="flex flex-wrap gap-8">
+            <Link
+              href="/work"
+              className="text-white/70 hover:text-white transition-colors duration-150"
             >
-              <div className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse" />
-              Available for Q1 2024
-            </Badge>
-          </div>
+              Work
+            </Link>
+            <Link
+              href="/process"
+              className="text-white/70 hover:text-white transition-colors duration-150"
+            >
+              Process
+            </Link>
+            <Link
+              href="/about"
+              className="text-white/70 hover:text-white transition-colors duration-150"
+            >
+              About
+            </Link>
+            <Link
+              href="/contact"
+              className="text-white/70 hover:text-white transition-colors duration-150"
+            >
+              Contact
+            </Link>
+          </nav>
 
-          {/* Services */}
-          <div className="space-y-6">
-            <h4 className="font-semibold text-foreground">Services</h4>
-            <ul className="space-y-3">
-              {links.services.map((link, index) => (
-                <li key={index}>
-                  <button
-                    onClick={() => handleLinkClick(link.href)}
-                    className="text-muted-foreground hover:text-foreground transition-colors text-sm text-left"
-                  >
-                    {link.name}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Resources */}
-          <div className="space-y-6">
-            <h4 className="font-semibold text-foreground">Resources</h4>
-            <ul className="space-y-3">
-              {links.resources.map((link, index) => (
-                <li key={index}>
-                  <button
-                    onClick={() => handleLinkClick(link.href)}
-                    className="text-muted-foreground hover:text-foreground transition-colors text-sm text-left"
-                  >
-                    {link.name}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div className="space-y-6">
-            <h4 className="font-semibold text-foreground">Get Started</h4>
-            <ul className="space-y-3">
-              {links.contact.map((link, index) => (
-                <li key={index}>
-                  <button
-                    onClick={() => handleLinkClick(link.href, link.external)}
-                    className="text-muted-foreground hover:text-foreground transition-colors text-sm flex items-center gap-2"
-                  >
-                    <link.icon className="w-4 h-4" />
-                    {link.name}
-                  </button>
-                </li>
-              ))}
-            </ul>
-
-            {/* CTA in footer */}
-            <div className="pt-4">
-              <Button
-                size="sm"
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl text-xs"
-                onClick={() =>
-                  handleLinkClick(
-                    "https://calendly.com/your-calendly-link",
-                    true
-                  )
-                }
-              >
-                <Calendar className="w-3 h-3 mr-1" />
-                Book Free Call
-              </Button>
-            </div>
-          </div>
+          {/* CTA Button */}
+          <Link
+            href={SITE_META.calendly}
+            className="bg-primary text-light px-6 py-3 font-medium hover:bg-dark-primary transition-colors duration-150"
+          >
+            Book a Call
+          </Link>
         </div>
 
-        <Separator className="opacity-20" />
+        {/* Bottom row: Copyright + Social */}
+        <div className="py-6 border-t border-white/[0.08] flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          {/* Copyright */}
+          <p className="text-white/50 text-sm">
+            © 2025 {SITE_META.name} · {SITE_META.location}
+          </p>
 
-        {/* Bottom section */}
-        <div className="py-6 sm:py-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="text-sm text-muted-foreground text-center md:text-left">
-            © {currentYear} Your Name. All rights reserved. Building the future,
-            one MVP at a time.
-          </div>
-
-          <div className="flex items-center gap-6 text-sm text-muted-foreground">
-            <button className="hover:text-foreground transition-colors">
-              Privacy Policy
-            </button>
-            <button className="hover:text-foreground transition-colors">
-              Terms of Service
-            </button>
-            <button
-              onClick={scrollToTop}
-              className="flex items-center gap-1 hover:text-foreground transition-colors"
-              aria-label="Back to top"
+          {/* Social Links */}
+          <div className="flex gap-6">
+            <Link
+              href={SITE_META.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/50 hover:text-white/70 transition-colors duration-150 text-sm"
             >
-              <ArrowUp className="w-4 h-4" />
-              Top
-            </button>
+              LinkedIn
+            </Link>
           </div>
         </div>
       </div>
     </footer>
-  );
-};
-
-export default Footer;
+  )
+}

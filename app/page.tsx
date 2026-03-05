@@ -13,23 +13,19 @@ import {
 } from "@/lib/data";
 
 const heyIsmailLanding = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const heroRef = useRef(null);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     const handleMouseMove = (
       e: React.MouseEvent<Element, MouseEvent> | MouseEvent,
     ): void => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
 
-    window.addEventListener("scroll", handleScroll);
     window.addEventListener("mousemove", handleMouseMove);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
@@ -39,7 +35,7 @@ const heyIsmailLanding = () => {
   };
 
   return (
-    <div className="bg-black text-white font-sans antialiased">
+    <div className="bg-white text-dark-text font-sans antialiased">
       {/* Custom Cursor Effect */}
       <div
         className="fixed w-96 h-96 pointer-events-none z-50 transition-opacity duration-300"
@@ -47,58 +43,10 @@ const heyIsmailLanding = () => {
           left: mousePosition.x - 192,
           top: mousePosition.y - 192,
           background:
-            "radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(47, 109, 94, 0.08) 0%, transparent 70%)",
           opacity: 0.6,
         }}
       />
-
-      {/* Navbar */}
-      <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        className={`fixed top-0 w-full z-40 transition-all duration-500 ${
-          isScrolled
-            ? "bg-black/80 backdrop-blur-xl border-b border-emerald-500/10"
-            : "bg-transparent"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-2 flex items-center justify-between">
-          <motion.div
-            className="text-xl font-semibold tracking-tight flex items-center gap-2"
-            whileHover={{ scale: 1.05 }}
-          >
-            <span>heyIsmail</span>
-            <Image
-              src={"/green-dot.png"}
-              width={12}
-              height={12}
-              alt="heyIsmail"
-              className="mt-2.5 -ml-1.75"
-            />
-          </motion.div>
-
-          <div className="hidden md:flex items-center gap-1">
-            {["Work", "Process", "Pricing", "FAQ"].map((item) => (
-              <button
-                key={item}
-                onClick={() => scrollToSection(item.toLowerCase())}
-                className="px-4 py-2 text-sm text-gray-400 hover:text-emerald-400 transition-colors rounded-lg hover:bg-emerald-500/5"
-              >
-                {item}
-              </button>
-            ))}
-          </div>
-
-          <a
-            href="https://cal.com/heyismail/15min"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative px-6 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-500 text-black text-sm font-semibold rounded-lg overflow-hidden transition-all hover:scale-105 hover:shadow-lg hover:shadow-emerald-500/50"
-          >
-            <span className="relative z-10">Book Free Call</span>
-          </a>
-        </div>
-      </motion.nav>
 
       {/* ── HERO ── */}
       <section
@@ -116,12 +64,12 @@ const heyIsmailLanding = () => {
         </div>
 
         <motion.div
-          className="absolute top-1/4 -left-48 w-96 h-96 bg-emerald-500 rounded-full filter blur-3xl opacity-20"
+          className="absolute top-1/4 -left-48 w-96 h-96 bg-emerald-500 filter blur-3xl opacity-20"
           animate={{ x: [0, 100, 0], y: [0, -50, 0] }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
         />
         <motion.div
-          className="absolute bottom-1/4 -right-48 w-96 h-96 bg-teal-500 rounded-full filter blur-3xl opacity-20"
+          className="absolute bottom-1/4 -right-48 w-96 h-96 bg-teal-500 filter blur-3xl opacity-20"
           animate={{ x: [0, -100, 0], y: [0, 50, 0] }}
           transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
         />
@@ -135,12 +83,12 @@ const heyIsmailLanding = () => {
           >
             {/* Available badge */}
             <motion.div
-              className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-full mb-8"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 mb-8"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2 }}
             >
-              <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+              <span className="w-2 h-2 bg-green-500 animate-pulse" />
               <span className="text-sm text-gray-300">
                 Available for new projects
               </span>
@@ -175,7 +123,7 @@ const heyIsmailLanding = () => {
                 href="https://cal.com/heyismail/15min"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group px-8 py-4 bg-white text-black font-medium rounded-lg hover:scale-105 transition-all flex items-center gap-2"
+                className="group px-8 py-4 bg-white text-black font-medium hover:scale-105 transition-all flex items-center gap-2"
               >
                 See how the 7-day sprint works
                 <svg
@@ -195,7 +143,7 @@ const heyIsmailLanding = () => {
 
               <button
                 onClick={() => scrollToSection("work")}
-                className="px-8 py-4 bg-white/5 border border-white/10 text-white font-medium rounded-lg hover:bg-white/10 transition-all"
+                className="px-8 py-4 bg-white/5 border border-white/10 text-white font-medium hover:bg-white/10 transition-all"
               >
                 View Our Work
               </button>
@@ -222,7 +170,7 @@ const heyIsmailLanding = () => {
                       key={i}
                       src={src}
                       alt={`Client ${i + 1}`}
-                      className="w-8 h-8 rounded-full border-2 border-black"
+                      className="w-8 h-8 border-2 border-black"
                     />
                   ))}
                 </div>
@@ -266,7 +214,7 @@ const heyIsmailLanding = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white/5 border border-red-500/20 rounded-2xl p-6 hover:border-red-500/40 transition-all group"
+                className="bg-white/5 border border-red-500/20 p-6 hover:border-red-500/40 transition-all group"
               >
                 <div className="text-red-400 text-4xl mb-4">❌</div>
                 <h3 className="text-xl font-bold mb-2">{option.title}</h3>
@@ -294,7 +242,7 @@ const heyIsmailLanding = () => {
             viewport={{ once: true }}
             className="mt-16 text-center"
           >
-            <div className="inline-block bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-500/20 rounded-2xl p-8">
+            <div className="inline-block bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-500/20 p-8">
               <div className="text-emerald-400 text-5xl mb-4">✅</div>
               <h3 className="text-2xl font-bold mb-3">The heyIsmail Sprint</h3>
               {/* ── Mirrors LinkedIn headline directly ── */}
@@ -308,7 +256,7 @@ const heyIsmailLanding = () => {
                 href="https://cal.com/heyismail/15min"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-500 text-black font-semibold rounded-lg hover:scale-105 transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-500 text-black font-semibold hover:scale-105 transition-all"
               >
                 Let's Build
                 <svg
@@ -359,7 +307,7 @@ const heyIsmailLanding = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="group relative bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-emerald-500/10 rounded-2xl p-8 hover:border-emerald-500/30 transition-all cursor-pointer overflow-hidden"
+                className="group relative bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-emerald-500/10 p-8 hover:border-emerald-500/30 transition-all cursor-pointer overflow-hidden"
               >
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-100 transition-opacity`}
@@ -399,7 +347,7 @@ const heyIsmailLanding = () => {
                     {project.tags.map((tag, j) => (
                       <span
                         key={j}
-                        className="px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-xs text-emerald-400"
+                        className="px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 text-xs text-emerald-400"
                       >
                         {tag}
                       </span>
@@ -496,7 +444,7 @@ const heyIsmailLanding = () => {
               >
                 <div className="flex items-start gap-8">
                   <motion.div
-                    className="flex-shrink-0 w-20 h-20 bg-gradient-to-br from-emerald-500/20 to-teal-500/20 border border-emerald-500/30 rounded-2xl flex items-center justify-center text-3xl"
+                    className="flex-shrink-0 w-20 h-20 bg-gradient-to-br from-emerald-500/20 to-teal-500/20 border border-emerald-500/30 flex items-center justify-center text-3xl"
                     whileHover={{ scale: 1.1, rotate: 5 }}
                   >
                     {step.icon}
@@ -504,7 +452,7 @@ const heyIsmailLanding = () => {
 
                   <div className="flex-1 pt-2">
                     <div className="flex items-center gap-3 mb-3">
-                      <span className="px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-xs text-emerald-400 font-semibold">
+                      <span className="px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 text-xs text-emerald-400 font-semibold">
                         {step.day}
                       </span>
                       <h3 className="text-2xl font-bold">{step.title}</h3>
@@ -566,7 +514,7 @@ const heyIsmailLanding = () => {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
                 whileHover={{ y: -8, scale: 1.05 }}
-                className="bg-white/5 border border-emerald-500/10 rounded-xl p-6 hover:border-emerald-500/30 transition-all text-center group cursor-pointer"
+                className="bg-white/5 border border-emerald-500/10 p-6 hover:border-emerald-500/30 transition-all text-center group cursor-pointer"
               >
                 <div className="text-4xl mb-3 group-hover:scale-110 transition-transform">
                   {tech.icon}
@@ -690,14 +638,13 @@ const heyIsmailLanding = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className={`relative bg-white/5 border rounded-2xl p-8 hover:border-emerald-500/30 transition-all ${
-                  plan.popular
-                    ? "border-emerald-500/40 bg-gradient-to-b from-emerald-500/10 to-transparent"
-                    : "border-emerald-500/10"
-                }`}
+                className={`relative bg-white/5 border p-8 hover:border-emerald-500/30 transition-all ${plan.popular
+                  ? "border-emerald-500/40 bg-gradient-to-b from-emerald-500/10 to-transparent"
+                  : "border-emerald-500/10"
+                  }`}
               >
                 {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-emerald-500 to-teal-500 text-black text-xs font-bold rounded-full">
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-emerald-500 to-teal-500 text-black text-xs font-bold">
                     MOST POPULAR
                   </div>
                 )}
@@ -740,11 +687,10 @@ const heyIsmailLanding = () => {
                   href="https://cal.com/heyismail/15min"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`block w-full py-3 rounded-lg font-semibold text-center transition-all ${
-                    plan.popular
-                      ? "bg-gradient-to-r from-emerald-500 to-teal-500 text-black hover:scale-105 shadow-lg shadow-emerald-500/50"
-                      : "bg-white/10 text-white hover:bg-white/20"
-                  }`}
+                  className={`block w-full py-3 font-semibold text-center transition-all ${plan.popular
+                    ? "bg-gradient-to-r from-emerald-500 to-teal-500 text-black hover:scale-105 shadow-lg shadow-emerald-500/50"
+                    : "bg-white/10 text-white hover:bg-white/20"
+                    }`}
                 >
                   {plan.cta}
                 </a>
@@ -805,10 +751,10 @@ const heyIsmailLanding = () => {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -8 }}
-                className="bg-gradient-to-br from-white/5 to-white/[0.02] border border-emerald-500/10 rounded-2xl p-8 hover:border-emerald-500/30 transition-all"
+                className="bg-gradient-to-br from-white/5 to-white/[0.02] border border-emerald-500/10 p-8 hover:border-emerald-500/30 transition-all"
               >
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-full flex items-center justify-center font-bold text-black">
+                  <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center font-bold text-black">
                     {test.avatar}
                   </div>
                   <div>
@@ -822,7 +768,7 @@ const heyIsmailLanding = () => {
                 </p>
 
                 {/* ── Result badge — makes the outcome visible ── */}
-                <div className="text-xs text-emerald-400 font-semibold bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1 inline-block">
+                <div className="text-xs text-emerald-400 font-semibold bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 inline-block">
                   {test.company}
                 </div>
               </motion.div>
@@ -875,7 +821,7 @@ const heyIsmailLanding = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white/5 border border-emerald-500/10 rounded-xl p-6 hover:border-emerald-500/30 transition-all"
+                className="bg-white/5 border border-emerald-500/10 p-6 hover:border-emerald-500/30 transition-all"
               >
                 <h3 className="text-xl font-bold mb-3 text-emerald-400">
                   {faq.q}
@@ -927,8 +873,8 @@ const heyIsmailLanding = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full mb-8">
-              <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 mb-8">
+              <span className="w-2 h-2 bg-emerald-500 animate-pulse" />
               <span className="text-sm text-emerald-400">
                 Limited slots available
               </span>
@@ -952,7 +898,7 @@ const heyIsmailLanding = () => {
                 href="https://cal.com/heyismail/15min"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group px-10 py-5 bg-gradient-to-r from-emerald-500 to-teal-500 text-black text-lg font-bold rounded-lg hover:scale-105 transition-all shadow-2xl shadow-emerald-500/50 flex items-center gap-2"
+                className="group px-10 py-5 bg-gradient-to-r from-emerald-500 to-teal-500 text-black text-lg font-bold hover:scale-105 transition-all shadow-2xl shadow-emerald-500/50 flex items-center gap-2"
               >
                 Book Your Free Call
                 <svg
@@ -974,7 +920,7 @@ const heyIsmailLanding = () => {
                 href="https://wa.me/923111961963"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-10 py-5 bg-white/5 border border-emerald-500/20 text-white text-lg font-semibold rounded-lg hover:bg-white/10 hover:border-emerald-500/40 transition-all"
+                className="px-10 py-5 bg-white/5 border border-emerald-500/20 text-white text-lg font-semibold hover:bg-white/10 hover:border-emerald-500/40 transition-all"
               >
                 Message on WhatsApp
               </a>
