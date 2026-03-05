@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @plugin "@tailwindcss/typography";
@@ -5,7 +6,7 @@
 @custom-variant dark (&:is(.dark *));
 
 body {
-  @apply bg-background text-foreground font-sans;
+  @apply bg-[#F8F7F3] text-foreground font-sans;
 }
 
 :root {
@@ -125,6 +126,50 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F8F7F3;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #9BB0A7;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #52665E;
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #9BB0A7 #F8F7F3;
+}
+
+/* Selection color */
+::selection {
+  background-color: #00C96B;
+  color: #0A0F0D;
+}
+
+::-moz-selection {
+  background-color: #00C96B;
+  color: #0A0F0D;
+}
+
+/* Utility classes */
+.font-display {
+  font-family: 'DM Serif Display', serif;
+}
+
+.text-balance {
+  text-wrap: balance;
 }
 
 @keyframes scroll {

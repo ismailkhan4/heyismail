@@ -1,5 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-import typography from "@tailwindcss/typography";
 const config = {
     darkMode: ["class"],
     content: [
@@ -21,12 +20,35 @@ const config = {
                     },
                 },
             }),
+            fontFamily: {
+                display: ['"DM Serif Display"', 'serif'],
+                sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+            },
             borderRadius: {
                 lg: 'var(--radius)',
                 md: 'calc(var(--radius) - 2px)',
-                sm: 'calc(var(--radius) - 4px)'
+                sm: 'calc(var(--radius) - 4px)',
+                xl: '12px',
+                '2xl': '16px',
+                '3xl': '24px',
+                '4xl': '32px',
+            },
+            boxShadow: {
+                'card': '0 1px 3px rgba(10, 15, 13, 0.06), 0 1px 2px rgba(10, 15, 13, 0.04)',
+                'card-md': '0 4px 16px rgba(10, 15, 13, 0.08), 0 1px 4px rgba(10, 15, 13, 0.04)',
+                'card-lg': '0 12px 40px rgba(10, 15, 13, 0.10)',
+                'card-xl': '0 24px 64px rgba(10, 15, 13, 0.14)',
             },
             colors: {
+                dark: '#0A0F0D',
+                'dark-mid': '#111A16',
+                green: '#00C96B',
+                'green-soft': '#E6FFF3',
+                cream: '#F8F7F3',
+                'cream-dark': '#EFEFEA',
+                ink: '#0A0F0D',
+                'ink-muted': '#52665E',
+                'ink-faint': '#9BB0A7',
                 background: 'hsl(var(--background))',
                 foreground: 'hsl(var(--foreground))',
                 card: {
@@ -94,9 +116,9 @@ const config = {
             }
         }
     },
-    plugins: [typography,
+    plugins: [
+        require("@tailwindcss/typography"),
         // require("tailwindcss-animate")
-
     ]
 };
 

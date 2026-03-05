@@ -1,23 +1,32 @@
 import type { Metadata } from "next";
 import "./styles/globals.css";
-import { Mona_Sans } from "next/font/google";
+import { DM_Sans, DM_Serif_Display } from "next/font/google";
 import PageLayout from "./components/PageLayout";
 import Script from "next/script";
 
-const monaSans = Mona_Sans({
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  weight: ["400", "600", "700", "900"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-sans",
   display: "swap",
 });
 
+const dmSerifDisplay = DM_Serif_Display({
+  subsets: ["latin"],
+  weight: ["400"],
+  style: ["normal", "italic"],
+  variable: "--font-display",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
-  title: "heyIsmail | Ship Your MVP in 7 Days - AI-Powered Development",
+  metadataBase: new URL('https://heyismail.com'),
+  title: "Ismail Muhammad | SaaS MVP Developer",
   description:
-    "Turn your idea into an investor-ready product. AI builds 70%, we perfect the rest. $5K-15K fixed price. No agencies, no freelancers — just results.",
+    "I build SaaS MVPs in 7 days for non-technical founders. AI-accelerated development with 100% code ownership. Real products, not demos.",
   openGraph: {
-    title: "heyIsmail | Ship Your MVP in 7 Days",
-    description: "AI-powered MVP development for founders",
+    title: "Ismail Muhammad | SaaS MVP Developer",
+    description: "I build SaaS MVPs in 7 days for non-technical founders",
     url: "https://heyismail.com",
     images: ["/og-image.jpg"],
   },
@@ -31,7 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${monaSans.variable} font-sans bg-background text-foreground`}
+        className={`${dmSans.variable} ${dmSerifDisplay.variable} font-sans bg-[#F8F7F3] text-[#0A0F0D]`}
       >
         <PageLayout>{children}</PageLayout>
         <Script
