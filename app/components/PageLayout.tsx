@@ -51,6 +51,7 @@ const PageLayout = ({ children }: { children: ReactNode }) => {
         </div>
       </nav> */}
       {children}
+      <Footer />
     </>
   );
 };

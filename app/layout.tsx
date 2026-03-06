@@ -3,6 +3,7 @@ import "./styles/globals.css";
 import { Mona_Sans } from "next/font/google";
 import PageLayout from "./components/PageLayout";
 import Script from "next/script";
+import { seoData } from "./data";
 
 const monaSans = Mona_Sans({
   subsets: ["latin"],
@@ -12,13 +13,14 @@ const monaSans = Mona_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "heyIsmail | Ship Your MVP in 7 Days - AI-Powered Development",
-  description:
-    "Turn your idea into an investor-ready product. AI builds 70%, we perfect the rest. $5K-15K fixed price. No agencies, no freelancers — just results.",
+  metadataBase: new URL('https://heyismail.com'),
+  title: seoData.pages.home.title,
+  description: seoData.pages.home.description,
+  keywords: seoData.pages.home.keywords,
   openGraph: {
-    title: "heyIsmail | Ship Your MVP in 7 Days",
-    description: "AI-powered MVP development for founders",
-    url: "https://heyismail.com",
+    title: seoData.pages.home.openGraph.title,
+    description: seoData.pages.home.openGraph.description,
+    url: seoData.pages.home.openGraph.url,
     images: ["/og-image.jpg"],
   },
 };
@@ -30,6 +32,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* Person JSON-LD Schema */}
+        <Script
+          id="person-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(seoData.schemas.person),
+          }}
+        />
+      </head>
       <body
         className={`${monaSans.variable} font-sans bg-background text-foreground`}
       >

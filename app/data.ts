@@ -64,112 +64,42 @@ export const testimonials = [
   },
 ];
 
-export const pricingPlans = [
-  {
-    name: "MVP Sprint",
-    price: "$1,999",
-    duration: "7 days",
-    features: [
-      "Core MVP features only",
-      "AI-powered development",
-      "Modern UI/UX design",
-      "Mobile responsive",
-      "Basic analytics setup",
-      "7-day delivery guarantee",
-      "14 days of support",
-    ],
-    cta: "Start Building",
-    popular: false,
-  },
-  {
-    name: "Launch Ready",
-    price: "$3,999",
-    duration: "10 days",
-    features: [
-      "Everything in MVP Sprint",
-      "Payment integration (Stripe)",
-      "User authentication",
-      "Database architecture",
-      "API integrations",
-      "SEO optimization",
-      "30 days of support",
-      "Investor deck template",
-    ],
-    cta: "Most Popular",
-    popular: true,
-  },
-  {
-    name: "Scale Package",
-    price: "$5,999",
-    duration: "14 days",
-    features: [
-      "Everything in Launch Ready",
-      "Admin dashboard",
-      "Advanced analytics",
-      "Email automation",
-      "Multi-user support",
-      "AI/ML integration",
-      "60 days of support",
-      "Growth consultation",
-    ],
-    cta: "Go Enterprise",
-    popular: false,
-  },
-];
+
 
 export const whyNotOptions = [
   {
-    title: "Traditional Agency",
-    pain: "$50K+ & 3-6 months",
+    title: "Agencies cost too much",
+    pain: "You're looking at $50K+ and 6 months minimum",
     problems: [
-      "Slow communication",
-      "Feature creep",
-      "Missing deadlines",
-      "Junior devs on your project",
+      "You don't have that kind of cash to burn on an unproven idea",
+      "By the time they finish, your market opportunity is gone",
+      "They pad the timeline because they're inefficient, not thorough",
+      "You end up paying for their learning curve, not your product",
     ],
   },
   {
-    title: "Freelancer",
-    pain: "Disappears after payment",
+    title: "Freelancers disappear",
+    pain: "They take your money and vanish into thin air",
     problems: [
-      "No accountability",
-      "Inconsistent quality",
-      "One-person risk",
-      "No support after launch",
+      "You pay 50% upfront and never hear from them again",
+      "No accountability, no recourse, no way to get your money back",
+      "Even the good ones disappear when the project gets complicated",
+      "You're left with half-built code that nobody else can understand",
     ],
   },
   {
-    title: "Offshore Team",
-    pain: "Language barriers & timezone hell",
+    title: "DIY has a brutal learning curve",
+    pain: "You'll spend 6 months learning what takes me 6 hours",
     problems: [
-      "Misunderstood requirements",
-      "Code quality issues",
-      "Hard to manage",
-      "Hidden costs",
-    ],
-  },
-  {
-    title: "DIY No-Code",
-    pain: "Looks cheap, scales poorly",
-    problems: [
-      "Template limitations",
-      "No custom features",
-      "Not investor-ready",
-      "Can't handle growth",
+      "Every tutorial assumes you already know things you don't know",
+      "You waste weeks on problems that have 5-minute solutions",
+      "Your 'simple' idea turns into a technical nightmare",
+      "You end up with something that works on your laptop but breaks everywhere else",
     ],
   },
 ];
 
-export const techStack = [
-  { name: "Next.js", icon: "⚛️", category: "Frontend" },
-  { name: "TailwindCSS", icon: "🎨", category: "Styling" },
-  { name: "Supabase", icon: "⚡", category: "Backend" },
-  { name: "OpenAI", icon: "🤖", category: "AI" },
-  { name: "Stripe", icon: "💳", category: "Payments" },
-  { name: "Vercel", icon: "▲", category: "Hosting" },
-  { name: "Framer", icon: "✨", category: "Animation" },
-  { name: "Resend", icon: "📧", category: "Email" },
-];
+
 
 export const faqs = [
   {
@@ -198,7 +128,7 @@ export const faqs = [
   },
 ];
 
-export const comparisonData = [
+const comparisonData = [
   {
     feature: "Time to MVP",
     us: "7 days",
@@ -243,16 +173,662 @@ export const comparisonData = [
   },
 ];
 
-const metrics = [
-  { value: "7", label: "Days Average", suffix: "" },
-  { value: "20", label: "MVPs Shipped", suffix: "+" },
-  { value: "70", label: "AI-Powered", suffix: "%" },
-  { value: "$12M", label: "Raised by Clients", suffix: "+" },
+// TypeScript interfaces for new content types
+export interface ConceptBuild {
+  slug: string;
+  creator: {
+    name: string;
+    title: string;
+    followers: string;
+  };
+  product: {
+    name: string;
+    tagline: string;
+    description: string;
+  };
+  features: string[];
+  researchNote: string;
+  links: {
+    demo?: string;
+    case_study?: string;
+  };
+}
+
+export interface ProcessStep {
+  day: string;
+  title: string;
+  description: string;
+  deliverables: string[];
+  icon: string;
+}
+
+export interface Experience {
+  period: string;
+  role: string;
+  company: string;
+  location: string;
+  type: 'full-time' | 'freelance' | 'contract';
+  achievements: string[];
+}
+
+export interface FAQ {
+  question: string;
+  answer: string;
+  category?: 'process' | 'pricing' | 'technical' | 'business';
+}
+
+export interface SEOPage {
+  title: string;
+  description: string;
+  keywords: string[];
+  openGraph: {
+    title: string;
+    description: string;
+    url: string;
+  };
+}
+
+// Concept builds data
+export const conceptBuilds: ConceptBuild[] = [
+  {
+    slug: "linkup-os",
+    creator: {
+      name: "Jasmin Alić",
+      title: "LinkedIn writing and personal brand expert",
+      followers: "450K+"
+    },
+    product: {
+      name: "Linkup OS",
+      tagline: "A premium LinkedIn growth platform built from studying how Jasmin teaches",
+      description: "Jasmin has spent years building one of LinkedIn's most engaged audiences. He's mastered the art of turning LinkedIn into a business-building machine. I studied his content for months, analyzed his frameworks, and built what I think his premium course platform should look like."
+    },
+    features: [
+      "A content vault with 100+ masterclasses, Q&As, and framework breakdowns",
+      "Jay AI — an AI coach built on Jasmin's LinkedIn methodology",
+      "Weekly live sessions with Jasmin and guest experts",
+      "A private community of serious LinkedIn creators",
+      "Templates, scripts, and swipe files for every content type",
+      "Progress tracking and analytics for your LinkedIn growth"
+    ],
+    researchNote: "I studied Jasmin's content for months before writing a single line of code. This isn't just a course platform — it's a system built around how he actually teaches.",
+    links: {
+      demo: "https://linkup-os-demo.com",
+      case_study: "/builds/linkup-os"
+    }
+  },
+  {
+    slug: "step-by-step-os",
+    creator: {
+      name: "Chris Donnelly",
+      title: "Step-by-step business systems expert",
+      followers: "200K+"
+    },
+    product: {
+      name: "Step by Step OS",
+      tagline: "A comprehensive business systems platform based on Chris's proven frameworks",
+      description: "Chris has built multiple 7-figure businesses by creating step-by-step systems for everything. I analyzed his approach to breaking down complex business processes and built a platform that teaches his methodology."
+    },
+    features: [
+      "Interactive step-by-step business building modules",
+      "Template library with 50+ proven business documents",
+      "Progress tracking for each business system implementation",
+      "Community access to other system builders",
+      "Weekly implementation calls with Chris",
+      "Custom business system builder tool"
+    ],
+    researchNote: "I spent weeks studying how Chris breaks down complex business concepts into simple, actionable steps. This platform mirrors his teaching style perfectly.",
+    links: {
+      demo: "https://stepbystep-os-demo.com",
+      case_study: "/builds/step-by-step-os"
+    }
+  },
+  {
+    slug: "3-alarms-lab",
+    creator: {
+      name: "Eric Partaker",
+      title: "Peak performance and productivity expert",
+      followers: "150K+"
+    },
+    product: {
+      name: "The 3 Alarms Lab",
+      tagline: "A peak performance system built around Eric's 3 Alarms methodology",
+      description: "Eric's 3 Alarms system has helped thousands of high performers optimize their days. I studied his methodology and built a comprehensive platform that brings his coaching system to life digitally."
+    },
+    features: [
+      "Daily 3 Alarms planning and tracking system",
+      "Performance analytics and habit tracking",
+      "Library of Eric's peak performance frameworks",
+      "Personalized coaching recommendations",
+      "Integration with calendar and productivity tools",
+      "Community challenges and accountability groups"
+    ],
+    researchNote: "I analyzed Eric's approach to peak performance and built a system that captures the essence of his 3 Alarms methodology in a digital format.",
+    links: {
+      demo: "https://3alarms-lab-demo.com",
+      case_study: "/builds/3-alarms-lab"
+    }
+  }
 ];
 
-const clients = [
-  { name: "Y Combinator", logo: "/logos/yc.png" },
-  { name: "Techstars", logo: "/logos/techstars.png" },
-  { name: "500 Startups", logo: "/logos/500startups.png" },
-  { name: "AngelPad", logo: "/logos/angelpad.png" },
+// Process steps data
+export const processSteps: ProcessStep[] = [
+  {
+    day: "Day 1",
+    title: "We decide what to build — and what to cut",
+    description: "This is not a day for writing code. This is a day for making decisions. We'll take your idea and turn it into a specific, buildable product. We'll identify the core user action that proves your concept works, then ruthlessly cut everything else. By the end of Day 1, we have a clear scope document that both of us can point to.",
+    deliverables: ["Scope document with exact features", "User flow wireframes", "Technical architecture plan", "Timeline confirmation"],
+    icon: "🎯"
+  },
+  {
+    day: "Days 2-3",
+    title: "We build the core that proves your idea works",
+    description: "These are the heavy coding days. We start with the most important user action — the thing that makes your product valuable. If you're building a marketplace, we build the core matching system. If it's a SaaS tool, we build the main workflow. No fancy features yet, just the essential functionality that proves your concept.",
+    deliverables: ["Core functionality working", "Basic user interface", "Database structure", "Authentication system"],
+    icon: "⚡"
+  },
+  {
+    day: "Days 4-5",
+    title: "We connect everything and make it feel real",
+    description: "Now we make it feel like a real product. We add user accounts, connect your payment system, set up email notifications, and build the admin dashboard you'll need to manage everything. This is where your MVP starts feeling like something you could actually launch.",
+    deliverables: ["Payment integration", "Email system", "Admin dashboard", "User management"],
+    icon: "🔗"
+  },
+  {
+    day: "Day 6",
+    title: "We harden everything for real users",
+    description: "Polish day. We fix bugs, optimize performance, add error handling, and make sure everything works smoothly. We also set up analytics so you can track what users are doing. This is the day we turn your working prototype into something that can handle real traffic.",
+    deliverables: ["Bug fixes and optimization", "Analytics setup", "Error handling", "Performance testing"],
+    icon: "🛡️"
+  },
+  {
+    day: "Day 7",
+    title: "We ship your product to the world",
+    description: "Launch day. We deploy your MVP to a live URL, set up your custom domain, configure your production database, and hand over all the credentials. You wake up on Day 8 with a live product that real users can sign up for and pay you money to use.",
+    deliverables: ["Live production deployment", "Custom domain setup", "All credentials and documentation", "Launch checklist"],
+    icon: "🚀"
+  }
 ];
+
+// About content data
+export const aboutContent = {
+  originStory: {
+    title: "I almost became the developer who ruins startups",
+    content: "Early in my career, a founder hired me to build his MVP. He had a clear vision, a tight timeline, and paying customers waiting. I spent 3 months building what I thought was the perfect solution — beautiful code, scalable architecture, every edge case handled. When I finally showed him the product, he said: 'This isn't what I asked for.' He was right. I had built my version of his idea, not his actual idea. The startup failed. That failure taught me the most important lesson of my career: ship first, perfect later. The product that ships wins.",
+    lesson: "Ship first. Perfect later. The product that ships wins."
+  },
+  experience: [
+    {
+      period: "2024 – Present",
+      role: "MVP Development Specialist",
+      company: "Independent",
+      location: "Lahore, Pakistan",
+      type: "freelance",
+      achievements: [
+        "Built 15+ production-ready MVPs for non-technical founders",
+        "Helped clients raise $2M+ in funding with working prototypes",
+        "Achieved average 7-day delivery time using AI-accelerated development",
+        "Generated 500K+ app downloads across client products"
+      ]
+    },
+    {
+      period: "2023 – 2024",
+      role: "Full Stack Developer",
+      company: "Jobit Technologies",
+      location: "Remote",
+      type: "full-time",
+      achievements: [
+        "Built job matching platform from 0 to 2.3K+ active users",
+        "Implemented AI-powered candidate screening system",
+        "Achieved $12K MRR within 6 months of launch",
+        "Led product development and technical architecture decisions"
+      ]
+    },
+    {
+      period: "2021 – 2023",
+      role: "Frontend Developer",
+      company: "Various Startups",
+      location: "Lahore, Pakistan",
+      type: "contract",
+      achievements: [
+        "Developed 20+ client projects using React and Next.js",
+        "Specialized in rapid prototyping and MVP development",
+        "Maintained 98% client satisfaction rate",
+        "Learned the hard way: ship first, perfect later"
+      ]
+    }
+  ],
+  differentiators: [
+    {
+      title: "I think like a founder, not a developer",
+      description: "Most developers build what you ask for. I build what your business actually needs. I've been in your shoes — I know the difference between features that matter and features that don't."
+    },
+    {
+      title: "I ship fast because I cut smart",
+      description: "Agencies pad timelines to cover their inefficiencies. I cut features that don't prove your core hypothesis. You get a working product in 7 days because we focus on what matters most."
+    },
+    {
+      title: "You own everything, no strings attached",
+      description: "No vendor lock-in, no recurring fees, no proprietary platforms. You get the source code, the database, the deployment credentials — everything. If you never want to work with me again, you can walk away with a complete product."
+    }
+  ]
+};
+
+// Updated FAQs focused on 7-day process and ownership
+export const newFAQs: FAQ[] = [
+  {
+    question: "What do I actually get at the end of 7 days?",
+    answer: "A fully live, production-ready web application on your own domain. You get the complete source code, database access, deployment credentials, admin dashboard, payment system integration, and documentation. Everything you need to run and grow your business.",
+    category: "process"
+  },
+  {
+    question: "How can you build a real product in just 7 days?",
+    answer: "I use AI to handle 70% of the boilerplate code and focus human effort on your unique business logic. More importantly, I ruthlessly cut features that don't prove your core hypothesis. You get an MVP that validates your idea, not a feature-complete product.",
+    category: "process"
+  },
+  {
+    question: "Do I really own everything, or is there a catch?",
+    answer: "You own everything. Source code, database, domain, Stripe account, deployment credentials — it all transfers to you. No recurring fees, no vendor lock-in, no proprietary platforms. If you want to hire another developer tomorrow, you can.",
+    category: "business"
+  },
+  {
+    question: "Is this investor-ready or just a prototype?",
+    answer: "It's investor-ready. You get a live product with real user authentication, working payments, persistent data storage, mobile responsiveness, and analytics. I've helped clients raise over $2M with these MVPs because they demonstrate real traction, not just potential.",
+    category: "business"
+  },
+  {
+    question: "What if my idea changes during the 7 days?",
+    answer: "We handle one major pivot or feature swap during the build. The key is getting clear on Day 1 about what we're building. After that, small tweaks are fine, but major changes push the timeline. Remember: ship first, perfect later.",
+    category: "process"
+  },
+  {
+    question: "What happens after the 7 days are up?",
+    answer: "You get 14-30 days of support for bug fixes and minor tweaks (depending on your package). After that, you can maintain it yourself, hire your own developer, or work with me on a monthly retainer for new features and improvements.",
+    category: "technical"
+  }
+];
+
+// SEO metadata for all pages
+export const seoData = {
+  pages: {
+    home: {
+      title: "Build Your SaaS MVP in 7 Days | Ismail Muhammad",
+      description: "I help non-technical founders build production-ready SaaS MVPs in 7 days using AI-accelerated development. Real code. Real product. You own everything.",
+      keywords: ["SaaS MVP developer", "build MVP in 7 days", "MVP development for founders", "AI-accelerated development", "startup MVP"],
+      openGraph: {
+        title: "Build Your SaaS MVP in 7 Days | Ismail Muhammad",
+        description: "I help non-technical founders build production-ready SaaS MVPs in 7 days using AI-accelerated development.",
+        url: "https://heyismail.com"
+      }
+    },
+    process: {
+      title: "How I Build Your MVP in 7 Days | Process Breakdown",
+      description: "See exactly what happens each day of the 7-day MVP sprint. From scope definition to live deployment, here's the complete day-by-day breakdown.",
+      keywords: ["MVP development process", "7-day sprint methodology", "startup development timeline", "MVP building process"],
+      openGraph: {
+        title: "How I Build Your MVP in 7 Days | Process Breakdown",
+        description: "See exactly what happens each day of the 7-day MVP sprint. From scope definition to live deployment.",
+        url: "https://heyismail.com/process"
+      }
+    },
+    builds: {
+      title: "Concept Builds | What I Build When Nobody's Watching",
+      description: "See examples of SaaS products I build to study successful creators and entrepreneurs. These aren't client projects — they're skill demonstrations.",
+      keywords: ["SaaS examples", "MVP portfolio", "concept builds", "startup ideas", "product development examples"],
+      openGraph: {
+        title: "Concept Builds | What I Build When Nobody's Watching",
+        description: "See examples of SaaS products I build to study successful creators and entrepreneurs.",
+        url: "https://heyismail.com/builds"
+      }
+    },
+    about: {
+      title: "About Ismail Muhammad | The Developer Who Ships Fast",
+      description: "Learn about the failure that taught me to ship first and perfect later. 4+ years building MVPs for founders who need to move fast.",
+      keywords: ["Ismail Muhammad", "MVP developer", "startup developer", "SaaS developer Pakistan", "AI-accelerated development"],
+      openGraph: {
+        title: "About Ismail Muhammad | The Developer Who Ships Fast",
+        description: "Learn about the failure that taught me to ship first and perfect later. 4+ years building MVPs for founders.",
+        url: "https://heyismail.com/about"
+      }
+    },
+    contact: {
+      title: "Let's Talk About Your Idea | MVP Development in 7 Days",
+      description: "Tell me your idea. I'll tell you if a 7-day sprint is right for it. Free 30-minute consultation with no sales pitch.",
+      keywords: ["book MVP consultation", "startup development call", "MVP development consultation", "free startup advice"],
+      openGraph: {
+        title: "Let's Talk About Your Idea | MVP Development in 7 Days",
+        description: "Tell me your idea. I'll tell you if a 7-day sprint is right for it. Free 30-minute consultation.",
+        url: "https://heyismail.com/contact"
+      }
+    }
+  },
+  schemas: {
+    person: {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Ismail Muhammad",
+      "jobTitle": "SaaS MVP Developer",
+      "description": "AI-accelerated SaaS MVP developer helping non-technical founders build production-ready products in 7 days",
+      "url": "https://heyismail.com",
+      "sameAs": [
+        "https://www.linkedin.com/in/heyismail",
+        "https://www.upwork.com/freelancers/~ismail"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Lahore",
+        "addressCountry": "PK"
+      },
+      "knowsAbout": [
+        "SaaS Development",
+        "MVP Development",
+        "AI-Accelerated Development",
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Startup Development"
+      ]
+    },
+    faqPage: {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [] // Will be populated dynamically with FAQ data
+    }
+  }
+};
+
+// Updated social proof metrics for new messaging
+export const updatedMetrics = [
+  { value: "15", label: "MVPs Shipped", suffix: "+" },
+  { value: "7", label: "Days", suffix: "" },
+  { value: "4", label: "Years Building", suffix: "+" },
+  { value: "500K", label: "App Downloads", suffix: "+" },
+];
+
+// MVP checklist - the 7 non-negotiables
+export const mvpChecklist = [
+  {
+    title: "Core action proof",
+    description: "The main thing your users do actually works and creates value"
+  },
+  {
+    title: "Real authentication",
+    description: "Users can sign up, log in, and maintain secure sessions"
+  },
+  {
+    title: "Working payments",
+    description: "Money can flow from customers to your bank account"
+  },
+  {
+    title: "Persistent data",
+    description: "Information saves, loads, and stays consistent across sessions"
+  },
+  {
+    title: "Mobile responsive",
+    description: "Works perfectly on phones, tablets, and desktops"
+  },
+  {
+    title: "Admin view",
+    description: "You can see and manage what's happening in your product"
+  },
+  {
+    title: "Live URL",
+    description: "Real users can access it at your own custom domain"
+  }
+];
+
+// Ownership transfer details
+export const ownershipDetails = [
+  "Complete source code repository",
+  "Production database with admin access",
+  "Live deployment on your domain",
+  "Stripe account connected to your bank",
+  "Email system (Resend) in your name",
+  "All API keys and credentials",
+  "Technical documentation",
+  "Deployment instructions"
+];
+
+// Process preview data for homepage
+export const processPreview = [
+  {
+    day: "Day 1",
+    title: "Define",
+    description: "We decide what to build — and what to cut",
+    icon: "🎯"
+  },
+  {
+    day: "Days 2-3", 
+    title: "Build",
+    description: "We build the core that proves your idea works",
+    icon: "⚡"
+  },
+  {
+    day: "Days 4-5",
+    title: "Connect", 
+    description: "We connect everything and make it feel real",
+    icon: "🔗"
+  },
+  {
+    day: "Day 6",
+    title: "Harden",
+    description: "We harden everything for real users", 
+    icon: "🛡️"
+  },
+  {
+    day: "Day 7",
+    title: "Ship",
+    description: "We ship your product to the world",
+    icon: "🚀"
+  }
+];
+
+// Technology stack for homepage
+export const homepageStack = [
+  { name: "Next.js", color: "bg-gray-800 text-white" },
+  { name: "Supabase", color: "bg-green-600 text-white" },
+  { name: "Stripe", color: "bg-blue-600 text-white" },
+  { name: "Resend", color: "bg-black text-white" },
+  { name: "Vercel", color: "bg-black text-white" }
+];
+
+// AI tools for homepage
+export const aiTools = [
+  { name: "Claude", color: "bg-orange-500 text-white" },
+  { name: "ChatGPT", color: "bg-green-600 text-white" },
+  { name: "v0", color: "bg-black text-white" },
+  { name: "Cursor", color: "bg-blue-600 text-white" }
+];
+
+// Contact page data
+export const contactOptions = [
+  {
+    type: "call",
+    title: "Tell me about your idea",
+    description: "Let's talk through your idea and see if a 7-day sprint is right for it",
+    benefits: [
+      "I'll tell you honestly if your idea is ready for an MVP",
+      "We'll identify the core feature that proves your concept works", 
+      "You'll get a clear scope and timeline (even if we don't work together)"
+    ],
+    cta: "Let's talk about it",
+    link: "https://cal.com/heyismail/15min",
+    icon: "📞",
+    primary: true
+  },
+  {
+    type: "message",
+    title: "Prefer to message first?",
+    description: "Send me a LinkedIn message with your idea and I'll respond within 24 hours",
+    instructions: [
+      "Go to linkedin.com/in/heyismail",
+      "Click 'Message' and tell me about your idea",
+      "Include: what problem you're solving and who for",
+      "I'll respond with initial thoughts and next steps"
+    ],
+    cta: "Message on LinkedIn",
+    link: "https://www.linkedin.com/in/heyismail",
+    icon: "💬",
+    primary: false
+  }
+];
+
+export const contactFinePrint = [
+  "This is not a sales call. I'll tell you honestly if I think a 7-day sprint is right for your idea.",
+  "If it's not a good fit, I'll suggest better alternatives (other developers, no-code tools, etc.).",
+  "You'll get value from the call even if we don't work together."
+];
+
+// Scope call breakdown for process page
+export const scopeCallStages = [
+  {
+    stage: "Stage 1",
+    title: "Understand your vision",
+    duration: "5 minutes",
+    description: "You tell me your idea, your target users, and what success looks like. I ask clarifying questions to understand the core value proposition.",
+    icon: "💡"
+  },
+  {
+    stage: "Stage 2", 
+    title: "Identify the core action",
+    duration: "10 minutes",
+    description: "We identify the one thing users must be able to do for your product to work. Everything else is secondary. This becomes our north star.",
+    icon: "🎯"
+  },
+  {
+    stage: "Stage 3",
+    title: "Cut ruthlessly",
+    duration: "10 minutes", 
+    description: "We go through your feature list and cut everything that doesn't directly support the core action. This is where most founders struggle, but it's essential.",
+    icon: "✂️"
+  },
+  {
+    stage: "Stage 4",
+    title: "Confirm the scope",
+    duration: "5 minutes",
+    description: "I summarize exactly what we're building and what we're not. You get a clear scope document within 24 hours. No surprises, no scope creep.",
+    icon: "📋"
+  }
+];
+
+// Detailed process steps for process page
+export const detailedProcessSteps = [
+  {
+    day: "Day 1",
+    title: "We decide what to build — and what to cut",
+    subtitle: "Define",
+    description: "This is not a day for writing code. This is a day for making decisions. We'll take your idea and turn it into a specific, buildable product. We'll identify the core user action that proves your concept works, then ruthlessly cut everything else. By the end of Day 1, we have a clear scope document that both of us can point to.",
+    activities: [
+      "Review scope call notes and finalize feature list",
+      "Create detailed user flow wireframes", 
+      "Design database schema and API structure",
+      "Set up development environment and repositories",
+      "Confirm timeline and daily check-in schedule"
+    ],
+    deliverables: [
+      "Scope document with exact features",
+      "User flow wireframes", 
+      "Technical architecture plan",
+      "Timeline confirmation"
+    ],
+    icon: "🎯",
+    color: "from-blue-500/10 to-indigo-500/10",
+    borderColor: "border-blue-500/20"
+  },
+  {
+    day: "Days 2-3",
+    title: "We build the core that proves your idea works", 
+    subtitle: "Build",
+    description: "These are the heavy coding days. We start with the most important user action — the thing that makes your product valuable. If you're building a marketplace, we build the core matching system. If it's a SaaS tool, we build the main workflow. No fancy features yet, just the essential functionality that proves your concept.",
+    activities: [
+      "Set up Next.js project with TypeScript and Tailwind",
+      "Build core user interface components",
+      "Implement main user workflow and business logic", 
+      "Set up Supabase database with proper schemas",
+      "Create API routes for core functionality"
+    ],
+    deliverables: [
+      "Core functionality working",
+      "Basic user interface",
+      "Database structure", 
+      "Authentication system"
+    ],
+    icon: "⚡",
+    color: "from-emerald-500/10 to-teal-500/10", 
+    borderColor: "border-emerald-500/20"
+  },
+  {
+    day: "Days 4-5",
+    title: "We connect everything and make it feel real",
+    subtitle: "Connect", 
+    description: "Now we make it feel like a real product. We add user accounts, connect your payment system, set up email notifications, and build the admin dashboard you'll need to manage everything. This is where your MVP starts feeling like something you could actually launch.",
+    activities: [
+      "Integrate Stripe for payment processing",
+      "Set up Resend for transactional emails",
+      "Build user dashboard and account management",
+      "Create admin panel for content management", 
+      "Implement user onboarding flow"
+    ],
+    deliverables: [
+      "Payment integration",
+      "Email system",
+      "Admin dashboard",
+      "User management"
+    ],
+    icon: "🔗",
+    color: "from-teal-500/10 to-cyan-500/10",
+    borderColor: "border-teal-500/20"
+  },
+  {
+    day: "Day 6", 
+    title: "We harden everything for real users",
+    subtitle: "Harden",
+    description: "Polish day. We fix bugs, optimize performance, add error handling, and make sure everything works smoothly. We also set up analytics so you can track what users are doing. This is the day we turn your working prototype into something that can handle real traffic.",
+    activities: [
+      "Comprehensive testing and bug fixes",
+      "Performance optimization and caching",
+      "Error handling and user feedback systems",
+      "Analytics setup with proper event tracking",
+      "Security review and vulnerability testing"
+    ],
+    deliverables: [
+      "Bug fixes and optimization", 
+      "Analytics setup",
+      "Error handling",
+      "Performance testing"
+    ],
+    icon: "🛡️",
+    color: "from-cyan-500/10 to-blue-500/10",
+    borderColor: "border-cyan-500/20"
+  },
+  {
+    day: "Day 7",
+    title: "We ship your product to the world",
+    subtitle: "Ship",
+    description: "Launch day. We deploy your MVP to a live URL, set up your custom domain, configure your production database, and hand over all the credentials. You wake up on Day 8 with a live product that real users can sign up for and pay you money to use.",
+    activities: [
+      "Deploy to Vercel with production configuration", 
+      "Configure custom domain and SSL certificates",
+      "Set up production database and backups",
+      "Transfer all accounts and credentials to you",
+      "Create documentation and handover materials"
+    ],
+    deliverables: [
+      "Live production deployment",
+      "Custom domain setup", 
+      "All credentials and documentation",
+      "Launch checklist"
+    ],
+    icon: "🚀",
+    color: "from-purple-500/10 to-pink-500/10",
+    borderColor: "border-purple-500/20"
+  }
+];
+
+// Helper functions
+export const getBuildBySlug = (slug: string): ConceptBuild | undefined => {
+  return conceptBuilds.find(build => build.slug === slug);
+};
+
+export const getAllBuildSlugs = (): string[] => {
+  return conceptBuilds.map(build => build.slug);
+};
