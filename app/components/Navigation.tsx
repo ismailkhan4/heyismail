@@ -9,7 +9,10 @@ interface NavigationProps {
   isHomePage?: boolean;
 }
 
-const Navigation: React.FC<NavigationProps> = ({ onSectionScroll, isHomePage = false }) => {
+const Navigation: React.FC<NavigationProps> = ({
+  onSectionScroll,
+  isHomePage = false,
+}) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
 
@@ -28,15 +31,12 @@ const Navigation: React.FC<NavigationProps> = ({ onSectionScroll, isHomePage = f
 
   const handleNavClick = (item: { name: string; href: string }) => {
     if (isHomePage && onSectionScroll) {
-      // For homepage, scroll to sections for specific items
       if (item.name === "How It Works") {
         onSectionScroll("work");
         return;
       }
-      // For other items, navigate to the page
       window.location.href = item.href;
     } else {
-      // For other pages, navigate normally
       window.location.href = item.href;
     }
   };
@@ -47,7 +47,7 @@ const Navigation: React.FC<NavigationProps> = ({ onSectionScroll, isHomePage = f
       animate={{ y: 0 }}
       className={`fixed top-0 w-full z-40 transition-all duration-500 ${
         isScrolled
-          ? "bg-black/80 backdrop-blur-xl border-b border-emerald-500/10"
+          ? "bg-black/80 backdrop-blur-xl border-b border-[#2f6d5e]/10"
           : "bg-transparent"
       }`}
     >
@@ -56,15 +56,9 @@ const Navigation: React.FC<NavigationProps> = ({ onSectionScroll, isHomePage = f
           className="text-xl font-semibold tracking-tight flex items-center gap-2"
           whileHover={{ scale: 1.05 }}
         >
-          <a href="/" className="flex items-center gap-2">
+          <a href="/" className="flex items-center gap-1">
             <span>heyIsmail</span>
-            <Image
-              src={"/green-dot.png"}
-              width={12}
-              height={12}
-              alt="heyIsmail"
-              className="mt-2.5 -ml-1.75"
-            />
+            <span className="w-2 h-2 bg-[#2f6d5e] rounded-full animate-pulse mt-2" />
           </a>
         </motion.div>
 
@@ -73,10 +67,10 @@ const Navigation: React.FC<NavigationProps> = ({ onSectionScroll, isHomePage = f
             <button
               key={item.name}
               onClick={() => handleNavClick(item)}
-              className={`px-4 py-2 text-sm transition-colors hover:bg-emerald-500/5 ${
+              className={`px-4 py-2 text-sm transition-colors cursor-pointer  ${
                 pathname === item.href
-                  ? "text-emerald-400"
-                  : "text-gray-400 hover:text-emerald-400"
+                  ? "text-[#2f6d5e]"
+                  : "text-gray-400 hover:text-[#2f6d5e]"
               }`}
             >
               {item.name}
@@ -86,7 +80,7 @@ const Navigation: React.FC<NavigationProps> = ({ onSectionScroll, isHomePage = f
             href="https://www.linkedin.com/in/heyismail"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 text-sm text-gray-400 hover:text-emerald-400 transition-colors hover:bg-emerald-500/5"
+            className="px-4 py-2 text-sm text-gray-400 hover:text-[#2f6d5e] transition-colors hover:bg-[#2f6d5e]/5"
           >
             I post on LinkedIn
           </a>
@@ -94,7 +88,7 @@ const Navigation: React.FC<NavigationProps> = ({ onSectionScroll, isHomePage = f
             href="https://upwork.com/freelancers/ismailm16"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 text-sm text-gray-400 hover:text-emerald-400 transition-colors hover:bg-emerald-500/5"
+            className="px-4 py-2 text-sm text-gray-400 hover:text-[#2f6d5e] transition-colors hover:bg-[#2f6d5e]/5"
           >
             Hire me on Upwork
           </a>
@@ -104,9 +98,9 @@ const Navigation: React.FC<NavigationProps> = ({ onSectionScroll, isHomePage = f
           href="https://cal.com/heyismail/15min"
           target="_blank"
           rel="noopener noreferrer"
-          className="group relative px-6 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-500 text-black text-sm font-semibold overflow-hidden transition-all hover:scale-105 hover:shadow-lg hover:shadow-emerald-500/50"
+          className="group relative px-6 py-2.5 bg-[#2f6d5e] text-white text-sm font-semibold overflow-hidden transition-all border-2 border-transparent hover:border-[#0d3a2f]"
         >
-          <span className="relative z-10">Let's talk about your idea</span>
+          <span className="relative z-10 uppercase">Let's talk</span>
         </a>
       </div>
     </motion.nav>

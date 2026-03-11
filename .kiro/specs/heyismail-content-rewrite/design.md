@@ -150,7 +150,7 @@ export const conceptBuilds = [
     creator: {
       name: "Jasmin Alić",
       title: "LinkedIn writing and personal brand expert",
-      followers: "450K+"
+      followers: "350K+"
     },
     product: {
       name: "Linkup OS",

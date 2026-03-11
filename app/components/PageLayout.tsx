@@ -22,11 +22,11 @@ const PageLayout = ({ children }: { children: ReactNode }) => {
         className={cn(
           "fixed top-0 z-50 transition-all duration-300 ease-in-out px-6 py-4",
           scrolled
-            ? "w-1/2 left-1/2 -translate-x-1/2 mt-4 rounded-xl shadow-lg bg-teal-900/80 dark:bg-white/80 backdrop-blur"
+            ? "w-1/2 left-1/2 -translate-x-1/2 mt-4 rounded-xl shadow-lg bg-[#1e473d]/80 dark:bg-white/80 backdrop-blur"
             : "w-3/4 left-1/2 -translate-x-1/2 mt-4 bg-transparent"
         )}
       >
-        <div className="flex justify-between items-center text-sm font-semibold text-white dark:text-teal-900">
+        <div className="flex justify-between items-center text-sm font-semibold text-white dark:text-[#1e473d]">
           <div className="text-lg font-bold">
             <Link href="/">heyIsmail</Link>
           </div>

@@ -52,7 +52,7 @@ const ProcessPage = () => {
         </div>
 
         <motion.div
-          className="absolute top-1/4 -left-48 w-96 h-96 bg-emerald-500 rounded-full filter blur-3xl opacity-20"
+          className="absolute top-1/4 -left-48 w-96 h-96 bg-[#2f6d5e] rounded-full filter blur-3xl opacity-20"
           animate={{
             x: [0, 100, 0],
             y: [0, -50, 0],
@@ -60,7 +60,7 @@ const ProcessPage = () => {
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
         />
         <motion.div
-          className="absolute bottom-1/4 -right-48 w-96 h-96 bg-teal-500 rounded-full filter blur-3xl opacity-20"
+          className="absolute bottom-1/4 -right-48 w-96 h-96 bg-[#1e473d] rounded-full filter blur-3xl opacity-20"
           animate={{
             x: [0, -100, 0],
             y: [0, 50, 0],
@@ -81,17 +81,16 @@ const ProcessPage = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2 }}
             >
-              <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+              <span className="w-2 h-2 bg-[#2f6d5e] rounded-full animate-pulse" />
               <span className="text-sm text-gray-300">
                 Complete transparency, no surprises
               </span>
             </motion.div>
 
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-[1.1] tracking-tight">
-              You'll know exactly what's happening
-              <br />
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-[1.1] tracking-tight">
+              You'll know exactly what's happening {/* <br /> */}
               <span className="bg-gradient-to-r from-[#d9e8d5] via-white to-[#1e473d] bg-clip-text text-transparent">
-                every single day
+                every. single. day.
               </span>
             </h1>
 
@@ -138,7 +137,7 @@ const ProcessPage = () => {
       {/* Scope Call Section */}
       <section
         id="scope-call"
-        className="py-32 relative border-t border-emerald-500/10"
+        className="py-32 relative border-t border-[#2f6d5e]/10"
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
@@ -165,12 +164,12 @@ const ProcessPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white/5 border border-emerald-500/10 rounded-2xl p-6 hover:border-emerald-500/30 transition-all group"
+                className="bg-white/5 border border-[#2f6d5e]/10 rounded-2xl p-6 hover:border-[#2f6d5e]/30 transition-all group"
               >
                 <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">
                   {stage.icon}
                 </div>
-                <div className="text-xs text-emerald-400 font-semibold mb-2 uppercase tracking-wide">
+                <div className="text-xs text-[#2f6d5e] font-semibold mb-2 uppercase tracking-wide">
                   {stage.stage} • {stage.duration}
                 </div>
                 <h3 className="text-lg font-bold mb-3">{stage.title}</h3>
@@ -187,7 +186,7 @@ const ProcessPage = () => {
             viewport={{ once: true }}
             className="text-center"
           >
-            <div className="inline-block bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-500/20 rounded-2xl p-8">
+            <div className="inline-block bg-gradient-to-r from-[#2f6d5e]/10 to-[#1e473d]/10 border border-[#2f6d5e]/20 rounded-2xl p-8">
               <h3 className="text-2xl font-bold mb-3">
                 What you get after the call
               </h3>
@@ -200,7 +199,7 @@ const ProcessPage = () => {
                 href="https://cal.com/heyismail/15min"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-500 text-black font-semibold rounded-lg hover:scale-105 transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-[#2f6d5e] text-black font-semibold rounded-lg hover:scale-105 transition-all"
               >
                 Book Your Scope Call
                 <svg
@@ -223,7 +222,7 @@ const ProcessPage = () => {
       </section>
 
       {/* Detailed Process Steps */}
-      <section className="py-32 relative border-t border-emerald-500/10">
+      <section className="py-32 relative border-t border-[#2f6d5e]/10">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -256,7 +255,7 @@ const ProcessPage = () => {
                     {step.icon}
                   </div>
                   <div>
-                    <div className="text-sm text-emerald-400 font-semibold uppercase tracking-wide">
+                    <div className="text-sm text-[#2f6d5e] font-semibold uppercase tracking-wide">
                       {step.day}
                     </div>
                     <div className="text-2xl font-bold text-white">
@@ -284,7 +283,7 @@ const ProcessPage = () => {
                       {step.activities.map((activity, j) => (
                         <li key={j} className="flex items-start gap-3">
                           <svg
-                            className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5"
+                            className="w-5 h-5 text-[#2f6d5e] flex-shrink-0 mt-0.5"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -313,7 +312,7 @@ const ProcessPage = () => {
                       {step.deliverables.map((deliverable, j) => (
                         <li key={j} className="flex items-start gap-3">
                           <svg
-                            className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5"
+                            className="w-5 h-5 text-[#2f6d5e] flex-shrink-0 mt-0.5"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -340,7 +339,7 @@ const ProcessPage = () => {
       </section>
 
       {/* Bottom CTA Section */}
-      <section className="py-32 relative border-t border-emerald-500/10">
+      <section className="py-32 relative border-t border-[#2f6d5e]/10">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -363,7 +362,7 @@ const ProcessPage = () => {
                   href="https://cal.com/heyismail/15min"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group px-10 py-5 bg-gradient-to-r from-emerald-500 to-teal-500 text-black text-lg font-semibold rounded-xl hover:scale-105 transition-all flex items-center gap-3 shadow-lg shadow-emerald-500/25"
+                  className="group px-10 py-5 bg-gradient-to-r from-[#2f6d5e] to-[#1e473d] text-black text-lg font-semibold rounded-xl hover:scale-105 transition-all flex items-center gap-3 shadow-lg shadow-[#2f6d5e]/25"
                 >
                   Book a Free Idea Call
                   <svg
@@ -389,7 +388,7 @@ const ProcessPage = () => {
                     href="https://www.linkedin.com/in/heyismail"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-emerald-400 hover:text-emerald-300 transition-colors font-semibold"
+                    className="text-[#2f6d5e] hover:text-[#d9e8d5] transition-colors font-semibold"
                   >
                     LinkedIn: @heyismail
                   </a>

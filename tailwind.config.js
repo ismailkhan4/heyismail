@@ -76,6 +76,13 @@ const config = {
                     'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
                     border: 'hsl(var(--sidebar-border))',
                     ring: 'hsl(var(--sidebar-ring))'
+                },
+                // Custom brand colors
+                brand: {
+                    primary: '#2f6d5e',
+                    light: '#d9e8d5', 
+                    dark: '#1e473d',
+                    darkest: '#0f120a'
                 }
             },
             keyframes: {

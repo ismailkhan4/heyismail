@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="bg-black border-t border-emerald-500/10 py-16 text-white">
+    <footer className="bg-black border-t border-[#2f6d5e]/10 py-16 text-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
@@ -28,7 +28,7 @@ const Footer = () => {
               <li>
                 <a
                   href="/"
-                  className="hover:text-emerald-400 transition-colors"
+                  className="hover:text-[#2f6d5e] transition-colors"
                 >
                   Home
                 </a>
@@ -36,7 +36,7 @@ const Footer = () => {
               <li>
                 <a
                   href="/process"
-                  className="hover:text-emerald-400 transition-colors"
+                  className="hover:text-[#2f6d5e] transition-colors"
                 >
                   How It Works
                 </a>
@@ -44,7 +44,7 @@ const Footer = () => {
               <li>
                 <a
                   href="/builds"
-                  className="hover:text-emerald-400 transition-colors"
+                  className="hover:text-[#2f6d5e] transition-colors"
                 >
                   Builds
                 </a>
@@ -52,7 +52,7 @@ const Footer = () => {
               <li>
                 <a
                   href="/about"
-                  className="hover:text-emerald-400 transition-colors"
+                  className="hover:text-[#2f6d5e] transition-colors"
                 >
                   About
                 </a>
@@ -60,7 +60,7 @@ const Footer = () => {
               <li>
                 <a
                   href="/contact"
-                  className="hover:text-emerald-400 transition-colors"
+                  className="hover:text-[#2f6d5e] transition-colors"
                 >
                   Contact
                 </a>
@@ -76,7 +76,7 @@ const Footer = () => {
                   href="https://www.linkedin.com/in/heyismail"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-emerald-400 transition-colors"
+                  className="hover:text-[#2f6d5e] transition-colors"
                 >
                   LinkedIn
                 </a>
@@ -86,7 +86,7 @@ const Footer = () => {
                   href="https://upwork.com/freelancers/ismailm16"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-emerald-400 transition-colors"
+                  className="hover:text-[#2f6d5e] transition-colors"
                 >
                   Upwork
                 </a>
@@ -96,7 +96,7 @@ const Footer = () => {
                   href="https://cal.com/heyismail/15min"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-emerald-400 transition-colors"
+                  className="hover:text-[#2f6d5e] transition-colors"
                 >
                   Book a Call
                 </a>

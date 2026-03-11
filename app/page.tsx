@@ -26,7 +26,7 @@ const heyIsmailLanding = () => {
 
     // if ("ontouchstart" in window) return;
     const handleMouseMove = (
-      e: React.MouseEvent<Element, MouseEvent> | MouseEvent
+      e: React.MouseEvent<Element, MouseEvent> | MouseEvent,
     ): void => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
@@ -44,23 +44,7 @@ const heyIsmailLanding = () => {
 
   return (
     <div className="bg-black text-white font-sans antialiased">
-      {/* Custom Cursor Effect */}
-      {isMounted && (
-        <div
-          className="fixed w-96 h-96 pointer-events-none z-50 transition-opacity duration-300"
-          style={{
-            left: mousePosition.x - 192,
-            top: mousePosition.y - 192,
-            background:
-              "radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%)",
-            opacity: 0.6,
-          }}
-        />
-      )}
-
-      {/* Navbar */}
       <Navigation onSectionScroll={scrollToSection} isHomePage={true} />
-
       <section
         ref={heroRef}
         className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20"
@@ -75,22 +59,6 @@ const heyIsmailLanding = () => {
           />
         </div>
 
-        <motion.div
-          className="absolute top-1/4 -left-48 w-96 h-96 bg-emerald-500 rounded-full filter blur-3xl opacity-20"
-          animate={{
-            x: [0, 100, 0],
-            y: [0, -50, 0],
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 -right-48 w-96 h-96 bg-teal-500 rounded-full filter blur-3xl opacity-20"
-          animate={{
-            x: [0, -100, 0],
-            y: [0, 50, 0],
-          }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-        />
         <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -104,24 +72,23 @@ const heyIsmailLanding = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2 }}
             >
-              <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+              <span className="w-2 h-2 bg-[#2f6d5e] rounded-full animate-pulse" />
               <span className="text-sm text-gray-300">
                 Available for new projects
               </span>
             </motion.div>
 
-            <h1 className="text-3xl md:text-6xl lg:text-7xl font-bold mb-6 leading-[1.1] tracking-tight">
-              You have the idea.
-              <br />
-              Let's build the product.
-              <br />
-              <span className="bg-gradient-to-r from-[#d9e8d5] via-white to-[#1e473d] bg-clip-text text-transparent">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-[1.1] tracking-tight">
+              You have the idea. Let's build the product.{" "}
+              <span className="bg-gradient-to-r from-[#2f6d5e] via-[#d9e8d5] to-[#1e473d] bg-clip-text text-transparent">
                 In 7 days.
               </span>
             </h1>
 
             <p className="text-lg md:text-xl text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed">
-              You're a non-technical founder with a validated idea. You need someone who can turn your vision into a real, working product that customers will pay for. That's exactly what I do.
+              You're a non-technical founder with a validated idea. You need
+              someone who can turn your vision into a real, working product that
+              customers will pay for. That's exactly what I do.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -129,7 +96,7 @@ const heyIsmailLanding = () => {
                 href="https://cal.com/heyismail/15min"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group px-8 py-4 bg-white text-black font-medium hover:scale-105 transition-all flex items-center gap-2"
+                className="group px-8 py-4 bg-[#2f6d5e] text-white font-medium transition-all flex items-center gap-2"
               >
                 Tell me about your idea
                 <svg
@@ -154,47 +121,11 @@ const heyIsmailLanding = () => {
                 See My Work
               </a>
             </div>
-
-            {/* Metrics */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8 }}
-              className="mt-16 flex flex-col items-center gap-4"
-            >
-              <div className="flex items-center gap-2">
-                <div className="flex -space-x-2">
-                  {[
-                    "/client-1.jpg",
-                    "/client-2.jpg",
-                    "/client-3.jpg",
-                    "/client-4.jpg",
-                  ].map((src, i) => (
-                    <Image
-                      width={32}
-                      height={32}
-                      key={i}
-                      src={src}
-                      alt={`Client ${i + 1}`}
-                      className={`w-8 h-8 rounded-full border-2 border-black`}
-                    />
-                  ))}
-                </div>
-                <span className="text-sm text-gray-400">
-                  15+ MVPs Shipped
-                </span>
-              </div>
-              <div className="flex items-center gap-6 text-sm text-gray-500">
-                <span>⚡ 7 Days</span>
-                <span>🚀 4+ Years Building</span>
-                <span>💯 500K+ App Downloads</span>
-              </div>
-            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      <section className="py-24 relative border-t border-emerald-500/10">
+      <section className="py-24 relative border-t border-[#2f6d5e]/10">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -246,17 +177,20 @@ const heyIsmailLanding = () => {
             viewport={{ once: true }}
             className="mt-16 text-center"
           >
-            <div className="inline-block bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-500/20 rounded-2xl p-8">
-              <div className="text-emerald-400 text-5xl mb-4">✅</div>
-              <h3 className="text-2xl font-bold mb-3">Here's what you actually need</h3>
+            <div className="inline-block bg-gradient-to-r from-[#2f6d5e]/10 to-[#1e473d]/10 border border-[#2f6d5e]/20 rounded-2xl p-8">
+              <div className="text-[#2f6d5e] text-5xl mb-4">✅</div>
+              <h3 className="text-2xl font-bold mb-3">
+                Here's what you actually need
+              </h3>
               <p className="text-gray-400 mb-6 max-w-md">
-                A 7-day sprint that gives you a real product you own completely. No surprises, no disappearing acts, no learning curves.
+                A 7-day sprint that gives you a real product you own completely.
+                No surprises, no disappearing acts, no learning curves.
               </p>
               <a
                 href="https://cal.com/heyismail/15min"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-500 text-black font-semibold hover:scale-105 transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-[#2f6d5e] text-white font-semibold transition-all"
               >
                 Let's talk about your idea
                 <svg
@@ -279,7 +213,7 @@ const heyIsmailLanding = () => {
       </section>
 
       {/* Process Preview Section */}
-      <section className="py-32 relative border-t border-emerald-500/10">
+      <section className="py-32 relative border-t border-[#2f6d5e]/10">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -304,12 +238,12 @@ const heyIsmailLanding = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white/5 border border-emerald-500/10 rounded-2xl p-6 hover:border-emerald-500/30 transition-all group text-center"
+                className="bg-white/5 border border-[#2f6d5e]/10 rounded-2xl p-6 hover:border-[#2f6d5e]/30 transition-all group text-center"
               >
-                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">
+                <div className="text-4xl mb-4 transition-transform">
                   {step.icon}
                 </div>
-                <div className="text-xs text-emerald-400 font-semibold mb-2 uppercase tracking-wide">
+                <div className="text-xs text-[#2f6d5e] font-semibold mb-2 uppercase tracking-wide">
                   {step.day}
                 </div>
                 <h3 className="text-lg font-bold mb-3">{step.title}</h3>
@@ -325,7 +259,7 @@ const heyIsmailLanding = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-500/20 rounded-2xl p-8 mb-16"
+            className="bg-gradient-to-r from-[#2f6d5e]/10 to-[#1e473d]/10 border border-[#2f6d5e]/20 rounded-2xl p-8 mb-16"
           >
             <h3 className="text-2xl font-bold mb-6 text-center">
               What you receive on Day 8
@@ -334,7 +268,7 @@ const heyIsmailLanding = () => {
               {ownershipDetails.slice(0, 4).map((item, i) => (
                 <div key={i} className="flex items-center gap-3">
                   <svg
-                    className="w-5 h-5 text-emerald-400 flex-shrink-0"
+                    className="w-5 h-5 text-[#2f6d5e] flex-shrink-0"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -354,7 +288,7 @@ const heyIsmailLanding = () => {
               {ownershipDetails.slice(4).map((item, i) => (
                 <div key={i} className="flex items-center gap-3">
                   <svg
-                    className="w-5 h-5 text-emerald-400 flex-shrink-0"
+                    className="w-5 h-5 text-[#2f6d5e] flex-shrink-0"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -396,7 +330,9 @@ const heyIsmailLanding = () => {
               ))}
             </div>
 
-            <h4 className="text-lg font-semibold mb-4 text-gray-300">Powered by AI</h4>
+            <h4 className="text-lg font-semibold mb-4 text-gray-300">
+              Powered by AI
+            </h4>
             <div className="flex flex-wrap justify-center gap-3">
               {aiTools.map((tool, i) => (
                 <motion.span
@@ -417,7 +353,7 @@ const heyIsmailLanding = () => {
       </section>
 
       {/* MVP Checklist Section */}
-      <section className="py-32 relative border-t border-emerald-500/10">
+      <section className="py-32 relative border-t border-[#2f6d5e]/10">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -442,15 +378,15 @@ const heyIsmailLanding = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="group bg-white/5 border border-emerald-500/10 rounded-2xl p-6 hover:border-emerald-500/30 transition-all"
+                  className="group bg-white/5 border border-[#2f6d5e]/10 rounded-2xl p-6 hover:border-[#2f6d5e]/30 transition-all"
                 >
                   <div className="flex items-start gap-4">
                     <motion.div
-                      className="flex-shrink-0 w-8 h-8 bg-emerald-500/20 border border-emerald-500/30 rounded-lg flex items-center justify-center group-hover:bg-emerald-500/30 transition-colors"
+                      className="flex-shrink-0 w-8 h-8 bg-[#2f6d5e]/20 border border-[#2f6d5e]/30 rounded-lg flex items-center justify-center group-hover:bg-[#2f6d5e]/30 transition-colors"
                       whileHover={{ scale: 1.1 }}
                     >
                       <svg
-                        className="w-5 h-5 text-emerald-400"
+                        className="w-5 h-5 text-[#2f6d5e]"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -464,7 +400,7 @@ const heyIsmailLanding = () => {
                       </svg>
                     </motion.div>
                     <div className="flex-1">
-                      <h3 className="text-lg font-bold mb-2 text-white group-hover:text-emerald-100 transition-colors">
+                      <h3 className="text-lg font-bold mb-2 text-white group-hover:text-[#d9e8d5] transition-colors">
                         {item.title}
                       </h3>
                       <p className="text-gray-400 text-sm leading-relaxed">
@@ -482,15 +418,16 @@ const heyIsmailLanding = () => {
               viewport={{ once: true }}
               className="mt-12 text-center"
             >
-              <div className="inline-block bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-500/20 rounded-2xl p-6">
+              <div className="inline-block bg-gradient-to-r from-[#2f6d5e]/10 to-[#1e473d]/10 border border-[#2f6d5e]/20 rounded-2xl p-6">
                 <p className="text-gray-300 mb-4">
-                  These aren't nice-to-haves. They're the foundation of every successful MVP.
+                  These aren't nice-to-haves. They're the foundation of every
+                  successful MVP.
                 </p>
                 <a
                   href="https://cal.com/heyismail/15min"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-500 text-black font-semibold hover:scale-105 transition-all"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#2f6d5e] text-black font-semibold transition-all"
                 >
                   Let's talk about your idea
                   <svg
@@ -513,8 +450,10 @@ const heyIsmailLanding = () => {
         </div>
       </section>
 
-      {/* Concept Builds Preview Section */}
-      <section className="py-32 relative border-t border-emerald-500/10">
+      <section
+        className="py-32 relative border-t border-[#2f6d5e]/10"
+        id="work"
+      >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -526,45 +465,72 @@ const heyIsmailLanding = () => {
               What I build when nobody's watching
             </h2>
             <p className="text-xl text-gray-400">
-              I study successful creators and build what I think their platforms should look like
+              I study successful creators and build what I think their platforms
+              should look like
             </p>
           </motion.div>
 
-          {/* Featured Build - Linkup OS */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="max-w-4xl mx-auto mb-16"
           >
-            <div className="bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-emerald-500/10 rounded-2xl p-8 hover:border-emerald-500/30 transition-all">
-              {/* Creator Info */}
+            <div className="bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-[#2f6d5e]/10 rounded-2xl p-8 hover:border-[#2f6d5e]/30 transition-all">
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-emerald-500/20 to-teal-500/20 border border-emerald-500/30 rounded-full flex items-center justify-center text-2xl font-bold">
-                  JA
+                <div className="w-16 h-16 bg-gradient-to-br from-[#2f6d5e]/20 to-[#1e473d]/20 border border-[#2f6d5e]/30 rounded-full flex items-center justify-center text-2xl font-bold overflow-hidden">
+                  {conceptBuilds[0].creator.picture ? (
+                    <Image
+                      src={conceptBuilds[0].creator.picture}
+                      height={64}
+                      width={64}
+                      alt={conceptBuilds[0].creator.name}
+                      className="w-full h-full object-cover rounded-full"
+                    />
+                  ) : (
+                    <span className="text-[#2f6d5e]">
+                      {conceptBuilds[0].creator.name
+                        .split(" ")
+                        .map((n) => n[0])
+                        .join("")}
+                    </span>
+                  )}
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white">{conceptBuilds[0].creator.name}</h3>
-                  <p className="text-gray-400">{conceptBuilds[0].creator.title}</p>
-                  <p className="text-emerald-400 text-sm font-semibold">{conceptBuilds[0].creator.followers} followers</p>
+                  <h3 className="text-xl font-bold text-white">
+                    {conceptBuilds[0].creator.name}
+                  </h3>
+                  <p className="text-gray-400">
+                    {conceptBuilds[0].creator.title}
+                  </p>
+                  <p className="text-[#2f6d5e] text-sm font-semibold">
+                    {conceptBuilds[0].creator.followers} followers
+                  </p>
                 </div>
               </div>
 
-              {/* Product Info */}
               <div className="mb-6">
-                <h4 className="text-2xl font-bold mb-2 text-emerald-100">{conceptBuilds[0].product.name}</h4>
-                <p className="text-lg text-gray-300 mb-4">{conceptBuilds[0].product.tagline}</p>
-                <p className="text-gray-400 leading-relaxed">{conceptBuilds[0].product.description}</p>
+                <h4 className="text-2xl font-bold mb-2 text-[#d9e8d5]">
+                  {conceptBuilds[0].product.name}
+                </h4>
+                <p className="text-lg text-gray-300 mb-4">
+                  {conceptBuilds[0].product.tagline}
+                </p>
+                <p className="text-gray-400 leading-relaxed">
+                  {conceptBuilds[0].product.description}
+                </p>
               </div>
 
               {/* Features Preview */}
               <div className="mb-6">
-                <h5 className="text-lg font-semibold mb-3 text-white">What I built:</h5>
+                <h5 className="text-lg font-semibold mb-3 text-white">
+                  What I built:
+                </h5>
                 <div className="grid md:grid-cols-2 gap-3">
                   {conceptBuilds[0].features.slice(0, 4).map((feature, i) => (
                     <div key={i} className="flex items-start gap-3">
                       <svg
-                        className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5"
+                        className="w-5 h-5 text-[#2f6d5e] flex-shrink-0 mt-0.5"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -583,8 +549,8 @@ const heyIsmailLanding = () => {
               </div>
 
               {/* Research Note */}
-              <div className="bg-emerald-500/5 border border-emerald-500/20 rounded-lg p-4 mb-6">
-                <p className="text-sm text-emerald-100 italic">
+              <div className="bg-[#2f6d5e]/5 border border-[#2f6d5e]/20 rounded-lg p-4 mb-6">
+                <p className="text-sm text-[#d9e8d5] italic">
                   "{conceptBuilds[0].researchNote}"
                 </p>
               </div>
@@ -593,7 +559,7 @@ const heyIsmailLanding = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
                   href="/builds"
-                  className="group px-6 py-3 bg-emerald-500 text-black font-semibold hover:scale-105 transition-all flex items-center justify-center gap-2"
+                  className="group px-6 py-3 bg-[#2f6d5e] text-black font-semibold transition-all flex items-center justify-center gap-2"
                 >
                   See All Builds
                   <svg
@@ -643,127 +609,15 @@ const heyIsmailLanding = () => {
             className="text-center"
           >
             <p className="text-gray-400 max-w-2xl mx-auto">
-              These aren't client projects. They're skill demonstrations. I study how successful people teach and build what I think their premium platforms should look like.
+              These aren't client projects. They're skill demonstrations. I
+              study how successful people teach and build what I think their
+              premium platforms should look like.
             </p>
           </motion.div>
         </div>
       </section>
 
-      <section
-        id="work"
-        className="py-32 relative border-t border-emerald-500/10"
-      >
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Real MVPs. Real Traction.
-            </h2>
-            <p className="text-xl text-gray-400">
-              From concept to paying customers in one week
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {projects.map((project, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="group relative bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-emerald-500/10 rounded-2xl p-8 hover:border-emerald-500/30 transition-all cursor-pointer overflow-hidden"
-              >
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-100 transition-opacity`}
-                />
-
-                <div className="relative z-10">
-                  <div className="flex items-start justify-between mb-4">
-                    <h3 className="text-2xl font-bold">{project.name}</h3>
-                    <motion.a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.1, rotate: 45 }}
-                      className="text-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity"
-                    >
-                      <svg
-                        className="w-5 h-5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                        />
-                      </svg>
-                    </motion.a>
-                  </div>
-
-                  <p className="text-gray-400 mb-6 leading-relaxed">
-                    {project.desc}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tags.map((tag, j) => (
-                      <span
-                        key={j}
-                        className="px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-xs text-emerald-400"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="flex items-center gap-6 text-sm">
-                    <div>
-                      <div className="text-emerald-400 font-semibold">
-                        {project.metrics.users}
-                      </div>
-                      <div className="text-gray-500 text-xs">Users</div>
-                    </div>
-                    <div>
-                      <div className="text-emerald-400 font-semibold">
-                        {project.metrics.revenue}
-                      </div>
-                      <div className="text-gray-500 text-xs">Status</div>
-                    </div>
-                    <div>
-                      <div className="text-emerald-400 font-semibold">
-                        {project.metrics.time}
-                      </div>
-                      <div className="text-gray-500 text-xs">Build Time</div>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-
-
-
-
-
-
-
-
-
-
-      <section
-        id="faq"
-        className="py-32 relative border-t border-emerald-500/10"
-      >
+      <section id="faq" className="py-32 relative border-t border-[#2f6d5e]/10">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -774,7 +628,9 @@ const heyIsmailLanding = () => {
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               Questions you're probably asking
             </h2>
-            <p className="text-xl text-gray-400">The honest answers to what you really want to know</p>
+            <p className="text-xl text-gray-400">
+              The honest answers to what you really want to know
+            </p>
           </motion.div>
 
           <div className="space-y-6">
@@ -785,9 +641,9 @@ const heyIsmailLanding = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white/5 border border-emerald-500/10 rounded-xl p-6 hover:border-emerald-500/30 transition-all"
+                className="bg-white/5 border border-[#2f6d5e]/10 rounded-xl p-6 hover:border-[#2f6d5e]/30 transition-all"
               >
-                <h3 className="text-xl font-bold mb-3 text-emerald-400">
+                <h3 className="text-xl font-bold mb-3 text-[#2f6d5e]">
                   {faq.question}
                 </h3>
                 <p className="text-gray-400 leading-relaxed">{faq.answer}</p>
@@ -806,7 +662,7 @@ const heyIsmailLanding = () => {
               href="https://cal.com/heyismail/15min"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-colors"
+              className="inline-flex items-center gap-2 text-[#2f6d5e] hover:text-[#d9e8d5] transition-colors"
             >
               <span>Chat with me on WhatsApp</span>
               <svg
@@ -827,8 +683,8 @@ const heyIsmailLanding = () => {
         </div>
       </section>
 
-      <section className="py-32 relative overflow-hidden border-t border-emerald-500/10">
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-teal-500/10" />
+      <section className="py-32 relative overflow-hidden border-t border-[#2f6d5e]/10">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#2f6d5e]/10 via-transparent to-[#1e473d]/10" />
 
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10">
           <motion.div
@@ -836,9 +692,9 @@ const heyIsmailLanding = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full mb-8">
-              <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-              <span className="text-sm text-emerald-400">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#2f6d5e]/10 border border-[#2f6d5e]/20 rounded-full mb-8">
+              <span className="w-2 h-2 bg-[#2f6d5e] rounded-full animate-pulse" />
+              <span className="text-sm text-[#2f6d5e]">
                 Limited slots available
               </span>
             </div>
@@ -857,7 +713,7 @@ const heyIsmailLanding = () => {
                 href="https://cal.com/heyismail/15min"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group px-10 py-5 bg-gradient-to-r from-emerald-500 to-teal-500 text-black text-lg font-bold hover:scale-105 transition-all shadow-2xl shadow-emerald-500/50 flex items-center gap-2"
+                className="group px-10 py-5 bg-[#2f6d5e] text-black text-lg font-bold transition-all flex items-center gap-2"
               >
                 Tell me about your idea
                 <svg
@@ -879,7 +735,7 @@ const heyIsmailLanding = () => {
                 href="https://wa.me/923111961963"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-10 py-5 bg-white/5 border border-emerald-500/20 text-white text-lg font-semibold hover:bg-white/10 hover:border-emerald-500/40 transition-all"
+                className="px-10 py-5 bg-white/5 border border-[#2f6d5e]/20 text-white text-lg font-semibold hover:bg-white/10 hover:border-[#2f6d5e]/40 transition-all"
               >
                 Message on WhatsApp
               </a>
@@ -900,15 +756,15 @@ const heyIsmailLanding = () => {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "FAQPage",
-            "mainEntity": newFAQs.map((faq) => ({
+            mainEntity: newFAQs.map((faq) => ({
               "@type": "Question",
-              "name": faq.question,
-              "acceptedAnswer": {
+              name: faq.question,
+              acceptedAnswer: {
                 "@type": "Answer",
-                "text": faq.answer
-              }
-            }))
-          })
+                text: faq.answer,
+              },
+            })),
+          }),
         }}
       />
     </div>

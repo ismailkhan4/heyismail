@@ -61,7 +61,7 @@ export default function AboutPage() {
                 </div>
 
                 <motion.div
-                    className="absolute top-1/4 -left-48 w-96 h-96 bg-emerald-500 rounded-full filter blur-3xl opacity-20"
+                    className="absolute top-1/4 -left-48 w-96 h-96 bg-[#2f6d5e] rounded-full filter blur-3xl opacity-20"
                     animate={{
                         x: [0, 100, 0],
                         y: [0, -50, 0],
@@ -69,7 +69,7 @@ export default function AboutPage() {
                     transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                 />
                 <motion.div
-                    className="absolute bottom-1/4 -right-48 w-96 h-96 bg-teal-500 rounded-full filter blur-3xl opacity-20"
+                    className="absolute bottom-1/4 -right-48 w-96 h-96 bg-[#1e473d] rounded-full filter blur-3xl opacity-20"
                     animate={{
                         x: [0, -100, 0],
                         y: [0, 50, 0],
@@ -127,7 +127,7 @@ export default function AboutPage() {
             </section>
 
             {/* Origin Story Section */}
-            <section className="py-32 relative border-t border-emerald-500/10">
+            <section className="py-32 relative border-t border-[#2f6d5e]/10">
                 <div className="max-w-4xl mx-auto px-6 lg:px-8">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -139,14 +139,14 @@ export default function AboutPage() {
                             The project that changed everything
                         </h2>
 
-                        <div className="bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-emerald-500/10 rounded-2xl p-8">
+                        <div className="bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-[#2f6d5e]/10 rounded-2xl p-8">
                             <div className="prose prose-lg prose-invert max-w-none">
                                 <p className="text-gray-300 leading-relaxed mb-6">
                                     {aboutContent.originStory.content}
                                 </p>
 
-                                <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-lg p-6 mt-8">
-                                    <p className="text-emerald-100 font-semibold text-lg italic text-center">
+                                <div className="bg-[#2f6d5e]/10 border border-[#2f6d5e]/20 rounded-lg p-6 mt-8">
+                                    <p className="text-[#d9e8d5] font-semibold text-lg italic text-center">
                                         "{aboutContent.originStory.lesson}"
                                     </p>
                                 </div>
@@ -157,7 +157,7 @@ export default function AboutPage() {
             </section>
 
             {/* Who I Am Section */}
-            <section className="py-32 relative border-t border-emerald-500/10">
+            <section className="py-32 relative border-t border-[#2f6d5e]/10">
                 <div className="max-w-6xl mx-auto px-6 lg:px-8">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -180,31 +180,31 @@ export default function AboutPage() {
                             viewport={{ once: true }}
                             className="space-y-6"
                         >
-                            <div className="bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-emerald-500/10 rounded-2xl p-6">
-                                <h3 className="text-xl font-bold mb-3 text-emerald-100">Ismail Muhammad</h3>
+                            <div className="bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-[#2f6d5e]/10 rounded-2xl p-6">
+                                <h3 className="text-xl font-bold mb-3 text-[#d9e8d5]">Ismail Muhammad</h3>
                                 <p className="text-gray-400 mb-4">
                                     AI-accelerated SaaS MVP developer based in Lahore, Pakistan. I help non-technical founders turn their ideas into production-ready products in 7 days.
                                 </p>
                                 <div className="flex flex-wrap gap-2">
-                                    <span className="px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-xs text-emerald-400">
+                                    <span className="px-3 py-1 bg-[#2f6d5e]/10 border border-[#2f6d5e]/20 rounded-full text-xs text-[#2f6d5e]">
                                         Next.js Expert
                                     </span>
-                                    <span className="px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-xs text-emerald-400">
+                                    <span className="px-3 py-1 bg-[#2f6d5e]/10 border border-[#2f6d5e]/20 rounded-full text-xs text-[#2f6d5e]">
                                         AI-Accelerated Development
                                     </span>
-                                    <span className="px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-xs text-emerald-400">
+                                    <span className="px-3 py-1 bg-[#2f6d5e]/10 border border-[#2f6d5e]/20 rounded-full text-xs text-[#2f6d5e]">
                                         MVP Specialist
                                     </span>
                                 </div>
                             </div>
 
                             <div className="grid grid-cols-2 gap-4">
-                                <div className="bg-white/5 border border-emerald-500/10 rounded-lg p-4 text-center">
-                                    <div className="text-2xl font-bold text-emerald-400">15+</div>
+                                <div className="bg-white/5 border border-[#2f6d5e]/10 rounded-lg p-4 text-center">
+                                    <div className="text-2xl font-bold text-[#2f6d5e]">15+</div>
                                     <div className="text-sm text-gray-400">MVPs Shipped</div>
                                 </div>
-                                <div className="bg-white/5 border border-emerald-500/10 rounded-lg p-4 text-center">
-                                    <div className="text-2xl font-bold text-emerald-400">500K+</div>
+                                <div className="bg-white/5 border border-[#2f6d5e]/10 rounded-lg p-4 text-center">
+                                    <div className="text-2xl font-bold text-[#2f6d5e]">500K+</div>
                                     <div className="text-sm text-gray-400">App Downloads</div>
                                 </div>
                             </div>
@@ -216,8 +216,8 @@ export default function AboutPage() {
                             viewport={{ once: true }}
                             className="flex justify-center"
                         >
-                            <div className="w-80 h-80 bg-gradient-to-br from-emerald-500/20 to-teal-500/20 border border-emerald-500/30 rounded-2xl flex items-center justify-center">
-                                <div className="text-6xl font-bold text-emerald-400">IM</div>
+                            <div className="w-80 h-80 bg-gradient-to-br from-[#2f6d5e]/20 to-[#1e473d]/20 border border-[#2f6d5e]/30 rounded-2xl flex items-center justify-center">
+                                <div className="text-6xl font-bold text-[#2f6d5e]">IM</div>
                             </div>
                         </motion.div>
                     </div>
@@ -225,7 +225,7 @@ export default function AboutPage() {
             </section>
 
             {/* Why Work With Me Section */}
-            <section className="py-32 relative border-t border-emerald-500/10">
+            <section className="py-32 relative border-t border-[#2f6d5e]/10">
                 <div className="max-w-6xl mx-auto px-6 lg:px-8">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -249,12 +249,12 @@ export default function AboutPage() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: i * 0.1 }}
-                                className="group bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-emerald-500/10 rounded-2xl p-8 hover:border-emerald-500/30 transition-all"
+                                className="group bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-[#2f6d5e]/10 rounded-2xl p-8 hover:border-[#2f6d5e]/30 transition-all"
                             >
                                 <div className="text-4xl mb-6 group-hover:scale-110 transition-transform">
                                     {i === 0 ? "🧠" : i === 1 ? "⚡" : "🔓"}
                                 </div>
-                                <h3 className="text-xl font-bold mb-4 text-white group-hover:text-emerald-100 transition-colors">
+                                <h3 className="text-xl font-bold mb-4 text-white group-hover:text-[#d9e8d5] transition-colors">
                                     {diff.title}
                                 </h3>
                                 <p className="text-gray-400 leading-relaxed">
@@ -270,7 +270,7 @@ export default function AboutPage() {
                         viewport={{ once: true }}
                         className="mt-16 text-center"
                     >
-                        <div className="inline-block bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-500/20 rounded-2xl p-8">
+                        <div className="inline-block bg-gradient-to-r from-[#2f6d5e]/10 to-[#1e473d]/10 border border-[#2f6d5e]/20 rounded-2xl p-8">
                             <h3 className="text-2xl font-bold mb-4">Ready to build your MVP?</h3>
                             <p className="text-gray-300 mb-6 max-w-md mx-auto">
                                 Let's turn your idea into a real product that customers will pay for. No sales pitch, just an honest conversation about what you're building.
@@ -279,7 +279,7 @@ export default function AboutPage() {
                                 href="https://cal.com/heyismail/15min"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 px-8 py-4 bg-emerald-500 text-black font-semibold hover:scale-105 transition-all"
+                                className="inline-flex items-center gap-2 px-8 py-4 bg-[#2f6d5e] text-black font-semibold hover:scale-105 transition-all"
                             >
                                 Let's talk about your idea
                                 <svg

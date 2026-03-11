@@ -11,7 +11,7 @@ export default function ContactPageClient() {
 
   useEffect(() => {
     setIsMounted(true);
-    
+
     const handleMouseMove = (
       e: React.MouseEvent<Element, MouseEvent> | MouseEvent,
     ): void => {
@@ -61,7 +61,7 @@ export default function ContactPageClient() {
         </div>
 
         <motion.div
-          className="absolute top-1/4 -left-48 w-96 h-96 bg-emerald-500 rounded-full filter blur-3xl opacity-20"
+          className="absolute top-1/4 -left-48 w-96 h-96 bg-[#2f6d5e] rounded-full filter blur-3xl opacity-20"
           animate={{
             x: [0, 100, 0],
             y: [0, -50, 0],
@@ -69,7 +69,7 @@ export default function ContactPageClient() {
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
         />
         <motion.div
-          className="absolute bottom-1/4 -right-48 w-96 h-96 bg-teal-500 rounded-full filter blur-3xl opacity-20"
+          className="absolute bottom-1/4 -right-48 w-96 h-96 bg-[#1e473d] rounded-full filter blur-3xl opacity-20"
           animate={{
             x: [0, -100, 0],
             y: [0, 50, 0],
@@ -90,15 +90,14 @@ export default function ContactPageClient() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2 }}
             >
-              <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+              <span className="w-2 h-2 bg-[#2f6d5e] rounded-full animate-pulse" />
               <span className="text-sm text-gray-300">
                 No pressure, just honest advice
               </span>
             </motion.div>
 
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-[1.1] tracking-tight">
-              Tell me your idea.
-              <br />
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-[1.1] tracking-tight">
+              Tell me your idea.{" "}
               <span className="bg-gradient-to-r from-[#d9e8d5] via-white to-[#1e473d] bg-clip-text text-transparent">
                 I'll tell you if a sprint is right for it.
               </span>
@@ -114,7 +113,7 @@ export default function ContactPageClient() {
       </section>
 
       {/* Contact Options Section */}
-      <section className="py-32 relative border-t border-emerald-500/10">
+      <section className="py-32 relative border-t border-[#2f6d5e]/10">
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -140,13 +139,13 @@ export default function ContactPageClient() {
                 transition={{ delay: i * 0.1 }}
                 className={`group relative bg-gradient-to-br ${
                   option.primary
-                    ? "from-emerald-500/10 to-teal-500/10 border-emerald-500/30"
+                    ? "from-[#2f6d5e]/10 to-[#1e473d]/10 border-[#2f6d5e]/30"
                     : "from-white/5 to-white/[0.02] border-white/10"
-                } backdrop-blur-sm border rounded-3xl p-8 hover:border-emerald-500/50 transition-all`}
+                } backdrop-blur-sm border rounded-3xl p-8 hover:border-[#2f6d5e]/50 transition-all`}
               >
                 {option.primary && (
                   <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                    <div className="px-4 py-1 bg-emerald-500 text-black text-xs font-semibold rounded-full">
+                    <div className="px-4 py-1 bg-[#2f6d5e] text-black text-xs font-semibold rounded-full">
                       Recommended
                     </div>
                   </div>
@@ -176,7 +175,7 @@ export default function ContactPageClient() {
                           {option.benefits.map((benefit, j) => (
                             <li key={j} className="flex items-start gap-3">
                               <svg
-                                className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5"
+                                className="w-5 h-5 text-[#2f6d5e] flex-shrink-0 mt-0.5"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke="currentColor"
@@ -203,8 +202,8 @@ export default function ContactPageClient() {
                         <ol className="space-y-3 text-left">
                           {option.instructions?.map((instruction, j) => (
                             <li key={j} className="flex items-start gap-3">
-                              <div className="w-6 h-6 bg-emerald-500/20 border border-emerald-500/30 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                                <span className="text-emerald-400 text-xs font-semibold">
+                              <div className="w-6 h-6 bg-[#2f6d5e]/20 border border-[#2f6d5e]/30 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <span className="text-[#2f6d5e] text-xs font-semibold">
                                   {j + 1}
                                 </span>
                               </div>
@@ -224,7 +223,7 @@ export default function ContactPageClient() {
                     rel="noopener noreferrer"
                     className={`inline-flex items-center gap-2 px-8 py-4 font-semibold transition-all ${
                       option.primary
-                        ? "bg-emerald-500 text-black hover:scale-105"
+                        ? "bg-[#2f6d5e] text-black hover:scale-105"
                         : "bg-white/5 border border-white/10 text-white hover:bg-white/10"
                     }`}
                   >
@@ -251,7 +250,7 @@ export default function ContactPageClient() {
       </section>
 
       {/* Fine Print Section */}
-      <section className="py-16 relative border-t border-emerald-500/10">
+      <section className="py-16 relative border-t border-[#2f6d5e]/10">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -267,7 +266,7 @@ export default function ContactPageClient() {
               {contactFinePrint.map((point, i) => (
                 <div key={i} className="flex items-start gap-3 justify-center">
                   <svg
-                    className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5"
+                    className="w-5 h-5 text-[#2f6d5e] flex-shrink-0 mt-0.5"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
