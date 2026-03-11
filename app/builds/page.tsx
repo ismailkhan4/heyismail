@@ -276,28 +276,59 @@ const BuildsPage = () => {
                 </div>
 
                 {/* Visual Side */}
-                <div
-                  className={`${index % 2 === 1 ? "md:order-1" : ""} flex items-center justify-center`}
-                >
-                  <div className="relative w-full max-w-sm">
-                    <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 transform hover:scale-105 transition-transform duration-300">
-                      <div className="space-y-4">
-                        <div className="h-4 bg-white/20 rounded w-3/4"></div>
-                        <div className="h-3 bg-white/10 rounded w-full"></div>
-                        <div className="h-3 bg-white/10 rounded w-5/6"></div>
-                        <div className="space-y-2 pt-4">
-                          <div className="h-8 bg-[#2f6d5e]/20 rounded"></div>
-                          <div className="h-8 bg-white/5 rounded"></div>
-                          <div className="h-8 bg-white/5 rounded"></div>
-                        </div>
-                        <div className="pt-4">
-                          <div className="h-10 bg-gradient-to-r from-[#2f6d5e] to-[#1e473d] rounded text-black flex items-center justify-center text-sm font-medium">
-                            {build.product.name}
+                <div className="flex items-center justify-center">
+                  <motion.div
+                    className="relative w-full max-w-md"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8 }}
+                    viewport={{ once: true }}
+                  >
+                    {build.product.image ? (
+                      <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                        <Image
+                          src={build.product.image}
+                          alt={`${build.product.name} Dashboard`}
+                          width={600}
+                          height={400}
+                          className="w-full h-auto object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                      </div>
+                    ) : (
+                      <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 transform hover:scale-105 transition-transform duration-300">
+                        <div className="space-y-6">
+                          {/* Header */}
+                          <div className="flex items-center justify-between">
+                            <div className="h-6 bg-gradient-to-r from-[#2f6d5e] to-[#1e473d] rounded w-32"></div>
+                            <div className="w-8 h-8 bg-white/20 rounded-full"></div>
+                          </div>
+
+                          {/* Content blocks */}
+                          <div className="space-y-4">
+                            <div className="h-4 bg-white/20 rounded w-full"></div>
+                            <div className="h-4 bg-white/10 rounded w-4/5"></div>
+                            <div className="h-4 bg-white/10 rounded w-3/4"></div>
+                          </div>
+
+                          {/* Feature cards */}
+                          <div className="grid grid-cols-2 gap-3">
+                            <div className="h-16 bg-[#2f6d5e]/20 rounded-lg"></div>
+                            <div className="h-16 bg-[#1e473d]/20 rounded-lg"></div>
+                            <div className="h-16 bg-white/10 rounded-lg"></div>
+                            <div className="h-16 bg-white/10 rounded-lg"></div>
+                          </div>
+
+                          {/* CTA */}
+                          <div className="h-12 bg-gradient-to-r from-[#2f6d5e] to-[#1e473d] rounded-lg flex items-center justify-center">
+                            <span className="text-black font-semibold text-sm">
+                              {build.product.name}
+                            </span>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
+                    )}
+                  </motion.div>
                 </div>
               </motion.div>
             ))}
