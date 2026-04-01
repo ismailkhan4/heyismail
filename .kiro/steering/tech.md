@@ -1,60 +1,51 @@
-# Technology Stack
+# Tech Stack & Build System
 
-## Framework & Runtime
-- **Next.js 15.3.6** with App Router (React 19)
-- **TypeScript** for type safety
-- **Node.js** runtime environment
+## Framework & Core Technologies
+- **Next.js 15.3.6** with App Router (not Pages Router)
+- **React 19** with TypeScript
+- **Tailwind CSS 4.1.11** for styling
+- **Framer Motion** for animations
+- **Cloudflare Workers** deployment via OpenNext
 
-## Styling & UI
-- **Tailwind CSS 4.1.11** for utility-first styling
-- **Tailwind Typography** plugin for content styling
-- **Framer Motion** for animations and interactions
-- **Radix UI** components for accessible primitives
+## UI & Component System
+- **shadcn/ui** components with Radix UI primitives
 - **Lucide React** for icons
-- **shadcn/ui** component system (New York style)
+- **Class Variance Authority** for component variants
+- Custom utility function `cn()` for className merging (clsx + tailwind-merge)
 
 ## Content & Data
 - **Gray Matter** for frontmatter parsing
 - **Marked** for markdown processing
-- **DOMPurify** for content sanitization
-- **Date-fns** for date manipulation
-
-## Deployment & Infrastructure
-- **Cloudflare** deployment via OpenNext
-- **R2 Incremental Cache** for performance
-- **Wrangler** for Cloudflare tooling
+- **DOMPurify** for sanitization
+- **Zod** for validation
 
 ## Development Tools
+- **TypeScript 5** with strict configuration
+- **ESLint** with Next.js config
+- **Wrangler** for Cloudflare deployment
 - **Turbopack** for fast development builds
-- **PostCSS** for CSS processing
-- **ESLint** for code linting
 
 ## Common Commands
 
 ### Development
 ```bash
-npm run dev          # Start development server with Turbopack
+npm run dev          # Start dev server with Turbopack
 npm run build        # Build for production
-npm run start        # Start production server
 npm run lint         # Run ESLint
 ```
 
-### Deployment
+### Deployment (Cloudflare)
 ```bash
 npm run preview      # Build and preview locally
 npm run deploy       # Build and deploy to Cloudflare
-npm run upload       # Build and upload to Cloudflare
+npm run upload       # Build and upload assets
+npm run cf-typegen   # Generate Cloudflare types
 ```
 
-### Cloudflare Types
-```bash
-npm run cf-typegen   # Generate Cloudflare environment types
-```
-
-## Code Style Conventions
-- Use TypeScript for all new files
-- Follow Next.js App Router patterns
-- Utilize Tailwind utility classes over custom CSS
-- Implement Radix UI for interactive components
-- Use Framer Motion for animations
-- Maintain responsive design principles
+## Architecture Patterns
+- App Router with TypeScript
+- Client components marked with "use client"
+- Custom fonts via `next/font/google`
+- CSS variables for theming with light/dark mode support
+- Component composition over inheritance
+- Utility-first CSS with Tailwind
