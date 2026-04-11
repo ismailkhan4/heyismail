@@ -246,9 +246,8 @@ export default function HomePage() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                className={`text-center py-8 px-4 ${
-                  i < 3 ? "border-r border-[#FBFFFC]/08" : ""
-                } ${i >= 2 ? "border-t border-[#FBFFFC]/08 md:border-t-0" : ""}`}
+                className={`text-center py-8 px-4 ${i < 3 ? "border-r border-[#FBFFFC]/08" : ""
+                  } ${i >= 2 ? "border-t border-[#FBFFFC]/08 md:border-t-0" : ""}`}
               >
                 <p className="font-display text-2xl sm:text-3xl md:text-4xl font-semibold text-[#FBFFFC] mb-1">
                   {item.stat}
@@ -758,7 +757,7 @@ export default function HomePage() {
                     </div>
 
                     <a
-                      href="/builds"
+                      href={`/builds/${build.slug}`}
                       className="mt-8 inline-flex items-center justify-between w-full px-5 py-4 rounded-xl border border-[rgba(15,15,15,0.08)] hover:border-[#14A714]/40 hover:bg-[rgba(20,167,20,0.03)] transition-all duration-200 group/btn"
                     >
                       <span className="font-body text-sm font-semibold text-[#0F0F0F]">
