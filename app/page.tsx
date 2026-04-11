@@ -30,9 +30,17 @@ const stagger = {
 };
 
 // ─── Section label ────────────────────────────────────────────────────────────
-function SectionLabel({ children, light = false }: { children: React.ReactNode; light?: boolean }) {
+function SectionLabel({
+  children,
+  light = false,
+}: {
+  children: React.ReactNode;
+  light?: boolean;
+}) {
   return (
-    <span className={`font-body text-xs font-semibold uppercase tracking-[0.18em] block mb-4 ${light ? "text-[#14A714]" : "text-[#14A714]"}`}>
+    <span
+      className={`font-body text-xs font-semibold uppercase tracking-[0.18em] block mb-4 ${light ? "text-[#14A714]" : "text-[#14A714]"}`}
+    >
       {children}
     </span>
   );
@@ -132,7 +140,8 @@ export default function HomePage() {
                 <span
                   className="text-transparent bg-clip-text"
                   style={{
-                    backgroundImage: "linear-gradient(90deg, #14A714 0%, #4fd44f 100%)",
+                    backgroundImage:
+                      "linear-gradient(90deg, #14A714 0%, #4fd44f 100%)",
                   }}
                 >
                   Your platform should be too.
@@ -147,7 +156,10 @@ export default function HomePage() {
               </motion.p>
 
               {/* CTAs */}
-              <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-3 mb-10 sm:mb-12">
+              <motion.div
+                variants={fadeUp}
+                className="flex flex-col sm:flex-row gap-3 mb-10 sm:mb-12"
+              >
                 <a
                   href={SITE.calLink}
                   target="_blank"
@@ -175,9 +187,14 @@ export default function HomePage() {
                     "Jasmin Alić · #1 LinkedIn Creator · 358K followers",
                     "Jaime Brenkus · Fitness Hall of Fame · 10,000+ members",
                   ].map((text, i) => (
-                    <div key={i} className="flex items-center gap-2.5 sm:px-5 first:sm:pl-0">
+                    <div
+                      key={i}
+                      className="flex items-center gap-2.5 sm:px-5 first:sm:pl-0"
+                    >
                       <span className="w-1.5 h-1.5 bg-[#14A714] rounded-full flex-shrink-0" />
-                      <span className="font-body text-sm text-[#FBFFFC]/45">{text}</span>
+                      <span className="font-body text-sm text-[#FBFFFC]/45">
+                        {text}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -188,7 +205,11 @@ export default function HomePage() {
             <motion.div
               initial={{ opacity: 0, y: 40, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.9, delay: 0.35, ease: [0.0, 0.0, 0.2, 1] }}
+              transition={{
+                duration: 0.9,
+                delay: 0.35,
+                ease: [0.0, 0.0, 0.2, 1],
+              }}
               className="hidden lg:block"
             >
               <HeroDashboardCard />
@@ -200,7 +221,10 @@ export default function HomePage() {
         <div
           aria-hidden
           className="absolute bottom-0 left-0 right-0 h-20 pointer-events-none"
-          style={{ background: "linear-gradient(to bottom, transparent, rgba(6,56,44,0.6))" }}
+          style={{
+            background:
+              "linear-gradient(to bottom, transparent, rgba(6,56,44,0.6))",
+          }}
         />
       </section>
 
@@ -222,8 +246,9 @@ export default function HomePage() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                className={`text-center py-8 px-4 ${i < 3 ? "border-r border-[#FBFFFC]/08" : ""
-                  } ${i >= 2 ? "border-t border-[#FBFFFC]/08 md:border-t-0" : ""}`}
+                className={`text-center py-8 px-4 ${
+                  i < 3 ? "border-r border-[#FBFFFC]/08" : ""
+                } ${i >= 2 ? "border-t border-[#FBFFFC]/08 md:border-t-0" : ""}`}
               >
                 <p className="font-display text-2xl sm:text-3xl md:text-4xl font-semibold text-[#FBFFFC] mb-1">
                   {item.stat}
@@ -242,21 +267,39 @@ export default function HomePage() {
       ══════════════════════════════════════════════════════════════════════ */}
       <section className="py-24 sm:py-28 lg:py-36 bg-[#FBFFFC] overflow-hidden">
         <div className="max-w-6xl mx-auto px-5 sm:px-6 lg:px-10">
-
           {/* Split header */}
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-20 items-end mb-16 sm:mb-20">
-            <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
               <SectionLabel>The Gap</SectionLabel>
               <h2 className="font-display text-[clamp(2.2rem,5vw,3.8rem)] font-semibold leading-[1.06] text-[#0F0F0F]">
-                Your brand is premium.<br />The moment your member<br />logs in — it isn't.
+                Your brand is premium.
+                <br />
+                The moment your member
+                <br />
+                logs in — it isn't.
               </h2>
             </motion.div>
-            <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="space-y-4 lg:pb-2">
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="space-y-4 lg:pb-2"
+            >
               <p className="font-body text-base sm:text-lg text-[#0F0F0F]/50 leading-[1.8]">
-                You've built a real audience. They pay for your courses. Join your community. Book your coaching. But when they log in? They get Kajabi's interface. Notion's chaos. A Gumroad page that looks nothing like the brand they just paid to be part of.
+                You've built a real audience. They pay for your courses. Join
+                your community. Book your coaching. But when they log in? They
+                get Kajabi's interface. Notion's chaos. A Gumroad page that
+                looks nothing like the brand they just paid to be part of.
               </p>
               <p className="font-body text-base text-[#0F0F0F]/40 leading-[1.8]">
-                Every click after the sale is part of your product. Right now, that part is quietly failing you.
+                Every click after the sale is part of your product. Right now,
+                that part is quietly failing you.
               </p>
             </motion.div>
           </div>
@@ -300,20 +343,25 @@ export default function HomePage() {
             className="relative overflow-hidden rounded-2xl bg-[#06382C]"
             style={{ boxShadow: "0 24px 60px rgba(6,56,44,0.18)" }}
           >
-            <div aria-hidden className="absolute inset-0 opacity-[0.035]" style={{
-              backgroundImage: "linear-gradient(rgba(251,255,252,1) 1px, transparent 1px), linear-gradient(90deg, rgba(251,255,252,1) 1px, transparent 1px)",
-              backgroundSize: "60px 60px",
-            }} />
+            <div
+              aria-hidden
+              className="absolute inset-0 opacity-[0.035]"
+              style={{
+                backgroundImage:
+                  "linear-gradient(rgba(251,255,252,1) 1px, transparent 1px), linear-gradient(90deg, rgba(251,255,252,1) 1px, transparent 1px)",
+                backgroundSize: "60px 60px",
+              }}
+            />
             <div className="relative flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-8 px-8 sm:px-10 py-8 sm:py-9">
               <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-[#14A714]/15 border border-[#14A714]/25 flex items-center justify-center">
                 <ArrowRight className="w-5 h-5 text-[#14A714]" />
               </div>
               <p className="font-display text-xl sm:text-2xl font-medium text-[#FBFFFC] leading-snug">
-                There is a better option. A custom platform built around your brand, delivered in 7 days, owned completely by you.
+                There is a better option. A custom platform built around your
+                brand, delivered in 7 days, owned completely by you.
               </p>
             </div>
           </motion.div>
-
         </div>
       </section>
 
@@ -336,13 +384,19 @@ export default function HomePage() {
               </h2>
               <div className="font-body text-base sm:text-lg text-[#FBFFFC]/55 leading-[1.8] space-y-5">
                 <p>
-                  Hi. I'm Ismail. I build custom community platforms, course portals, and coaching hubs for LinkedIn creators who have outgrown their current tech.
+                  Hi. I'm Ismail. I build custom community platforms, course
+                  portals, and coaching hubs for LinkedIn creators who have
+                  outgrown their current tech.
                 </p>
                 <p>
-                  Not templates. Not page builders. Real platforms — custom branded, built around your specific content structure — with everything transferred to you on day 7. Source code. Deployment credentials. Database access. Everything.
+                  Not templates. Not page builders. Real platforms — custom
+                  branded, built around your specific content structure — with
+                  everything transferred to you on day 7. Source code.
+                  Deployment credentials. Database access. Everything.
                 </p>
                 <p className="text-[#FBFFFC]/80 font-medium">
-                  No monthly fees. No vendor lock-in. No disappearing after launch.
+                  No monthly fees. No vendor lock-in. No disappearing after
+                  launch.
                 </p>
               </div>
 
@@ -404,7 +458,10 @@ export default function HomePage() {
                   </div>
                   <div className="flex gap-4 pt-4 border-t border-[#FBFFFC]/08">
                     {build.stats.map((s, j) => (
-                      <p key={j} className="font-body text-sm font-semibold text-[#FBFFFC]/70">
+                      <p
+                        key={j}
+                        className="font-body text-sm font-semibold text-[#FBFFFC]/70"
+                      >
                         {s}
                       </p>
                     ))}
@@ -419,29 +476,45 @@ export default function HomePage() {
       {/* ══════════════════════════════════════════════════════════════════════
           SECTION 5 — HOW IT WORKS
       ══════════════════════════════════════════════════════════════════════ */}
-      <section className="py-24 sm:py-28 lg:py-36 bg-[#FBFFFC] overflow-hidden" id="how-it-works">
+      <section
+        className="py-24 sm:py-28 lg:py-36 bg-[#FBFFFC] overflow-hidden"
+        id="how-it-works"
+      >
         <div className="max-w-6xl mx-auto px-5 sm:px-6 lg:px-10">
-
           {/* Header — split layout */}
           <div className="grid lg:grid-cols-[1fr_380px] gap-10 lg:gap-20 items-end mb-20 sm:mb-24">
-            <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
               <SectionLabel>The Process</SectionLabel>
               <h2 className="font-display text-[clamp(2.2rem,5vw,4rem)] font-semibold leading-[1.04] text-[#0F0F0F]">
-                7 days.<br />No surprises.
+                7 days.
+                <br />
+                No surprises.
               </h2>
             </motion.div>
             <motion.p
-              variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
               className="font-body text-base sm:text-lg text-[#0F0F0F]/45 leading-[1.8] lg:pb-2"
             >
-              No scope creep. No "two more weeks." Every build follows the same focused process — refined across every platform I've shipped.
+              No scope creep. No "two more weeks." Every build follows the same
+              focused process — refined across every platform I've shipped.
             </motion.p>
           </div>
 
           {/* Steps — vertical rail */}
           <div className="relative">
             {/* Vertical line */}
-            <div aria-hidden className="absolute left-[19px] sm:left-[23px] top-0 bottom-0 w-px bg-gradient-to-b from-[#14A714]/40 via-[#14A714]/15 to-transparent" />
+            <div
+              aria-hidden
+              className="absolute left-[19px] sm:left-[23px] top-0 bottom-0 w-px bg-gradient-to-b from-[#14A714]/40 via-[#14A714]/15 to-transparent"
+            />
 
             <div className="flex flex-col gap-0">
               {PROCESS_STEPS.map((step, i) => (
@@ -457,7 +530,9 @@ export default function HomePage() {
                   {/* Step dot */}
                   <div className="flex flex-col items-center">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#06382C] border border-[rgba(20,167,20,0.3)] flex items-center justify-center flex-shrink-0 relative z-10 group-hover:border-[#14A714] transition-colors duration-300">
-                      <span className="font-display text-sm font-bold text-[#14A714]">{i + 1}</span>
+                      <span className="font-display text-sm font-bold text-[#14A714]">
+                        {i + 1}
+                      </span>
                     </div>
                   </div>
 
@@ -487,18 +562,32 @@ export default function HomePage() {
 
           {/* Ownership transfer — premium card */}
           <motion.div
-            variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
             className="mt-20 sm:mt-24 relative overflow-hidden rounded-3xl bg-[#06382C]"
             style={{ boxShadow: "0 40px 80px rgba(6,56,44,0.25)" }}
           >
             {/* Subtle grid texture */}
-            <div aria-hidden className="absolute inset-0 opacity-[0.04]" style={{
-              backgroundImage: "linear-gradient(rgba(251,255,252,1) 1px, transparent 1px), linear-gradient(90deg, rgba(251,255,252,1) 1px, transparent 1px)",
-              backgroundSize: "48px 48px",
-            }} />
+            <div
+              aria-hidden
+              className="absolute inset-0 opacity-[0.04]"
+              style={{
+                backgroundImage:
+                  "linear-gradient(rgba(251,255,252,1) 1px, transparent 1px), linear-gradient(90deg, rgba(251,255,252,1) 1px, transparent 1px)",
+                backgroundSize: "48px 48px",
+              }}
+            />
             {/* Glow */}
-            <div aria-hidden className="absolute -top-20 -right-20 w-80 h-80 rounded-full blur-3xl opacity-20"
-              style={{ background: "radial-gradient(circle, rgba(20,167,20,0.6) 0%, transparent 70%)" }} />
+            <div
+              aria-hidden
+              className="absolute -top-20 -right-20 w-80 h-80 rounded-full blur-3xl opacity-20"
+              style={{
+                background:
+                  "radial-gradient(circle, rgba(20,167,20,0.6) 0%, transparent 70%)",
+              }}
+            />
 
             <div className="relative p-8 sm:p-10 lg:p-14">
               <div className="grid lg:grid-cols-[1fr_auto] gap-8 lg:gap-16 items-start">
@@ -510,7 +599,9 @@ export default function HomePage() {
                     Everything transfers to you. No exceptions.
                   </h3>
                   <p className="font-body text-sm sm:text-base text-[#FBFFFC]/45 leading-[1.8] max-w-lg">
-                    On day 7 you get a live platform and complete ownership of every piece of it. No recurring fees. No dependency on me to keep it running.
+                    On day 7 you get a live platform and complete ownership of
+                    every piece of it. No recurring fees. No dependency on me to
+                    keep it running.
                   </p>
                 </div>
                 <a
@@ -530,37 +621,52 @@ export default function HomePage() {
                     <div className="w-5 h-5 rounded-full bg-[#14A714]/15 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <Check className="w-3 h-3 text-[#14A714]" />
                     </div>
-                    <span className="font-body text-sm text-[#FBFFFC]/60 leading-[1.6]">{item}</span>
+                    <span className="font-body text-sm text-[#FBFFFC]/60 leading-[1.6]">
+                      {item}
+                    </span>
                   </div>
                 ))}
               </div>
             </div>
           </motion.div>
-
         </div>
       </section>
 
       {/* ══════════════════════════════════════════════════════════════════════
           SECTION 6 — BUILDS / CASE STUDIES
       ══════════════════════════════════════════════════════════════════════ */}
-      <section className="py-24 sm:py-28 lg:py-36 bg-[#06382C] overflow-hidden" id="builds">
+      <section
+        className="py-24 sm:py-28 lg:py-36 bg-[#06382C] overflow-hidden"
+        id="builds"
+      >
         <div className="max-w-6xl mx-auto px-5 sm:px-6 lg:px-10">
-
           {/* Header */}
           <div className="grid lg:grid-cols-[1fr_auto] gap-6 items-end mb-16 sm:mb-20">
-            <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
               <SectionLabel>The Work</SectionLabel>
               <h2 className="font-display text-[clamp(2.2rem,5vw,3.8rem)] font-semibold leading-[1.06] text-[#FBFFFC]">
-                Built for creators who were<br className="hidden sm:block" /> done compromising.
+                Built for creators who were
+                <br className="hidden sm:block" /> done compromising.
               </h2>
             </motion.div>
             <motion.a
-              variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
               href="/builds"
               className="flex-shrink-0 inline-flex items-center gap-2 font-body text-sm font-semibold text-[#FBFFFC]/50 hover:text-[#FBFFFC] transition-colors group"
             >
               View all builds
-              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              <ArrowRight
+                size={14}
+                className="group-hover:translate-x-1 transition-transform"
+              />
             </motion.a>
           </div>
 
@@ -574,7 +680,10 @@ export default function HomePage() {
                 whileInView="visible"
                 viewport={{ once: true, margin: "-40px" }}
                 className="group relative rounded-3xl overflow-hidden border border-[#FBFFFC]/08 hover:border-[#FBFFFC]/18 transition-colors duration-300"
-                style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)" }}
+                style={{
+                  background:
+                    "linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)",
+                }}
               >
                 <div className="grid lg:grid-cols-[1fr_420px]">
                   {/* Left — identity + stats */}
@@ -583,7 +692,10 @@ export default function HomePage() {
                     <span
                       aria-hidden
                       className="absolute -bottom-4 -left-2 font-display font-bold text-[#FBFFFC] select-none pointer-events-none leading-none"
-                      style={{ fontSize: "clamp(7rem,18vw,14rem)", opacity: 0.03 }}
+                      style={{
+                        fontSize: "clamp(7rem,18vw,14rem)",
+                        opacity: 0.03,
+                      }}
                     >
                       {String(i + 1).padStart(2, "0")}
                     </span>
@@ -637,7 +749,9 @@ export default function HomePage() {
                             <div className="w-5 h-5 rounded-full bg-[rgba(20,167,20,0.08)] flex items-center justify-center flex-shrink-0">
                               <Check className="w-3 h-3 text-[#14A714]" />
                             </div>
-                            <span className="font-body text-sm text-[#0F0F0F]/70">{f}</span>
+                            <span className="font-body text-sm text-[#0F0F0F]/70">
+                              {f}
+                            </span>
                           </li>
                         ))}
                       </ul>
@@ -650,14 +764,16 @@ export default function HomePage() {
                       <span className="font-body text-sm font-semibold text-[#0F0F0F]">
                         View full case study
                       </span>
-                      <ArrowRight size={15} className="text-[#0F0F0F]/30 group-hover/btn:text-[#14A714] group-hover/btn:translate-x-1 transition-all duration-200" />
+                      <ArrowRight
+                        size={15}
+                        className="text-[#0F0F0F]/30 group-hover/btn:text-[#14A714] group-hover/btn:translate-x-1 transition-all duration-200"
+                      />
                     </a>
                   </div>
                 </div>
               </motion.div>
             ))}
           </div>
-
         </div>
       </section>
 
@@ -726,7 +842,8 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="font-body text-sm text-[#0F0F0F]/35 text-center"
           >
-            If you're still building your audience or validating your offer, I'm not the right builder yet. Come back when you're ready.
+            If you're still building your audience or validating your offer, I'm
+            not the right builder yet. Come back when you're ready.
           </motion.p>
         </div>
       </section>
@@ -762,20 +879,28 @@ export default function HomePage() {
       ══════════════════════════════════════════════════════════════════════ */}
       <section className="py-24 sm:py-28 bg-[#06382C] overflow-hidden">
         <div className="max-w-6xl mx-auto px-5 sm:px-6 lg:px-10">
-
           {/* Header */}
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-20 items-end mb-14 sm:mb-16">
-            <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
               <SectionLabel>The Stack</SectionLabel>
               <h2 className="font-display text-[clamp(2rem,4.5vw,3.4rem)] font-semibold leading-[1.06] text-[#FBFFFC]">
                 Technology your next developer will respect.
               </h2>
             </motion.div>
             <motion.p
-              variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
               className="font-body text-base text-[#FBFFFC]/40 leading-[1.8] lg:pb-1"
             >
-              No proprietary tools. No platforms you'll be locked into. Every piece is industry standard — and fully yours on day 7.
+              No proprietary tools. No platforms you'll be locked into. Every
+              piece is industry standard — and fully yours on day 7.
             </motion.p>
           </div>
 
@@ -805,7 +930,10 @@ export default function HomePage() {
 
           {/* Bottom note */}
           <motion.div
-            variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
             className="flex items-center gap-3"
           >
             <div className="h-px flex-1 bg-[#FBFFFC]/06" />
@@ -814,7 +942,6 @@ export default function HomePage() {
             </p>
             <div className="h-px flex-1 bg-[#FBFFFC]/06" />
           </motion.div>
-
         </div>
       </section>
 
@@ -823,20 +950,29 @@ export default function HomePage() {
       ══════════════════════════════════════════════════════════════════════ */}
       <section className="py-24 sm:py-28 lg:py-32 bg-[#FBFFFC] overflow-hidden">
         <div className="max-w-6xl mx-auto px-5 sm:px-6 lg:px-10">
-
           {/* Header */}
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-20 items-end mb-14 sm:mb-16">
-            <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
               <SectionLabel>The Deliverables</SectionLabel>
               <h2 className="font-display text-[clamp(2rem,4.5vw,3.4rem)] font-semibold leading-[1.06] text-[#0F0F0F]">
                 Everything you receive on day 7. No ambiguity.
               </h2>
             </motion.div>
             <motion.p
-              variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
               className="font-body text-base text-[#0F0F0F]/45 leading-[1.8] lg:pb-1"
             >
-              Most builders hand you a link and disappear. You get a live platform and complete ownership of every piece of it — documented, transferred, and yours.
+              Most builders hand you a link and disappear. You get a live
+              platform and complete ownership of every piece of it — documented,
+              transferred, and yours.
             </motion.p>
           </div>
 
@@ -903,7 +1039,10 @@ export default function HomePage() {
 
           {/* Plus 14-day support callout */}
           <motion.div
-            variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
             className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-[rgba(20,167,20,0.05)] border border-[rgba(20,167,20,0.12)] rounded-xl px-6 py-5"
           >
             <div className="flex items-center gap-3">
@@ -911,8 +1050,12 @@ export default function HomePage() {
                 <Check className="w-4 h-4 text-[#14A714]" />
               </div>
               <div>
-                <p className="font-display text-sm font-semibold text-[#0F0F0F]">14 days post-launch support included</p>
-                <p className="font-body text-xs text-[#0F0F0F]/40 mt-0.5">Fixes, tweaks, and questions — covered. No extra charge.</p>
+                <p className="font-display text-sm font-semibold text-[#0F0F0F]">
+                  14 days post-launch support included
+                </p>
+                <p className="font-body text-xs text-[#0F0F0F]/40 mt-0.5">
+                  Fixes, tweaks, and questions — covered. No extra charge.
+                </p>
               </div>
             </div>
             <a
@@ -922,10 +1065,12 @@ export default function HomePage() {
               className="flex-shrink-0 inline-flex items-center gap-2 font-body text-sm font-semibold text-[#14A714] hover:gap-3 transition-all duration-200 group"
             >
               Let's Talk
-              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              <ArrowRight
+                size={14}
+                className="group-hover:translate-x-1 transition-transform"
+              />
             </a>
           </motion.div>
-
         </div>
       </section>
 
@@ -934,28 +1079,46 @@ export default function HomePage() {
       ══════════════════════════════════════════════════════════════════════ */}
       <section className="py-16 sm:py-20 bg-[#FBFFFC]">
         <div className="max-w-[1600px] mx-auto px-4 sm:px-5 lg:px-8">
-
           {/* Card */}
           <motion.div
-            variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
             className="relative rounded-3xl overflow-hidden bg-[#06382C]"
-            style={{ boxShadow: "0 32px 80px rgba(6,56,44,0.22), 0 0 0 1px rgba(20,167,20,0.08)" }}
+            style={{
+              boxShadow:
+                "0 32px 80px rgba(6,56,44,0.22), 0 0 0 1px rgba(20,167,20,0.08)",
+            }}
           >
             {/* Grid texture */}
-            <div aria-hidden className="absolute inset-0 opacity-[0.04]" style={{
-              backgroundImage: "linear-gradient(rgba(251,255,252,1) 1px, transparent 1px), linear-gradient(90deg, rgba(251,255,252,1) 1px, transparent 1px)",
-              backgroundSize: "64px 64px",
-            }} />
+            <div
+              aria-hidden
+              className="absolute inset-0 opacity-[0.04]"
+              style={{
+                backgroundImage:
+                  "linear-gradient(rgba(251,255,252,1) 1px, transparent 1px), linear-gradient(90deg, rgba(251,255,252,1) 1px, transparent 1px)",
+                backgroundSize: "64px 64px",
+              }}
+            />
             {/* Top-right glow */}
-            <div aria-hidden className="absolute -top-32 -right-32 w-96 h-96 rounded-full blur-3xl pointer-events-none"
-              style={{ background: "radial-gradient(circle, rgba(20,167,20,0.18) 0%, transparent 70%)" }} />
+            <div
+              aria-hidden
+              className="absolute -top-32 -right-32 w-96 h-96 rounded-full blur-3xl pointer-events-none"
+              style={{
+                background:
+                  "radial-gradient(circle, rgba(20,167,20,0.18) 0%, transparent 70%)",
+              }}
+            />
 
             <div className="relative grid lg:grid-cols-[1fr_auto] gap-0">
               {/* Left — content */}
               <div className="p-8 sm:p-10 lg:p-14">
                 {/* Label + availability */}
                 <div className="flex items-center gap-3 mb-8">
-                  <span className="font-body text-xs font-semibold uppercase tracking-[0.18em] text-[#14A714]">Let's Build</span>
+                  <span className="font-body text-xs font-semibold uppercase tracking-[0.18em] text-[#14A714]">
+                    Let's Build
+                  </span>
                   <div className="h-px w-8 bg-[#FBFFFC]/10" />
                   <span className="inline-flex items-center gap-1.5 font-body text-[11px] text-[#FBFFFC]/30 border border-[#FBFFFC]/08 rounded-full px-2.5 py-1">
                     <span className="w-1.5 h-1.5 bg-[#14A714] rounded-full animate-pulse" />
@@ -970,13 +1133,22 @@ export default function HomePage() {
 
                 {/* Body */}
                 <p className="font-body text-sm sm:text-base text-[#FBFFFC]/40 leading-[1.85] max-w-md mb-8">
-                  Book a free 15-minute call. I'll look at your current setup and tell you exactly what a custom platform would look like for you. No pitch. No deck. No pressure.
+                  Book a free 15-minute call. I'll look at your current setup
+                  and tell you exactly what a custom platform would look like
+                  for you. No pitch. No deck. No pressure.
                 </p>
 
                 {/* Trust signals */}
                 <div className="flex flex-wrap gap-x-6 gap-y-2 mb-10">
-                  {["Response under 2 hours", "Available for new projects", "Based in Lahore · Working globally"].map((item, i) => (
-                    <span key={i} className="font-body text-xs text-[#FBFFFC]/20 flex items-center gap-1.5">
+                  {[
+                    "Response under 2 hours",
+                    "Available for new projects",
+                    "Based in Lahore · Working globally",
+                  ].map((item, i) => (
+                    <span
+                      key={i}
+                      className="font-body text-xs text-[#FBFFFC]/20 flex items-center gap-1.5"
+                    >
                       <span className="w-1 h-1 bg-[#14A714]/50 rounded-full" />
                       {item}
                     </span>
@@ -1015,15 +1187,21 @@ export default function HomePage() {
                   { n: "100%", label: "ownership\ntransferred" },
                   { n: "$0", label: "monthly\nfees" },
                 ].map((s, i) => (
-                  <div key={i} className={`text-center lg:py-6 ${i > 0 ? "border-t border-[#FBFFFC]/06" : ""}`}>
-                    <p className="font-display text-3xl sm:text-4xl font-bold text-[#FBFFFC] leading-none mb-2">{s.n}</p>
-                    <p className="font-body text-[10px] text-[#FBFFFC]/25 uppercase tracking-widest leading-[1.6] whitespace-pre-line">{s.label}</p>
+                  <div
+                    key={i}
+                    className={`text-center lg:py-6 ${i > 0 ? "border-t border-[#FBFFFC]/06" : ""}`}
+                  >
+                    <p className="font-display text-3xl sm:text-4xl font-bold text-[#FBFFFC] leading-none mb-2">
+                      {s.n}
+                    </p>
+                    <p className="font-body text-[10px] text-[#FBFFFC]/25 uppercase tracking-widest leading-[1.6] whitespace-pre-line">
+                      {s.label}
+                    </p>
                   </div>
                 ))}
               </div>
             </div>
           </motion.div>
-
         </div>
       </section>
 
@@ -1056,7 +1234,8 @@ function HeroDashboardCard() {
         aria-hidden
         className="absolute -inset-6 rounded-3xl blur-2xl opacity-40"
         style={{
-          background: "radial-gradient(ellipse at 60% 40%, rgba(20,167,20,0.25) 0%, transparent 65%)",
+          background:
+            "radial-gradient(ellipse at 60% 40%, rgba(20,167,20,0.25) 0%, transparent 65%)",
         }}
       />
 
@@ -1064,9 +1243,11 @@ function HeroDashboardCard() {
       <div
         className="relative rounded-2xl overflow-hidden"
         style={{
-          background: "linear-gradient(145deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.02) 100%)",
+          background:
+            "linear-gradient(145deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.02) 100%)",
           border: "1px solid rgba(251,255,252,0.12)",
-          boxShadow: "0 32px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(251,255,252,0.04) inset",
+          boxShadow:
+            "0 32px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(251,255,252,0.04) inset",
           backdropFilter: "blur(2px)",
         }}
       >
@@ -1087,7 +1268,9 @@ function HeroDashboardCard() {
           </div>
           <div className="flex items-center gap-1.5 bg-[#14A714]/15 rounded-full px-3 py-1">
             <span className="w-1.5 h-1.5 bg-[#14A714] rounded-full animate-pulse" />
-            <span className="font-body text-[11px] text-[#14A714] font-semibold">Live</span>
+            <span className="font-body text-[11px] text-[#14A714] font-semibold">
+              Live
+            </span>
           </div>
         </div>
 
@@ -1098,7 +1281,7 @@ function HeroDashboardCard() {
               LinkUp OS · Member Dashboard
             </p>
             <p className="font-display text-xl font-semibold text-[#FBFFFC]">
-              Welcome back, Jasmin
+              Welcome back, Ismail
             </p>
           </div>
 
@@ -1117,8 +1300,12 @@ function HeroDashboardCard() {
                 <p className="font-display text-lg font-bold text-[#FBFFFC] leading-none mb-1">
                   {s.value}
                 </p>
-                <p className="font-body text-[10px] text-[#FBFFFC]/35 mb-1">{s.label}</p>
-                <p className="font-body text-[10px] text-[#14A714] font-semibold">{s.delta}</p>
+                <p className="font-body text-[10px] text-[#FBFFFC]/35 mb-1">
+                  {s.label}
+                </p>
+                <p className="font-body text-[10px] text-[#14A714] font-semibold">
+                  {s.delta}
+                </p>
               </div>
             ))}
           </div>
@@ -1130,12 +1317,17 @@ function HeroDashboardCard() {
           >
             <div
               className="px-4 py-2.5 flex items-center justify-between"
-              style={{ borderBottom: "1px solid rgba(251,255,252,0.06)", background: "rgba(251,255,252,0.03)" }}
+              style={{
+                borderBottom: "1px solid rgba(251,255,252,0.06)",
+                background: "rgba(251,255,252,0.03)",
+              }}
             >
               <span className="font-body text-[10px] text-[#FBFFFC]/35 uppercase tracking-widest">
                 Recent Activity
               </span>
-              <span className="font-body text-[10px] text-[#14A714]">View all →</span>
+              <span className="font-body text-[10px] text-[#14A714]">
+                View all →
+              </span>
             </div>
             {[
               { name: "Sarah K.", action: "completed Module 4", time: "2m" },
@@ -1145,7 +1337,10 @@ function HeroDashboardCard() {
               <div
                 key={i}
                 className="flex items-center gap-3 px-4 py-3"
-                style={{ borderBottom: i < 2 ? "1px solid rgba(251,255,252,0.05)" : undefined }}
+                style={{
+                  borderBottom:
+                    i < 2 ? "1px solid rgba(251,255,252,0.05)" : undefined,
+                }}
               >
                 <div
                   className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 font-body text-[10px] font-bold text-[#14A714]"
@@ -1154,7 +1349,9 @@ function HeroDashboardCard() {
                   {item.name[0]}
                 </div>
                 <p className="font-body text-xs text-[#FBFFFC]/60 flex-1 truncate">
-                  <span className="text-[#FBFFFC]/80 font-medium">{item.name}</span>{" "}
+                  <span className="text-[#FBFFFC]/80 font-medium">
+                    {item.name}
+                  </span>{" "}
                   {item.action}
                 </p>
                 <span className="font-body text-[10px] text-[#FBFFFC]/25 flex-shrink-0">
@@ -1169,7 +1366,9 @@ function HeroDashboardCard() {
             <span className="font-body text-[10px] text-[#FBFFFC]/25">
               Delivered in 7 days · Full ownership transferred
             </span>
-            <span className="font-body text-[10px] font-semibold text-[#14A714]">✓</span>
+            <span className="font-body text-[10px] font-semibold text-[#14A714]">
+              ✓
+            </span>
           </div>
         </div>
       </div>
