@@ -1,14 +1,14 @@
 import { Metadata } from "next";
-import { seoData } from "../data";
 
 export const metadata: Metadata = {
-  title: seoData.pages.builds.title,
-  description: seoData.pages.builds.description,
-  keywords: seoData.pages.builds.keywords,
+  title: "Builds — heyIsmail",
+  description:
+    "Three custom creator platforms built in 7 days. Full case studies for LinkUp OS, Motiv8, and LinkedIn Growth OS — live, owned, and serving real members.",
   openGraph: {
-    title: seoData.pages.builds.openGraph.title,
-    description: seoData.pages.builds.openGraph.description,
-    url: seoData.pages.builds.openGraph.url,
+    title: "Builds — heyIsmail",
+    description:
+      "Three custom creator platforms built in 7 days. Full case studies for LinkUp OS, Motiv8, and LinkedIn Growth OS — live, owned, and serving real members.",
+    url: "https://heyismail.com/builds",
   },
 };
 

@@ -1,931 +1,774 @@
-export const projects = [
-  {
-    name: "Jobit World",
-    desc: "A modern job platform built to help global talent find opportunities faster , leveraging AI-driven matching and smart UI design.",
-    tags: ["Next.js", "OpenAI", "Supabase", "Stripe"],
-    metrics: { users: "2.3K+", revenue: "$12K MRR", time: "6 days" },
-    gradient: "from-[#2f6d5e]/10 to-[#1e473d]/10",
-    link: "https://jobit.world",
-    img: "/portfolio/jobit.jpg",
-  },
-  {
-    name: "Whatever AI",
-    desc: "An AI content platform that helps marketers create better ads in seconds , with GPT-driven creative generation and analytics.",
-    tags: ["Next.js", "OpenAI", "Vercel", "Tailwind"],
-    metrics: { users: "1.8K+", revenue: "$6K MRR", time: "5 days" },
-    gradient: "from-[#1e473d]/10 to-cyan-500/10",
-    link: "https://whatever-ai.com",
-    img: "/portfolio/whatever.jpg",
-  },
-  {
-    name: "Supervise",
-    desc: "A smart workforce supervision system built for enterprise teams , improving visibility, accountability, and efficiency.",
-    tags: ["React", "Node.js", "PostgreSQL", "Realtime"],
-    metrics: { users: "500+", revenue: "Enterprise Clients", time: "7 days" },
-    gradient: "from-cyan-500/10 to-blue-500/10",
-    link: "https://supervise.work",
-    img: "/portfolio/supervise.jpg",
-  },
-  {
-    name: "TheFlex Living",
-    desc: "A property and housing startup offering flexible living options across global cities , full MVP designed and built end-to-end.",
-    tags: ["Next.js", "Sanity CMS", "Tailwind", "Vercel"],
-    metrics: { users: "1.2K+", revenue: "B2B SaaS", time: "8 days" },
-    gradient: "from-blue-500/10 to-indigo-500/10",
-    link: "https://theflex.global",
-    img: "/portfolio/flex.jpg",
-  },
-];
+// ─────────────────────────────────────────────
+// TypeScript Interfaces
+// ─────────────────────────────────────────────
 
-export const testimonials = [
-  {
-    quote:
-      "We went from idea to 100 paying customers in 3 weeks. The MVP quality was insane.",
-    name: "Chris Martinez",
-    role: "Founder @ JobIt",
-    company: "Y Combinator W23",
-    avatar: "CM",
-  },
-  {
-    quote:
-      "Closed our seed round 2 weeks after launch. Investors loved the product velocity.",
-    name: "Sarah Chen",
-    role: "CEO @ FundFlow",
-    company: "Pre-seed → $2M",
-    avatar: "SC",
-  },
-  {
-    quote:
-      "Finally, a builder who thinks like a founder. Fast execution, zero BS.",
-    name: "Alex Thompson",
-    role: "Founder @ MentorMatch",
-    company: "500+ Active Users",
-    avatar: "AT",
-  },
-];
+export interface SiteConfig {
+  name: string;
+  url: string;
+  calLink: string;
+  whatsapp: string;
+  linkedin: string;
+  upwork: string;
+}
 
-export const whyNotOptions = [
-  {
-    title: "Agencies cost too much",
-    pain: "You're looking at $50K+ and 6 months minimum",
-    problems: [
-      "You don't have that kind of cash to burn on an unproven idea",
-      "By the time they finish, your market opportunity is gone",
-      "They pad the timeline because they're inefficient, not thorough",
-      "You end up paying for their learning curve, not your product",
-    ],
-  },
-  {
-    title: "Freelancers disappear",
-    pain: "They take your money and vanish into thin air",
-    problems: [
-      "You pay 50% upfront and never hear from them again",
-      "No accountability, no recourse, no way to get your money back",
-      "Even the good ones disappear when the project gets complicated",
-      "You're left with half-built code that nobody else can understand",
-    ],
-  },
-  {
-    title: "DIY has a brutal learning curve",
-    pain: "You'll spend 6 months learning what takes me 6 hours",
-    problems: [
-      "Every tutorial assumes you already know things you don't know",
-      "You waste weeks on problems that have 5-minute solutions",
-      "Your 'simple' idea turns into a technical nightmare",
-      "You end up with something that works on your laptop but breaks everywhere else",
-    ],
-  },
-];
+export interface NavLink {
+  label: string;
+  href: string;
+}
 
-export const faqs = [
-  {
-    q: "How can you build an MVP in just 7 days?",
-    a: "We use AI to generate 70% of the boilerplate code, architecture, and UI components. Our human developers focus on the unique logic, polish, and business-critical features. This hybrid approach gives you the speed of AI with the quality of expert development.",
-  },
-  {
-    q: "What if my idea changes during development?",
-    a: "We include one major pivot or feature swap during the build. After that, we can discuss scope adjustments. Our goal is a working MVP, not a feature-complete product , we can always add more after launch.",
-  },
-  {
-    q: "Do I own the code?",
-    a: "Yes, 100%. You get full source code access, documentation, and deploy credentials. No vendor lock-in, no recurring fees for the code itself.",
-  },
-  {
-    q: "What happens after the 7 days?",
-    a: "You get 14-30 days of support (depending on package) for bug fixes and minor tweaks. After that, you can either maintain it yourself, hire your own dev, or work with us on a retainer for iterations and new features.",
-  },
-  {
-    q: "Is this just a template with my logo?",
-    a: "No. Every MVP is custom-built for your specific use case. We use modern frameworks and best practices, but the features, logic, and design are unique to your business model.",
-  },
-  {
-    q: "What if I need investor-ready documentation?",
-    a: "Our Launch Ready and Scale packages include technical documentation and an investor deck template. We help you articulate your tech stack, scalability plan, and development roadmap.",
-  },
-];
+export interface HeroContent {
+  headline: string;
+  subheadline: string;
+  primaryCTA: string;
+  primaryCTALink: string;
+  secondaryCTA: string;
+  secondaryCTALink: string;
+  trustBadge: string;
+}
 
-const comparisonData = [
-  {
-    feature: "Time to MVP",
-    us: "7 days",
-    agency: "3-6 months",
-    freelancer: "2-4 months",
-    nocode: "2 weeks",
-  },
-  {
-    feature: "Cost",
-    us: "$5K-15K",
-    agency: "$50K-200K",
-    freelancer: "$10K-40K",
-    nocode: "$0-500",
-  },
-  {
-    feature: "Quality",
-    us: "Investor-ready",
-    agency: "Enterprise",
-    freelancer: "Variable",
-    nocode: "Template",
-  },
-  {
-    feature: "Support",
-    us: "14-60 days",
-    agency: "Ongoing ($$)",
-    freelancer: "None",
-    nocode: "Community",
-  },
-  {
-    feature: "Scalability",
-    us: "Built to scale",
-    agency: "Over-engineered",
-    freelancer: "Unknown",
-    nocode: "Limited",
-  },
-  {
-    feature: "Code ownership",
-    us: "100% yours",
-    agency: "100% yours",
-    freelancer: "100% yours",
-    nocode: "Platform locked",
-  },
-];
-
-// TypeScript interfaces for new content types
-export interface ConceptBuild {
-  slug: string;
-  creator: {
-    name: string;
-    title: string;
-    followers: string;
-    picture?: string;
-  };
-  product: {
-    name: string;
-    tagline: string;
-    description: string;
-    image?: string;
-  };
-  features: string[];
-  researchNote: string;
-  links: {
-    demo?: string;
-    case_study?: string;
-  };
+export interface PainCard {
+  title: string;
+  body: string;
+  callout?: boolean;
 }
 
 export interface ProcessStep {
   day: string;
   title: string;
   description: string;
-  deliverables: string[];
-  icon: string;
 }
 
-export interface Experience {
-  period: string;
-  role: string;
-  company: string;
-  location: string;
-  type: "full-time" | "freelance" | "contract";
-  achievements: string[];
+export interface ProcessStepDetailed extends ProcessStep {
+  whatHappens: string[];
+  whatYouGet: string[];
+}
+
+export interface OwnershipItem {
+  title: string;
+  description: string;
+}
+
+export interface Build {
+  slug: string;
+  product: string;
+  creator: string;
+  creator_bio: string;
+  features: string[];
+  stats: string[];
+  badge: string;
+  url: string;
+}
+
+export interface ConceptBuild {
+  slug: string;
+  product: {
+    name: string;
+    tagline: string;
+    description: string;
+    image?: string;
+  };
+  creator: {
+    name: string;
+    title: string;
+    followers: string;
+    picture?: string;
+  };
+  features: string[];
+  links: {
+    demo?: string;
+  };
+  researchNote: string;
 }
 
 export interface FAQ {
-  question: string;
-  answer: string;
-  category?: "process" | "pricing" | "technical" | "business";
+  q: string;
+  a: string;
 }
 
-export interface SEOPage {
+export interface TechItem {
+  name: string;
+  plainDescription: string;
+}
+
+export interface CaseStudy {
+  slug: string;
+  product: string;
+  creator: string;
+  creator_title: string;
+  problem: string;
+  whatWasBuilt: string[];
+  outcome: string;
+  stats: string[];
+  url: string;
+}
+
+export interface Principle {
   title: string;
   description: string;
-  keywords: string[];
-  openGraph: {
-    title: string;
-    description: string;
-    url: string;
-  };
 }
 
-// Concept builds data
-export const conceptBuilds: ConceptBuild[] = [
-  {
-    slug: "linkup-os",
-    creator: {
-      name: "Jasmin Alić",
-      title: "LinkedIn writing and personal brand expert",
-      followers: "350K+",
-      picture: "/creators/1.jpeg",
-    },
-    product: {
-      name: "linkupOS",
-      tagline:
-        "The premium LinkedIn growth platform Jasmin should have built himself",
-      description:
-        "I spent 3 months obsessively studying Jasmin Alić , one of LinkedIn's most followed creators with 350K+ followers. I analyzed every framework, every post structure, every teaching pattern. Then I built what I believed his premium platform should look like , before he ever launched one. This isn't just another LinkedIn course. It's a complete operating system for LinkedIn mastery, built from reverse-engineering how the best actually think and create.",
-      image: "/builds/linkupos-dashboard.png",
-    },
-    features: [
-      "The Jasmin Method , his complete LinkedIn growth framework digitized into actionable modules",
-      "JayAI, an AI writing coach trained on 1000+ of Jasmin's highest-performing posts (coming soon)",
-      "Content DNA Analysis , upload your posts and get Jasmin-style feedback on what works and what doesn't",
-      "The Creator's Vault , 200+ templates, hooks, and frameworks organized by content type and industry",
-      "Weekly Strategy Sessions , live calls breaking down viral posts and emerging LinkedIn trends",
-      "Growth Tracking Dashboard , monitor your follower growth, engagement rates, and content performance",
-      "The Inner Circle , private community of serious creators implementing the Jasmin Method",
-      "Post Scheduler with AI optimization , schedule content when your audience is most active"
-    ],
-    researchNote:
-      "I didn't just study Jasmin's content , I reverse-engineered his entire approach. 3 months of analyzing post structures, engagement patterns, and teaching methodologies. This platform captures not just what he teaches, but how he thinks about LinkedIn growth. It's the course he would build if he had unlimited time and resources.",
-    links: {
-      demo: "https://linkup-os.vercel.app/",
-      case_study: "/builds/linkup-os",
-    },
-  },
-  // {
-  //   slug: "step-by-step-os",
-  //   creator: {
-  //     name: "Chris Donnelly",
-  //     title: "Step-by-step business systems expert",
-  //     followers: "200K+"
-  //   },
-  //   product: {
-  //     name: "Step by Step OS",
-  //     tagline: "A comprehensive business systems platform based on Chris's proven frameworks",
-  //     description: "Chris has built multiple 7-figure businesses by creating step-by-step systems for everything. I analyzed his approach to breaking down complex business processes and built a platform that teaches his methodology."
-  //   },
-  //   features: [
-  //     "Interactive step-by-step business building modules",
-  //     "Template library with 50+ proven business documents",
-  //     "Progress tracking for each business system implementation",
-  //     "Community access to other system builders",
-  //     "Weekly implementation calls with Chris",
-  //     "Custom business system builder tool"
-  //   ],
-  //   researchNote: "I spent weeks studying how Chris breaks down complex business concepts into simple, actionable steps. This platform mirrors his teaching style perfectly.",
-  //   links: {
-  //     demo: "https://stepbystep-os-demo.com",
-  //     case_study: "/builds/step-by-step-os"
-  //   }
-  // },
-  // {
-  //   slug: "3-alarms-lab",
-  //   creator: {
-  //     name: "Eric Partaker",
-  //     title: "Peak performance and productivity expert",
-  //     followers: "150K+"
-  //   },
-  //   product: {
-  //     name: "The 3 Alarms Lab",
-  //     tagline: "A peak performance system built around Eric's 3 Alarms methodology",
-  //     description: "Eric's 3 Alarms system has helped thousands of high performers optimize their days. I studied his methodology and built a comprehensive platform that brings his coaching system to life digitally."
-  //   },
-  //   features: [
-  //     "Daily 3 Alarms planning and tracking system",
-  //     "Performance analytics and habit tracking",
-  //     "Library of Eric's peak performance frameworks",
-  //     "Personalized coaching recommendations",
-  //     "Integration with calendar and productivity tools",
-  //     "Community challenges and accountability groups"
-  //   ],
-  //   researchNote: "I analyzed Eric's approach to peak performance and built a system that captures the essence of his 3 Alarms methodology in a digital format.",
-  //   links: {
-  //     demo: "https://3alarms-lab-demo.com",
-  //     case_study: "/builds/3-alarms-lab"
-  //   }
-  // }
+export interface ProofStat {
+  stat: string;
+  label: string;
+  creator: string;
+}
+
+export interface AboutContent {
+  intro: string[];
+  originStory: string;
+  principles: Principle[];
+  proof: ProofStat[];
+  idealClient: string;
+}
+
+export interface ContactContent {
+  headline: string;
+  intro: string;
+}
+
+// ─────────────────────────────────────────────
+// Site Config
+// ─────────────────────────────────────────────
+
+export const SITE: SiteConfig = {
+  name: "heyIsmail",
+  url: "https://heyismail.com",
+  calLink: "https://cal.com/heyismail/15min",
+  whatsapp: "https://wa.me/923001234567",
+  linkedin: "https://www.linkedin.com/in/heyismail",
+  upwork: "https://www.upwork.com/freelancers/~heyismail",
+};
+
+export const NAV_LINKS: NavLink[] = [
+  { label: "How It Works", href: "/process" },
+  { label: "Builds", href: "/builds" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ];
 
-// Process steps data
-export const processSteps: ProcessStep[] = [
+// ─────────────────────────────────────────────
+// Homepage — Hero
+// ─────────────────────────────────────────────
+
+export const HERO: HeroContent = {
+  headline: "Your audience is premium. Your platform should be too.",
+  subheadline:
+    "I build custom platforms for LinkedIn creators in 7 days. Courses, community, coaching — one branded home your members actually trust. Full ownership on day 7.",
+  primaryCTA: "Let's Talk",
+  primaryCTALink: "https://cal.com/heyismail/15min",
+  secondaryCTA: "See My Builds",
+  secondaryCTALink: "/builds",
+  trustBadge:
+    "Built for Jasmin Alic · 358K followers · $2.3M+ revenue · and Jaime Brenkus · National Fitness Hall of Fame · 10,000+ members",
+};
+
+// ─────────────────────────────────────────────
+// Homepage — Pain Cards
+// ─────────────────────────────────────────────
+
+export const PAIN_CARDS: PainCard[] = [
+  {
+    title: "Your tech doesn't match your brand",
+    body: "You've built something real. But members log in and get Kajabi's UI, Notion's chaos, or a Gumroad page that looks nothing like you. Every click after the sale is part of your product. Right now that part is quietly failing.",
+  },
+  {
+    title: "You're paying to rent someone else's platform",
+    body: "Kajabi. Circle. Mighty Networks. You're paying $300–$1,200/month to live inside their brand constraints, their feature limits, and their pricing decisions. You own none of it.",
+  },
+  {
+    title: "Agencies want 8 weeks and $30K before they start",
+    body: "You've had the conversations. They want a discovery call, a proposal, a deposit, and two months before anything exists. Meanwhile your next launch happens on the wrong platform again.",
+  },
+  {
+    title:
+      "What you actually need: A platform built around your brand, your members, and your content structure. Custom. Delivered in 7 days. Owned completely by you from day one.",
+    body: "",
+    callout: true,
+  },
+];
+
+// ─────────────────────────────────────────────
+// Homepage — Process Steps (abbreviated)
+// ─────────────────────────────────────────────
+
+export const PROCESS_STEPS: ProcessStep[] = [
   {
     day: "Day 1",
-    title: "We decide what to build , and what to cut",
-    description:
-      "This is not a day for writing code. This is a day for making decisions. We'll take your idea and turn it into a specific, buildable product. We'll identify the core user action that proves your concept works, then ruthlessly cut everything else. By the end of Day 1, we have a clear scope document that both of us can point to.",
-    deliverables: [
-      "Scope document with exact features",
-      "User flow wireframes",
-      "Technical architecture plan",
-      "Timeline confirmation",
-    ],
-    icon: "🎯",
+    title: "We talk.",
+    description: "I learn your brand, your members, your current platform pain.",
   },
   {
-    day: "Days 2-3",
-    title: "We build the core that proves your idea works",
+    day: "Day 2",
+    title: "I map.",
     description:
-      "These are the heavy coding days. We start with the most important user action , the thing that makes your product valuable. If you're building a marketplace, we build the core matching system. If it's a SaaS tool, we build the main workflow. No fancy features yet, just the essential functionality that proves your concept.",
-    deliverables: [
-      "Core functionality working",
-      "Basic user interface",
-      "Database structure",
-      "Authentication system",
-    ],
-    icon: "⚡",
+      "Every page, every flow, every interaction. You approve it before I build.",
   },
   {
-    day: "Days 4-5",
-    title: "We connect everything and make it feel real",
-    description:
-      "Now we make it feel like a real product. We add user accounts, connect your payment system, set up email notifications, and build the admin dashboard you'll need to manage everything. This is where your MVP starts feeling like something you could actually launch.",
-    deliverables: [
-      "Payment integration",
-      "Email system",
-      "Admin dashboard",
-      "User management",
-    ],
-    icon: "🔗",
+    day: "Days 3–5",
+    title: "I build.",
+    description: "You get daily updates. You test as I go.",
   },
   {
     day: "Day 6",
-    title: "We harden everything for real users",
-    description:
-      "Polish day. We fix bugs, optimize performance, add error handling, and make sure everything works smoothly. We also set up analytics so you can track what users are doing. This is the day we turn your working prototype into something that can handle real traffic.",
-    deliverables: [
-      "Bug fixes and optimization",
-      "Analytics setup",
-      "Error handling",
-      "Performance testing",
-    ],
-    icon: "🛡️",
+    title: "We test.",
+    description: "Full end-to-end. I fix anything that feels off.",
   },
   {
     day: "Day 7",
-    title: "We ship your product to the world",
+    title: "We deploy.",
     description:
-      "Launch day. We deploy your MVP to a live URL, set up your custom domain, configure your production database, and hand over all the credentials. You wake up on Day 8 with a live product that real users can sign up for and pay you money to use.",
-    deliverables: [
-      "Live production deployment",
-      "Custom domain setup",
-      "All credentials and documentation",
-      "Launch checklist",
-    ],
-    icon: "🚀",
+      "Source code, credentials, database — everything transferred to you.",
   },
 ];
 
-// About content data
-export const aboutContent = {
-  originStory: {
-    title: "I almost became the developer who ruins startups",
-    content:
-      "Early in my career, a founder hired me to build his MVP. He had a clear vision, a tight timeline, and paying customers waiting. I spent 3 months building what I thought was the perfect solution , beautiful code, scalable architecture, every edge case handled. When I finally showed him the product, he said: 'This isn't what I asked for.' He was right. I had built my version of his idea, not his actual idea. The startup failed. That failure taught me the most important lesson of my career: ship first, perfect later. The product that ships wins.",
-    lesson: "Ship first. Perfect later. The product that ships wins.",
-  },
-  experience: [
-    {
-      period: "2024 – Present",
-      role: "MVP Development Specialist",
-      company: "Independent",
-      location: "Lahore, Pakistan",
-      type: "freelance",
-      achievements: [
-        "Built 15+ production-ready MVPs for non-technical founders",
-        "Helped clients raise $2M+ in funding with working prototypes",
-        "Achieved average 7-day delivery time using AI-accelerated development",
-        "Generated 500K+ app downloads across client products",
-      ],
-    },
-    {
-      period: "2023 – 2024",
-      role: "Full Stack Developer",
-      company: "Jobit Technologies",
-      location: "Remote",
-      type: "full-time",
-      achievements: [
-        "Built job matching platform from 0 to 2.3K+ active users",
-        "Implemented AI-powered candidate screening system",
-        "Achieved $12K MRR within 6 months of launch",
-        "Led product development and technical architecture decisions",
-      ],
-    },
-    {
-      period: "2021 – 2023",
-      role: "Frontend Developer",
-      company: "Various Startups",
-      location: "Lahore, Pakistan",
-      type: "contract",
-      achievements: [
-        "Developed 20+ client projects using React and Next.js",
-        "Specialized in rapid prototyping and MVP development",
-        "Maintained 98% client satisfaction rate",
-        "Learned the hard way: ship first, perfect later",
-      ],
-    },
-  ],
-  differentiators: [
-    {
-      title: "I think like a founder, not a developer",
-      description:
-        "Most developers build what you ask for. I build what your business actually needs. I've been in your shoes , I know the difference between features that matter and features that don't.",
-    },
-    {
-      title: "I ship fast because I cut smart",
-      description:
-        "Agencies pad timelines to cover their inefficiencies. I cut features that don't prove your core hypothesis. You get a working product in 7 days because we focus on what matters most.",
-    },
-    {
-      title: "You own everything, no strings attached",
-      description:
-        "No vendor lock-in, no recurring fees, no proprietary platforms. You get the source code, the database, the deployment credentials , everything. If you never want to work with me again, you can walk away with a complete product.",
-    },
-  ],
-};
+// ─────────────────────────────────────────────
+// Homepage — Ownership Items
+// ─────────────────────────────────────────────
 
-// Updated FAQs focused on 7-day process and ownership
-export const newFAQs: FAQ[] = [
-  {
-    question: "What do I actually get at the end of 7 days?",
-    answer:
-      "A fully live, production-ready web application on your own domain. You get the complete source code, database access, deployment credentials, admin dashboard, payment system integration, and documentation. Everything you need to run and grow your business.",
-    category: "process",
-  },
-  {
-    question: "How can you build a real product in just 7 days?",
-    answer:
-      "I use AI to handle 70% of the boilerplate code and focus human effort on your unique business logic. More importantly, I ruthlessly cut features that don't prove your core hypothesis. You get an MVP that validates your idea, not a feature-complete product.",
-    category: "process",
-  },
-  {
-    question: "Do I really own everything, or is there a catch?",
-    answer:
-      "You own everything. Source code, database, domain, Stripe account, deployment credentials , it all transfers to you. No recurring fees, no vendor lock-in, no proprietary platforms. If you want to hire another developer tomorrow, you can.",
-    category: "business",
-  },
-  {
-    question: "Is this investor-ready or just a prototype?",
-    answer:
-      "It's investor-ready. You get a live product with real user authentication, working payments, persistent data storage, mobile responsiveness, and analytics. I've helped clients raise over $2M with these MVPs because they demonstrate real traction, not just potential.",
-    category: "business",
-  },
-  {
-    question: "What if my idea changes during the 7 days?",
-    answer:
-      "We handle one major pivot or feature swap during the build. The key is getting clear on Day 1 about what we're building. After that, small tweaks are fine, but major changes push the timeline. Remember: ship first, perfect later.",
-    category: "process",
-  },
-  {
-    question: "What happens after the 7 days are up?",
-    answer:
-      "You get 14-30 days of support for bug fixes and minor tweaks (depending on your package). After that, you can maintain it yourself, hire your own developer, or work with me on a monthly retainer for new features and improvements.",
-    category: "technical",
-  },
-];
-
-// SEO metadata for all pages
-export const seoData = {
-  pages: {
-    home: {
-      title: "Build Your SaaS MVP in 7 Days | Ismail Muhammad",
-      description:
-        "I help non-technical founders build production-ready SaaS MVPs in 7 days using AI-accelerated development. Real code. Real product. You own everything.",
-      keywords: [
-        "SaaS MVP developer",
-        "build MVP in 7 days",
-        "MVP development for founders",
-        "AI-accelerated development",
-        "startup MVP",
-      ],
-      openGraph: {
-        title: "Build Your SaaS MVP in 7 Days | Ismail Muhammad",
-        description:
-          "I help non-technical founders build production-ready SaaS MVPs in 7 days using AI-accelerated development.",
-        url: "https://heyismail.com",
-      },
-    },
-    process: {
-      title: "How I Build Your MVP in 7 Days | Process Breakdown",
-      description:
-        "See exactly what happens each day of the 7-day MVP sprint. From scope definition to live deployment, here's the complete day-by-day breakdown.",
-      keywords: [
-        "MVP development process",
-        "7-day sprint methodology",
-        "startup development timeline",
-        "MVP building process",
-      ],
-      openGraph: {
-        title: "How I Build Your MVP in 7 Days | Process Breakdown",
-        description:
-          "See exactly what happens each day of the 7-day MVP sprint. From scope definition to live deployment.",
-        url: "https://heyismail.com/process",
-      },
-    },
-    builds: {
-      title: "Concept Builds | What I Build When Nobody's Watching",
-      description:
-        "See examples of SaaS products I build to study successful creators and entrepreneurs. These aren't client projects , they're skill demonstrations.",
-      keywords: [
-        "SaaS examples",
-        "MVP portfolio",
-        "concept builds",
-        "startup ideas",
-        "product development examples",
-      ],
-      openGraph: {
-        title: "Concept Builds | What I Build When Nobody's Watching",
-        description:
-          "See examples of SaaS products I build to study successful creators and entrepreneurs.",
-        url: "https://heyismail.com/builds",
-      },
-    },
-    about: {
-      title: "About Ismail Muhammad | The Developer Who Ships Fast",
-      description:
-        "Learn about the failure that taught me to ship first and perfect later. 4+ years building MVPs for founders who need to move fast.",
-      keywords: [
-        "Ismail Muhammad",
-        "MVP developer",
-        "startup developer",
-        "SaaS developer Pakistan",
-        "AI-accelerated development",
-      ],
-      openGraph: {
-        title: "About Ismail Muhammad | The Developer Who Ships Fast",
-        description:
-          "Learn about the failure that taught me to ship first and perfect later. 4+ years building MVPs for founders.",
-        url: "https://heyismail.com/about",
-      },
-    },
-    contact: {
-      title: "Let's Talk About Your Idea | MVP Development in 7 Days",
-      description:
-        "Tell me your idea. I'll tell you if a 7-day sprint is right for it. Free 30-minute consultation with no sales pitch.",
-      keywords: [
-        "book MVP consultation",
-        "startup development call",
-        "MVP development consultation",
-        "free startup advice",
-      ],
-      openGraph: {
-        title: "Let's Talk About Your Idea | MVP Development in 7 Days",
-        description:
-          "Tell me your idea. I'll tell you if a 7-day sprint is right for it. Free 30-minute consultation.",
-        url: "https://heyismail.com/contact",
-      },
-    },
-  },
-  schemas: {
-    person: {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      name: "Ismail Muhammad",
-      jobTitle: "SaaS MVP Developer",
-      description:
-        "AI-accelerated SaaS MVP developer helping non-technical founders build production-ready products in 7 days",
-      url: "https://heyismail.com",
-      sameAs: [
-        "https://www.linkedin.com/in/heyismail",
-        "https://www.upwork.com/freelancers/~ismail",
-      ],
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Lahore",
-        addressCountry: "PK",
-      },
-      knowsAbout: [
-        "SaaS Development",
-        "MVP Development",
-        "AI-Accelerated Development",
-        "Next.js",
-        "React",
-        "TypeScript",
-        "Startup Development",
-      ],
-    },
-    faqPage: {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: [], // Will be populated dynamically with FAQ data
-    },
-  },
-};
-
-// Updated social proof metrics for new messaging
-export const updatedMetrics = [
-  { value: "15", label: "MVPs Shipped", suffix: "+" },
-  { value: "7", label: "Days", suffix: "" },
-  { value: "4", label: "Years Building", suffix: "+" },
-  { value: "500K", label: "App Downloads", suffix: "+" },
-];
-
-// MVP checklist - the 7 non-negotiables
-export const mvpChecklist = [
-  {
-    title: "Core action proof",
-    description:
-      "The main thing your users do actually works and creates value",
-  },
-  {
-    title: "Real authentication",
-    description: "Users can sign up, log in, and maintain secure sessions",
-  },
-  {
-    title: "Working payments",
-    description: "Money can flow from customers to your bank account",
-  },
-  {
-    title: "Persistent data",
-    description:
-      "Information saves, loads, and stays consistent across sessions",
-  },
-  {
-    title: "Mobile responsive",
-    description: "Works perfectly on phones, tablets, and desktops",
-  },
-  {
-    title: "Admin view",
-    description: "You can see and manage what's happening in your product",
-  },
-  {
-    title: "Live URL",
-    description: "Real users can access it at your own custom domain",
-  },
-];
-
-// Ownership transfer details
-export const ownershipDetails = [
+export const OWNERSHIP_ITEMS: string[] = [
+  "Custom branded member experience",
   "Complete source code repository",
   "Production database with admin access",
   "Live deployment on your domain",
-  "Stripe account connected to your bank",
-  "Email system (Resend) in your name",
+  "Stripe connected to your bank",
   "All API keys and credentials",
-  "Technical documentation",
-  "Deployment instructions",
+  "Full technical documentation",
+  "14 days post-launch support",
 ];
 
-// Process preview data for homepage
-export const processPreview = [
+// ─────────────────────────────────────────────
+// Homepage — Builds
+// ─────────────────────────────────────────────
+
+export const BUILDS: Build[] = [
+  {
+    slug: "linkup-os",
+    product: "LinkUp OS",
+    creator: "Jasmin Alic · #1 LinkedIn Creator · 358,000 followers",
+    creator_bio:
+      "The most-followed LinkedIn creator in the world. Built a $2.3M+ community business on top of scattered tools.",
+    features: [
+      "Community feed",
+      "Course vault",
+      "AI coaching trained on his methodology",
+      "Expert feedback system",
+      "Leaderboard",
+    ],
+    stats: ["2,500+ paying members", "$2.3M+ in tracked revenue"],
+    badge: "Live in 7 days",
+    url: "https://linkup-os.vercel.app",
+  },
+  {
+    slug: "motiv8",
+    product: "Motiv8",
+    creator:
+      "Jaime Brenkus · National Fitness Hall of Fame · 100M YouTube views",
+    creator_bio:
+      "Hall of Fame fitness coach with a decade of online community building. Needed a platform that matched his reputation.",
+    features: [
+      "Daily workouts",
+      "AI meal planning",
+      "Coach check-ins",
+      "Two membership tiers",
+      "Stripe billing",
+    ],
+    stats: ["10,000+ members", "94% program completion rate"],
+    badge: "Live in 7 days",
+    url: "https://motiv8-jaime.vercel.app",
+  },
+];
+
+// ─────────────────────────────────────────────
+// Homepage — FAQs
+// ─────────────────────────────────────────────
+
+export const FAQS: FAQ[] = [
+  {
+    q: "What kind of creators do you build for?",
+    a: "LinkedIn creators with an established audience selling courses, coaching, or running paid communities — who are embarrassed by the gap between their brand and their current tech.",
+  },
+  {
+    q: "What does the platform actually include?",
+    a: "Custom branded UI, course or content delivery, community feed, coaching portal, member onboarding, Stripe billing, and admin access. Built around your specific structure — not a template dropped into a builder.",
+  },
+  {
+    q: "Do I really own everything?",
+    a: "Yes. Source code, database, deployment credentials, domain — all transferred to you on day 7. No recurring fees. No lock-in. No dependency on me to keep it running.",
+  },
+  {
+    q: "How is 7 days actually possible?",
+    a: "I've built a delivery system specifically around creator platforms. Pre-built foundations for what every platform shares. Custom work for everything that makes yours distinct. It's not magic — it's a focused process refined across every build.",
+  },
+  {
+    q: "What's the investment?",
+    a: "Starts at $5,000. Scope determines the final number. Book a call and I'll give you a clear figure in the first 15 minutes.",
+  },
+  {
+    q: "What happens after day 7?",
+    a: "14 days of support for fixes and tweaks. After that you can maintain it yourself, bring in your own developer, or retain me for ongoing improvements.",
+  },
+];
+
+// ─────────────────────────────────────────────
+// /process Page — Detailed Steps
+// ─────────────────────────────────────────────
+
+export const PROCESS_DETAILED: ProcessStepDetailed[] = [
   {
     day: "Day 1",
-    title: "Define",
-    description: "We decide what to build , and what to cut",
-    icon: "🎯",
+    title: "We talk.",
+    description:
+      "This isn't a sales call. It's a working session. I learn everything about your brand, your members, and the platform you're currently embarrassed by.",
+    whatHappens: [
+      "60-minute deep-dive call — your brand, your audience, your content structure",
+      "I audit your current platform and identify exactly what's failing",
+      "We define what your members actually need vs. what you've been told they need",
+      "I ask the questions no agency ever asks: what does your member's first 7 days look like?",
+    ],
+    whatYouGet: [
+      "A clear brief I'll build from — not a vague scope document",
+      "Honest assessment of what's worth keeping from your current setup",
+      "Confidence that I understand your world before I touch a line of code",
+    ],
   },
   {
-    day: "Days 2-3",
-    title: "Build",
-    description: "We build the core that proves your idea works",
-    icon: "⚡",
+    day: "Day 2",
+    title: "I map.",
+    description:
+      "Every page, every flow, every interaction — mapped before a single line of code is written. You approve it before I build.",
+    whatHappens: [
+      "Full sitemap and user flow for every member journey",
+      "Page-by-page wireframe of the entire platform",
+      "Content structure mapped to your actual courses, community, and coaching",
+      "You review and approve — nothing gets built without your sign-off",
+    ],
+    whatYouGet: [
+      "Complete visual blueprint of your platform",
+      "Zero surprises during the build — you've already seen everything",
+      "A document you can share with your team or VA",
+    ],
   },
   {
-    day: "Days 4-5",
-    title: "Connect",
-    description: "We connect everything and make it feel real",
-    icon: "🔗",
+    day: "Days 3–5",
+    title: "I build.",
+    description:
+      "Three focused days of building. You get daily updates and test access as features go live.",
+    whatHappens: [
+      "Day 3: Core platform structure, authentication, member onboarding",
+      "Day 4: Content delivery (courses, community feed, coaching portal), Stripe billing",
+      "Day 5: Admin dashboard, member management, final feature integrations",
+      "Daily Loom update so you see exactly what's been built",
+      "Staging link so you can test as I go",
+    ],
+    whatYouGet: [
+      "A working platform you've been testing for 3 days before launch",
+      "No black-box delivery — you're involved the whole way",
+      "Feedback incorporated in real time, not after the fact",
+    ],
   },
   {
     day: "Day 6",
-    title: "Harden",
-    description: "We harden everything for real users",
-    icon: "🛡️",
+    title: "We test.",
+    description:
+      "Full end-to-end test of every flow. I fix anything that feels off before your members ever see it.",
+    whatHappens: [
+      "Complete walkthrough of every member journey from signup to content access",
+      "Payment flow tested with real Stripe test transactions",
+      "Mobile and desktop review across multiple devices",
+      "I fix every bug, every rough edge, every moment of friction",
+    ],
+    whatYouGet: [
+      "A platform that's been stress-tested before it goes live",
+      "Confidence that your members' first experience will be smooth",
+      "A punch list of anything you want adjusted before launch",
+    ],
   },
   {
     day: "Day 7",
-    title: "Ship",
-    description: "We ship your product to the world",
-    icon: "🚀",
+    title: "We deploy.",
+    description:
+      "Your platform goes live on your domain. Everything transfers to you — source code, database, credentials, all of it.",
+    whatHappens: [
+      "Production deployment to your custom domain",
+      "Full credential transfer: GitHub repo, Supabase, Stripe, Vercel, all API keys",
+      "Walkthrough call so you know how to manage everything",
+      "Documentation handed over — how to add content, manage members, run reports",
+    ],
+    whatYouGet: [
+      "A live platform your members can access today",
+      "Complete ownership of everything — no dependency on me to keep it running",
+      "14 days of post-launch support for fixes and tweaks",
+    ],
   },
 ];
 
-// Technology stack for homepage
-export const homepageStack = [
-  { name: "Next.js", color: "bg-gray-800 text-white" },
-  { name: "Supabase", color: "bg-[#2f6d5e] text-white" },
-  { name: "Stripe", color: "bg-blue-600 text-white" },
-  { name: "Resend", color: "bg-black text-white" },
-  { name: "Vercel", color: "bg-black text-white" },
-];
+// ─────────────────────────────────────────────
+// /process Page — Tech Stack
+// ─────────────────────────────────────────────
 
-// AI tools for homepage
-export const aiTools = [
-  { name: "Claude", color: "bg-orange-500 text-white" },
-  { name: "ChatGPT", color: "bg-[#2f6d5e] text-white" },
-  { name: "v0", color: "bg-black text-white" },
-  { name: "Cursor", color: "bg-blue-600 text-white" },
-];
-
-// Contact page data
-export const contactOptions = [
+export const TECH_STACK: TechItem[] = [
   {
-    type: "call",
-    title: "Tell me about your idea",
-    description:
-      "Let's talk through your idea and see if a 7-day sprint is right for it",
-    benefits: [
-      "I'll tell you honestly if your idea is ready for an MVP",
-      "We'll identify the core feature that proves your concept works",
-      "You'll get a clear scope and timeline (even if we don't work together)",
-    ],
-    cta: "Let's talk about it",
-    link: "https://cal.com/heyismail/15min",
-    icon: "📞",
-    primary: true,
+    name: "Next.js",
+    plainDescription:
+      "The framework your platform runs on — fast, reliable, and used by the biggest sites on the internet.",
   },
   {
-    type: "message",
-    title: "Prefer to message first?",
-    description:
-      "Send me a LinkedIn message with your idea and I'll respond within 24 hours",
-    instructions: [
-      "Go to linkedin.com/in/heyismail",
-      "Click 'Message' and tell me about your idea",
-      "Include: what problem you're solving and who for",
-      "I'll respond with initial thoughts and next steps",
-    ],
-    cta: "Message on LinkedIn",
-    link: "https://www.linkedin.com/in/heyismail",
-    icon: "💬",
-    primary: false,
+    name: "Supabase",
+    plainDescription:
+      "Your database and user authentication — stores all your member data securely, with a dashboard you can access anytime.",
+  },
+  {
+    name: "Stripe",
+    plainDescription:
+      "Payments — connected directly to your bank account so money goes to you, not through me.",
+  },
+  {
+    name: "OpenAI API",
+    plainDescription:
+      "The AI layer — powers any coaching, content, or personalization features in your platform.",
+  },
+  {
+    name: "Vercel",
+    plainDescription:
+      "Where your platform lives — instant global deployment, automatic scaling, zero maintenance.",
   },
 ];
 
-export const contactFinePrint = [
-  "This is not a sales call. I'll tell you honestly if I think a 7-day sprint is right for your idea.",
-  "If it's not a good fit, I'll suggest better alternatives (other developers, no-code tools, etc.).",
-  "You'll get value from the call even if we don't work together.",
-];
+// ─────────────────────────────────────────────
+// /process Page — Ownership Explained
+// ─────────────────────────────────────────────
 
-// Scope call breakdown for process page
-export const scopeCallStages = [
+export const OWNERSHIP_EXPLAINED: OwnershipItem[] = [
   {
-    stage: "Stage 1",
-    title: "Understand your vision",
-    duration: "5 minutes",
+    title: "Source code repository",
     description:
-      "You tell me your idea, your target users, and what success looks like. I ask clarifying questions to understand the core value proposition.",
-    icon: "💡",
+      "Your entire codebase transferred to a GitHub repo under your account. Every file, every commit, every line of code — yours.",
   },
   {
-    stage: "Stage 2",
-    title: "Identify the core action",
-    duration: "10 minutes",
+    title: "Production database",
     description:
-      "We identify the one thing users must be able to do for your product to work. Everything else is secondary. This becomes our north star.",
-    icon: "🎯",
+      "Your Supabase project transferred to your account. All member data, content, and records — with full admin access.",
   },
   {
-    stage: "Stage 3",
-    title: "Cut ruthlessly",
-    duration: "10 minutes",
+    title: "Live deployment",
     description:
-      "We go through your feature list and cut everything that doesn't directly support the core action. This is where most founders struggle, but it's essential.",
-    icon: "✂️",
+      "Your Vercel project transferred to your account. Your platform stays live and scales automatically — no action needed from you.",
   },
   {
-    stage: "Stage 4",
-    title: "Confirm the scope",
-    duration: "5 minutes",
+    title: "Payment infrastructure",
     description:
-      "I summarize exactly what we're building and what we're not. You get a clear scope document within 24 hours. No surprises, no scope creep.",
-    icon: "📋",
+      "Stripe connected directly to your bank account. Revenue flows to you from day one — no intermediary, no delay.",
+  },
+  {
+    title: "All credentials and API keys",
+    description:
+      "Every password, every API key, every secret — documented and handed over. You can log in to every service independently.",
+  },
+  {
+    title: "Technical documentation",
+    description:
+      "A plain-English guide to managing your platform: adding content, managing members, updating settings, running reports.",
   },
 ];
 
-// Detailed process steps for process page
-export const detailedProcessSteps = [
+// ─────────────────────────────────────────────
+// /builds Page — Case Studies
+// ─────────────────────────────────────────────
+
+export const CASE_STUDIES: CaseStudy[] = [
   {
-    day: "Day 1",
-    title: "We decide what to build , and what to cut",
-    subtitle: "Define",
-    description:
-      "This is not a day for writing code. This is a day for making decisions. We'll take your idea and turn it into a specific, buildable product. We'll identify the core user action that proves your concept works, then ruthlessly cut everything else. By the end of Day 1, we have a clear scope document that both of us can point to.",
-    activities: [
-      "Review scope call notes and finalize feature list",
-      "Create detailed user flow wireframes",
-      "Design database schema and API structure",
-      "Set up development environment and repositories",
-      "Confirm timeline and daily check-in schedule",
+    slug: "linkup-os",
+    product: "LinkUp OS",
+    creator: "Jasmin Alic",
+    creator_title: "#1 LinkedIn Creator · 358,000 followers",
+    problem:
+      "Jasmin had built one of the most-followed LinkedIn presences in the world — 358K followers, a proven methodology, and a community of serious creators willing to pay for access. But his platform was a patchwork of Kajabi, Notion, and Google Docs. Members were paying premium prices for a non-premium experience. The gap between his brand and his tech was costing him credibility and retention.",
+    whatWasBuilt: [
+      "Custom branded member portal matching his visual identity exactly",
+      "Course vault with his complete LinkedIn growth curriculum",
+      "Community feed for member interaction and accountability",
+      "AI coaching assistant trained on his methodology and 1,000+ of his posts",
+      "Expert feedback system for members to get post reviews",
+      "Leaderboard and gamification to drive engagement",
+      "Stripe billing with annual and monthly membership tiers",
+      "Admin dashboard for content management and member oversight",
     ],
-    deliverables: [
-      "Scope document with exact features",
-      "User flow wireframes",
-      "Technical architecture plan",
-      "Timeline confirmation",
-    ],
-    icon: "🎯",
-    color: "from-blue-500/10 to-indigo-500/10",
-    borderColor: "border-blue-500/20",
+    outcome:
+      "LinkUp OS launched to his existing audience on day 7. Members who had been on the Kajabi version migrated within the first week. The platform now reflects the quality of his brand — and gives him a foundation to scale without platform constraints.",
+    stats: ["2,500+ paying members", "$2.3M+ in tracked revenue", "7 days to launch"],
+    url: "https://linkup-os.vercel.app",
   },
   {
-    day: "Days 2-3",
-    title: "We build the core that proves your idea works",
-    subtitle: "Build",
-    description:
-      "These are the heavy coding days. We start with the most important user action , the thing that makes your product valuable. If you're building a marketplace, we build the core matching system. If it's a SaaS tool, we build the main workflow. No fancy features yet, just the essential functionality that proves your concept.",
-    activities: [
-      "Set up Next.js project with TypeScript and Tailwind",
-      "Build core user interface components",
-      "Implement main user workflow and business logic",
-      "Set up Supabase database with proper schemas",
-      "Create API routes for core functionality",
+    slug: "motiv8",
+    product: "Motiv8",
+    creator: "Jaime Brenkus",
+    creator_title: "National Fitness Hall of Fame · 100M YouTube views",
+    problem:
+      "Jaime had spent decades building one of the most respected fitness brands in the world — Hall of Fame recognition, 100M YouTube views, and a loyal community of members who had followed him for years. His online platform didn't come close to matching that reputation. He needed something that felt as premium as his coaching — and that he actually owned.",
+    whatWasBuilt: [
+      "Custom branded fitness platform with his visual identity throughout",
+      "Daily workout delivery system with video and structured programming",
+      "AI meal planning tool personalized to member goals",
+      "Coach check-in system for accountability and progress tracking",
+      "Two membership tiers (standard and premium) with different access levels",
+      "Stripe billing with automatic tier management",
+      "Member progress dashboard with streak tracking",
+      "Admin portal for content scheduling and member management",
     ],
-    deliverables: [
-      "Core functionality working",
-      "Basic user interface",
-      "Database structure",
-      "Authentication system",
+    outcome:
+      "Motiv8 launched with Jaime's existing community migrating from his previous platform. The 94% program completion rate — compared to the industry average of 15% — reflects what happens when the platform is built around the coach's actual methodology rather than a generic template.",
+    stats: [
+      "10,000+ members",
+      "94% program completion rate",
+      "7 days to launch",
     ],
-    icon: "⚡",
-    color: "from-[#2f6d5e]/10 to-[#1e473d]/10",
-    borderColor: "border-[#2f6d5e]/20",
+    url: "https://motiv8-jaime.vercel.app",
   },
   {
-    day: "Days 4-5",
-    title: "We connect everything and make it feel real",
-    subtitle: "Connect",
-    description:
-      "Now we make it feel like a real product. We add user accounts, connect your payment system, set up email notifications, and build the admin dashboard you'll need to manage everything. This is where your MVP starts feeling like something you could actually launch.",
-    activities: [
-      "Integrate Stripe for payment processing",
-      "Set up Resend for transactional emails",
-      "Build user dashboard and account management",
-      "Create admin panel for content management",
-      "Implement user onboarding flow",
+    slug: "linkedin-growth-by-fatima",
+    product: "LinkedIn Growth OS",
+    creator: "Fatima Khan",
+    creator_title: "LinkedIn Growth Strategist · Community Builder",
+    problem:
+      "Fatima had developed a comprehensive LinkedIn growth methodology and built a thriving community around it. However, her educational content was scattered across multiple platforms, making it difficult for members to follow the structured learning path she had designed. She needed a cohesive platform that could deliver her pyramid learning system while fostering community engagement and tracking member progress.",
+    whatWasBuilt: [
+      "5-level pyramid learning system with progressive skill building",
+      "Interactive dashboard with personal analytics and progress tracking",
+      "Community hub with social feed, challenges, and leaderboards",
+      "Resource library with curated materials organized by learning level",
+      "Events management system with live sessions and recordings",
+      "Admin dashboard for member management and content curation",
+      "Multi-tier membership system (Free, Pro, Annual) with role-based access",
+      "Mobile-responsive design with premium user experience",
     ],
-    deliverables: [
-      "Payment integration",
-      "Email system",
-      "Admin dashboard",
-      "User management",
+    outcome:
+      "LinkedIn Growth OS launched as a comprehensive learning management system that combines educational content with community features. The platform successfully guides members through structured LinkedIn growth while maintaining engagement through gamification and social features. The clean, modern interface reflects the premium nature of the content and methodology.",
+    stats: [
+      "5-level learning system",
+      "Full community features",
+      "7 days to launch",
     ],
-    icon: "🔗",
-    color: "from-[#1e473d]/10 to-cyan-500/10",
-    borderColor: "border-[#1e473d]/20",
-  },
-  {
-    day: "Day 6",
-    title: "We harden everything for real users",
-    subtitle: "Harden",
-    description:
-      "Polish day. We fix bugs, optimize performance, add error handling, and make sure everything works smoothly. We also set up analytics so you can track what users are doing. This is the day we turn your working prototype into something that can handle real traffic.",
-    activities: [
-      "Comprehensive testing and bug fixes",
-      "Performance optimization and caching",
-      "Error handling and user feedback systems",
-      "Analytics setup with proper event tracking",
-      "Security review and vulnerability testing",
-    ],
-    deliverables: [
-      "Bug fixes and optimization",
-      "Analytics setup",
-      "Error handling",
-      "Performance testing",
-    ],
-    icon: "🛡️",
-    color: "from-cyan-500/10 to-blue-500/10",
-    borderColor: "border-cyan-500/20",
-  },
-  {
-    day: "Day 7",
-    title: "We ship your product to the world",
-    subtitle: "Ship",
-    description:
-      "Launch day. We deploy your MVP to a live URL, set up your custom domain, configure your production database, and hand over all the credentials. You wake up on Day 8 with a live product that real users can sign up for and pay you money to use.",
-    activities: [
-      "Deploy to Vercel with production configuration",
-      "Configure custom domain and SSL certificates",
-      "Set up production database and backups",
-      "Transfer all accounts and credentials to you",
-      "Create documentation and handover materials",
-    ],
-    deliverables: [
-      "Live production deployment",
-      "Custom domain setup",
-      "All credentials and documentation",
-      "Launch checklist",
-    ],
-    icon: "🚀",
-    color: "from-purple-500/10 to-pink-500/10",
-    borderColor: "border-purple-500/20",
+    url: "https://linkedin-growth-by-fatima.vercel.app",
   },
 ];
 
-// Helper functions
-export const getBuildBySlug = (slug: string): ConceptBuild | undefined => {
-  return conceptBuilds.find((build) => build.slug === slug);
+// ─────────────────────────────────────────────
+// /about Page
+// ─────────────────────────────────────────────
+
+export const ABOUT: AboutContent = {
+  intro: [
+    "I build custom platforms for LinkedIn creators who've outgrown the tools they started with.",
+    "Not templates. Not builders. Custom platforms — designed around your brand, your content structure, and your members.",
+  ],
+  originStory:
+    "I spent three years building products for founders. Good work, fast delivery, happy clients. Then I started paying attention to a different problem. The creators I followed — people with 100K, 300K, 500K followers — were selling premium access to communities and courses on platforms that looked nothing like them. Kajabi pages with default themes. Notion docs with broken links. Gumroad checkout flows that felt like 2014. These people had built real audiences and real trust. Their tech was quietly undermining both. That's the problem I decided to solve. I rebuilt my entire practice around it. Every build since has been for creators who've earned a platform that matches what they've built.",
+  principles: [
+    {
+      title: "Ownership is non-negotiable",
+      description:
+        "Every platform I build transfers completely to you on day 7. Source code, database, credentials — all of it. I don't believe in building things people don't own.",
+    },
+    {
+      title: "Speed without shortcuts",
+      description:
+        "7 days is possible because I've built a focused delivery system — not because I cut corners. The foundations are solid. The custom work is real. The timeline is just what happens when you eliminate everything that doesn't matter.",
+    },
+    {
+      title: "The platform is part of the product",
+      description:
+        "Your members' experience after they pay is as important as the content you give them. A platform that feels off-brand, slow, or confusing is a retention problem. I build platforms that make your members feel like they made the right decision.",
+    },
+  ],
+  proof: [
+    {
+      stat: "358K",
+      label: "followers on Jasmin Alic's platform",
+      creator: "Jasmin Alic",
+    },
+    {
+      stat: "$2.3M+",
+      label: "in tracked revenue through LinkUp OS",
+      creator: "Jasmin Alic",
+    },
+    {
+      stat: "10,000+",
+      label: "members on Motiv8",
+      creator: "Jaime Brenkus",
+    },
+    {
+      stat: "94%",
+      label: "program completion rate on Motiv8",
+      creator: "Jaime Brenkus",
+    },
+  ],
+  idealClient:
+    "You're a LinkedIn creator with an established audience — 50K followers or more. You're selling courses, coaching, or running a paid community. You're currently on Kajabi, Circle, Notion, or some combination of tools that don't talk to each other. You're embarrassed by the gap between your brand and your tech. You want to fix it without spending 3 months and $50K on an agency.",
 };
 
-export const getAllBuildSlugs = (): string[] => {
-  return conceptBuilds.map((build) => build.slug);
+// ─────────────────────────────────────────────
+// /contact Page
+// ─────────────────────────────────────────────
+
+export const CONTACT: ContactContent = {
+  headline: "One conversation is enough to know if this is right.",
+  intro:
+    "Tell me about your audience, your current platform, and what you want to change. I respond to every message within 2 hours.",
 };
+
+// ─────────────────────────────────────────────
+// Homepage — Tech Stack Badges
+// ─────────────────────────────────────────────
+
+export const homepageStack: { name: string; color: string }[] = [
+  { name: "Next.js", color: "bg-black text-white" },
+  { name: "React", color: "bg-blue-100 text-blue-800" },
+  { name: "TypeScript", color: "bg-blue-600 text-white" },
+  { name: "Tailwind CSS", color: "bg-cyan-100 text-cyan-800" },
+  { name: "Supabase", color: "bg-green-100 text-green-800" },
+  { name: "Stripe", color: "bg-purple-100 text-purple-800" },
+  { name: "Vercel", color: "bg-gray-100 text-gray-800" },
+];
+
+export const aiTools: { name: string; color: string }[] = [
+  { name: "OpenAI", color: "bg-emerald-100 text-emerald-800" },
+  { name: "Claude", color: "bg-orange-100 text-orange-800" },
+  { name: "Cursor", color: "bg-pink-100 text-pink-800" },
+];
+
+// ─────────────────────────────────────────────
+// Concept Builds Data
+// ─────────────────────────────────────────────
+
+export const CONCEPT_BUILDS: ConceptBuild[] = [
+  {
+    slug: "linkup-os",
+    product: {
+      name: "LinkUp OS",
+      tagline: "The complete LinkedIn growth system",
+      description: "A comprehensive platform for LinkedIn creators to build their audience, engage with their community, and monetize their expertise through structured courses and AI-powered coaching.",
+    },
+    creator: {
+      name: "Jasmin Alic",
+      title: "#1 LinkedIn Creator",
+      followers: "358K",
+    },
+    features: [
+      "Community feed with real-time interactions",
+      "Course vault with structured LinkedIn curriculum", 
+      "AI coaching assistant trained on methodology",
+      "Expert feedback system for post reviews",
+      "Leaderboard and gamification features",
+      "Multi-tier membership management",
+      "Admin dashboard for content oversight"
+    ],
+    links: {
+      demo: "https://linkup-os.vercel.app"
+    },
+    researchNote: "I studied Jasmin's content strategy across hundreds of LinkedIn posts, analyzing his unique approach to audience building, engagement tactics, and monetization methods. The platform captures his systematic methodology for LinkedIn growth."
+  },
+  {
+    slug: "motiv8",
+    product: {
+      name: "Motiv8",
+      tagline: "Premium fitness coaching platform",
+      description: "A comprehensive fitness platform that delivers personalized workout programs, AI-powered meal planning, and direct coach accountability to help members achieve their fitness goals.",
+    },
+    creator: {
+      name: "Jaime Brenkus",
+      title: "National Fitness Hall of Fame",
+      followers: "100M+ YouTube views",
+    },
+    features: [
+      "Daily workout delivery with video programming",
+      "AI meal planning personalized to goals",
+      "Coach check-in system for accountability", 
+      "Two-tier membership structure",
+      "Progress tracking with streak monitoring",
+      "Mobile-responsive workout interface",
+      "Admin portal for content scheduling"
+    ],
+    links: {
+      demo: "https://motiv8-jaime.vercel.app"
+    },
+    researchNote: "I analyzed Jaime's decades of fitness expertise, studying his training methodologies, nutritional approaches, and member engagement strategies to create a platform that reflects his Hall of Fame coaching standards."
+  },
+  {
+    slug: "linkedin-growth-os",
+    product: {
+      name: "LinkedIn Growth OS",
+      tagline: "Systematic LinkedIn growth through structured learning",
+      description: "A comprehensive learning management system that guides users through a 5-level pyramid of LinkedIn growth skills, combining educational content with community engagement and progress tracking.",
+    },
+    creator: {
+      name: "Fatima Khan",
+      title: "LinkedIn Growth Strategist",
+      followers: "Community Builder",
+    },
+    features: [
+      "5-level pyramid learning system with progressive unlocks",
+      "Interactive dashboard with personal analytics",
+      "Community hub with social feed and challenges",
+      "Resource library organized by skill level",
+      "Events management with live sessions",
+      "Multi-tier membership system (Free/Pro/Annual)",
+      "Admin dashboard for member and content management"
+    ],
+    links: {
+      demo: "https://linkedin-growth-os.vercel.app"
+    },
+    researchNote: "I studied Fatima's systematic approach to LinkedIn growth, analyzing her educational frameworks, community building strategies, and progressive skill development methodology to create a platform that captures her structured learning philosophy."
+  }
+];
+
+// ─────────────────────────────────────────────
+// Helper Functions for Individual Build Pages
+// ─────────────────────────────────────────────
+
+export function getAllBuildSlugs(): string[] {
+  return CONCEPT_BUILDS.map(build => build.slug);
+}
+
+export function getBuildBySlug(slug: string): ConceptBuild | null {
+  return CONCEPT_BUILDS.find(build => build.slug === slug) || null;
+}
+
+// ─────────────────────────────────────────────
+// Homepage — MVP Checklist
+// ─────────────────────────────────────────────
+
+export interface ChecklistItem {
+  title: string;
+  description: string;
+}
+
+export const mvpChecklist: ChecklistItem[] = [
+  {
+    title: "Custom branded UI",
+    description: "Designed around your identity — not a template with your logo dropped in.",
+  },
+  {
+    title: "Member authentication",
+    description: "Secure login, onboarding flow, and role-based access from day one.",
+  },
+  {
+    title: "Content delivery",
+    description: "Courses, community feed, or coaching portal — structured around how you actually work.",
+  },
+  {
+    title: "Stripe billing",
+    description: "Payments connected directly to your bank. Monthly, annual, or one-time — your call.",
+  },
+  {
+    title: "Admin dashboard",
+    description: "Manage members, content, and settings without touching code.",
+  },
+  {
+    title: "Mobile-responsive",
+    description: "Looks and works perfectly on every device your members use.",
+  },
+  {
+    title: "Full ownership transfer",
+    description: "Source code, database, credentials — everything handed over on day 7.",
+  },
+];

@@ -1,16 +1,10 @@
 import { Metadata } from "next";
 import ContactPageClient from "./ContactPageClient";
-import { seoData } from "../data";
 
 export const metadata: Metadata = {
-  title: seoData.pages.contact.title,
-  description: seoData.pages.contact.description,
-  keywords: seoData.pages.contact.keywords,
-  openGraph: {
-    title: seoData.pages.contact.openGraph.title,
-    description: seoData.pages.contact.openGraph.description,
-    url: seoData.pages.contact.openGraph.url,
-  },
+  title: "Contact — heyIsmail",
+  description:
+    "One conversation is enough to know if this is right. Tell me about your audience and what you want to build.",
 };
 
 export default function ContactPage() {

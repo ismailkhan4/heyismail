@@ -1,295 +1,332 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { contactOptions, contactFinePrint } from "../data";
+import { motion, type Variants } from "framer-motion";
+import { MessageCircle, Calendar, Mail, ArrowRight } from "lucide-react";
+import { CONTACT, SITE } from "../data";
 import Navigation from "../components/Navigation";
 
+// ─── Animation variants ───────────────────────────────────────────────────────
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 28 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.65, ease: [0.0, 0.0, 0.2, 1] },
+  },
+};
+
+const stagger: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1 } },
+};
+
+// ─── Contact channels ─────────────────────────────────────────────────────────
+const CHANNELS = [
+  {
+    icon: Calendar,
+    label: "Book a call",
+    description:
+      "15 minutes. I'll tell you honestly whether I can help and what it would look like.",
+    cta: "Schedule on Cal.com",
+    href: SITE.calLink,
+    primary: true,
+  },
+  {
+    icon: MessageCircle,
+    label: "WhatsApp",
+    description:
+      "Prefer async? Send me a voice note or message. I respond within 2 hours.",
+    cta: "Open WhatsApp",
+    href: SITE.whatsapp,
+    primary: false,
+  },
+  {
+    icon: Mail,
+    label: "Email",
+    description:
+      "Rather write it out? Send me an email and I'll get back to you same day.",
+    cta: "ismaeel.kheshgi@gmail.com",
+    href: "mailto:ismaeel.kheshgi@gmail.com",
+    primary: false,
+  },
+  {
+    icon: ({ size, className }: { size: number; className?: string }) => (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        className={className}
+        aria-hidden="true"
+      >
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+        <rect x="2" y="9" width="4" height="12" />
+        <circle cx="4" cy="4" r="2" />
+      </svg>
+    ),
+    label: "LinkedIn",
+    description:
+      "Follow my work, see what I'm building, or just send a connection request.",
+    cta: "Connect on LinkedIn",
+    href: SITE.linkedin,
+    primary: false,
+  },
+];
+
 export default function ContactPageClient() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-
-    const handleMouseMove = (
-      e: React.MouseEvent<Element, MouseEvent> | MouseEvent,
-    ): void => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, []);
-
-  const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
-    <div className="bg-black text-white font-sans antialiased">
-      {/* Custom Cursor Effect */}
-      {isMounted && (
-        <div
-          className="fixed w-96 h-96 pointer-events-none z-50 transition-opacity duration-300"
-          style={{
-            left: mousePosition.x - 192,
-            top: mousePosition.y - 192,
-            background:
-              "radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%)",
-            opacity: 0.6,
-          }}
-        />
-      )}
+    <div className="bg-[#FBFFFC] text-[#0F0F0F] antialiased">
+      <Navigation />
 
-      {/* Navbar */}
-      <Navigation onSectionScroll={scrollToSection} isHomePage={false} />
-
-      {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-        <div className="absolute inset-0 opacity-20">
+      {/* ══════════════════════════════════════════════════════════════════════
+          HERO — dark
+      ══════════════════════════════════════════════════════════════════════ */}
+      <section className="relative h-[100svh] min-h-[600px] max-h-[900px] flex flex-col justify-center bg-[#06382C] overflow-hidden">
+        {/* Grid texture */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 z-0">
+          <div
+            className="absolute inset-0 opacity-[0.035]"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(251,255,252,1) 1px, transparent 1px), linear-gradient(90deg, rgba(251,255,252,1) 1px, transparent 1px)",
+              backgroundSize: "80px 80px",
+            }}
+          />
           <div
             className="absolute inset-0"
             style={{
-              backgroundImage: `linear-gradient(rgba(16, 185, 129, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(16, 185, 129, 0.05) 1px, transparent 1px)`,
-              backgroundSize: "100px 100px",
+              background:
+                "radial-gradient(ellipse 70% 55% at 65% 45%, rgba(20,167,20,0.09) 0%, transparent 60%)",
             }}
           />
         </div>
 
-        <motion.div
-          className="absolute top-1/4 -left-48 w-96 h-96 bg-[#2f6d5e] rounded-full filter blur-3xl opacity-20"
-          animate={{
-            x: [0, 100, 0],
-            y: [0, -50, 0],
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 -right-48 w-96 h-96 bg-[#1e473d] rounded-full filter blur-3xl opacity-20"
-          animate={{
-            x: [0, -100, 0],
-            y: [0, 50, 0],
-          }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-        />
-
-        <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8">
+        <div className="relative z-10 max-w-5xl mx-auto px-5 sm:px-6 lg:px-10 w-full">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center"
+            initial="hidden"
+            animate="visible"
+            variants={stagger}
+            className="max-w-3xl"
           >
-            <motion.div
-              className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-full mb-8"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
-            >
-              <span className="w-2 h-2 bg-[#2f6d5e] rounded-full animate-pulse" />
-              <span className="text-sm text-gray-300">
-                No pressure, just honest advice
+            <motion.div variants={fadeUp} className="mb-7">
+              <span className="inline-flex items-center gap-2 border border-[#FBFFFC]/15 rounded-full px-4 py-2 font-body text-xs font-medium text-[#FBFFFC]/55 tracking-wide">
+                <span className="w-1.5 h-1.5 bg-[#14A714] rounded-full animate-pulse" />
+                Get in Touch
               </span>
             </motion.div>
 
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-[1.1] tracking-tight">
-              Tell me your idea.{" "}
-              <span className="bg-gradient-to-r from-[#d9e8d5] via-white to-[#1e473d] bg-clip-text text-transparent">
-                I'll tell you if a sprint is right for it.
-              </span>
-            </h1>
+            <motion.h1
+              variants={fadeUp}
+              className="font-display text-[clamp(2.6rem,6vw,5rem)] font-bold leading-[1.04] text-[#FBFFFC] mb-6 tracking-tight"
+            >
+              {CONTACT.headline}
+            </motion.h1>
 
-            <p className="text-lg md:text-xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed">
-              Not every idea needs a 7-day sprint. Some need more research, some
-              need different approaches, and some aren't ready yet. Let's figure
-              out what's right for yours.
-            </p>
+            <motion.p
+              variants={fadeUp}
+              className="font-body text-base sm:text-lg text-[#FBFFFC]/50 max-w-xl mb-10 leading-[1.8]"
+            >
+              {CONTACT.intro}
+            </motion.p>
+
+            <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
+              <a
+                href={SITE.calLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#14A714] text-[#FBFFFC] font-body font-semibold rounded-xl transition-all duration-200 hover:bg-[#129612] hover:shadow-[0_6px_28px_rgba(20,167,20,0.45)] hover:-translate-y-0.5 text-sm"
+              >
+                <Calendar size={15} />
+                Let&apos;s Talk
+              </a>
+              <a
+                href="mailto:ismaeel.kheshgi@gmail.com"
+                className="inline-flex items-center gap-2 px-6 py-3.5 border border-[#FBFFFC]/20 text-[#FBFFFC] font-body font-semibold rounded-xl transition-all duration-200 hover:bg-[#FBFFFC]/08 hover:border-[#FBFFFC]/35 text-sm"
+              >
+                <Mail size={15} />
+                Send an Email
+              </a>
+            </motion.div>
           </motion.div>
         </div>
+
+        {/* Bottom fade */}
+        <div
+          aria-hidden
+          className="absolute bottom-0 left-0 right-0 h-20 pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(to bottom, transparent, rgba(6,56,44,0.5))",
+          }}
+        />
       </section>
 
-      {/* Contact Options Section */}
-      <section className="py-32 relative border-t border-[#2f6d5e]/10">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+      {/* ══════════════════════════════════════════════════════════════════════
+          CHANNELS
+      ══════════════════════════════════════════════════════════════════════ */}
+      <section className="py-24 sm:py-32">
+        <div className="max-w-5xl mx-auto px-5 sm:px-6 lg:px-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
-            className="text-center mb-16"
+            variants={stagger}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Two ways to get started
-            </h2>
-            <p className="text-xl text-gray-400">
-              Choose what feels right for you
-            </p>
-          </motion.div>
+            <motion.div variants={fadeUp} className="mb-14 sm:mb-16">
+              <span className="font-body text-xs font-semibold uppercase tracking-[0.18em] block mb-4 text-[#14A714]">
+                Ways to Reach Me
+              </span>
+              <h2 className="font-display text-[clamp(2rem,4.5vw,3.2rem)] font-semibold leading-[1.08] text-[#0F0F0F]">
+                Pick what works for you.
+              </h2>
+            </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {contactOptions.map((option, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className={`group relative bg-gradient-to-br ${
-                  option.primary
-                    ? "from-[#2f6d5e]/10 to-[#1e473d]/10 border-[#2f6d5e]/30"
-                    : "from-white/5 to-white/[0.02] border-white/10"
-                } backdrop-blur-sm border rounded-3xl p-8 hover:border-[#2f6d5e]/50 transition-all`}
-              >
-                {option.primary && (
-                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                    <div className="px-4 py-1 bg-[#2f6d5e] text-black text-xs font-semibold rounded-full">
-                      Recommended
-                    </div>
-                  </div>
-                )}
-
-                <div className="text-center">
-                  <div className="text-5xl mb-6 group-hover:scale-110 transition-transform">
-                    {option.icon}
-                  </div>
-
-                  <h3 className="text-2xl font-bold mb-4 text-white">
-                    {option.title}
-                  </h3>
-
-                  <p className="text-gray-300 mb-8 leading-relaxed">
-                    {option.description}
-                  </p>
-
-                  {/* Benefits or Instructions */}
-                  <div className="mb-8">
-                    {option.benefits ? (
-                      <div>
-                        <h4 className="font-semibold text-white mb-4 text-left">
-                          What you'll get:
-                        </h4>
-                        <ul className="space-y-3 text-left">
-                          {option.benefits.map((benefit, j) => (
-                            <li key={j} className="flex items-start gap-3">
-                              <svg
-                                className="w-5 h-5 text-[#2f6d5e] flex-shrink-0 mt-0.5"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth={2}
-                                  d="M5 13l4 4L19 7"
-                                />
-                              </svg>
-                              <span className="text-gray-300 text-sm leading-relaxed">
-                                {benefit}
-                              </span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ) : (
-                      <div>
-                        <h4 className="font-semibold text-white mb-4 text-left">
-                          How it works:
-                        </h4>
-                        <ol className="space-y-3 text-left">
-                          {option.instructions?.map((instruction, j) => (
-                            <li key={j} className="flex items-start gap-3">
-                              <div className="w-6 h-6 bg-[#2f6d5e]/20 border border-[#2f6d5e]/30 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                                <span className="text-[#2f6d5e] text-xs font-semibold">
-                                  {j + 1}
-                                </span>
-                              </div>
-                              <span className="text-gray-300 text-sm leading-relaxed">
-                                {instruction}
-                              </span>
-                            </li>
-                          ))}
-                        </ol>
-                      </div>
-                    )}
-                  </div>
-
-                  <a
-                    href={option.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`inline-flex items-center gap-2 px-8 py-4 font-semibold transition-all ${
-                      option.primary
-                        ? "bg-[#2f6d5e] text-black hover:scale-105"
-                        : "bg-white/5 border border-white/10 text-white hover:bg-white/10"
+            <div className="grid sm:grid-cols-2 gap-5">
+              {CHANNELS.map((channel, i) => {
+                const Icon = channel.icon;
+                return (
+                  <motion.a
+                    key={i}
+                    href={channel.href}
+                    target={channel.href.startsWith("mailto") ? undefined : "_blank"}
+                    rel={channel.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
+                    variants={fadeUp}
+                    className={`group relative flex flex-col gap-5 p-8 rounded-2xl border transition-all duration-200 hover:-translate-y-0.5 ${
+                      channel.primary
+                        ? "bg-[#06382C] border-transparent hover:shadow-[0_12px_40px_rgba(6,56,44,0.25)]"
+                        : "bg-[#FBFFFC] border-[rgba(15,15,15,0.09)] hover:border-[rgba(15,15,15,0.16)] hover:shadow-[0_4px_20px_rgba(0,0,0,0.06)]"
                     }`}
                   >
-                    {option.cta}
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
+                    <div
+                      className={`w-11 h-11 rounded-xl flex items-center justify-center ${
+                        channel.primary ? "bg-[#14A714]/20" : "bg-[rgba(20,167,20,0.08)]"
+                      }`}
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      <Icon
+                        size={20}
+                        className={channel.primary ? "text-[#14A714]" : "text-[#14A714]"}
                       />
-                    </svg>
-                  </a>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                    </div>
+
+                    <div className="flex-1">
+                      <p
+                        className={`font-display text-lg font-semibold mb-2 ${
+                          channel.primary ? "text-[#FBFFFC]" : "text-[#0F0F0F]"
+                        }`}
+                      >
+                        {channel.label}
+                      </p>
+                      <p
+                        className={`font-body text-sm leading-[1.75] ${
+                          channel.primary ? "text-[#FBFFFC]/50" : "text-[#0F0F0F]/50"
+                        }`}
+                      >
+                        {channel.description}
+                      </p>
+                    </div>
+
+                    <div
+                      className={`inline-flex items-center gap-2 font-body text-sm font-semibold group-hover:gap-3 transition-all duration-200 ${
+                        channel.primary ? "text-[#14A714]" : "text-[#14A714]"
+                      }`}
+                    >
+                      {channel.cta}
+                      <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </motion.a>
+                );
+              })}
+            </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Fine Print Section */}
-      <section className="py-16 relative border-t border-[#2f6d5e]/10">
-        <div className="max-w-4xl mx-auto px-6 lg:px-8">
+      {/* ══════════════════════════════════════════════════════════════════════
+          RESPONSE PROMISE
+      ══════════════════════════════════════════════════════════════════════ */}
+      <section className="py-20 bg-[rgba(6,56,44,0.05)]">
+        <div className="max-w-5xl mx-auto px-5 sm:px-6 lg:px-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
-            className="text-center"
+            variants={stagger}
+            className="grid sm:grid-cols-3 gap-px bg-[rgba(15,15,15,0.07)] rounded-2xl overflow-hidden"
           >
-            <h3 className="text-2xl font-bold mb-6 text-white">
-              The fine print (it's actually good news)
-            </h3>
+            {[
+              { stat: "< 2 hrs", label: "Response time" },
+              { stat: "15 min", label: "Intro call length" },
+              { stat: "Honest", label: "If it's not a fit, I'll say so" },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                variants={fadeUp}
+                className="bg-[#FBFFFC] px-8 py-10 text-center"
+              >
+                <p className="font-display text-2xl sm:text-3xl font-semibold text-[#0F0F0F] mb-2">
+                  {item.stat}
+                </p>
+                <p className="font-body text-xs text-[#0F0F0F]/45 uppercase tracking-widest">
+                  {item.label}
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
 
-            <div className="space-y-4 text-gray-300">
-              {contactFinePrint.map((point, i) => (
-                <div key={i} className="flex items-start gap-3 justify-center">
-                  <svg
-                    className="w-5 h-5 text-[#2f6d5e] flex-shrink-0 mt-0.5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                  <p className="text-left max-w-2xl">{point}</p>
-                </div>
-              ))}
-            </div>
+      {/* ══════════════════════════════════════════════════════════════════════
+          FINAL CTA
+      ══════════════════════════════════════════════════════════════════════ */}
+      <section className="relative py-24 sm:py-32 bg-[#06382C] overflow-hidden">
+        <div aria-hidden className="pointer-events-none absolute inset-0 z-0">
+          <div
+            className="absolute inset-0 opacity-[0.035]"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(251,255,252,1) 1px, transparent 1px), linear-gradient(90deg, rgba(251,255,252,1) 1px, transparent 1px)",
+              backgroundSize: "80px 80px",
+            }}
+          />
+        </div>
 
-            <div className="mt-12 pt-8 border-t border-white/10">
-              <p className="text-gray-500 text-sm italic">
-                "I'd rather have an honest conversation that doesn't lead to
-                work than waste both our time with a bad fit."
-              </p>
-              <p className="text-gray-400 text-sm mt-2">— Ismail Muhammad</p>
-            </div>
+        <div className="relative z-10 max-w-3xl mx-auto px-5 sm:px-6 lg:px-10 text-center">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={stagger}
+          >
+            <motion.p
+              variants={fadeUp}
+              className="font-body text-xs font-semibold uppercase tracking-[0.18em] text-[#14A714] mb-5"
+            >
+              No pressure
+            </motion.p>
+            <motion.h2
+              variants={fadeUp}
+              className="font-display text-[clamp(2.2rem,5vw,3.8rem)] font-semibold leading-[1.06] text-[#FBFFFC] mb-6"
+            >
+              Not every idea needs a 7-day sprint. Let&apos;s figure out what yours needs.
+            </motion.h2>
+            <motion.p
+              variants={fadeUp}
+              className="font-body text-base sm:text-lg text-[#FBFFFC]/50 mb-10 max-w-xl mx-auto leading-[1.8]"
+            >
+              I&apos;d rather have an honest conversation that doesn&apos;t lead to work than waste both our time with a bad fit.
+            </motion.p>
+            <motion.div variants={fadeUp}>
+              <a
+                href={SITE.calLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-7 py-4 bg-[#14A714] text-[#FBFFFC] font-body font-semibold rounded-xl transition-all duration-200 hover:bg-[#129612] hover:shadow-[0_6px_28px_rgba(20,167,20,0.45)] hover:-translate-y-0.5"
+              >
+                Let&apos;s Talk
+                <ArrowRight size={16} />
+              </a>
+            </motion.div>
           </motion.div>
         </div>
       </section>

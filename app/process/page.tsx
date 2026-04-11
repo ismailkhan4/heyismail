@@ -1,412 +1,456 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import { detailedProcessSteps, scopeCallStages } from "../data";
+import React from "react";
+import { motion, type Variants } from "framer-motion";
+import { Check, X, ArrowRight } from "lucide-react";
+import {
+  PROCESS_DETAILED,
+  TECH_STACK,
+  OWNERSHIP_EXPLAINED,
+  SITE,
+} from "../data";
 import Navigation from "../components/Navigation";
 
-const ProcessPage = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+// ─── Animation variants ───────────────────────────────────────────────────────
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 28 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.65, ease: [0.0, 0.0, 0.2, 1] },
+  },
+};
 
-  useEffect(() => {
-    const handleMouseMove = (
-      e: React.MouseEvent<Element, MouseEvent> | MouseEvent,
-    ): void => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
+const stagger: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1 } },
+};
 
-    window.addEventListener("mousemove", handleMouseMove);
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, []);
-
+// ─── Section label ────────────────────────────────────────────────────────────
+function SectionLabel({ children, light = false }: { children: React.ReactNode; light?: boolean }) {
   return (
-    <div className="bg-black text-white font-sans antialiased">
-      {/* Custom Cursor Effect */}
-      <div
-        className="fixed w-96 h-96 pointer-events-none z-50 transition-opacity duration-300"
-        style={{
-          left: mousePosition.x - 192,
-          top: mousePosition.y - 192,
-          background:
-            "radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%)",
-          opacity: 0.6,
-        }}
-      />
+    <span className={`font-body text-xs font-semibold uppercase tracking-[0.18em] block mb-4 ${light ? "text-[#14A714]" : "text-[#14A714]"}`}>
+      {children}
+    </span>
+  );
+}
 
-      {/* Navbar */}
+// ─── Comparison data ──────────────────────────────────────────────────────────
+const COMPARISON_ROWS = [
+  {
+    label: "Timeline",
+    us: "7 days",
+    agency: "8–16 weeks",
+    freelancer: "4–8 weeks",
+  },
+  {
+    label: "Cost",
+    us: "From $5,000",
+    agency: "$30,000–$150,000",
+    freelancer: "$10,000–$40,000",
+  },
+  {
+    label: "Ownership",
+    us: "100% yours on day 7",
+    agency: "Varies — often locked in",
+    freelancer: "Depends on contract",
+  },
+  {
+    label: "Support",
+    us: "14 days post-launch",
+    agency: "Retainer required",
+    freelancer: "Hourly, if available",
+  },
+  {
+    label: "Lock-in",
+    us: "None",
+    agency: "High",
+    freelancer: "Medium",
+  },
+];
+
+export default function ProcessPage() {
+  return (
+    <div className="bg-[#FBFFFC] text-[#0F0F0F] antialiased">
       <Navigation />
 
-      {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-        <div className="absolute inset-0 opacity-20">
+      {/* ══════════════════════════════════════════════════════════════════════
+          HERO
+      ══════════════════════════════════════════════════════════════════════ */}
+      <section className="relative h-[100svh] min-h-[600px] max-h-[1000px] flex flex-col justify-center bg-[#06382C] overflow-hidden">
+        {/* Grid texture */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 z-0">
+          <div
+            className="absolute inset-0 opacity-[0.035]"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(251,255,252,1) 1px, transparent 1px), linear-gradient(90deg, rgba(251,255,252,1) 1px, transparent 1px)",
+              backgroundSize: "80px 80px",
+            }}
+          />
           <div
             className="absolute inset-0"
             style={{
-              backgroundImage: `linear-gradient(rgba(16, 185, 129, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(16, 185, 129, 0.05) 1px, transparent 1px)`,
-              backgroundSize: "100px 100px",
+              background:
+                "radial-gradient(ellipse 80% 60% at 60% 40%, rgba(20,167,20,0.08) 0%, transparent 60%)",
             }}
           />
         </div>
 
-        <motion.div
-          className="absolute top-1/4 -left-48 w-96 h-96 bg-[#2f6d5e] rounded-full filter blur-3xl opacity-20"
-          animate={{
-            x: [0, 100, 0],
-            y: [0, -50, 0],
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 -right-48 w-96 h-96 bg-[#1e473d] rounded-full filter blur-3xl opacity-20"
-          animate={{
-            x: [0, -100, 0],
-            y: [0, 50, 0],
-          }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-        />
-
-        <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
+        <div className="relative z-10 max-w-5xl mx-auto px-5 sm:px-6 lg:px-10 w-full">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center"
+            initial="hidden"
+            animate="visible"
+            variants={stagger}
+            className="max-w-3xl"
           >
-            <motion.div
-              className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-full mb-8"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
-            >
-              <span className="w-2 h-2 bg-[#2f6d5e] rounded-full animate-pulse" />
-              <span className="text-sm text-gray-300">
-                Complete transparency, no surprises
+            <motion.div variants={fadeUp} className="mb-6">
+              <span className="inline-flex items-center gap-2 border border-[#FBFFFC]/15 rounded-full px-4 py-2 font-body text-xs font-medium text-[#FBFFFC]/55 tracking-wide">
+                <span className="w-1.5 h-1.5 bg-[#14A714] rounded-full animate-pulse" />
+                The Process
               </span>
             </motion.div>
 
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-[1.1] tracking-tight">
-              You'll know exactly what's happening {/* <br /> */}
-              <span className="bg-gradient-to-r from-[#d9e8d5] via-white to-[#1e473d] bg-clip-text text-transparent">
-                every. single. day.
+            <motion.h1
+              variants={fadeUp}
+              className="font-display text-[clamp(2.6rem,6vw,5rem)] font-bold leading-[1.04] text-[#FBFFFC] mb-6 tracking-tight"
+            >
+              7 days. No surprises.
+              <br />
+              <span
+                className="text-transparent bg-clip-text"
+                style={{
+                  backgroundImage: "linear-gradient(90deg, #14A714 0%, #4fd44f 100%)",
+                }}
+              >
+                Everything yours.
               </span>
-            </h1>
+            </motion.h1>
 
-            <p className="text-lg md:text-xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed">
-              No black boxes. No "we'll figure it out as we go." Here's the
-              exact 7-day process that turns your idea into a live product that
-              real customers can use and pay for.
-            </p>
+            <motion.p
+              variants={fadeUp}
+              className="font-body text-base sm:text-lg text-[#FBFFFC]/50 max-w-xl mb-10 leading-[1.8]"
+            >
+              No black boxes. No scope creep. No "two more weeks." Here's exactly what happens across every day of the build — and what you walk away with on day 7.
+            </motion.p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <motion.div variants={fadeUp}>
               <a
-                href="https://cal.com/heyismail/15min"
+                href={SITE.calLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group px-8 py-4 bg-white text-black font-medium rounded-lg hover:scale-105 transition-all flex items-center gap-2"
+                className="inline-flex items-center gap-2 px-7 py-4 bg-[#14A714] text-[#FBFFFC] font-body font-semibold rounded-xl transition-all duration-200 hover:bg-[#129612] hover:shadow-[0_6px_28px_rgba(20,167,20,0.45)] hover:-translate-y-0.5"
               >
-                Book a Free Idea Call
-                <svg
-                  className="w-4 h-4 group-hover:translate-x-1 transition-transform"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
+                Let's Talk
+                <ArrowRight size={16} />
               </a>
-
-              <a
-                href="#scope-call"
-                className="px-8 py-4 bg-white/5 border border-white/10 text-white font-medium rounded-lg hover:bg-white/10 transition-all"
-              >
-                See the Process
-              </a>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
+
+        {/* Bottom fade */}
+        <div
+          aria-hidden
+          className="absolute bottom-0 left-0 right-0 h-20 pointer-events-none"
+          style={{ background: "linear-gradient(to bottom, transparent, rgba(6,56,44,0.6))" }}
+        />
       </section>
 
-      {/* Scope Call Section */}
-      <section
-        id="scope-call"
-        className="py-32 relative border-t border-[#2f6d5e]/10"
-      >
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Before we start: The 30-minute scope call
-            </h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              This isn't a sales pitch. It's a working session where we turn
-              your idea into a buildable plan. Here's exactly what happens in
-              those 30 minutes.
-            </p>
-          </motion.div>
+      {/* ══════════════════════════════════════════════════════════════════════
+          7-DAY PROCESS
+      ══════════════════════════════════════════════════════════════════════ */}
+      <section className="py-24 sm:py-28 lg:py-36 bg-[#FBFFFC] overflow-hidden">
+        <div className="max-w-5xl mx-auto px-5 sm:px-6 lg:px-10">
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            {scopeCallStages.map((stage, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="bg-white/5 border border-[#2f6d5e]/10 rounded-2xl p-6 hover:border-[#2f6d5e]/30 transition-all group"
-              >
-                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">
-                  {stage.icon}
-                </div>
-                <div className="text-xs text-[#2f6d5e] font-semibold mb-2 uppercase tracking-wide">
-                  {stage.stage} • {stage.duration}
-                </div>
-                <h3 className="text-lg font-bold mb-3">{stage.title}</h3>
-                <p className="text-sm text-gray-400 leading-relaxed">
-                  {stage.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center"
-          >
-            <div className="inline-block bg-gradient-to-r from-[#2f6d5e]/10 to-[#1e473d]/10 border border-[#2f6d5e]/20 rounded-2xl p-8">
-              <h3 className="text-2xl font-bold mb-3">
-                What you get after the call
-              </h3>
-              <p className="text-gray-400 mb-6 max-w-md mx-auto">
-                Within 24 hours, you'll receive a detailed scope document with
-                exactly what we're building, what we're not building, and why.
-                No surprises, no scope creep.
-              </p>
-              <a
-                href="https://cal.com/heyismail/15min"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-[#2f6d5e] text-black font-semibold rounded-lg hover:scale-105 transition-all"
-              >
-                Book Your Scope Call
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </a>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Detailed Process Steps */}
-      <section className="py-32 relative border-t border-[#2f6d5e]/10">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-20"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              The 7-day sprint breakdown
-            </h2>
-            <p className="text-xl text-gray-400">
-              Here's what happens each day, what you can expect, and what you'll
-              receive
-            </p>
-          </motion.div>
-
-          <div className="space-y-16">
-            {detailedProcessSteps.map((step, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className={`relative bg-gradient-to-br ${step.color} backdrop-blur-sm border ${step.borderColor} rounded-3xl p-8 lg:p-12 hover:border-opacity-50 transition-all group`}
-              >
-                {/* Day indicator */}
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="text-5xl group-hover:scale-110 transition-transform">
-                    {step.icon}
-                  </div>
-                  <div>
-                    <div className="text-sm text-[#2f6d5e] font-semibold uppercase tracking-wide">
-                      {step.day}
-                    </div>
-                    <div className="text-2xl font-bold text-white">
-                      {step.subtitle}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Title and description */}
-                <h3 className="text-3xl lg:text-4xl font-bold mb-6 text-white leading-tight">
-                  {step.title}
-                </h3>
-                <p className="text-lg text-gray-300 mb-8 leading-relaxed">
-                  {step.description}
-                </p>
-
-                {/* Two column layout for activities and deliverables */}
-                <div className="grid lg:grid-cols-2 gap-8">
-                  {/* Activities */}
-                  <div>
-                    <h4 className="text-xl font-bold mb-4 text-white">
-                      What happens
-                    </h4>
-                    <ul className="space-y-3">
-                      {step.activities.map((activity, j) => (
-                        <li key={j} className="flex items-start gap-3">
-                          <svg
-                            className="w-5 h-5 text-[#2f6d5e] flex-shrink-0 mt-0.5"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M9 12l2 2 4-4"
-                            />
-                          </svg>
-                          <span className="text-gray-300 text-sm leading-relaxed">
-                            {activity}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Deliverables */}
-                  <div>
-                    <h4 className="text-xl font-bold mb-4 text-white">
-                      What you get
-                    </h4>
-                    <ul className="space-y-3">
-                      {step.deliverables.map((deliverable, j) => (
-                        <li key={j} className="flex items-start gap-3">
-                          <svg
-                            className="w-5 h-5 text-[#2f6d5e] flex-shrink-0 mt-0.5"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M5 13l4 4L19 7"
-                            />
-                          </svg>
-                          <span className="text-gray-300 text-sm leading-relaxed font-semibold">
-                            {deliverable}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Bottom CTA Section */}
-      <section className="py-32 relative border-t border-[#2f6d5e]/10">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center"
-          >
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                Ready to turn your idea into reality?
+          <div className="mb-16 sm:mb-20">
+            <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+              <SectionLabel>The 7-Day Sprint</SectionLabel>
+              <h2 className="font-display text-[clamp(2.2rem,5vw,3.8rem)] font-semibold leading-[1.06] text-[#0F0F0F]">
+                What happens every day.
               </h2>
-              <p className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
-                Book a free 30-minute call. I'll tell you exactly what it would
-                take to build your MVP and whether a 7-day sprint is right for
-                your idea.
+            </motion.div>
+          </div>
+
+          {/* Vertical rail */}
+          <div className="relative">
+            <div
+              aria-hidden
+              className="absolute left-[19px] sm:left-[23px] top-0 bottom-0 w-px bg-gradient-to-b from-[#14A714]/40 via-[#14A714]/15 to-transparent"
+            />
+
+            <div className="flex flex-col gap-0">
+              {PROCESS_DETAILED.map((step, i) => (
+                <motion.div
+                  key={i}
+                  variants={fadeUp}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ delay: i * 0.07 }}
+                  className="relative grid grid-cols-[40px_1fr] sm:grid-cols-[48px_1fr] gap-x-6 sm:gap-x-8 pb-12 sm:pb-14 last:pb-0"
+                >
+                  {/* Step dot */}
+                  <div className="flex flex-col items-center">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#06382C] border border-[rgba(20,167,20,0.3)] flex items-center justify-center flex-shrink-0 relative z-10">
+                      <span className="font-display text-sm font-bold text-[#14A714]">{i + 1}</span>
+                    </div>
+                  </div>
+
+                  {/* Card */}
+                  <div className="bg-[#FBFFFC] border border-[rgba(15,15,15,0.09)] rounded-2xl p-7 sm:p-8 shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)]">
+                    <p className="font-body text-xs font-semibold uppercase tracking-[0.18em] text-[#14A714] mb-2">
+                      {step.day}
+                    </p>
+                    <h3 className="font-display text-xl sm:text-2xl font-semibold text-[#0F0F0F] mb-3 leading-snug">
+                      {step.title}
+                    </h3>
+                    <p className="font-body text-sm sm:text-base text-[#0F0F0F]/50 leading-[1.8] mb-7">
+                      {step.description}
+                    </p>
+
+                    <div className="grid sm:grid-cols-2 gap-6 pt-6 border-t border-[rgba(15,15,15,0.07)]">
+                      <div>
+                        <p className="font-body text-xs font-semibold uppercase tracking-[0.15em] text-[#0F0F0F]/35 mb-4">
+                          What happens
+                        </p>
+                        <ul className="space-y-2.5">
+                          {step.whatHappens.map((item, j) => (
+                            <li key={j} className="flex items-start gap-3">
+                              <Check className="w-4 h-4 text-[#14A714] flex-shrink-0 mt-0.5" />
+                              <span className="font-body text-sm text-[#0F0F0F]/60 leading-[1.7]">{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div>
+                        <p className="font-body text-xs font-semibold uppercase tracking-[0.15em] text-[#0F0F0F]/35 mb-4">
+                          What you get
+                        </p>
+                        <ul className="space-y-2.5">
+                          {step.whatYouGet.map((item, j) => (
+                            <li key={j} className="flex items-start gap-3">
+                              <Check className="w-4 h-4 text-[#14A714] flex-shrink-0 mt-0.5" />
+                              <span className="font-body text-sm text-[#0F0F0F]/60 leading-[1.7] font-medium">{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════════════════════
+          AGENCY COMPARISON
+      ══════════════════════════════════════════════════════════════════════ */}
+      <section className="py-24 sm:py-28 lg:py-36 bg-[rgba(6,56,44,0.05)] overflow-hidden">
+        <div className="max-w-5xl mx-auto px-5 sm:px-6 lg:px-10">
+
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mb-14 sm:mb-16">
+            <SectionLabel>Why Not an Agency</SectionLabel>
+            <h2 className="font-display text-[clamp(2rem,4.5vw,3.5rem)] font-semibold leading-[1.06] text-[#0F0F0F]">
+              How this compares.
+            </h2>
+          </motion.div>
+
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="bg-[#FBFFFC] border border-[rgba(15,15,15,0.09)] rounded-2xl overflow-hidden"
+          >
+            {/* Header row */}
+            <div className="grid grid-cols-4 border-b border-[rgba(15,15,15,0.07)]">
+              <div className="p-5 sm:p-6" />
+              {["This Service", "Agency", "Freelancer"].map((col, i) => (
+                <div
+                  key={i}
+                  className={`p-5 sm:p-6 text-center border-l border-[rgba(15,15,15,0.07)] ${i === 0 ? "bg-[rgba(6,56,44,0.04)]" : ""}`}
+                >
+                  <span className={`font-body text-sm font-semibold ${i === 0 ? "text-[#14A714]" : "text-[#0F0F0F]/40"}`}>
+                    {col}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* Data rows */}
+            {COMPARISON_ROWS.map((row, i) => (
+              <div
+                key={i}
+                className={`grid grid-cols-4 ${i < COMPARISON_ROWS.length - 1 ? "border-b border-[rgba(15,15,15,0.07)]" : ""}`}
+              >
+                <div className="p-5 sm:p-6 flex items-center">
+                  <span className="font-body text-sm font-medium text-[#0F0F0F]/50">{row.label}</span>
+                </div>
+                {[row.us, row.agency, row.freelancer].map((val, j) => (
+                  <div
+                    key={j}
+                    className={`p-5 sm:p-6 flex items-center justify-center border-l border-[rgba(15,15,15,0.07)] ${j === 0 ? "bg-[rgba(6,56,44,0.04)]" : ""}`}
+                  >
+                    <div className="flex items-center gap-2">
+                      {j === 0 ? (
+                        <Check className="w-4 h-4 text-[#14A714] flex-shrink-0" />
+                      ) : (
+                        <X className="w-4 h-4 text-[#0F0F0F]/25 flex-shrink-0" />
+                      )}
+                      <span className={`font-body text-xs sm:text-sm text-center ${j === 0 ? "text-[#0F0F0F] font-medium" : "text-[#0F0F0F]/40"}`}>
+                        {val}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════════════════════
+          OWNERSHIP MODEL
+      ══════════════════════════════════════════════════════════════════════ */}
+      <section className="py-24 sm:py-28 lg:py-36 bg-[#FBFFFC]">
+        <div className="max-w-5xl mx-auto px-5 sm:px-6 lg:px-10">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="relative overflow-hidden rounded-3xl bg-[#06382C]"
+            style={{ boxShadow: "0 40px 80px rgba(6,56,44,0.25)" }}
+          >
+            {/* Grid texture */}
+            <div aria-hidden className="absolute inset-0 opacity-[0.04]" style={{
+              backgroundImage: "linear-gradient(rgba(251,255,252,1) 1px, transparent 1px), linear-gradient(90deg, rgba(251,255,252,1) 1px, transparent 1px)",
+              backgroundSize: "48px 48px",
+            }} />
+            {/* Glow */}
+            <div aria-hidden className="absolute -top-20 -right-20 w-80 h-80 rounded-full blur-3xl opacity-20"
+              style={{ background: "radial-gradient(circle, rgba(20,167,20,0.6) 0%, transparent 70%)" }} />
+
+            <div className="relative p-8 sm:p-10 lg:p-14">
+              <SectionLabel>The Ownership Model</SectionLabel>
+              <h2 className="font-display text-[clamp(2rem,4.5vw,3.2rem)] font-semibold leading-[1.08] text-[#FBFFFC] mb-4">
+                Everything transfers to you. No exceptions.
+              </h2>
+              <p className="font-body text-base text-[#FBFFFC]/45 leading-[1.8] max-w-xl mb-12">
+                On day 7 you get a live platform and complete ownership of every piece of it. No recurring fees. No dependency on me to keep it running.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <a
-                  href="https://cal.com/heyismail/15min"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group px-10 py-5 bg-gradient-to-r from-[#2f6d5e] to-[#1e473d] text-black text-lg font-semibold rounded-xl hover:scale-105 transition-all flex items-center gap-3 shadow-lg shadow-[#2f6d5e]/25"
-                >
-                  Book a Free Idea Call
-                  <svg
-                    className="w-5 h-5 group-hover:translate-x-1 transition-transform"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17 8l4 4m0 0l-4 4m4-4H3"
-                    />
-                  </svg>
-                </a>
-
-                <div className="text-center">
-                  <p className="text-sm text-gray-500 mb-2">
-                    Or message me directly
-                  </p>
-                  <a
-                    href="https://www.linkedin.com/in/heyismail"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[#2f6d5e] hover:text-[#d9e8d5] transition-colors font-semibold"
-                  >
-                    LinkedIn: @heyismail
-                  </a>
-                </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                {OWNERSHIP_EXPLAINED.map((item, i) => (
+                  <div key={i} className="flex items-start gap-4">
+                    <div className="w-6 h-6 rounded-full bg-[#14A714]/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Check className="w-3.5 h-3.5 text-[#14A714]" />
+                    </div>
+                    <div>
+                      <p className="font-body text-sm font-semibold text-[#FBFFFC] mb-1">{item.title}</p>
+                      <p className="font-body text-sm text-[#FBFFFC]/45 leading-[1.7]">{item.description}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
-              <div className="mt-16 pt-8 border-t border-white/10">
-                <p className="text-gray-500 text-sm">
-                  No sales pitch. No pressure. Just an honest conversation about
-                  your idea and whether I can help you build it.
+      {/* ══════════════════════════════════════════════════════════════════════
+          TECH STACK
+      ══════════════════════════════════════════════════════════════════════ */}
+      <section className="py-24 sm:py-28 lg:py-36 bg-[rgba(6,56,44,0.05)]">
+        <div className="max-w-5xl mx-auto px-5 sm:px-6 lg:px-10">
+
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mb-14 sm:mb-16">
+            <SectionLabel>The Stack</SectionLabel>
+            <h2 className="font-display text-[clamp(2rem,4.5vw,3.5rem)] font-semibold leading-[1.06] text-[#0F0F0F]">
+              What your platform is built on.
+            </h2>
+            <p className="font-body text-base sm:text-lg text-[#0F0F0F]/45 leading-[1.8] max-w-xl mt-4">
+              No jargon. Here's what each piece does and why it matters to you.
+            </p>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {TECH_STACK.map((tech, i) => (
+              <motion.div
+                key={i}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.07 }}
+                className="bg-[#FBFFFC] border border-[rgba(15,15,15,0.09)] rounded-2xl p-7"
+              >
+                <h3 className="font-display text-xl font-semibold text-[#0F0F0F] mb-3">
+                  {tech.name}
+                </h3>
+                <p className="font-body text-sm text-[#0F0F0F]/50 leading-[1.8]">
+                  {tech.plainDescription}
                 </p>
-              </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════════════════════
+          FINAL CTA
+      ══════════════════════════════════════════════════════════════════════ */}
+      <section className="py-24 sm:py-28 lg:py-36 bg-[#06382C] relative overflow-hidden">
+        {/* Grid texture */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 z-0">
+          <div
+            className="absolute inset-0 opacity-[0.035]"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(251,255,252,1) 1px, transparent 1px), linear-gradient(90deg, rgba(251,255,252,1) 1px, transparent 1px)",
+              backgroundSize: "80px 80px",
+            }}
+          />
+        </div>
+
+        <div className="relative z-10 max-w-3xl mx-auto px-5 sm:px-6 lg:px-10 text-center">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <SectionLabel>Ready to Start</SectionLabel>
+            <h2 className="font-display text-[clamp(2.2rem,5vw,3.8rem)] font-semibold leading-[1.06] text-[#FBFFFC] mb-6">
+              Your members deserve a platform that matches your brand.
+            </h2>
+            <p className="font-body text-base sm:text-lg text-[#FBFFFC]/50 leading-[1.8] mb-10 max-w-xl mx-auto">
+              Book a free 15-minute call. I'll look at your current setup and tell you exactly what a custom platform would look like for you. No pitch. No pressure.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <a
+                href={SITE.calLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-7 py-4 bg-[#14A714] text-[#FBFFFC] font-body font-semibold rounded-xl transition-all duration-200 hover:bg-[#129612] hover:shadow-[0_6px_28px_rgba(20,167,20,0.45)] hover:-translate-y-0.5"
+              >
+                Let's Talk
+                <ArrowRight size={16} />
+              </a>
+              <a
+                href={SITE.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-7 py-4 border border-[#FBFFFC]/20 text-[#FBFFFC] font-body font-semibold rounded-xl transition-all duration-200 hover:bg-[#FBFFFC]/08 hover:border-[#FBFFFC]/35"
+              >
+                Message on WhatsApp
+              </a>
             </div>
           </motion.div>
         </div>
       </section>
     </div>
   );
-};
-
-export default ProcessPage;
+}

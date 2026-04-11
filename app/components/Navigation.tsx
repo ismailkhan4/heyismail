@@ -1,110 +1,182 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
+import { X } from "lucide-react";
+import { SITE } from "../data";
 
-interface NavigationProps {
-  onSectionScroll?: (section: string) => void;
-  isHomePage?: boolean;
-}
+const navItems = [
+  { name: "How It Works", href: "/process" },
+  { name: "Builds", href: "/builds" },
+  { name: "About", href: "/about" },
+  { name: "Contact", href: "/contact" },
+];
 
-const Navigation: React.FC<NavigationProps> = ({
-  onSectionScroll,
-  isHomePage = false,
-}) => {
-  const [isScrolled, setIsScrolled] = useState(false);
+export default function Navigation() {
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
+  const isHome = pathname === "/";
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const navigationItems = [
-    { name: "How It Works", href: "/process" },
-    { name: "Builds", href: "/builds" },
-    { name: "About", href: "/about" },
-    { name: "Contact", href: "/contact" },
-  ];
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileOpen]);
 
-  const handleNavClick = (item: { name: string; href: string }) => {
-    if (isHomePage && onSectionScroll) {
-      if (item.name === "How It Works") {
-        onSectionScroll("work");
-        return;
-      }
-      window.location.href = item.href;
-    } else {
-      window.location.href = item.href;
-    }
-  };
+  // Transparent with white text by default; switch to light bg once scrolled.
+  const useDarkBg = scrolled;
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={`fixed top-0 w-full z-40 transition-all duration-500 ${
-        isScrolled
-          ? "bg-black/80 backdrop-blur-xl border-b border-[#2f6d5e]/10"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-2 flex items-center justify-between">
-        <motion.div
-          className="text-xl font-semibold tracking-tight flex items-center gap-2"
-          whileHover={{ scale: 1.05 }}
-        >
-          <a href="/" className="flex items-center gap-1">
-            <span>heyIsmail</span>
-            <span className="w-2 h-2 bg-[#2f6d5e] rounded-full animate-pulse mt-2" />
+    <>
+      <motion.header
+        initial={{ y: -80, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, ease: [0.0, 0.0, 0.2, 1] }}
+        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+          useDarkBg
+            ? "bg-[#FBFFFC]/96 backdrop-blur-md border-b border-[rgba(15,15,15,0.07)] shadow-[0_1px_0_rgba(15,15,15,0.05)]"
+            : "bg-transparent"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-10 h-16 flex items-center justify-between">
+          {/* Logo */}
+          <a
+            href="/"
+            className={`font-display text-xl font-semibold tracking-tight transition-colors ${
+              useDarkBg ? "text-[#0F0F0F]" : "text-[#FBFFFC]"
+            }`}
+          >
+            heyIsmail
           </a>
-        </motion.div>
 
-        <div className="hidden md:flex items-center gap-1">
-          {navigationItems.map((item) => (
-            <button
-              key={item.name}
-              onClick={() => handleNavClick(item)}
-              className={`px-4 py-2 text-sm transition-colors cursor-pointer  ${
-                pathname === item.href
-                  ? "text-[#2f6d5e]"
-                  : "text-gray-400 hover:text-[#2f6d5e]"
+          {/* Desktop nav */}
+          <nav className="hidden md:flex items-center gap-1">
+            {navItems.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                className={`px-4 py-2 text-sm font-body rounded-lg transition-colors ${
+                  pathname === item.href
+                    ? useDarkBg
+                      ? "text-[#0F0F0F] font-medium"
+                      : "text-[#FBFFFC] font-medium"
+                    : useDarkBg
+                      ? "text-[#0F0F0F]/50 hover:text-[#0F0F0F]"
+                      : "text-[#FBFFFC]/55 hover:text-[#FBFFFC]"
+                }`}
+              >
+                {item.name}
+              </a>
+            ))}
+          </nav>
+
+          {/* Right */}
+          <div className="flex items-center gap-3">
+            <span
+              className={`hidden lg:flex items-center gap-1.5 text-xs font-body border rounded-full px-3 py-1.5 transition-colors ${
+                useDarkBg
+                  ? "text-[#0F0F0F]/50 border-[rgba(15,15,15,0.1)]"
+                  : "text-[#FBFFFC]/45 border-[#FBFFFC]/15"
               }`}
             >
-              {item.name}
+              <span className="w-1.5 h-1.5 bg-[#14A714] rounded-full animate-pulse" />
+              Available for new projects
+            </span>
+
+            <a
+              href={SITE.calLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden md:inline-flex items-center px-5 py-2.5 bg-[#14A714] text-[#FBFFFC] text-sm font-body font-semibold rounded-lg transition-all duration-200 hover:bg-[#129612] hover:shadow-[0_2px_12px_rgba(20,167,20,0.35)]"
+            >
+              Let's Talk
+            </a>
+
+            {/* Hamburger */}
+            <button
+              className="md:hidden flex flex-col gap-1.5 p-2"
+              onClick={() => setMobileOpen(true)}
+              aria-label="Open menu"
+            >
+              <span className={`block w-5 h-px transition-colors ${useDarkBg ? "bg-[#0F0F0F]" : "bg-[#FBFFFC]"}`} />
+              <span className={`block w-5 h-px transition-colors ${useDarkBg ? "bg-[#0F0F0F]" : "bg-[#FBFFFC]"}`} />
+              <span className={`block w-3.5 h-px transition-colors ${useDarkBg ? "bg-[#0F0F0F]" : "bg-[#FBFFFC]"}`} />
             </button>
-          ))}
-          <a
-            href="https://www.linkedin.com/in/heyismail"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-4 py-2 text-sm text-gray-400 hover:text-[#2f6d5e] transition-colors hover:bg-[#2f6d5e]/5"
-          >
-            I post on LinkedIn
-          </a>
-          <a
-            href="https://upwork.com/freelancers/ismailm16"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-4 py-2 text-sm text-gray-400 hover:text-[#2f6d5e] transition-colors hover:bg-[#2f6d5e]/5"
-          >
-            Hire me on Upwork
-          </a>
+          </div>
         </div>
+      </motion.header>
 
-        <a
-          href="https://cal.com/heyismail/15min"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group relative px-6 py-2.5 bg-[#2f6d5e] text-white text-sm font-semibold overflow-hidden transition-all border-2 border-transparent hover:border-[#0d3a2f]"
-        >
-          <span className="relative z-10 uppercase">Let's talk</span>
-        </a>
-      </div>
-    </motion.nav>
+      {/* Mobile overlay */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[60] bg-[#06382C] flex flex-col px-6 sm:px-8 py-10"
+          >
+            <div className="flex items-center justify-between mb-16">
+              <a
+                href="/"
+                className="font-display text-xl font-semibold text-[#FBFFFC]"
+                onClick={() => setMobileOpen(false)}
+              >
+                heyIsmail
+              </a>
+              <button
+                onClick={() => setMobileOpen(false)}
+                aria-label="Close menu"
+                className="text-[#FBFFFC]/50 hover:text-[#FBFFFC] transition-colors"
+              >
+                <X size={22} />
+              </button>
+            </div>
+
+            <nav className="flex flex-col gap-1 flex-1">
+              {navItems.map((item, i) => (
+                <motion.a
+                  key={item.name}
+                  href={item.href}
+                  initial={{ opacity: 0, x: -16 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.06 + 0.1 }}
+                  onClick={() => setMobileOpen(false)}
+                  className="font-display text-3xl font-semibold text-[#FBFFFC]/70 hover:text-[#FBFFFC] py-4 border-b border-[#FBFFFC]/08 transition-colors"
+                >
+                  {item.name}
+                </motion.a>
+              ))}
+            </nav>
+
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35 }}
+              className="mt-auto pt-8"
+            >
+              <a
+                href={SITE.calLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full text-center px-6 py-4 bg-[#14A714] text-[#FBFFFC] font-body font-semibold rounded-xl text-base hover:bg-[#129612] transition-colors"
+                onClick={() => setMobileOpen(false)}
+              >
+                Let's Talk
+              </a>
+              <p className="text-center text-[#FBFFFC]/30 text-xs font-body mt-4">
+                Response under 2 hours · Based in Lahore
+              </p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
-};
-
-export default Navigation;
+}
