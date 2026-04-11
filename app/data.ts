@@ -715,7 +715,7 @@ export const CONCEPT_BUILDS: ConceptBuild[] = [
       "Admin dashboard for member and content management"
     ],
     links: {
-      demo: "https://linkedin-growth-os.vercel.app"
+      demo: "https://linkedin-growth-by-fatima.vercel.app"
     },
     researchNote: "I studied Fatima's systematic approach to LinkedIn growth, analyzing her educational frameworks, community building strategies, and progressive skill development methodology to create a platform that captures her structured learning philosophy."
   }
