@@ -1,509 +1,268 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import { conceptBuilds } from "../data";
+import React from "react";
+import { motion, type Variants } from "framer-motion";
+import { Check, ArrowRight, ExternalLink } from "lucide-react";
+import { CASE_STUDIES, SITE } from "../data";
 import Navigation from "../components/Navigation";
 
-const BuildsPage = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isMounted, setIsMounted] = useState(false);
+// ─── Animation variants ───────────────────────────────────────────────────────
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 28 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.65, ease: [0.0, 0.0, 0.2, 1] },
+  },
+};
 
-  useEffect(() => {
-    setIsMounted(true);
+const stagger: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1 } },
+};
 
-    const handleMouseMove = (
-      e: React.MouseEvent<Element, MouseEvent> | MouseEvent,
-    ): void => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, []);
-
-  const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  };
-
+// ─── Section label ────────────────────────────────────────────────────────────
+function SectionLabel({ children, light = false }: { children: React.ReactNode; light?: boolean }) {
   return (
-    <div className="bg-black text-white font-sans antialiased">
-      {/* Custom Cursor Effect */}
-      {isMounted && (
-        <div
-          className="fixed w-96 h-96 pointer-events-none z-50 transition-opacity duration-300"
-          style={{
-            left: mousePosition.x - 192,
-            top: mousePosition.y - 192,
-            background:
-              "radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%)",
-            opacity: 0.6,
-          }}
-        />
-      )}
+    <span
+      className={`font-body text-xs font-semibold uppercase tracking-[0.18em] block mb-4 ${light ? "text-[#14A714]" : "text-[#14A714]"
+        }`}
+    >
+      {children}
+    </span>
+  );
+}
 
-      {/* Navbar */}
+// ─── Builds Page ──────────────────────────────────────────────────────────────
+export default function BuildsPage() {
+  return (
+    <div className="bg-[#FBFFFC] text-[#0F0F0F] antialiased">
       <Navigation />
 
-      {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-        <div className="absolute inset-0 opacity-20">
+      {/* ══════════════════════════════════════════════════════════════════════
+          HERO
+      ══════════════════════════════════════════════════════════════════════ */}
+      <section className="relative min-h-[100svh] flex flex-col justify-center bg-[#06382C] overflow-hidden">
+        {/* Background texture */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 z-0">
+          <div
+            className="absolute inset-0 opacity-[0.035]"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(251,255,252,1) 1px, transparent 1px), linear-gradient(90deg, rgba(251,255,252,1) 1px, transparent 1px)",
+              backgroundSize: "80px 80px",
+            }}
+          />
           <div
             className="absolute inset-0"
             style={{
-              backgroundImage: `linear-gradient(rgba(16, 185, 129, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(16, 185, 129, 0.05) 1px, transparent 1px)`,
-              backgroundSize: "100px 100px",
+              background:
+                "radial-gradient(ellipse 80% 60% at 50% 40%, rgba(20,167,20,0.07) 0%, transparent 60%)",
             }}
           />
         </div>
 
-        <motion.div
-          className="absolute top-1/4 -left-48 w-96 h-96 bg-[#2f6d5e] rounded-full filter blur-3xl opacity-20"
-          animate={{
-            x: [0, 100, 0],
-            y: [0, -50, 0],
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 -right-48 w-96 h-96 bg-[#1e473d] rounded-full filter blur-3xl opacity-20"
-          animate={{
-            x: [0, -100, 0],
-            y: [0, 50, 0],
-          }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-        />
-
-        <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center"
-          >
-            <motion.div
-              className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-full mb-8"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
-            >
-              <span className="w-2 h-2 bg-[#2f6d5e] rounded-full animate-pulse" />
-              <span className="text-sm text-gray-300">Concept Builds</span>
+        <div className="relative z-10 max-w-5xl mx-auto px-5 sm:px-6 lg:px-10 w-full py-32 sm:py-40">
+          <motion.div initial="hidden" animate="visible" variants={stagger} className="max-w-3xl">
+            {/* Overline pill */}
+            <motion.div variants={fadeUp} className="mb-7">
+              <span className="inline-flex items-center gap-2 border border-[#FBFFFC]/15 rounded-full px-4 py-2 font-body text-xs font-medium text-[#FBFFFC]/55 tracking-wide">
+                <span className="w-1.5 h-1.5 bg-[#14A714] rounded-full" />
+                The Work
+              </span>
             </motion.div>
 
             <motion.h1
-              className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
+              variants={fadeUp}
+              className="font-display text-[clamp(2.6rem,6vw,5rem)] font-bold leading-[1.04] text-[#FBFFFC] mb-6 tracking-tight"
             >
-              What I build when{" "}
-              <span className="bg-gradient-to-r from-[#d9e8d5] via-white to-[#1e473d] bg-clip-text text-transparent">
-                nobody's watching
-              </span>
+              Built for creators who were done compromising.
             </motion.h1>
 
             <motion.p
-              className="text-xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
+              variants={fadeUp}
+              className="font-body text-base sm:text-lg text-[#FBFFFC]/50 max-w-xl mb-10 leading-[1.8]"
             >
-              These aren't client projects. They're skill demonstrations. I
-              study successful creators and entrepreneurs, then build what I
-              think their premium platforms should look like. Each build teaches
-              me something new about turning expertise into software.
+              Three platforms. Three creators. All live in 7 days. All owned completely by the people who built their audiences.
             </motion.p>
 
-            <motion.div
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-            >
-              <button
-                onClick={() => scrollToSection("builds")}
-                className="group relative px-8 py-4 bg-[#2f6d5e] text-black text-lg font-semibold overflow-hidden transition-all hover:scale-105 hover:shadow-lg hover:shadow-[#2f6d5e]/50"
-              >
-                <span className="relative z-10">See the builds</span>
-              </button>
+            <motion.div variants={fadeUp}>
               <a
-                href="/contact"
-                className="group relative px-8 py-4 bg-white/5 border border-white/10 text-white text-lg font-semibold overflow-hidden transition-all hover:scale-105 hover:bg-white/10"
+                href={SITE.calLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-7 py-4 bg-[#14A714] text-[#FBFFFC] font-body font-semibold rounded-xl transition-all duration-200 hover:bg-[#129612] hover:shadow-[0_6px_28px_rgba(20,167,20,0.45)] hover:-translate-y-0.5 active:translate-y-0"
               >
-                <span className="relative z-10">Build something together</span>
+                Book a Free Call
+                <ArrowRight size={16} />
               </a>
             </motion.div>
           </motion.div>
         </div>
+
+        {/* Bottom fade */}
+        <div
+          aria-hidden
+          className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none"
+          style={{ background: "linear-gradient(to bottom, transparent, rgba(6,56,44,0.7))" }}
+        />
       </section>
 
-      {/* Concept Builds Section */}
-      <section id="builds" className="py-20 px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Three complete builds
-            </h2>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Each build represents weeks of research, analysis, and
-              development. I study how these creators teach, then build
-              platforms that capture their methodology.
-            </p>
-          </div>
+      {/* ══════════════════════════════════════════════════════════════════════
+          CASE STUDIES - Dynamic rendering
+      ══════════════════════════════════════════════════════════════════════ */}
+      {CASE_STUDIES.map((caseStudy, index) => {
+        const isEven = index % 2 === 0;
+        const bgColor = isEven ? "bg-[#FBFFFC]" : "bg-[rgba(6,56,44,0.05)]";
+        
+        return (
+          <section key={caseStudy.slug} className={`py-24 sm:py-28 lg:py-36 ${bgColor} overflow-hidden`}>
+            <div className="max-w-6xl mx-auto px-5 sm:px-6 lg:px-10">
+              <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
 
-          <div className="space-y-20">
-            {conceptBuilds.map((build, index) => (
-              <motion.div
-                key={index}
-                className="grid md:grid-cols-2 gap-12 items-center"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-                viewport={{ once: true }}
-              >
-                {/* Content Side */}
-                <div className={index % 2 === 1 ? "md:order-2" : ""}>
-                  {/* Creator Info */}
-                  <div className="flex items-center gap-4 mb-6">
-                    {build.creator.picture ? (
-                      <div className="w-12 h-12 rounded-full overflow-hidden">
-                        <Image
-                          src={build.creator.picture}
-                          alt={build.creator.name}
-                          width={48}
-                          height={48}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    ) : (
-                      <div className="w-12 h-12 bg-gradient-to-br from-[#2f6d5e] to-[#1e473d] rounded-full flex items-center justify-center text-black font-bold text-lg">
-                        {build.creator.name
-                          .split(" ")
-                          .map((n) => n[0])
-                          .join("")}
-                      </div>
-                    )}
-                    <div>
-                      <h3 className="font-semibold text-white">
-                        {build.creator.name}
-                      </h3>
-                      <p className="text-sm text-gray-400">
-                        {build.creator.title}
-                      </p>
-                      <div className="inline-flex items-center gap-1 mt-1 px-2 py-1 bg-white/5 rounded-full text-xs text-gray-300">
-                        <span>{build.creator.followers} followers</span>
-                      </div>
-                    </div>
+                {/* Content column */}
+                <motion.div
+                  variants={fadeUp}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  className={isEven ? "" : "lg:order-last"}
+                >
+                  <SectionLabel>Case Study {String(index + 1).padStart(2, '0')}</SectionLabel>
+                  <h2 className="font-display text-[clamp(2.4rem,5vw,4rem)] font-bold leading-[1.04] text-[#0F0F0F] mb-3 tracking-tight">
+                    {caseStudy.product}
+                  </h2>
+                  <p className="font-body text-base font-semibold text-[#14A714] mb-1">
+                    {caseStudy.creator}
+                  </p>
+                  <p className="font-body text-sm text-[#0F0F0F]/40 mb-8">
+                    {caseStudy.creator_title}
+                  </p>
+
+                  <p className="font-body text-base text-[#0F0F0F]/50 leading-[1.8] mb-6">
+                    {caseStudy.problem}
+                  </p>
+
+                  <p className="font-body text-base text-[#0F0F0F]/70 leading-[1.8] mb-10">
+                    {caseStudy.outcome}
+                  </p>
+
+                  {/* Stats */}
+                  <div className="grid grid-cols-3 gap-4 pt-8 border-t border-[rgba(15,15,15,0.08)]">
+                    {caseStudy.stats.map((stat, i) => {
+                      const parts = stat.split(" ");
+                      const num = parts[0];
+                      const label = parts.slice(1).join(" ");
+                      return (
+                        <div key={i}>
+                          <p className="font-display text-2xl sm:text-3xl font-bold text-[#0F0F0F] leading-none mb-1">
+                            {num}
+                          </p>
+                          <p className="font-body text-xs text-[#0F0F0F]/40 leading-snug">{label}</p>
+                        </div>
+                      );
+                    })}
                   </div>
+                </motion.div>
 
-                  {/* Product Info */}
-                  <div className="mb-6">
-                    <h4 className="text-3xl font-bold text-white mb-2">
-                      {build.product.name}
-                    </h4>
-                    <p className="text-lg text-[#2f6d5e] font-medium mb-4">
-                      {build.product.tagline}
-                    </p>
-                    <p className="text-gray-300 leading-relaxed">
-                      {build.product.description}
-                    </p>
-                  </div>
-
-                  {/* Features */}
-                  <div className="mb-8">
-                    <h5 className="font-semibold text-white mb-4">
-                      What I built:
-                    </h5>
-                    <ul className="space-y-3">
-                      {build.features
-                        .slice(0, 4)
-                        .map((feature, featureIndex) => (
-                          <li
-                            key={featureIndex}
-                            className="flex items-start gap-3"
-                          >
-                            <div className="w-2 h-2 bg-[#2f6d5e] rounded-full mt-2 flex-shrink-0" />
-                            <span className="text-gray-300 text-sm">
-                              {feature}
-                            </span>
-                          </li>
-                        ))}
+                {/* Features column */}
+                <motion.div
+                  variants={fadeUp}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  className={`lg:pt-14 ${isEven ? "" : "lg:order-first"}`}
+                >
+                  <div className="bg-[#FBFFFC] border border-[rgba(15,15,15,0.09)] rounded-2xl p-8 sm:p-10"
+                    style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)" }}>
+                    <h3 className="font-display text-lg font-semibold text-[#0F0F0F] mb-6">
+                      What was built
+                    </h3>
+                    <ul className="space-y-3 mb-8">
+                      {caseStudy.whatWasBuilt.map((item, i) => (
+                        <li key={i} className="flex items-start gap-3">
+                          <Check className="w-4 h-4 text-[#14A714] flex-shrink-0 mt-0.5" />
+                          <span className="font-body text-sm text-[#0F0F0F]/70 leading-[1.7]">{item}</span>
+                        </li>
+                      ))}
                     </ul>
-                  </div>
 
-                  {/* Research Note */}
-                  <div className="bg-white/5 border border-white/10 p-6 rounded-lg mb-6">
-                    <div className="flex items-start gap-3">
-                      <div className="w-5 h-5 text-yellow-400 mt-0.5 flex-shrink-0">
-                        💡
-                      </div>
-                      <div>
-                        <h6 className="font-medium text-white mb-2">
-                          Research approach
-                        </h6>
-                        <p className="text-gray-300 text-sm leading-relaxed">
-                          {build.researchNote}
-                        </p>
-                      </div>
+                    {/* Live in 7 days badge */}
+                    <div className="flex items-center gap-2 mb-6 pt-6 border-t border-[rgba(15,15,15,0.07)]">
+                      <span className="w-2 h-2 bg-[#14A714] rounded-full" />
+                      <span className="font-body text-sm font-semibold text-[#14A714]">Live in 7 days</span>
                     </div>
-                  </div>
 
-                  {/* Links */}
-                  <div className="flex flex-col sm:flex-row gap-3">
-                    {build.links.demo && (
-                      <a
-                        href={build.links.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 text-white text-sm font-medium hover:bg-white/10 transition-colors"
-                      >
-                        View demo
-                        <span>↗</span>
-                      </a>
-                    )}
+                    {/* Live link */}
                     <a
-                      href={`/builds/${build.slug}`}
-                      className="inline-flex items-center gap-2 px-4 py-2 bg-[#2f6d5e] text-black text-sm font-medium hover:scale-105 transition-transform"
+                      href={caseStudy.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 font-body text-sm font-semibold text-[#0F0F0F]/50 hover:text-[#0F0F0F] transition-colors group"
                     >
-                      Read case study
-                      <span>→</span>
+                      View live platform
+                      <ExternalLink size={14} className="group-hover:translate-x-0.5 transition-transform" />
                     </a>
                   </div>
-                </div>
+                </motion.div>
 
-                {/* Visual Side */}
-                <div className="flex items-center justify-center">
-                  <motion.div
-                    className="relative w-full max-w-md"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.8 }}
-                    viewport={{ once: true }}
-                  >
-                    {build.product.image ? (
-                      <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                        <Image
-                          src={build.product.image}
-                          alt={`${build.product.name} Dashboard`}
-                          width={600}
-                          height={400}
-                          className="w-full h-auto object-cover"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                      </div>
-                    ) : (
-                      <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 transform hover:scale-105 transition-transform duration-300">
-                        <div className="space-y-6">
-                          {/* Header */}
-                          <div className="flex items-center justify-between">
-                            <div className="h-6 bg-gradient-to-r from-[#2f6d5e] to-[#1e473d] rounded w-32"></div>
-                            <div className="w-8 h-8 bg-white/20 rounded-full"></div>
-                          </div>
-
-                          {/* Content blocks */}
-                          <div className="space-y-4">
-                            <div className="h-4 bg-white/20 rounded w-full"></div>
-                            <div className="h-4 bg-white/10 rounded w-4/5"></div>
-                            <div className="h-4 bg-white/10 rounded w-3/4"></div>
-                          </div>
-
-                          {/* Feature cards */}
-                          <div className="grid grid-cols-2 gap-3">
-                            <div className="h-16 bg-[#2f6d5e]/20 rounded-lg"></div>
-                            <div className="h-16 bg-[#1e473d]/20 rounded-lg"></div>
-                            <div className="h-16 bg-white/10 rounded-lg"></div>
-                            <div className="h-16 bg-white/10 rounded-lg"></div>
-                          </div>
-
-                          {/* CTA */}
-                          <div className="h-12 bg-gradient-to-r from-[#2f6d5e] to-[#1e473d] rounded-lg flex items-center justify-center">
-                            <span className="text-black font-semibold text-sm">
-                              {build.product.name}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                  </motion.div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* More Builds Coming Section */}
-      <section className="py-20 px-6 lg:px-8 bg-white/5">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            More builds in progress
-          </h2>
-          <p className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
-            I'm constantly studying new creators and building platforms around
-            their methodologies. Each build helps me understand different
-            approaches to turning expertise into software products.
-          </p>
-
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
-            {[
-              {
-                name: "Creator OS",
-                desc: "A comprehensive platform for content creators",
-              },
-              {
-                name: "Coach Hub",
-                desc: "A platform for business coaches and consultants",
-              },
-              {
-                name: "Expert System",
-                desc: "A knowledge management platform for experts",
-              },
-            ].map((item, index) => (
-              <div
-                key={index}
-                className="p-6 border-2 border-dashed border-white/20 bg-white/5 rounded-lg"
-              >
-                <div className="text-center">
-                  <div className="w-12 h-12 bg-white/10 rounded-full mx-auto mb-4 flex items-center justify-center">
-                    <span className="text-white/40">⚡</span>
-                  </div>
-                  <h3 className="font-semibold text-white mb-2">{item.name}</h3>
-                  <p className="text-sm text-gray-400">{item.desc}</p>
-                </div>
               </div>
-            ))}
-          </div>
+            </div>
+          </section>
+        );
+      })}
 
-          <a
-            href="/contact"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/10 text-white font-medium hover:bg-white/10 transition-colors"
+      {/* ══════════════════════════════════════════════════════════════════════
+          CLOSING STATEMENT
+      ══════════════════════════════════════════════════════════════════════ */}
+      <section className="py-24 sm:py-28 lg:py-36 bg-[#FBFFFC]">
+        <div className="max-w-4xl mx-auto px-5 sm:px-6 lg:px-10">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="relative overflow-hidden rounded-3xl bg-[#06382C] px-8 sm:px-12 lg:px-16 py-14 sm:py-16 text-center"
+            style={{ boxShadow: "0 40px 80px rgba(6,56,44,0.25)" }}
           >
-            Get notified of new builds
-            <span>→</span>
-          </a>
-        </div>
-      </section>
+            {/* Grid texture */}
+            <div
+              aria-hidden
+              className="absolute inset-0 opacity-[0.035]"
+              style={{
+                backgroundImage:
+                  "linear-gradient(rgba(251,255,252,1) 1px, transparent 1px), linear-gradient(90deg, rgba(251,255,252,1) 1px, transparent 1px)",
+                backgroundSize: "60px 60px",
+              }}
+            />
+            {/* Glow */}
+            <div
+              aria-hidden
+              className="absolute -top-20 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full blur-3xl opacity-15 pointer-events-none"
+              style={{ background: "radial-gradient(circle, rgba(20,167,20,0.6) 0%, transparent 70%)" }}
+            />
 
-      {/* Why I Build These Section */}
-      <section className="py-20 px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Why I build these
-            </h2>
-          </div>
+            <div className="relative z-10">
+              <p className="font-display text-[clamp(1.6rem,4vw,2.8rem)] font-semibold text-[#FBFFFC] leading-[1.2] mb-6 max-w-2xl mx-auto">
+                Every build is live. Owned by the creator. Serving real paying members.
+              </p>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h3 className="text-3xl font-bold mb-8">
-                Every expert deserves great software
-              </h3>
-              <div className="space-y-8">
-                <div>
-                  <h4 className="font-semibold text-white mb-3 text-lg">
-                    I study before I build
-                  </h4>
-                  <p className="text-gray-300 leading-relaxed">
-                    Most developers build what they think users want. I spend
-                    weeks studying how successful creators actually teach and
-                    operate their businesses. The software comes after the
-                    understanding.
-                  </p>
-                </div>
+              <p className="font-body text-base text-[#FBFFFC]/50 mb-10 leading-[1.8]">
+                Ready to see what yours looks like?
+              </p>
 
-                <div>
-                  <h4 className="font-semibold text-white mb-3 text-lg">
-                    Each build teaches me something new
-                  </h4>
-                  <p className="text-gray-300 leading-relaxed">
-                    Jasmin taught me about community-driven learning. Chris
-                    showed me the power of step-by-step systems. Eric
-                    demonstrated how to gamify productivity. Every build expands
-                    my toolkit.
-                  </p>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold text-white mb-3 text-lg">
-                    This is how I stay sharp
-                  </h4>
-                  <p className="text-gray-300 leading-relaxed">
-                    Client work pays the bills, but concept builds keep me
-                    learning. They let me experiment with new technologies,
-                    design patterns, and business models without the pressure of
-                    deadlines.
-                  </p>
-                </div>
-              </div>
+              <a
+                href={SITE.calLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-7 py-4 bg-[#14A714] text-[#FBFFFC] font-body font-semibold rounded-xl transition-all duration-200 hover:bg-[#129612] hover:shadow-[0_6px_28px_rgba(20,167,20,0.45)] hover:-translate-y-0.5 active:translate-y-0"
+              >
+                Book a Free Call
+                <ArrowRight size={16} />
+              </a>
             </div>
-
-            <div className="bg-gradient-to-br from-[#2f6d5e]/10 to-[#1e473d]/10 border border-[#2f6d5e]/20 p-8 rounded-2xl">
-              <div className="space-y-6">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-gradient-to-br from-[#2f6d5e] to-[#1e473d] rounded-full mx-auto mb-4 flex items-center justify-center">
-                    <span className="text-black text-2xl">💡</span>
-                  </div>
-                  <h4 className="font-bold text-white mb-4 text-xl">
-                    The real goal
-                  </h4>
-                  <p className="text-gray-300 leading-relaxed">
-                    When you hire me to build your MVP, you're not just getting
-                    a developer. You're getting someone who has studied dozens
-                    of successful business models and knows how to turn
-                    expertise into software that actually works.
-                  </p>
-                </div>
-
-                <div className="pt-6 border-t border-[#2f6d5e]/20">
-                  <a
-                    href="/contact"
-                    className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#2f6d5e] text-black font-semibold hover:scale-105 transition-transform"
-                  >
-                    Let's build your platform
-                    <span>→</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 px-6 lg:px-8 bg-gradient-to-r from-[#2f6d5e]/10 to-[#1e473d]/10 border-t border-[#2f6d5e]/20">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Ready to build something together?
-          </h2>
-          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            Tell me your idea. I'll tell you if a 7-day sprint is right for it.
-            Free 30-minute consultation with no sales pitch.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-[#2f6d5e] text-black text-lg font-semibold hover:scale-105 transition-transform"
-            >
-              Let's talk about your idea
-              <span>→</span>
-            </a>
-            <a
-              href="/process"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white/5 border border-white/10 text-white text-lg font-semibold hover:bg-white/10 transition-colors"
-            >
-              See how it works
-              <span>↗</span>
-            </a>
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>
   );
-};
-
-export default BuildsPage;
+}

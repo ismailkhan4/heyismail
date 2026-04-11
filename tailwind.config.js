@@ -79,10 +79,12 @@ const config = {
                 },
                 // Custom brand colors
                 brand: {
-                    primary: '#2f6d5e',
-                    light: '#d9e8d5', 
-                    dark: '#1e473d',
-                    darkest: '#0f120a'
+                    primary: '#14A714',
+                    light: '#D9E8D5',
+                    dark: '#0F0F0F',
+                    forest: '#102F27',
+                    sage: '#D9E8D5',
+                    accentHover: '#129612',
                 }
             },
             keyframes: {

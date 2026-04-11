@@ -1,26 +1,33 @@
 import type { Metadata } from "next";
 import "./styles/globals.css";
-import { Mona_Sans } from "next/font/google";
+import { Inter } from "next/font/google";
 import PageLayout from "./components/PageLayout";
 import Script from "next/script";
-import { seoData } from "./data";
 
-const monaSans = Mona_Sans({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "600", "700", "900"],
-  variable: "--font-sans",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-display",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://heyismail.com'),
-  title: seoData.pages.home.title,
-  description: seoData.pages.home.description,
-  keywords: seoData.pages.home.keywords,
+  metadataBase: new URL("https://heyismail.com"),
+  title: "Ismail Muhammad — Creator Platform Builder",
+  description:
+    "I build custom platforms for LinkedIn creators in 7 days. Courses, community, coaching — one branded home. Full ownership transferred on day 7.",
+  keywords: [
+    "creator platform builder",
+    "LinkedIn creator platform",
+    "custom platform for creators",
+    "course platform development",
+    "community platform builder",
+  ],
   openGraph: {
-    title: seoData.pages.home.openGraph.title,
-    description: seoData.pages.home.openGraph.description,
-    url: seoData.pages.home.openGraph.url,
+    title: "Ismail Muhammad — Creator Platform Builder",
+    description:
+      "I build custom platforms for LinkedIn creators in 7 days. Courses, community, coaching — one branded home. Full ownership transferred on day 7.",
+    url: "https://heyismail.com",
     images: ["/og-image.jpg"],
   },
 };
@@ -32,18 +39,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        {/* Person JSON-LD Schema */}
-        <Script
-          id="person-schema"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(seoData.schemas.person),
-          }}
-        />
-      </head>
+      <head />
       <body
-        className={`${monaSans.variable} font-sans bg-background text-foreground`}
+        className={`${inter.variable} bg-[#FBFFFC] text-[#0F0F0F]`}
       >
         <PageLayout>{children}</PageLayout>
         <Script

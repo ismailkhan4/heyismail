@@ -1,14 +1,14 @@
 import { Metadata } from "next";
-import { seoData } from "../data";
 
 export const metadata: Metadata = {
-  title: seoData.pages.process.title,
-  description: seoData.pages.process.description,
-  keywords: seoData.pages.process.keywords,
+  title: "How It Works — heyIsmail",
+  description:
+    "The exact 7-day process that turns your idea into a live platform. No surprises, no scope creep — everything yours on day 7.",
   openGraph: {
-    title: seoData.pages.process.openGraph.title,
-    description: seoData.pages.process.openGraph.description,
-    url: seoData.pages.process.openGraph.url,
+    title: "How It Works — heyIsmail",
+    description:
+      "The exact 7-day process that turns your idea into a live platform. No surprises, no scope creep — everything yours on day 7.",
+    url: "https://heyismail.com/process",
   },
 };
 

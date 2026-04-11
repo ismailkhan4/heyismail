@@ -1,21 +1,11 @@
 import { Metadata } from "next";
-import { seoData } from "../data";
 
 export const metadata: Metadata = {
-  title: seoData.pages.about.title,
-  description: seoData.pages.about.description,
-  keywords: seoData.pages.about.keywords,
-  openGraph: {
-    title: seoData.pages.about.openGraph.title,
-    description: seoData.pages.about.openGraph.description,
-    url: seoData.pages.about.openGraph.url,
-  },
+  title: "About — heyIsmail",
+  description:
+    "I build custom platforms for LinkedIn creators who've outgrown the tools they started with. Not templates. Not builders. Custom platforms — designed around your brand.",
 };
 
-export default function AboutLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function AboutLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }
