@@ -153,7 +153,7 @@ export const NAV_LINKS: NavLink[] = [
 export const HERO: HeroContent = {
   headline: "Your audience is premium. Your platform should be too.",
   subheadline:
-    "I build custom platforms for LinkedIn creators in 7 days. Courses, community, coaching — one branded home your members actually trust. Full ownership on day 7.",
+    "I build custom platforms for LinkedIn creators in 7 days. Courses, community, coaching, one branded home your members actually trust. Full ownership on day 7.",
   primaryCTA: "Let's Talk",
   primaryCTALink: "https://cal.com/heyismail/15min",
   secondaryCTA: "See My Builds",
@@ -217,7 +217,7 @@ export const PROCESS_STEPS: ProcessStep[] = [
     day: "Day 7",
     title: "We deploy.",
     description:
-      "Source code, credentials, database — everything transferred to you.",
+      "Source code, credentials, database, everything transferred to you.",
   },
 ];
 
@@ -285,19 +285,19 @@ export const BUILDS: Build[] = [
 export const FAQS: FAQ[] = [
   {
     q: "What kind of creators do you build for?",
-    a: "LinkedIn creators with an established audience selling courses, coaching, or running paid communities — who are embarrassed by the gap between their brand and their current tech.",
+    a: "LinkedIn creators with an established audience selling courses, coaching, or running paid communities who are embarrassed by the gap between their brand and their current tech.",
   },
   {
     q: "What does the platform actually include?",
-    a: "Custom branded UI, course or content delivery, community feed, coaching portal, member onboarding, Stripe billing, and admin access. Built around your specific structure — not a template dropped into a builder.",
+    a: "Custom branded UI, course or content delivery, community feed, coaching portal, member onboarding, Stripe billing, and admin access. Built around your specific structure, not a template dropped into a builder.",
   },
   {
     q: "Do I really own everything?",
-    a: "Yes. Source code, database, deployment credentials, domain — all transferred to you on day 7. No recurring fees. No lock-in. No dependency on me to keep it running.",
+    a: "Yes. Source code, database, deployment credentials, domain, all transferred to you on day 7. No recurring fees. No lock-in. No dependency on me to keep it running.",
   },
   {
     q: "How is 7 days actually possible?",
-    a: "I've built a delivery system specifically around creator platforms. Pre-built foundations for what every platform shares. Custom work for everything that makes yours distinct. It's not magic — it's a focused process refined across every build.",
+    a: "I've built a delivery system specifically around creator platforms. Pre-built foundations for what every platform shares. Custom work for everything that makes yours distinct. It's not magic, it's a focused process refined across every build.",
   },
   {
     q: "What's the investment?",
@@ -320,13 +320,13 @@ export const PROCESS_DETAILED: ProcessStepDetailed[] = [
     description:
       "This isn't a sales call. It's a working session. I learn everything about your brand, your members, and the platform you're currently embarrassed by.",
     whatHappens: [
-      "60-minute deep-dive call — your brand, your audience, your content structure",
+      "60-minute deep-dive call covering your brand, your audience, your content structure",
       "I audit your current platform and identify exactly what's failing",
       "We define what your members actually need vs. what you've been told they need",
       "I ask the questions no agency ever asks: what does your member's first 7 days look like?",
     ],
     whatYouGet: [
-      "A clear brief I'll build from — not a vague scope document",
+      "A clear brief I'll build from, not a vague scope document",
       "Honest assessment of what's worth keeping from your current setup",
       "Confidence that I understand your world before I touch a line of code",
     ],
@@ -335,16 +335,16 @@ export const PROCESS_DETAILED: ProcessStepDetailed[] = [
     day: "Day 2",
     title: "I map.",
     description:
-      "Every page, every flow, every interaction — mapped before a single line of code is written. You approve it before I build.",
+      "Every page, every flow, every interaction mapped before a single line of code is written. You approve it before I build.",
     whatHappens: [
       "Full sitemap and user flow for every member journey",
       "Page-by-page wireframe of the entire platform",
       "Content structure mapped to your actual courses, community, and coaching",
-      "You review and approve — nothing gets built without your sign-off",
+      "You review and approve, nothing gets built without your sign-off",
     ],
     whatYouGet: [
       "Complete visual blueprint of your platform",
-      "Zero surprises during the build — you've already seen everything",
+      "Zero surprises during the build, you've already seen everything",
       "A document you can share with your team or VA",
     ],
   },
@@ -362,7 +362,7 @@ export const PROCESS_DETAILED: ProcessStepDetailed[] = [
     ],
     whatYouGet: [
       "A working platform you've been testing for 3 days before launch",
-      "No black-box delivery — you're involved the whole way",
+      "No black-box delivery, you're involved the whole way",
       "Feedback incorporated in real time, not after the fact",
     ],
   },
@@ -387,16 +387,16 @@ export const PROCESS_DETAILED: ProcessStepDetailed[] = [
     day: "Day 7",
     title: "We deploy.",
     description:
-      "Your platform goes live on your domain. Everything transfers to you — source code, database, credentials, all of it.",
+      "Your platform goes live on your domain. Everything transfers to you: source code, database, credentials, all of it.",
     whatHappens: [
       "Production deployment to your custom domain",
       "Full credential transfer: GitHub repo, Supabase, Stripe, Vercel, all API keys",
       "Walkthrough call so you know how to manage everything",
-      "Documentation handed over — how to add content, manage members, run reports",
+      "Documentation handed over: how to add content, manage members, run reports",
     ],
     whatYouGet: [
       "A live platform your members can access today",
-      "Complete ownership of everything — no dependency on me to keep it running",
+      "Complete ownership of everything, no dependency on me to keep it running",
       "14 days of post-launch support for fixes and tweaks",
     ],
   },
@@ -410,27 +410,27 @@ export const TECH_STACK: TechItem[] = [
   {
     name: "Next.js",
     plainDescription:
-      "The framework your platform runs on — fast, reliable, and used by the biggest sites on the internet.",
+      "The framework your platform runs on: fast, reliable, and used by the biggest sites on the internet.",
   },
   {
     name: "Supabase",
     plainDescription:
-      "Your database and user authentication — stores all your member data securely, with a dashboard you can access anytime.",
+      "Your database and user authentication: stores all your member data securely, with a dashboard you can access anytime.",
   },
   {
     name: "Stripe",
     plainDescription:
-      "Payments — connected directly to your bank account so money goes to you, not through me.",
+      "Payments connected directly to your bank account so money goes to you, not through me.",
   },
   {
     name: "OpenAI API",
     plainDescription:
-      "The AI layer — powers any coaching, content, or personalization features in your platform.",
+      "The AI layer that powers any coaching, content, or personalization features in your platform.",
   },
   {
     name: "Vercel",
     plainDescription:
-      "Where your platform lives — instant global deployment, automatic scaling, zero maintenance.",
+      "Where your platform lives: instant global deployment, automatic scaling, zero maintenance.",
   },
 ];
 
@@ -442,27 +442,27 @@ export const OWNERSHIP_EXPLAINED: OwnershipItem[] = [
   {
     title: "Source code repository",
     description:
-      "Your entire codebase transferred to a GitHub repo under your account. Every file, every commit, every line of code — yours.",
+      "Your entire codebase transferred to a GitHub repo under your account. Every file, every commit, every line of code is yours.",
   },
   {
     title: "Production database",
     description:
-      "Your Supabase project transferred to your account. All member data, content, and records — with full admin access.",
+      "Your Supabase project transferred to your account. All member data, content, and records with full admin access.",
   },
   {
     title: "Live deployment",
     description:
-      "Your Vercel project transferred to your account. Your platform stays live and scales automatically — no action needed from you.",
+      "Your Vercel project transferred to your account. Your platform stays live and scales automatically, no action needed from you.",
   },
   {
     title: "Payment infrastructure",
     description:
-      "Stripe connected directly to your bank account. Revenue flows to you from day one — no intermediary, no delay.",
+      "Stripe connected directly to your bank account. Revenue flows to you from day one, no intermediary, no delay.",
   },
   {
     title: "All credentials and API keys",
     description:
-      "Every password, every API key, every secret — documented and handed over. You can log in to every service independently.",
+      "Every password, every API key, every secret documented and handed over. You can log in to every service independently.",
   },
   {
     title: "Technical documentation",
@@ -482,7 +482,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     creator: "Jasmin Alic",
     creator_title: "#1 LinkedIn Creator · 358,000 followers",
     problem:
-      "Jasmin had built one of the most-followed LinkedIn presences in the world — 358K followers, a proven methodology, and a community of serious creators willing to pay for access. But his platform was a patchwork of Kajabi, Notion, and Google Docs. Members were paying premium prices for a non-premium experience. The gap between his brand and his tech was costing him credibility and retention.",
+      "Jasmin had built one of the most-followed LinkedIn presences in the world: 358K followers, a proven methodology, and a community of serious creators willing to pay for access. But his platform was a patchwork of Kajabi, Notion, and Google Docs. Members were paying premium prices for a non-premium experience. The gap between his brand and his tech was costing him credibility and retention.",
     whatWasBuilt: [
       "Custom branded member portal matching his visual identity exactly",
       "Course vault with his complete LinkedIn growth curriculum",
@@ -494,7 +494,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       "Admin dashboard for content management and member oversight",
     ],
     outcome:
-      "LinkUp OS launched to his existing audience on day 7. Members who had been on the Kajabi version migrated within the first week. The platform now reflects the quality of his brand — and gives him a foundation to scale without platform constraints.",
+      "LinkUp OS launched to his existing audience on day 7. Members who had been on the Kajabi version migrated within the first week. The platform now reflects the quality of his brand and gives him a foundation to scale without platform constraints.",
     stats: ["2,500+ paying members", "$2.3M+ in tracked revenue", "7 days to launch"],
     url: "https://linkup-os.vercel.app",
   },
@@ -504,7 +504,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     creator: "Jaime Brenkus",
     creator_title: "National Fitness Hall of Fame · 100M YouTube views",
     problem:
-      "Jaime had spent decades building one of the most respected fitness brands in the world — Hall of Fame recognition, 100M YouTube views, and a loyal community of members who had followed him for years. His online platform didn't come close to matching that reputation. He needed something that felt as premium as his coaching — and that he actually owned.",
+      "Jaime had spent decades building one of the most respected fitness brands in the world: Hall of Fame recognition, 100M YouTube views, and a loyal community of members who had followed him for years. His online platform didn't come close to matching that reputation. He needed something that felt as premium as his coaching and that he actually owned.",
     whatWasBuilt: [
       "Custom branded fitness platform with his visual identity throughout",
       "Daily workout delivery system with video and structured programming",
@@ -516,7 +516,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       "Admin portal for content scheduling and member management",
     ],
     outcome:
-      "Motiv8 launched with Jaime's existing community migrating from his previous platform. The 94% program completion rate — compared to the industry average of 15% — reflects what happens when the platform is built around the coach's actual methodology rather than a generic template.",
+      "Motiv8 launched with Jaime's existing community migrating from his previous platform. The 94% program completion rate, compared to the industry average of 15%, reflects what happens when the platform is built around the coach's actual methodology rather than a generic template.",
     stats: [
       "10,000+ members",
       "94% program completion rate",
@@ -559,20 +559,20 @@ export const CASE_STUDIES: CaseStudy[] = [
 export const ABOUT: AboutContent = {
   intro: [
     "I build custom platforms for LinkedIn creators who've outgrown the tools they started with.",
-    "Not templates. Not builders. Custom platforms — designed around your brand, your content structure, and your members.",
+    "Not templates. Not builders. Custom platforms designed around your brand, your content structure, and your members.",
   ],
   originStory:
-    "I spent three years building products for founders. Good work, fast delivery, happy clients. Then I started paying attention to a different problem. The creators I followed — people with 100K, 300K, 500K followers — were selling premium access to communities and courses on platforms that looked nothing like them. Kajabi pages with default themes. Notion docs with broken links. Gumroad checkout flows that felt like 2014. These people had built real audiences and real trust. Their tech was quietly undermining both. That's the problem I decided to solve. I rebuilt my entire practice around it. Every build since has been for creators who've earned a platform that matches what they've built.",
+    "I spent three years building products for founders. Good work, fast delivery, happy clients. Then I started paying attention to a different problem. The creators I followed, people with 100K, 300K, 500K followers, were selling premium access to communities and courses on platforms that looked nothing like them. Kajabi pages with default themes. Notion docs with broken links. Gumroad checkout flows that felt like 2014. These people had built real audiences and real trust. Their tech was quietly undermining both. That's the problem I decided to solve. I rebuilt my entire practice around it. Every build since has been for creators who've earned a platform that matches what they've built.",
   principles: [
     {
       title: "Ownership is non-negotiable",
       description:
-        "Every platform I build transfers completely to you on day 7. Source code, database, credentials — all of it. I don't believe in building things people don't own.",
+        "Every platform I build transfers completely to you on day 7. Source code, database, credentials, all of it. I don't believe in building things people don't own.",
     },
     {
       title: "Speed without shortcuts",
       description:
-        "7 days is possible because I've built a focused delivery system — not because I cut corners. The foundations are solid. The custom work is real. The timeline is just what happens when you eliminate everything that doesn't matter.",
+        "7 days is possible because I've built a focused delivery system, not because I cut corners. The foundations are solid. The custom work is real. The timeline is just what happens when you eliminate everything that doesn't matter.",
     },
     {
       title: "The platform is part of the product",
@@ -603,7 +603,7 @@ export const ABOUT: AboutContent = {
     },
   ],
   idealClient:
-    "You're a LinkedIn creator with an established audience — 50K followers or more. You're selling courses, coaching, or running a paid community. You're currently on Kajabi, Circle, Notion, or some combination of tools that don't talk to each other. You're embarrassed by the gap between your brand and your tech. You want to fix it without spending 3 months and $50K on an agency.",
+    "You're a LinkedIn creator with an established audience of 50K followers or more. You're selling courses, coaching, or running a paid community. You're currently on Kajabi, Circle, Notion, or some combination of tools that don't talk to each other. You're embarrassed by the gap between your brand and your tech. You want to fix it without spending 3 months and $50K on an agency.",
 };
 
 // ─────────────────────────────────────────────
@@ -655,7 +655,7 @@ export const CONCEPT_BUILDS: ConceptBuild[] = [
     },
     features: [
       "Community feed with real-time interactions",
-      "Course vault with structured LinkedIn curriculum", 
+      "Course vault with structured LinkedIn curriculum",
       "AI coaching assistant trained on methodology",
       "Expert feedback system for post reviews",
       "Leaderboard and gamification features",
@@ -682,7 +682,7 @@ export const CONCEPT_BUILDS: ConceptBuild[] = [
     features: [
       "Daily workout delivery with video programming",
       "AI meal planning personalized to goals",
-      "Coach check-in system for accountability", 
+      "Coach check-in system for accountability",
       "Two-tier membership structure",
       "Progress tracking with streak monitoring",
       "Mobile-responsive workout interface",
@@ -694,7 +694,7 @@ export const CONCEPT_BUILDS: ConceptBuild[] = [
     researchNote: "I analyzed Jaime's decades of fitness expertise, studying his training methodologies, nutritional approaches, and member engagement strategies to create a platform that reflects his Hall of Fame coaching standards."
   },
   {
-    slug: "linkedin-growth-os",
+    slug: "linkedin-growth-by-fatima",
     product: {
       name: "LinkedIn Growth OS",
       tagline: "Systematic LinkedIn growth through structured learning",
@@ -745,7 +745,7 @@ export interface ChecklistItem {
 export const mvpChecklist: ChecklistItem[] = [
   {
     title: "Custom branded UI",
-    description: "Designed around your identity — not a template with your logo dropped in.",
+    description: "Designed around your identity, not a template with your logo dropped in.",
   },
   {
     title: "Member authentication",
@@ -753,11 +753,11 @@ export const mvpChecklist: ChecklistItem[] = [
   },
   {
     title: "Content delivery",
-    description: "Courses, community feed, or coaching portal — structured around how you actually work.",
+    description: "Courses, community feed, or coaching portal structured around how you actually work.",
   },
   {
     title: "Stripe billing",
-    description: "Payments connected directly to your bank. Monthly, annual, or one-time — your call.",
+    description: "Payments connected directly to your bank. Monthly, annual, or one-time, your call.",
   },
   {
     title: "Admin dashboard",
@@ -769,6 +769,6 @@ export const mvpChecklist: ChecklistItem[] = [
   },
   {
     title: "Full ownership transfer",
-    description: "Source code, database, credentials — everything handed over on day 7.",
+    description: "Source code, database, credentials, everything handed over on day 7.",
   },
 ];

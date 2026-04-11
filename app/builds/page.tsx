@@ -192,16 +192,25 @@ export default function BuildsPage() {
                       <span className="font-body text-sm font-semibold text-[#14A714]">Live in 7 days</span>
                     </div>
 
-                    {/* Live link */}
-                    <a
-                      href={caseStudy.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 font-body text-sm font-semibold text-[#0F0F0F]/50 hover:text-[#0F0F0F] transition-colors group"
-                    >
-                      View live platform
-                      <ExternalLink size={14} className="group-hover:translate-x-0.5 transition-transform" />
-                    </a>
+                    {/* Navigation links */}
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <a
+                        href={`/builds/${caseStudy.slug}`}
+                        className="inline-flex items-center gap-2 font-body text-sm font-semibold text-[#0F0F0F] hover:text-[#14A714] transition-colors group"
+                      >
+                        Read Full Case Study
+                        <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+                      </a>
+                      <a
+                        href={caseStudy.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 font-body text-sm font-semibold text-[#0F0F0F]/50 hover:text-[#0F0F0F] transition-colors group"
+                      >
+                        View live platform
+                        <ExternalLink size={14} className="group-hover:translate-x-0.5 transition-transform" />
+                      </a>
+                    </div>
                   </div>
                 </motion.div>
 
@@ -210,6 +219,70 @@ export default function BuildsPage() {
           </section>
         );
       })}
+
+      {/* ══════════════════════════════════════════════════════════════════════
+          CASE STUDIES NAVIGATION
+      ══════════════════════════════════════════════════════════════════════ */}
+      <section className="py-24 sm:py-28 lg:py-36 bg-[rgba(6,56,44,0.05)]">
+        <div className="max-w-4xl mx-auto px-5 sm:px-6 lg:px-10">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <SectionLabel>Detailed Case Studies</SectionLabel>
+            <h2 className="font-display text-[clamp(2.4rem,5vw,4rem)] font-bold leading-[1.04] text-[#0F0F0F] mb-6 tracking-tight">
+              Dive deeper into each build
+            </h2>
+            <p className="font-body text-base text-[#0F0F0F]/50 max-w-2xl mx-auto leading-[1.8]">
+              Get the full story behind each platform, including research process, technical decisions, and creator insights.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {CASE_STUDIES.map((caseStudy, index) => (
+              <motion.a
+                key={caseStudy.slug}
+                href={`/builds/${caseStudy.slug}`}
+                className="group block bg-[#FBFFFC] border border-[rgba(15,15,15,0.09)] rounded-2xl p-6 transition-all duration-200 hover:shadow-lg hover:-translate-y-1"
+                style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)" }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-[#14A714] rounded-full flex items-center justify-center text-[#FBFFFC] font-bold text-sm">
+                    {caseStudy.creator
+                      .split(" ")
+                      .map((n) => n[0])
+                      .join("")}
+                  </div>
+                  <div>
+                    <h3 className="font-body font-semibold text-[#0F0F0F] text-sm">{caseStudy.creator}</h3>
+                    <p className="font-body text-xs text-[#0F0F0F]/40">{caseStudy.creator_title.split(" · ")[1] || caseStudy.creator_title}</p>
+                  </div>
+                </div>
+                
+                <h4 className="font-display text-lg font-bold text-[#0F0F0F] mb-3 group-hover:text-[#14A714] transition-colors">
+                  {caseStudy.product}
+                </h4>
+                
+                <p className="font-body text-sm text-[#0F0F0F]/60 leading-[1.6] mb-4">
+                  {caseStudy.problem.substring(0, 120)}...
+                </p>
+
+                <div className="flex items-center gap-2 text-[#14A714] font-body text-sm font-semibold">
+                  Read Case Study
+                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                </div>
+              </motion.a>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ══════════════════════════════════════════════════════════════════════
           CLOSING STATEMENT
