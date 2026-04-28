@@ -550,6 +550,35 @@ export const CASE_STUDIES: CaseStudy[] = [
     ],
     url: "https://linkedin-growth-by-fatima.vercel.app",
   },
+  {
+    slug: "produced-by",
+    product: "Produced By",
+    creator: "Tomas Loucky",
+    creator_title: "Podcast Host · Creator Insights · 2,841 subscribers",
+    problem:
+      "Tomas had built a thriving podcast featuring 142+ creator interviews with actionable insights on content creation, LinkedIn growth, and monetization. With 22 published episodes and growing engagement, his content was scattered across platforms with no centralized discovery hub. Listeners couldn't easily search episodes by topic, track their progress, or engage with the growing community. He needed a modern platform that could serve both as a content discovery engine and a powerful admin tool for managing episodes, guests, and newsletter campaigns.",
+    whatWasBuilt: [
+      "Dynamic home page with time-based greetings and featured episodes",
+      "Search and tag-based filtering system across all episodes",
+      "Individual episode pages with embedded Spotify/YouTube players",
+      "Newsletter subscription system with live subscriber count display",
+      "Real-time analytics dashboard showing plays over time and tag engagement",
+      "Full episode CRUD with draft/published workflow for content management",
+      "Guest management system with custom gradient avatar presets",
+      "Newsletter composition and campaign tracking tools",
+      "Bulk actions and sortable data tables for efficient admin workflows",
+      "Dark theme with neon green accent (#39FF14) and radial glow effects",
+    ],
+    outcome:
+      "Produced By Hub launched as a production-ready podcast discovery platform that combines a sleek public-facing experience with powerful creator tools. The platform successfully centralizes 22 episodes with 18 unique guests, making content easily discoverable through search and tags. The admin dashboard provides real-time insights and streamlined content management, while the custom design system with animated effects creates a modern, engaging experience that reflects the quality of the podcast content.",
+    stats: [
+      "22 published episodes",
+      "2,841 newsletter subscribers",
+      "34 min average listen time",
+      "1,700 plays on most popular episode",
+    ],
+    url: "https://produced-by.vercel.app",
+  },
 ];
 
 // ─────────────────────────────────────────────
@@ -718,6 +747,34 @@ export const CONCEPT_BUILDS: ConceptBuild[] = [
       demo: "https://linkedin-growth-by-fatima.vercel.app"
     },
     researchNote: "I studied Fatima's systematic approach to LinkedIn growth, analyzing her educational frameworks, community building strategies, and progressive skill development methodology to create a platform that captures her structured learning philosophy."
+  },
+  {
+    slug: "produced-by",
+    product: {
+      name: "Produced By",
+      tagline: "Podcast discovery platform for creator insights",
+      description: "A modern episode discovery hub for the 'Produced By OS' podcast, featuring 142+ creator interviews with actionable insights on content creation, LinkedIn growth, branding, and monetization. Combines powerful content discovery with comprehensive admin tools.",
+    },
+    creator: {
+      name: "Tomas Loucky",
+      title: "Podcast Host",
+      followers: "2,841 subscribers",
+    },
+    features: [
+      "Dynamic home with time-based greetings and featured episodes",
+      "Search and tag-based filtering across all content",
+      "Episode pages with Spotify/YouTube embeds",
+      "Newsletter subscription with live subscriber count",
+      "Real-time analytics dashboard (plays, tag engagement)",
+      "Full episode CRUD with draft/published workflow",
+      "Guest management with gradient avatar system",
+      "Newsletter composition and campaign tracking",
+      "Dark theme with neon green accents and animations"
+    ],
+    links: {
+      demo: "https://produced-by.vercel.app"
+    },
+    researchNote: "I analyzed Tomas's podcast content strategy across 22 episodes featuring 18 unique guests, studying his approach to creator interviews, content categorization, and audience engagement to build a platform that makes actionable insights easily discoverable while providing powerful tools for content management and growth tracking."
   }
 ];
 
