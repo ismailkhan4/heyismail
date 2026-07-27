@@ -1,0 +1,10 @@
+export { default as Navigation } from './Navigation';
+export { default as Hero } from './Hero';
+export { default as TechMarquee } from './TechMarquee';
+export { default as ProblemValue } from './ProblemValue';
+export { default as Portfolio } from './Portfolio';
+export { default as Process } from './Process';
+export { default as Pricing } from './Pricing';
+export { default as Testimonials } from './Testimonials';
+export { default as Contact } from './Contact';
+export { default as Footer } from './Footer';

@@ -1,35 +1,69 @@
 import type { Metadata } from "next";
-import "./styles/globals.css";
-import { Inter } from "next/font/google";
-import PageLayout from "./components/PageLayout";
+import { Inter, Inter_Tight } from "next/font/google";
+import "./globals.css";
 import Script from "next/script";
 
-const inter = Inter({
+// Inter Tight for headings — a tighter-tracked cut of Inter that reads more
+// deliberate/display than default Inter at heading sizes.
+const interTight = Inter_Tight({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["500", "600", "700", "800"],
   variable: "--font-display",
   display: "swap",
 });
 
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-body",
+  display: "swap",
+});
+
+const siteTitle =
+  "Ismail Muhammad | Full-Stack Software Engineer for Startups & Founders";
+const siteDescription =
+  "Full-stack software engineer and technical partner for premium, global clients. Production-grade web apps, mobile apps, and AI-powered products, built end to end by a single senior engineer since 2018.";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://heyismail.com"),
-  title: "Ismail Muhammad — Creator Platform Builder",
-  description:
-    "I build custom platforms for LinkedIn creators in 7 days. Courses, community, coaching — one branded home. Full ownership transferred on day 7.",
+  title: siteTitle,
+  description: siteDescription,
   keywords: [
-    "creator platform builder",
-    "LinkedIn creator platform",
-    "custom platform for creators",
-    "course platform development",
-    "community platform builder",
+    "full-stack developer for hire",
+    "React Next.js developer for startups",
+    "AI product developer",
+    "mobile app developer for founders",
+    "senior software engineer freelance",
   ],
   openGraph: {
-    title: "Ismail Muhammad — Creator Platform Builder",
-    description:
-      "I build custom platforms for LinkedIn creators in 7 days. Courses, community, coaching — one branded home. Full ownership transferred on day 7.",
-    url: "https://heyismail.com",
-    images: ["/og-image.jpg"],
+    title: siteTitle,
+    description: siteDescription,
+    images: ["/og-image.png"],
+    type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: siteTitle,
+    description: siteDescription,
+    images: ["/og-image.png"],
+  },
+};
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Ismail Muhammad",
+  jobTitle: "Full-Stack Software Engineer",
+  url: "https://heyismail.com",
+  description: siteDescription,
+  knowsAbout: [
+    "Web Development",
+    "Mobile App Development",
+    "AI Integration",
+    "Next.js",
+    "React Native",
+    "TypeScript",
+  ],
 };
 
 export default function RootLayout({
@@ -38,12 +72,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <head />
-      <body
-        className={`${inter.variable} bg-[#FBFFFC] text-[#0F0F0F]`}
-      >
-        <PageLayout>{children}</PageLayout>
+    <html lang="en" className={`${interTight.variable} ${inter.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
+      </head>
+      <body>
+        {children}
         <Script
           id="tawkto-chat"
           strategy="afterInteractive"

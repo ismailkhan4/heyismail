@@ -77,14 +77,13 @@ const config = {
                     border: 'hsl(var(--sidebar-border))',
                     ring: 'hsl(var(--sidebar-ring))'
                 },
-                // Custom brand colors
+                // Custom brand colors — kept in sync with app/globals.css CSS vars
                 brand: {
-                    primary: '#14A714',
-                    light: '#D9E8D5',
-                    dark: '#0F0F0F',
-                    forest: '#102F27',
-                    sage: '#D9E8D5',
-                    accentHover: '#129612',
+                    accent:       '#C5D86D',
+                    light:        '#E8F1F2',
+                    dark:         '#070707',
+                    surface:      '#292E1E',
+                    accentHover:  '#b3c55a',
                 }
             },
             keyframes: {
@@ -95,11 +94,16 @@ const config = {
                 'accordion-up': {
                     from: { height: 'var(--radix-accordion-content-height)' },
                     to: { height: '0' }
+                },
+                'marquee': {
+                    '0%': { transform: 'translateX(0%)' },
+                    '100%': { transform: 'translateX(-50%)' }
                 }
             },
             animation: {
                 'accordion-down': 'accordion-down 0.2s ease-out',
-                'accordion-up': 'accordion-up 0.2s ease-out'
+                'accordion-up': 'accordion-up 0.2s ease-out',
+                'marquee': 'marquee 30s linear infinite'
             }
         }
     },
