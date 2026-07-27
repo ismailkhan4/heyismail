@@ -99,7 +99,12 @@ export default function Header(): React.JSX.Element {
 
             {/* Desktop CTA */}
             <div className="hidden lg:block">
-              <Button href={calLink} external={true} variant="primary" size="sm">
+              <Button
+                href={calLink}
+                external={true}
+                variant="primary"
+                size="sm"
+              >
                 Book a call
               </Button>
             </div>
@@ -110,7 +115,9 @@ export default function Header(): React.JSX.Element {
               onClick={() => setMobileOpen((prev) => !prev)}
               aria-expanded={mobileOpen}
               aria-controls="mobile-menu"
-              aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
+              aria-label={
+                mobileOpen ? "Close navigation menu" : "Open navigation menu"
+              }
             >
               {mobileOpen ? (
                 <X className="w-6 h-6" />
@@ -157,7 +164,13 @@ export default function Header(): React.JSX.Element {
                   className="font-display font-semibold text-lg tracking-tight text-dark"
                   onClick={() => setMobileOpen(false)}
                 >
-                  Ismail Muhammad
+                  heyIsmail
+                  <span
+                    className="text-brand-accent leading-none mb-[2px]"
+                    aria-hidden="true"
+                  >
+                    •
+                  </span>
                 </a>
                 <button
                   className="flex items-center justify-center w-10 h-10 text-dark/60 hover:text-dark transition-colors"
@@ -176,7 +189,11 @@ export default function Header(): React.JSX.Element {
                       key={item.href}
                       initial={{ opacity: 0, x: 24 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.28, delay: 0.06 + 0.05 * i, ease: "easeOut" }}
+                      transition={{
+                        duration: 0.28,
+                        delay: 0.06 + 0.05 * i,
+                        ease: "easeOut",
+                      }}
                     >
                       <a
                         href={item.href}
@@ -193,7 +210,11 @@ export default function Header(): React.JSX.Element {
                 <motion.div
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.28, delay: 0.06 + 0.05 * NAV_ITEMS.length, ease: "easeOut" }}
+                  transition={{
+                    duration: 0.28,
+                    delay: 0.06 + 0.05 * NAV_ITEMS.length,
+                    ease: "easeOut",
+                  }}
                   className="mt-auto pt-8"
                 >
                   <Button

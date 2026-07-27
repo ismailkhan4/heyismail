@@ -20,7 +20,7 @@ const inter = Inter({
 });
 
 const siteTitle =
-  "Ismail Muhammad | Full-Stack Software Engineer for Startups & Founders";
+  "heyIsmail | Full-Stack Software Engineer for Startups & Founders";
 const siteDescription =
   "Full-stack software engineer and technical partner for premium, global clients. Production-grade web apps, mobile apps, and AI-powered products, built end to end by a single senior engineer since 2018.";
 
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
 const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: "Ismail Muhammad",
+  name: "heyIsmail",
   jobTitle: "Full-Stack Software Engineer",
   url: "https://heyismail.com",
   description: siteDescription,

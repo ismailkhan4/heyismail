@@ -25,7 +25,7 @@ export default function Footer(): React.JSX.Element {
         <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           {/* Copyright */}
           <p className="text-sm text-dark/60 font-body">
-            © {new Date().getFullYear()} Ismail Muhammad
+            © {new Date().getFullYear()} heyIsmail
           </p>
 
           {/* Nav links */}
