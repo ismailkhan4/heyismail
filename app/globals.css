@@ -1,0 +1,100 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* ─── Site brand tokens ─────────────────────────────────────── */
+:root {
+  /* Raw hex vars — used for inline styles and non-Tailwind contexts */
+  --light:              #E8F1F2;
+  --dark:               #070707;
+  --surface:            #292E1E;
+  --brand-accent:       #C5D86D;
+  --brand-accent-hover: #b3c55a;
+
+  /* shadcn / Radix compatible tokens */
+  --background: 185 18% 87%;
+  --foreground: 0 0% 3%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 4%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 4%;
+  --muted: 185 18% 82%;
+  --muted-foreground: 185 8% 46%;
+  --accent: 185 18% 82%;
+  --accent-foreground: 0 0% 4%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 185 14% 80%;
+  --input: 185 14% 80%;
+  --ring: 74 52% 63%;
+  --radius: 0.625rem;
+}
+
+/* ─── Tailwind v4 theme registration ───────────────────────── */
+/* Colors registered here become real Tailwind utilities that support
+   opacity modifiers: bg-light/50, text-dark/70, border-surface/20 etc. */
+@theme inline {
+  /* shadcn semantic colors */
+  --color-background:             hsl(var(--background));
+  --color-foreground:             hsl(var(--foreground));
+  --color-card:                   hsl(var(--card));
+  --color-card-foreground:        hsl(var(--card-foreground));
+  --color-popover:                hsl(var(--popover));
+  --color-popover-foreground:     hsl(var(--popover-foreground));
+  --color-muted:                  hsl(var(--muted));
+  --color-muted-foreground:       hsl(var(--muted-foreground));
+  --color-accent:                 hsl(var(--accent));
+  --color-accent-foreground:      hsl(var(--accent-foreground));
+  --color-destructive:            hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border:                 hsl(var(--border));
+  --color-input:                  hsl(var(--input));
+  --color-ring:                   hsl(var(--ring));
+
+  /* Brand palette — oklch gives Tailwind the channels it needs for
+     opacity modifiers (bg-light/50, text-dark/70 etc.)               */
+  --color-light:              oklch(93.8% 0.018 195);   /* #E8F1F2 */
+  --color-dark:               oklch(5.5%  0.000 0);     /* #070707 */
+  --color-surface:            oklch(22.4% 0.028 130);   /* #292E1E */
+  --color-brand-accent:       oklch(84.2% 0.128 116);   /* #C5D86D */
+  --color-brand-accent-hover: oklch(78.5% 0.128 116);   /* #b3c55a */
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --font-display: var(--font-display);
+  --font-body:    var(--font-body);
+}
+
+/* ─── Base layer ────────────────────────────────────────────── */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    font-family: var(--font-body), system-ui, sans-serif;
+    background-color: #E8F1F2;
+    color: #070707;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display), system-ui, sans-serif;
+  }
+}
+
+/* ─── Font utility classes ──────────────────────────────────── */
+.font-display {
+  font-family: var(--font-display), system-ui, sans-serif;
+}
+
+.font-body {
+  font-family: var(--font-body), system-ui, sans-serif;
+}
