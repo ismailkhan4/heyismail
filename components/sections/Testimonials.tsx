@@ -37,7 +37,11 @@ export default function Testimonials() {
         >
           {/* Real testimonials */}
           {testimonials.map((testimonial) => (
-            <motion.div key={testimonial.id} variants={scaleUp} className="h-full">
+            <motion.div
+              key={testimonial.id}
+              variants={scaleUp}
+              className="h-full"
+            >
               <TestimonialCard testimonial={testimonial} />
             </motion.div>
           ))}
@@ -74,13 +78,18 @@ export default function Testimonials() {
                 Your review could be next.
               </p>
               <p className="font-body text-sm text-dark/55 leading-relaxed max-w-xs">
-                If you've worked with me and found the experience worth talking about — I'd love to hear it. Real words from real clients matter more than any pitch.
+                If you&apos;ve worked with me and found the experience worth talking
+                about, I&apos;d love to hear it. Real words from real clients
+                matter more than any pitch.
               </p>
             </div>
 
             <div className="flex items-center gap-2 font-body text-sm font-semibold text-dark/50 group-hover:text-brand-accent transition-colors duration-200">
               <span>Book a call to get started</span>
-              <ArrowUpRight size={15} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
+              <ArrowUpRight
+                size={15}
+                className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200"
+              />
             </div>
           </motion.a>
         </motion.div>
