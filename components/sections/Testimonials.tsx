@@ -5,11 +5,12 @@ import { ArrowUpRight } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import TestimonialCard from "@/components/ui/TestimonialCard";
 import { useMotionVariants } from "@/lib/hooks/useMotionVariants";
-import { testimonials } from "@/lib/content/testimonials";
 import { calLink } from "@/lib/content/siteConfig";
+import { useTranslation } from "@/lib/i18n/context";
 
 export default function Testimonials() {
   const { fadeUp, stagger, scaleUp } = useMotionVariants();
+  const { t } = useTranslation();
 
   return (
     <section id="testimonials" className="py-20 md:py-28 bg-light">
@@ -21,8 +22,8 @@ export default function Testimonials() {
           viewport={{ once: true }}
         >
           <SectionHeading
-            eyebrow="CLIENT RESULTS"
-            heading="Trusted by founders who ship."
+            eyebrow={t.testimonials.eyebrow}
+            heading={t.testimonials.heading}
             theme="dark"
             className="mb-12"
           />
@@ -36,12 +37,8 @@ export default function Testimonials() {
           className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch"
         >
           {/* Real testimonials */}
-          {testimonials.map((testimonial) => (
-            <motion.div
-              key={testimonial.id}
-              variants={scaleUp}
-              className="h-full"
-            >
+          {t.testimonials.items.map((testimonial) => (
+            <motion.div key={testimonial.id} variants={scaleUp} className="h-full">
               <TestimonialCard testimonial={testimonial} />
             </motion.div>
           ))}
@@ -75,17 +72,15 @@ export default function Testimonials() {
               </div>
 
               <p className="font-display text-xl font-semibold text-dark tracking-tight leading-snug">
-                Your review could be next.
+                {t.testimonials.openSlotHeading}
               </p>
               <p className="font-body text-sm text-dark/55 leading-relaxed max-w-xs">
-                If you&apos;ve worked with me and found the experience worth talking
-                about, I&apos;d love to hear it. Real words from real clients
-                matter more than any pitch.
+                {t.testimonials.openSlotBody}
               </p>
             </div>
 
             <div className="flex items-center gap-2 font-body text-sm font-semibold text-dark/50 group-hover:text-brand-accent transition-colors duration-200">
-              <span>Book a call to get started</span>
+              <span>{t.testimonials.openSlotCta}</span>
               <ArrowUpRight
                 size={15}
                 className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200"

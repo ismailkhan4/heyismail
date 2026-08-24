@@ -1,12 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { differentiators } from "@/lib/content/differentiators";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { useMotionVariants } from "@/lib/hooks/useMotionVariants";
+import { useTranslation } from "@/lib/i18n/context";
 
 export default function Differentiators() {
   const { scaleUp, stagger, slideInLeft } = useMotionVariants();
+  const { t } = useTranslation();
 
   return (
     <section id="why" className="py-20 md:py-28 bg-dark">
@@ -18,8 +19,8 @@ export default function Differentiators() {
           viewport={{ once: true }}
         >
           <SectionHeading
-            eyebrow="WHY IT'S DIFFERENT"
-            heading="One senior engineer. No layers."
+            eyebrow={t.differentiators.eyebrow}
+            heading={t.differentiators.heading}
             theme="light"
             className="mb-12"
           />
@@ -32,7 +33,7 @@ export default function Differentiators() {
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-3 gap-8"
         >
-          {differentiators.map((item, i) => (
+          {t.differentiators.items.map((item, i) => (
             <motion.div
               key={item.id}
               variants={scaleUp}

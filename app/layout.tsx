@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Inter_Tight } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
+import { LangProvider } from "@/lib/i18n/context";
 
 // Inter Tight for headings — a tighter-tracked cut of Inter that reads more
 // deliberate/display than default Inter at heading sizes.
@@ -80,7 +81,9 @@ export default function RootLayout({
         />
       </head>
       <body>
-        {children}
+        <LangProvider>
+          {children}
+        </LangProvider>
         <Script
           id="tawkto-chat"
           strategy="afterInteractive"

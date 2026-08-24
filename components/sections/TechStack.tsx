@@ -6,6 +6,7 @@ import type { TechCategory } from "@/lib/types/content";
 import TechBadge from "@/components/ui/TechBadge";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { useMotionVariants } from "@/lib/hooks/useMotionVariants";
+import { useTranslation } from "@/lib/i18n/context";
 
 const CATEGORY_ORDER: TechCategory[] = [
   "Frontend",
@@ -17,13 +18,14 @@ const CATEGORY_ORDER: TechCategory[] = [
 
 export default function TechStack() {
   const { fadeUp, stagger } = useMotionVariants();
+  const { t } = useTranslation();
 
   return (
     <section id="tech" className="py-20 md:py-28 bg-dark">
       <div className="max-w-6xl mx-auto px-6">
         <SectionHeading
-          eyebrow="THE STACK"
-          heading="A deep, current stack, not a badge wall."
+          eyebrow={t.techStack.eyebrow}
+          heading={t.techStack.heading}
           theme="light"
           className="mb-12"
         />

@@ -1,14 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { calLink, responseTimeCopy } from "@/lib/content/siteConfig";
+import { calLink } from "@/lib/content/siteConfig";
 import Button from "@/components/ui/LinkButton";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ContactForm from "@/components/ui/ContactForm";
 import { useMotionVariants } from "@/lib/hooks/useMotionVariants";
+import { useTranslation } from "@/lib/i18n/context";
 
 export default function Contact() {
   const { fadeUp, stagger } = useMotionVariants();
+  const { t } = useTranslation();
 
   return (
     <section id="contact" className="py-20 md:py-28 bg-light">
@@ -21,9 +23,9 @@ export default function Contact() {
         >
           <motion.div variants={fadeUp}>
             <SectionHeading
-              eyebrow="GET IN TOUCH"
-              heading="Have a project in mind?"
-              subheading={`Book a short call, or send a few details below. ${responseTimeCopy}`}
+              eyebrow={t.contact.eyebrow}
+              heading={t.contact.heading}
+              subheading={t.contact.subheading}
               theme="dark"
               className="mb-10"
             />
@@ -31,7 +33,7 @@ export default function Contact() {
 
           <motion.div variants={fadeUp} className="flex flex-wrap gap-4 mb-12">
             <Button href={calLink} external variant="primary" size="md">
-              Book a call
+              {t.contact.bookCall}
             </Button>
           </motion.div>
 

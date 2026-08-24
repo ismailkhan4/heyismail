@@ -9,9 +9,20 @@ import TechBadge from "@/components/ui/TechBadge";
 
 interface PortfolioCardProps {
   project: ProjectType;
+  /** Translated label for the "Problem" field */
+  labelProblem?: string;
+  /** Translated label for the "Built" field */
+  labelBuild?: string;
+  /** Translated label for the "Outcome" field */
+  labelOutcome?: string;
 }
 
-export default function PortfolioCard({ project }: PortfolioCardProps): React.JSX.Element {
+export default function PortfolioCard({
+  project,
+  labelProblem = "Problem",
+  labelBuild = "Built",
+  labelOutcome = "Outcome",
+}: PortfolioCardProps): React.JSX.Element {
   const { scaleUp } = useMotionVariants();
 
   return (
@@ -52,19 +63,19 @@ export default function PortfolioCard({ project }: PortfolioCardProps): React.JS
       <dl className="flex flex-col gap-4">
         <div>
           <dt className="font-body text-xs uppercase tracking-widest text-light/40 mb-1.5">
-            Problem
+            {labelProblem}
           </dt>
           <dd className="font-body text-sm text-light/75 leading-relaxed">{project.problem}</dd>
         </div>
         <div>
           <dt className="font-body text-xs uppercase tracking-widest text-light/40 mb-1.5">
-            Built
+            {labelBuild}
           </dt>
           <dd className="font-body text-sm text-light/75 leading-relaxed">{project.build}</dd>
         </div>
         <div>
           <dt className="font-body text-xs uppercase tracking-widest text-brand-accent/70 mb-1.5">
-            Outcome
+            {labelOutcome}
           </dt>
           <dd className="font-body text-sm font-semibold text-brand-accent leading-relaxed">
             {project.outcome}

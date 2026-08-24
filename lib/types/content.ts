@@ -8,7 +8,7 @@ export type ProjectType = {
   problem: string;
   build: string;
   outcome: string;
-  stack: string[];
+  stack: ReadonlyArray<string>;
 };
 
 export type Testimonial = {
@@ -44,7 +44,7 @@ export type Service = {
   id: string;
   title: string;
   description: string;
-  tech: string[];
+  tech: ReadonlyArray<string>;
 };
 
 export type ProcessStep = {
