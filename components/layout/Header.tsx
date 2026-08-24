@@ -2,42 +2,58 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ExternalLink } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useScrollY } from "@/lib/hooks/useScrollY";
 import Button from "@/components/ui/LinkButton";
 import { calLink } from "@/lib/content/siteConfig";
+import { useTranslation } from "@/lib/i18n/context";
+import type { Lang } from "@/lib/i18n/context";
+import { cn } from "@/lib/utils";
 
-const NAV_ITEMS = [
-  { label: "Work", href: "#portfolio" },
-  { label: "Services", href: "#services" },
-  { label: "Process", href: "#process" },
-  { label: "Tech Stack", href: "#tech" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
-] as const;
+// ── Types ─────────────────────────────────────────────────────────────────────
+
+interface NavItem {
+  label: string;
+  /** href used on the homepage (hash anchor) */
+  anchor: string;
+  /** href used on any other page (full path + hash) */
+  fullHref: string;
+}
+
+// ── Component ─────────────────────────────────────────────────────────────────
 
 export default function Header(): React.JSX.Element {
-  const scrolled = useScrollY(60);
+  const scrolled   = useScrollY(60);
+  const pathname   = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { lang, setLang, t } = useTranslation();
 
-  // Body scroll lock
+  // True when we are on the homepage
+  const isHome = pathname === "/";
+  // True when we are on the ClimaFlow page
+  const isClimaFlow = pathname === "/projects/climaflow";
+
+  const NAV_ITEMS: NavItem[] = [
+    { label: t.nav.work,      anchor: "#portfolio", fullHref: "/#portfolio" },
+    { label: t.nav.services,  anchor: "#services",  fullHref: "/#services" },
+    { label: t.nav.process,   anchor: "#process",   fullHref: "/#process" },
+    { label: t.nav.techStack, anchor: "#tech",      fullHref: "/#tech" },
+    { label: t.nav.about,     anchor: "#about",     fullHref: "/#about" },
+    { label: t.nav.contact,   anchor: "#contact",   fullHref: "/#contact" },
+  ];
+
+  // Body scroll lock while mobile menu is open
   useEffect(() => {
-    if (mobileOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
 
   // Escape key closes mobile menu
   useEffect(() => {
     if (!mobileOpen) return;
-    const handler = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setMobileOpen(false);
-    };
+    const handler = (e: KeyboardEvent) => { if (e.key === "Escape") setMobileOpen(false); };
     document.addEventListener("keydown", handler);
     return () => document.removeEventListener("keydown", handler);
   }, [mobileOpen]);
@@ -46,18 +62,22 @@ export default function Header(): React.JSX.Element {
     ? "bg-light/96 backdrop-blur-md border-b border-dark/7 shadow-sm"
     : "bg-transparent";
 
-  // Hero is a light section — use dark text when transparent, switch to dark on scroll too
-  const textColor = "text-dark";
+  function toggleLang() {
+    setLang(lang === "en" ? "it" : "en");
+  }
 
-  function handleMobileNavClick(href: string) {
+  // On homepage, use smooth-scroll anchors; on other pages, use full hrefs
+  function navHref(item: NavItem) {
+    return isHome ? item.anchor : item.fullHref;
+  }
+
+  function handleMobileNavClick(item: NavItem) {
     setMobileOpen(false);
-    // Allow the menu close animation to start before scrolling
-    const target = document.querySelector(href);
-    if (target) {
-      setTimeout(() => {
-        target.scrollIntoView({ behavior: "smooth" });
-      }, 50);
+    if (isHome) {
+      const target = document.querySelector(item.anchor);
+      if (target) setTimeout(() => target.scrollIntoView({ behavior: "smooth" }), 50);
     }
+    // If not home, the Link href already navigates to the right page+hash
   }
 
   return (
@@ -69,60 +89,80 @@ export default function Header(): React.JSX.Element {
         transition={{ duration: 0.4, ease: [0, 0, 0.2, 1] }}
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 md:h-18">
-            {/* Wordmark */}
-            <a
-              href="#hero"
-              className={`font-display font-semibold text-lg tracking-tight transition-colors duration-300 inline-flex items-end gap-0.5 ${textColor}`}
+          <div className="flex items-center justify-between h-16 md:h-[72px]">
+
+            {/* ── Wordmark — always navigates home ── */}
+            <Link
+              href="/"
+              className="font-display font-semibold text-lg tracking-tight transition-colors duration-200 inline-flex items-end gap-0.5 text-dark hover:opacity-80"
             >
               heyIsmail
-              <span
-                className="text-brand-accent leading-none mb-[2px]"
-                aria-hidden="true"
-              >
-                •
-              </span>
-            </a>
+              <span className="text-brand-accent leading-none mb-[2px]" aria-hidden="true">•</span>
+            </Link>
 
-            {/* Desktop nav */}
-            <nav className="hidden lg:flex items-center gap-6">
+            {/* ── Desktop nav ── */}
+            <nav className="hidden lg:flex items-center gap-1" aria-label="Main navigation">
               {NAV_ITEMS.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className={`text-sm font-body font-medium transition-colors duration-300 hover:opacity-70 ${textColor}`}
+                <Link
+                  key={item.anchor}
+                  href={navHref(item)}
+                  className={cn(
+                    "px-3 py-1.5 rounded-lg text-sm font-body font-medium transition-colors duration-200",
+                    "text-dark/70 hover:text-dark hover:bg-dark/4",
+                    // Dim nav items slightly while on the ClimaFlow page to
+                    // signal these link back to the main site
+                    isClimaFlow && "text-dark/45 hover:text-dark/80"
+                  )}
                 >
                   {item.label}
-                </a>
+                </Link>
               ))}
+
+              {/* ClimaFlow pill — visible on all pages */}
+              <Link
+                href="/projects/climaflow"
+                className={cn(
+                  "ml-1 px-3 py-1.5 rounded-lg text-sm font-body font-semibold transition-all duration-200 flex items-center gap-1.5",
+                  isClimaFlow
+                    ? "bg-[#0EA5E9]/15 text-[#0EA5E9]"
+                    : "text-[#0EA5E9]/80 hover:text-[#0EA5E9] hover:bg-[#0EA5E9]/8"
+                )}
+                aria-current={isClimaFlow ? "page" : undefined}
+              >
+                {/* tiny drop icon */}
+                <svg width="11" height="11" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                  <path d="M7 1.5C7 1.5 3.5 5 3.5 8.5a3.5 3.5 0 0 0 7 0C10.5 5 7 1.5 7 1.5Z" fill="currentColor" opacity="0.85" />
+                </svg>
+                ClimaFlow
+              </Link>
             </nav>
 
-            {/* Desktop CTA */}
-            <div className="hidden lg:block">
-              <Button href={calLink} external={true} variant="primary" size="sm">
-                Book a call
+            {/* ── Desktop right: lang toggle + CTA ── */}
+            <div className="hidden lg:flex items-center gap-3">
+              <LangToggle lang={lang} onToggle={toggleLang} ariaLabel={t.nav.langToggleLabel} />
+              <Button href={calLink} external variant="primary" size="sm">
+                {t.nav.bookCall}
               </Button>
             </div>
 
-            {/* Hamburger button (tablet/mobile) */}
-            <button
-              className={`lg:hidden flex items-center justify-center w-10 h-10 transition-colors duration-300 ${textColor}`}
-              onClick={() => setMobileOpen((prev) => !prev)}
-              aria-expanded={mobileOpen}
-              aria-controls="mobile-menu"
-              aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
-            >
-              {mobileOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
-            </button>
+            {/* ── Mobile: lang toggle + hamburger ── */}
+            <div className="lg:hidden flex items-center gap-2">
+              <LangToggle lang={lang} onToggle={toggleLang} ariaLabel={t.nav.langToggleLabel} />
+              <button
+                className="flex items-center justify-center w-10 h-10 transition-colors duration-300 text-dark"
+                onClick={() => setMobileOpen((p) => !p)}
+                aria-expanded={mobileOpen}
+                aria-controls="mobile-menu"
+                aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              >
+                {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
+            </div>
           </div>
         </div>
       </motion.header>
 
-      {/* Mobile drawer */}
+      {/* ── Mobile drawer ── */}
       <AnimatePresence>
         {mobileOpen && (
           <>
@@ -132,12 +172,12 @@ export default function Header(): React.JSX.Element {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.25, ease: "easeOut" }}
+              transition={{ duration: 0.25 }}
               onClick={() => setMobileOpen(false)}
               aria-hidden="true"
             />
 
-            {/* Drawer panel */}
+            {/* Drawer */}
             <motion.div
               id="mobile-menu"
               role="dialog"
@@ -152,17 +192,18 @@ export default function Header(): React.JSX.Element {
             >
               {/* Drawer header */}
               <div className="flex items-center justify-between px-6 h-16 border-b border-dark/10 flex-shrink-0">
-                <a
-                  href="#hero"
+                <Link
+                  href="/"
                   className="font-display font-semibold text-lg tracking-tight text-dark"
                   onClick={() => setMobileOpen(false)}
                 >
-                  Ismail Muhammad
-                </a>
+                  heyIsmail
+                  <span className="text-brand-accent" aria-hidden="true">•</span>
+                </Link>
                 <button
-                  className="flex items-center justify-center w-10 h-10 text-dark/60 hover:text-dark transition-colors"
+                  className="flex items-center justify-center w-10 h-10 text-dark/60 hover:text-dark"
                   onClick={() => setMobileOpen(false)}
-                  aria-label="Close navigation menu"
+                  aria-label="Close menu"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -173,37 +214,55 @@ export default function Header(): React.JSX.Element {
                 <ul className="flex flex-col gap-1">
                   {NAV_ITEMS.map((item, i) => (
                     <motion.li
-                      key={item.href}
+                      key={item.anchor}
                       initial={{ opacity: 0, x: 24 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.28, delay: 0.06 + 0.05 * i, ease: "easeOut" }}
                     >
-                      <a
-                        href={item.href}
-                        className="flex items-center py-3.5 font-display font-semibold text-2xl text-dark hover:text-brand-accent transition-colors border-b border-dark/8 last:border-0"
-                        onClick={() => handleMobileNavClick(item.href)}
+                      <Link
+                        href={navHref(item)}
+                        className="flex items-center py-3.5 font-display font-semibold text-2xl text-dark hover:text-brand-accent transition-colors border-b border-dark/8"
+                        onClick={() => handleMobileNavClick(item)}
                       >
                         {item.label}
-                      </a>
+                      </Link>
                     </motion.li>
                   ))}
+
+                  {/* ClimaFlow mobile entry */}
+                  <motion.li
+                    initial={{ opacity: 0, x: 24 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.28, delay: 0.06 + 0.05 * NAV_ITEMS.length, ease: "easeOut" }}
+                  >
+                    <Link
+                      href="/projects/climaflow"
+                      className="flex items-center gap-2 py-3.5 font-display font-semibold text-2xl transition-colors border-b border-dark/8"
+                      style={{ color: "#0EA5E9" }}
+                      onClick={() => setMobileOpen(false)}
+                    >
+                      <svg width="18" height="18" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                        <path d="M7 1.5C7 1.5 3.5 5 3.5 8.5a3.5 3.5 0 0 0 7 0C10.5 5 7 1.5 7 1.5Z" fill="currentColor" opacity="0.85" />
+                      </svg>
+                      ClimaFlow
+                    </Link>
+                  </motion.li>
                 </ul>
 
-                {/* CTA */}
                 <motion.div
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.28, delay: 0.06 + 0.05 * NAV_ITEMS.length, ease: "easeOut" }}
+                  transition={{ duration: 0.28, delay: 0.06 + 0.05 * (NAV_ITEMS.length + 1), ease: "easeOut" }}
                   className="mt-auto pt-8"
                 >
                   <Button
                     href={calLink}
-                    external={true}
+                    external
                     size="md"
                     className="w-full justify-center"
                     onClick={() => setMobileOpen(false)}
                   >
-                    Book a call
+                    {t.nav.bookCall}
                   </Button>
                 </motion.div>
               </nav>
@@ -212,5 +271,51 @@ export default function Header(): React.JSX.Element {
         )}
       </AnimatePresence>
     </>
+  );
+}
+
+// ── Language toggle pill ──────────────────────────────────────────────────────
+
+function LangToggle({
+  lang,
+  onToggle,
+  ariaLabel,
+}: {
+  lang: Lang;
+  onToggle: () => void;
+  ariaLabel: string;
+}) {
+  return (
+    <button
+      onClick={onToggle}
+      aria-label={ariaLabel}
+      className="relative flex items-center h-7 rounded-full border border-dark/15 hover:border-dark/30 bg-transparent transition-colors duration-200 select-none"
+      style={{ width: "64px", padding: "2px" }}
+    >
+      {/* Sliding highlight */}
+      <motion.span
+        layout
+        transition={{ type: "spring", stiffness: 500, damping: 35 }}
+        className="absolute top-[2px] bottom-[2px] w-[28px] rounded-full bg-dark/8"
+        style={{ left: lang === "en" ? "2px" : "calc(100% - 30px)" }}
+        aria-hidden="true"
+      />
+      <span
+        className={cn(
+          "relative z-10 flex-1 text-center font-body text-[11px] font-semibold tracking-wide transition-colors duration-150",
+          lang === "en" ? "text-dark" : "text-dark/35"
+        )}
+      >
+        EN
+      </span>
+      <span
+        className={cn(
+          "relative z-10 flex-1 text-center font-body text-[11px] font-semibold tracking-wide transition-colors duration-150",
+          lang === "it" ? "text-dark" : "text-dark/35"
+        )}
+      >
+        IT
+      </span>
+    </button>
   );
 }

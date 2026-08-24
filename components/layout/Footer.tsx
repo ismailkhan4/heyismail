@@ -3,29 +3,32 @@
 import React from "react";
 import { Github, Linkedin } from "lucide-react";
 import { githubLink, linkedinLink } from "@/lib/content/siteConfig";
-
-const NAV_LINKS = [
-  { label: "Work", href: "#portfolio" },
-  { label: "Services", href: "#services" },
-  { label: "Process", href: "#process" },
-  { label: "Tech Stack", href: "#tech" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
-] as const;
+import { useTranslation } from "@/lib/i18n/context";
 
 const SOCIAL_LINKS = [
-  { label: "GitHub", href: githubLink, icon: Github },
+  { label: "GitHub",   href: githubLink,   icon: Github },
   { label: "LinkedIn", href: linkedinLink, icon: Linkedin },
 ] as const;
 
 export default function Footer(): React.JSX.Element {
+  const { t } = useTranslation();
+
+  const NAV_LINKS = [
+    { label: t.nav.work,      href: "#portfolio" },
+    { label: t.nav.services,  href: "#services" },
+    { label: t.nav.process,   href: "#process" },
+    { label: t.nav.techStack, href: "#tech" },
+    { label: t.nav.about,     href: "#about" },
+    { label: t.nav.contact,   href: "#contact" },
+  ] as const;
+
   return (
     <footer className="w-full bg-light border-t border-dark/10">
       <div className="max-w-6xl mx-auto px-6 py-10 flex flex-col gap-6">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           {/* Copyright */}
           <p className="text-sm text-dark/60 font-body">
-            © {new Date().getFullYear()} Ismail Muhammad
+            © {new Date().getFullYear()} heyIsmail
           </p>
 
           {/* Nav links */}
@@ -59,9 +62,7 @@ export default function Footer(): React.JSX.Element {
         </div>
 
         {/* Tagline */}
-        <p className="text-sm text-dark/50 font-body">
-          Based in Lahore, Pakistan · Working with clients globally.
-        </p>
+        <p className="text-sm text-dark/50 font-body">{t.footer.tagline}</p>
       </div>
     </footer>
   );

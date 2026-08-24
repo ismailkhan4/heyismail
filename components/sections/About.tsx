@@ -1,12 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { about } from "@/lib/content/about";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { useMotionVariants } from "@/lib/hooks/useMotionVariants";
+import { useTranslation } from "@/lib/i18n/context";
 
 export default function About() {
   const { fadeUp, stagger } = useMotionVariants();
+  const { t } = useTranslation();
 
   return (
     <section id="about" className="py-20 md:py-28 bg-light">
@@ -14,13 +15,13 @@ export default function About() {
         <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
           <motion.div variants={fadeUp}>
             <SectionHeading
-              eyebrow="ABOUT"
-              heading="Started self-taught in 2018. Still writing every line."
+              eyebrow={t.about.eyebrow}
+              heading={t.about.heading}
               theme="dark"
               className="mb-8"
             />
           </motion.div>
-          {about.paragraphs.map((para, i) => (
+          {t.about.paragraphs.map((para, i) => (
             <motion.p
               key={i}
               variants={fadeUp}

@@ -6,7 +6,7 @@ import { ChevronDown } from "lucide-react";
 import type { FaqItem } from "@/lib/types/content";
 
 interface FaqAccordionProps {
-  items: FaqItem[];
+  items: readonly FaqItem[];
 }
 
 export default function FaqAccordion({ items }: FaqAccordionProps): React.JSX.Element {

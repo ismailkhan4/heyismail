@@ -1,20 +1,21 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { faq } from "@/lib/content/faq";
 import FaqAccordion from "@/components/ui/FaqAccordion";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { useMotionVariants } from "@/lib/hooks/useMotionVariants";
+import { useTranslation } from "@/lib/i18n/context";
 
 export default function Faq() {
   const { fadeUp } = useMotionVariants();
+  const { t } = useTranslation();
 
   return (
     <section id="faq" className="py-20 md:py-28 bg-light">
       <div className="max-w-6xl mx-auto px-6">
         <SectionHeading
-          eyebrow="QUESTIONS"
-          heading="Before you book a call."
+          eyebrow={t.faq.eyebrow}
+          heading={t.faq.heading}
           theme="dark"
           className="mb-12"
         />
@@ -26,7 +27,7 @@ export default function Faq() {
           viewport={{ once: true }}
           className="max-w-3xl"
         >
-          <FaqAccordion items={faq} />
+          <FaqAccordion items={t.faq.items} />
         </motion.div>
       </div>
     </section>

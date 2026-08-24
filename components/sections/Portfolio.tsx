@@ -1,13 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { portfolio } from "@/lib/content/portfolio";
-import PortfolioCard from "@/components/ui/PortfolioCard";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { useMotionVariants } from "@/lib/hooks/useMotionVariants";
+import { useTranslation } from "@/lib/i18n/context";
+import PortfolioCard from "@/components/ui/PortfolioCard";
 
 export default function Portfolio() {
-  const { slideInLeft, stagger, scaleUp } = useMotionVariants();
+  const { slideInLeft, stagger } = useMotionVariants();
+  const { t } = useTranslation();
 
   return (
     <section id="portfolio" className="py-20 md:py-28 bg-dark">
@@ -19,9 +20,9 @@ export default function Portfolio() {
           viewport={{ once: true }}
         >
           <SectionHeading
-            eyebrow="SELECTED WORK"
-            heading="What gets built when scope is real."
-            subheading="Anonymized by design, a real client roster is on the way. Every project below reflects the kind of work actually shipped: problem, build, and outcome."
+            eyebrow={t.portfolio.eyebrow}
+            heading={t.portfolio.heading}
+            subheading={t.portfolio.subheading}
             theme="light"
             className="mb-12"
           />
@@ -34,8 +35,14 @@ export default function Portfolio() {
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
-          {portfolio.map((project) => (
-            <PortfolioCard key={project.id} project={project} />
+          {t.portfolio.items.map((project) => (
+            <PortfolioCard
+              key={project.id}
+              project={project}
+              labelProblem={t.portfolio.labelProblem}
+              labelBuild={t.portfolio.labelBuild}
+              labelOutcome={t.portfolio.labelOutcome}
+            />
           ))}
         </motion.div>
       </div>
