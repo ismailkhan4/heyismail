@@ -21,25 +21,25 @@ export const en = {
 
   // ── Hero ─────────────────────────────────────────────────────────────────────
   hero: {
-    eyebrow: "Full-Stack Engineer · Since 2018",
-    headline: "Production software for founders who can't afford to get it wrong.",
-    body: "I'm a full-stack engineer who partners directly with premium clients (no account managers, no offshore bench) to design and build web, mobile, and AI-powered products end to end.",
-    ctaPrimary: "Book a call",
+    eyebrow: "Full-Stack Software Engineer · 5+ Years Experience",
+    headline: "I build and ship production web, mobile, and AI products.",
+    body: "I'm a full-stack engineer who works directly with founders, startups, and product teams to design and build web, mobile, and AI-powered products end to end. Available for project collaboration, contract engineering, and full-time opportunities with international teams.",
+    ctaPrimary: "Let's talk",
     ctaSecondary: "See the work",
   },
 
   // ── ProofBar (stats) ─────────────────────────────────────────────────────────
   stats: [
-    { id: "since",    value: "2018",                  label: "Building production software since" },
-    { id: "breadth",  value: "Web · Mobile · AI",     label: "Full-stack breadth, one engineer" },
-    { id: "response", value: "<24h",                  label: "Typical response time" },
-    { id: "model",    value: "Fixed-scope or retainer", label: "Engagement model" },
+    { id: "experience", value: "5+ Years",         label: "Professional experience" },
+    { id: "downloads",  value: "500K+",             label: "Mobile app downloads" },
+    { id: "breadth",    value: "Web · Mobile · AI", label: "End-to-end development" },
+    { id: "global",     value: "Global",            label: "Working with teams worldwide" },
   ],
 
   // ── Services ─────────────────────────────────────────────────────────────────
   services: {
     eyebrow: "WHAT I BUILD",
-    heading: "Four ways to work with a senior engineer, not an agency queue.",
+    heading: "End-to-end product development across web, mobile, and AI.",
     items: [
       {
         id: "web",
@@ -77,16 +77,34 @@ export const en = {
     eyebrow: "SELECTED WORK",
     heading: "What gets built when scope is real.",
     subheading:
-      "Anonymized by design, a real client roster is on the way. Every project below reflects the kind of work actually shipped: problem, build, and outcome.",
+      "A cross-section of shipped products and active builds — web platforms, mobile apps, and SaaS. Each entry shows the problem, what was built, and the outcome.",
     labelProblem: "Problem",
     labelBuild: "Built",
     labelOutcome: "Outcome",
+    labelRole: "Role",
+    labelStatus: "Status",
     items: [
+      {
+        id: "climaflow",
+        category: "SaaS · Web · Mobile · Italy",
+        client: "ClimaFlow",
+        url: "/projects/climaflow",
+        role: "Founder · Product Designer · Full-Stack Engineer",
+        status: "In Development",
+        problem:
+          "Italian HVAC companies coordinate customers, technicians, jobs, and maintenance across WhatsApp, Excel, and paper — with no unified system built for how field service actually works.",
+        build:
+          "A mobile-first SaaS platform purpose-built for the Italian HVAC market. Customer and equipment management, technician job assignment, on-site digital checklists, automatic service report generation, maintenance scheduling, and an operations dashboard — all in one product.",
+        outcome:
+          "Actively in development. Designed specifically for Italian field service companies, with a roadmap from core field ops to AI-assisted scheduling and reporting.",
+        stack: ["Next.js", "React Native", "TypeScript", "Node.js", "PostgreSQL"],
+      },
       {
         id: "arvo",
         category: "EdTech LMS Platform",
         client: "ARVO",
         url: "https://arvo.com.pk",
+        role: "Full-Stack Engineer",
         problem:
           "Pakistan's education sector lacked a unified digital platform that could serve students, teachers, schools, and parents in one place without the complexity of enterprise tools.",
         build:
@@ -100,6 +118,7 @@ export const en = {
         category: "AI Creative Suite",
         client: "Whatever AI",
         url: "https://www.whatever-ai.com",
+        role: "Lead Engineer",
         problem:
           "Creators and everyday users needed a single tool to generate images, edit photos, remove backgrounds, and create music — without juggling five separate AI apps.",
         build:
@@ -113,6 +132,7 @@ export const en = {
         category: "Team Productivity SaaS",
         client: "Supervise",
         url: "https://www.supervise.work",
+        role: "Full-Stack Engineer",
         problem:
           "Engineering and remote teams were wasting hours on manual standups and check-ins with no factual data on who was actually doing what across GitHub, Figma, Google Docs, and other tools.",
         build:
@@ -126,6 +146,7 @@ export const en = {
         category: "Real Estate Marketplace",
         client: "Graana",
         url: "https://www.graana.com",
+        role: "Full-Stack Engineer",
         problem:
           "Pakistan's real estate market was opaque, fragmented, and driven by word-of-mouth — buyers and investors had no reliable digital platform to search, compare, and transact on properties.",
         build:
@@ -189,35 +210,36 @@ export const en = {
   // ── About ─────────────────────────────────────────────────────────────────────
   about: {
     eyebrow: "ABOUT",
-    heading: "Started self-taught in 2018. Still writing every line.",
+    heading: "Started building software in 2018. Still writing every line.",
     paragraphs: [
-      "I've been building production software since 2018, full-stack, end to end, across web, mobile, and, more recently, AI-powered products.",
-      "I work directly with founders and teams who need a senior engineer they can talk to, not a project manager relaying messages from an offshore bench. Every project I take on, I architect, build, and ship myself.",
-    ] as [string, string],
+      "I'm Muhammad Ismail, a full-stack software engineer with 5+ years of professional experience. I started building software independently in 2018 and moved into professional engineering in 2020 — since then I've worked across web, mobile, and AI-powered products, end to end.",
+      "I've built and shipped production applications across multiple stacks, including three React Native apps that collectively reached 500K+ downloads. I'm comfortable owning a feature, a product, or a codebase — and equally comfortable integrating into an existing team and contributing where it matters.",
+      "I work with founders and startups building new products, and with product companies and engineering teams that need experienced hands on an ongoing basis. I'm open to project collaboration, contract engineering, and full-time opportunities with international teams.",
+    ],
   },
 
   // ── Differentiators ───────────────────────────────────────────────────────────
   differentiators: {
-    eyebrow: "WHY IT'S DIFFERENT",
-    heading: "One senior engineer. No layers.",
+    eyebrow: "HOW I WORK",
+    heading: "Experienced engineer. Direct collaboration.",
     items: [
       {
         id: "ownership",
-        title: "Senior-level ownership",
+        title: "End-to-end ownership",
         description:
-          "You're not routed through juniors. The person scoping your project is the person shipping it.",
+          "From architecture to deployment, I take full ownership of what I build. The person scoping your project is the person shipping it.",
       },
       {
         id: "direct",
         title: "Direct communication",
         description:
-          "You talk to the engineer building your product, not a project manager relaying messages.",
+          "You work with me directly — no intermediaries, no handoffs. Clear, regular updates throughout the build.",
       },
       {
         id: "ai-native",
         title: "AI-native, production-grade",
         description:
-          "Modern engineering practices and AI tooling, applied with the discipline of shipped, maintained software.",
+          "Modern engineering practices and AI tooling applied with the discipline of software that ships, scales, and gets maintained.",
       },
     ],
   },
@@ -225,9 +247,9 @@ export const en = {
   // ── Pricing ───────────────────────────────────────────────────────────────────
   pricing: {
     eyebrow: "ENGAGEMENT MODELS",
-    heading: "Three ways to engage, no flat number upfront.",
+    heading: "Four ways to engage, no flat number upfront.",
     subheading:
-      "Every premium engagement is scoped after a call, here's the shape each one typically takes.",
+      "Every engagement is scoped after a conversation — here's the shape each one typically takes.",
     mostCommon: "Most common",
     bookCall: "Book a call",
     items: [
@@ -249,7 +271,7 @@ export const en = {
         includes: [
           "Monthly retainer",
           "Priority response time",
-          "Direct access, no account manager",
+          "Direct access, no intermediaries",
         ],
         highlighted: true,
       },
@@ -261,6 +283,18 @@ export const en = {
           "Custom scope and timeline",
           "Architecture-first engagement",
           "Web, mobile, and AI in one build",
+        ],
+        highlighted: false,
+      },
+      {
+        id: "team-collab",
+        name: "Team Collaboration",
+        whoFor: "Join an existing product or engineering team as a full-stack engineer.",
+        includes: [
+          "Frontend, backend, or full-stack contribution",
+          "Mobile development and API integrations",
+          "Feature development and product iteration",
+          "Short-term or ongoing collaboration",
         ],
         highlighted: false,
       },
@@ -297,7 +331,7 @@ export const en = {
         id: "who",
         question: "Who do you typically work with?",
         answer:
-          "Founders, funded startups, and established businesses who need production-grade software built by a senior engineer, not a slow agency or a scattered freelancer bench.",
+          "Founders and startups building new products, and product companies or engineering teams that need experienced hands on an existing codebase. I'm equally comfortable leading a build from scratch or integrating into a team and contributing where it matters.",
       },
       {
         id: "ownership",
@@ -325,9 +359,9 @@ export const en = {
       },
       {
         id: "premium",
-        question: "What does \"premium\" mean in scope?",
+        question: "What's the quality bar?",
         answer:
-          "Production-grade code, thoughtful architecture, and a build that's meant to be maintained and scaled, not a proof-of-concept meant to be thrown away.",
+          "Production-grade code, thoughtful architecture, and a build that's meant to be maintained and scaled — not a proof-of-concept that gets thrown away when real usage starts.",
       },
     ],
   },
@@ -335,9 +369,9 @@ export const en = {
   // ── Contact ───────────────────────────────────────────────────────────────────
   contact: {
     eyebrow: "GET IN TOUCH",
-    heading: "Have a project in mind?",
+    heading: "Have a project, or need another engineer?",
     subheading:
-      "Book a short call, or send a few details below. I respond to every message myself, usually within a day.",
+      "Building something new, improving an existing product, or looking for an engineer to join your team? Book a call or send a few details below. I respond to every message myself.",
     bookCall: "Book a call",
     form: {
       labelName: "Name",
@@ -350,6 +384,7 @@ export const en = {
         { value: "Mobile app",               label: "Mobile app" },
         { value: "AI & automation",          label: "AI & automation" },
         { value: "Full product build (0→1)", label: "Full product build (0→1)" },
+        { value: "Team collaboration",       label: "Team collaboration" },
         { value: "Not sure yet",             label: "Not sure yet" },
       ],
       submit: "Send message",

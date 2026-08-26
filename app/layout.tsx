@@ -21,20 +21,22 @@ const inter = Inter({
 });
 
 const siteTitle =
-  "heyIsmail | Full-Stack Software Engineer for Startups & Founders";
+  "Muhammad Ismail — Full-Stack Software Engineer";
 const siteDescription =
-  "Full-stack software engineer and technical partner for premium, global clients. Production-grade web apps, mobile apps, and AI-powered products, built end to end by a single senior engineer since 2018.";
+  "Full-stack software engineer with 5+ years of professional experience building production web, mobile, and AI products. React, Next.js, TypeScript, Node.js, and React Native. Available for project collaboration, contract engineering, and full-time opportunities.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://heyismail.com"),
   title: siteTitle,
   description: siteDescription,
   keywords: [
-    "full-stack developer for hire",
-    "React Next.js developer for startups",
-    "AI product developer",
-    "mobile app developer for founders",
-    "senior software engineer freelance",
+    "full-stack software engineer",
+    "React Next.js developer",
+    "React Native mobile developer",
+    "software engineer for hire",
+    "full-stack engineer for startups",
+    "contract software engineer",
+    "software engineer Italy",
   ],
   openGraph: {
     title: siteTitle,
@@ -53,7 +55,7 @@ export const metadata: Metadata = {
 const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: "heyIsmail",
+  name: "Muhammad Ismail",
   jobTitle: "Full-Stack Software Engineer",
   url: "https://heyismail.com",
   description: siteDescription,
@@ -64,6 +66,8 @@ const personJsonLd = {
     "Next.js",
     "React Native",
     "TypeScript",
+    "Node.js",
+    "PostgreSQL",
   ],
 };
 
