@@ -23,25 +23,25 @@ export const it: Dictionary = {
 
   // ── Hero ─────────────────────────────────────────────────────────────────────
   hero: {
-    eyebrow: "Full-Stack Engineer · Dal 2018",
-    headline: "Software in produzione per founder che non possono permettersi errori.",
-    body: "Sono un ingegnere full-stack che lavora direttamente con clienti premium (nessun account manager, nessun team offshore) per progettare e costruire prodotti web, mobile e AI end to end.",
-    ctaPrimary: "Prenota una call",
+    eyebrow: "Full-Stack Software Engineer · 5+ anni di esperienza",
+    headline: "Progetto e consegno prodotti web, mobile e AI in produzione.",
+    body: "Sono un ingegnere full-stack che lavora direttamente con founder, startup e team di prodotto per progettare e costruire prodotti web, mobile e AI end to end. Disponibile per collaborazioni su progetto, contratti di sviluppo e opportunità a tempo pieno con team internazionali.",
+    ctaPrimary: "Parliamone",
     ctaSecondary: "Guarda i progetti",
   },
 
   // ── ProofBar (stats) ─────────────────────────────────────────────────────────
   stats: [
-    { id: "since",    value: "2018",                      label: "Software in produzione dal" },
-    { id: "breadth",  value: "Web · Mobile · AI",         label: "Competenza full-stack, un ingegnere" },
-    { id: "response", value: "<24h",                      label: "Tempo di risposta tipico" },
-    { id: "model",    value: "Scope fisso o retainer",    label: "Modello di ingaggio" },
+    { id: "experience", value: "5+ anni",           label: "Esperienza professionale" },
+    { id: "downloads",  value: "500K+",              label: "Download app mobile" },
+    { id: "breadth",    value: "Web · Mobile · AI",  label: "Sviluppo end-to-end" },
+    { id: "global",     value: "Globale",            label: "Collaboro con team in tutto il mondo" },
   ],
 
   // ── Services ─────────────────────────────────────────────────────────────────
   services: {
     eyebrow: "COSA COSTRUISCO",
-    heading: "Quattro modi di lavorare con un senior engineer, senza la burocrazia di un'agenzia.",
+    heading: "Sviluppo end-to-end su web, mobile e AI.",
     items: [
       {
         id: "web",
@@ -79,16 +79,34 @@ export const it: Dictionary = {
     eyebrow: "LAVORI SELEZIONATI",
     heading: "Cosa si costruisce quando lo scope è reale.",
     subheading:
-      "Anonimizzati per scelta, una lista clienti reale è in arrivo. Ogni progetto riflette il tipo di lavoro effettivamente consegnato: problema, soluzione e risultato.",
+      "Una selezione di prodotti consegnati e build attive — piattaforme web, app mobile e SaaS. Ogni progetto mostra il problema, cosa è stato costruito e il risultato.",
     labelProblem: "Problema",
     labelBuild: "Costruito",
     labelOutcome: "Risultato",
+    labelRole: "Ruolo",
+    labelStatus: "Stato",
     items: [
+      {
+        id: "climaflow",
+        category: "SaaS · Web · Mobile · Italia",
+        client: "ClimaFlow",
+        url: "/projects/climaflow",
+        role: "Founder · Product Designer · Full-Stack Engineer",
+        status: "In sviluppo",
+        problem:
+          "Le aziende italiane di climatizzazione coordinano clienti, tecnici, interventi e manutenzioni su WhatsApp, Excel e carta — senza un sistema unificato pensato per come funziona davvero il field service.",
+        build:
+          "Una piattaforma SaaS mobile-first costruita specificamente per il mercato HVAC italiano. Gestione clienti e impianti, assegnazione interventi ai tecnici, checklist digitali sul posto, generazione automatica dei rapportini, pianificazione manutenzioni e dashboard operativa — tutto in un unico prodotto.",
+        outcome:
+          "Attivamente in sviluppo. Progettato specificamente per le aziende di field service italiane, con una roadmap che va dalle operazioni core sul campo allo scheduling e alla reportistica assistiti dall'AI.",
+        stack: ["Next.js", "React Native", "TypeScript", "Node.js", "PostgreSQL"],
+      },
       {
         id: "arvo",
         category: "Piattaforma LMS EdTech",
         client: "ARVO",
         url: "https://arvo.com.pk",
+        role: "Full-Stack Engineer",
         problem:
           "Il settore educativo pakistano mancava di una piattaforma digitale unificata in grado di servire studenti, insegnanti, scuole e genitori in un unico posto senza la complessità degli strumenti enterprise.",
         build:
@@ -102,6 +120,7 @@ export const it: Dictionary = {
         category: "Suite AI Creativa",
         client: "Whatever AI",
         url: "https://www.whatever-ai.com",
+        role: "Lead Engineer",
         problem:
           "Creator e utenti comuni avevano bisogno di un unico strumento per generare immagini, modificare foto, rimuovere sfondi e creare musica — senza destreggiarsi tra cinque app AI separate.",
         build:
@@ -115,6 +134,7 @@ export const it: Dictionary = {
         category: "SaaS Produttività Team",
         client: "Supervise",
         url: "https://www.supervise.work",
+        role: "Full-Stack Engineer",
         problem:
           "I team di ingegneria e remoti sprecavano ore in standup e check-in manuali senza dati reali su chi stesse facendo cosa tra GitHub, Figma, Google Docs e altri strumenti.",
         build:
@@ -128,6 +148,7 @@ export const it: Dictionary = {
         category: "Marketplace Immobiliare",
         client: "Graana",
         url: "https://www.graana.com",
+        role: "Full-Stack Engineer",
         problem:
           "Il mercato immobiliare pakistano era opaco, frammentato e guidato dal passaparola — acquirenti e investitori non avevano una piattaforma digitale affidabile per cercare, confrontare e transare proprietà.",
         build:
@@ -191,35 +212,36 @@ export const it: Dictionary = {
   // ── About ─────────────────────────────────────────────────────────────────────
   about: {
     eyebrow: "CHI SONO",
-    heading: "Autodidatta dal 2018. Scrivo ancora ogni riga.",
+    heading: "Ho iniziato a costruire software nel 2018. Scrivo ancora ogni riga.",
     paragraphs: [
-      "Costruisco software in produzione dal 2018 — full-stack, end to end, tra web, mobile e, più di recente, prodotti AI.",
-      "Lavoro direttamente con founder e team che hanno bisogno di un senior engineer con cui parlare, non di un project manager che inoltra messaggi da un team offshore. Ogni progetto che prendo in carico, lo architettura, costruisco e consegno personalmente.",
-    ] as [string, string],
+      "Sono Muhammad Ismail, ingegnere software full-stack con oltre 5 anni di esperienza professionale. Ho iniziato a sviluppare software in modo indipendente nel 2018 e sono entrato nel mondo dell'ingegneria professionale nel 2020 — da allora ho lavorato su prodotti web, mobile e AI, end to end.",
+      "Ho costruito e consegnato applicazioni in produzione su più stack, tra cui tre app React Native che hanno raggiunto complessivamente 500K+ download. So prendere in carico una funzionalità, un prodotto o un intero codebase — e so anche integrarmi in un team esistente e contribuire dove serve.",
+      "Lavoro con founder e startup che stanno costruendo nuovi prodotti, e con aziende tecnologiche o team di ingegneria che cercano un profilo esperto su base continuativa. Sono disponibile per collaborazioni su progetto, contratti di sviluppo e opportunità a tempo pieno con team internazionali.",
+    ],
   },
 
   // ── Differentiators ───────────────────────────────────────────────────────────
   differentiators: {
-    eyebrow: "PERCHÉ È DIVERSO",
-    heading: "Un senior engineer. Nessun intermediario.",
+    eyebrow: "COME LAVORO",
+    heading: "Ingegnere esperto. Collaborazione diretta.",
     items: [
       {
         id: "ownership",
-        title: "Responsabilità senior",
+        title: "Responsabilità end-to-end",
         description:
-          "Non vieni smistato a junior. Chi fa lo scope del tuo progetto è la stessa persona che lo consegna.",
+          "Dall'architettura al deploy, prendo piena responsabilità di quello che costruisco. Chi definisce lo scope è la stessa persona che lo consegna.",
       },
       {
         id: "direct",
         title: "Comunicazione diretta",
         description:
-          "Parli con l'ingegnere che costruisce il tuo prodotto, non con un project manager che trasmette messaggi.",
+          "Lavori direttamente con me — nessun intermediario, nessun passaggio di mano. Aggiornamenti chiari e regolari durante tutto il build.",
       },
       {
         id: "ai-native",
         title: "AI-native, pronto per la produzione",
         description:
-          "Pratiche ingegneristiche moderne e strumenti AI, applicati con la disciplina di software consegnato e manutenuto.",
+          "Pratiche ingegneristiche moderne e strumenti AI applicati con la disciplina di un software che viene consegnato, scalato e manutenuto nel tempo.",
       },
     ],
   },
@@ -227,9 +249,9 @@ export const it: Dictionary = {
   // ── Pricing ───────────────────────────────────────────────────────────────────
   pricing: {
     eyebrow: "MODELLI DI INGAGGIO",
-    heading: "Tre modi per collaborare, nessun prezzo fisso in anticipo.",
+    heading: "Quattro modi per collaborare, nessun prezzo fisso in anticipo.",
     subheading:
-      "Ogni ingaggio premium viene definito dopo una call — ecco come si struttura tipicamente ciascuno.",
+      "Ogni ingaggio viene definito dopo una conversazione — ecco come si struttura tipicamente ciascuno.",
     mostCommon: "Più comune",
     bookCall: "Prenota una call",
     items: [
@@ -251,7 +273,7 @@ export const it: Dictionary = {
         includes: [
           "Retainer mensile",
           "Tempo di risposta prioritario",
-          "Accesso diretto, nessun account manager",
+          "Accesso diretto, nessun intermediario",
         ],
         highlighted: true,
       },
@@ -263,6 +285,18 @@ export const it: Dictionary = {
           "Scope e timeline personalizzati",
           "Ingaggio architecture-first",
           "Web, mobile e AI in un unico build",
+        ],
+        highlighted: false,
+      },
+      {
+        id: "team-collab",
+        name: "Collaborazione in Team",
+        whoFor: "Integrarsi in un team di prodotto o di ingegneria esistente come full-stack engineer.",
+        includes: [
+          "Contributo frontend, backend o full-stack",
+          "Sviluppo mobile e integrazioni API",
+          "Sviluppo funzionalità e iterazione sul prodotto",
+          "Collaborazione a breve o lungo termine",
         ],
         highlighted: false,
       },
@@ -299,7 +333,7 @@ export const it: Dictionary = {
         id: "who",
         question: "Con chi lavori tipicamente?",
         answer:
-          "Founder, startup finanziate e aziende consolidate che hanno bisogno di software di qualità produzione costruito da un senior engineer, non da un'agenzia lenta o da un gruppo di freelancer dispersi.",
+          "Con founder e startup che stanno costruendo nuovi prodotti, e con aziende tecnologiche o team di ingegneria che cercano un profilo esperto su una codebase esistente. Mi trovo a mio agio sia nel guidare un build da zero che nell'integrarmi in un team e contribuire dove è più utile.",
       },
       {
         id: "ownership",
@@ -327,9 +361,9 @@ export const it: Dictionary = {
       },
       {
         id: "premium",
-        question: "Cosa significa \"premium\" nello scope?",
+        question: "Qual è il livello qualitativo?",
         answer:
-          "Codice di qualità produzione, architettura ragionata e un build pensato per essere mantenuto e scalato — non un proof-of-concept usa e getta.",
+          "Codice di qualità produzione, architettura ragionata e un build pensato per essere mantenuto e scalato — non un proof-of-concept che viene abbandonato quando arriva il carico reale.",
       },
     ],
   },
@@ -337,14 +371,14 @@ export const it: Dictionary = {
   // ── Contact ───────────────────────────────────────────────────────────────────
   contact: {
     eyebrow: "METTITI IN CONTATTO",
-    heading: "Hai un progetto in mente?",
+    heading: "Hai un progetto, o cerchi un ingegnere?",
     subheading:
-      "Prenota una call breve o invia qualche dettaglio qui sotto. Rispondo a ogni messaggio personalmente, di solito entro un giorno.",
+      "Stai costruendo qualcosa di nuovo, migliorando un prodotto esistente o cercando un ingegnere da aggiungere al team? Prenota una call o invia qualche dettaglio qui sotto. Rispondo a ogni messaggio personalmente.",
     bookCall: "Prenota una call",
     form: {
       labelName: "Nome",
       labelEmail: "Email",
-      labelProjectType: "Tipo di progetto",
+      labelProjectType: "Tipo di collaborazione",
       labelMessage: "Messaggio",
       placeholder: "Seleziona",
       options: [
@@ -352,6 +386,7 @@ export const it: Dictionary = {
         { value: "Mobile app",               label: "App mobile" },
         { value: "AI & automation",          label: "AI & automazione" },
         { value: "Full product build (0→1)", label: "Build prodotto completo (0→1)" },
+        { value: "Team collaboration",       label: "Collaborazione in team" },
         { value: "Not sure yet",             label: "Non ancora sicuro" },
       ],
       submit: "Invia messaggio",
@@ -360,7 +395,7 @@ export const it: Dictionary = {
         "Grazie, il tuo client email dovrebbe essersi aperto con il messaggio pronto da inviare. Se non è successo, scrivimi direttamente a",
       errorName: "Inserisci il tuo nome",
       errorEmail: "Inserisci un'email valida",
-      errorProjectType: "Seleziona un tipo di progetto",
+      errorProjectType: "Seleziona un tipo di collaborazione",
       errorMessage: "Aggiungi qualche dettaglio in più (almeno 10 caratteri)",
     },
   },

@@ -5,6 +5,10 @@ export type ProjectType = {
   category: string;
   client: string;
   url: string;
+  /** Optional role label, e.g. "Full-Stack Engineer" or "Founder · Product Designer · Full-Stack Engineer" */
+  role?: string;
+  /** Optional status label, e.g. "In Development". Only shown when present. */
+  status?: string;
   problem: string;
   build: string;
   outcome: string;

@@ -42,6 +42,8 @@ export default function Portfolio() {
               labelProblem={t.portfolio.labelProblem}
               labelBuild={t.portfolio.labelBuild}
               labelOutcome={t.portfolio.labelOutcome}
+              labelRole={t.portfolio.labelRole}
+              labelStatus={t.portfolio.labelStatus}
             />
           ))}
         </motion.div>

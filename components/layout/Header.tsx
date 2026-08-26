@@ -32,7 +32,8 @@ export default function Header(): React.JSX.Element {
 
   // True when we are on the homepage
   const isHome = pathname === "/";
-  // True when we are on the ClimaFlow page
+  // True when we are on a project sub-page — dims the main nav links slightly
+  // to signal they link back to the main site.
   const isClimaFlow = pathname === "/projects/climaflow";
 
   const NAV_ITEMS: NavItem[] = [
@@ -109,32 +110,12 @@ export default function Header(): React.JSX.Element {
                   className={cn(
                     "px-3 py-1.5 rounded-lg text-sm font-body font-medium transition-colors duration-200",
                     "text-dark/70 hover:text-dark hover:bg-dark/4",
-                    // Dim nav items slightly while on the ClimaFlow page to
-                    // signal these link back to the main site
                     isClimaFlow && "text-dark/45 hover:text-dark/80"
                   )}
                 >
                   {item.label}
                 </Link>
               ))}
-
-              {/* ClimaFlow pill — visible on all pages */}
-              <Link
-                href="/projects/climaflow"
-                className={cn(
-                  "ml-1 px-3 py-1.5 rounded-lg text-sm font-body font-semibold transition-all duration-200 flex items-center gap-1.5",
-                  isClimaFlow
-                    ? "bg-[#0EA5E9]/15 text-[#0EA5E9]"
-                    : "text-[#0EA5E9]/80 hover:text-[#0EA5E9] hover:bg-[#0EA5E9]/8"
-                )}
-                aria-current={isClimaFlow ? "page" : undefined}
-              >
-                {/* tiny drop icon */}
-                <svg width="11" height="11" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                  <path d="M7 1.5C7 1.5 3.5 5 3.5 8.5a3.5 3.5 0 0 0 7 0C10.5 5 7 1.5 7 1.5Z" fill="currentColor" opacity="0.85" />
-                </svg>
-                ClimaFlow
-              </Link>
             </nav>
 
             {/* ── Desktop right: lang toggle + CTA ── */}
@@ -212,6 +193,7 @@ export default function Header(): React.JSX.Element {
               {/* Nav links */}
               <nav className="flex flex-col flex-1 px-6 pt-6 pb-8 overflow-y-auto">
                 <ul className="flex flex-col gap-1">
+                  {/* nav items */}
                   {NAV_ITEMS.map((item, i) => (
                     <motion.li
                       key={item.anchor}
@@ -228,31 +210,12 @@ export default function Header(): React.JSX.Element {
                       </Link>
                     </motion.li>
                   ))}
-
-                  {/* ClimaFlow mobile entry */}
-                  <motion.li
-                    initial={{ opacity: 0, x: 24 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.28, delay: 0.06 + 0.05 * NAV_ITEMS.length, ease: "easeOut" }}
-                  >
-                    <Link
-                      href="/projects/climaflow"
-                      className="flex items-center gap-2 py-3.5 font-display font-semibold text-2xl transition-colors border-b border-dark/8"
-                      style={{ color: "#0EA5E9" }}
-                      onClick={() => setMobileOpen(false)}
-                    >
-                      <svg width="18" height="18" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                        <path d="M7 1.5C7 1.5 3.5 5 3.5 8.5a3.5 3.5 0 0 0 7 0C10.5 5 7 1.5 7 1.5Z" fill="currentColor" opacity="0.85" />
-                      </svg>
-                      ClimaFlow
-                    </Link>
-                  </motion.li>
                 </ul>
 
                 <motion.div
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.28, delay: 0.06 + 0.05 * (NAV_ITEMS.length + 1), ease: "easeOut" }}
+                  transition={{ duration: 0.28, delay: 0.06 + 0.05 * NAV_ITEMS.length, ease: "easeOut" }}
                   className="mt-auto pt-8"
                 >
                   <Button
