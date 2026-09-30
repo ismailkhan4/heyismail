@@ -1,25 +1,18 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  // 1️⃣  Enable SVGR (import SVGs as React components)
-  webpack(config: any) {
-    // Exclude SVGs from the default file‑loader
-    const assetRule = config.module.rules.find((rule: any) =>
-      rule.test?.test?.(".svg")
-    );
-    assetRule.exclude = /\.svg$/i;
+import type { NextConfig } from "next";
 
-    // Add @svgr/webpack for SVG → React components
-    config.module.rules.push({
-      test: /\.svg$/i,
-      issuer: /\.[jt]sx?$/,
-      use: ["@svgr/webpack"],
-    });
+const securityHeaders = [
+  { key: "X-Content-Type-Options", value: "nosniff" },
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+  { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), browsing-topics=()" },
+  // Clickjacking protection. A full script CSP would need per-request nonces,
+  // which would stop these pages from being statically generated.
+  { key: "Content-Security-Policy", value: "frame-ancestors 'none'; base-uri 'self'; form-action 'self'" },
+];
 
-    return config;
+const nextConfig: NextConfig = {
+  async headers() {
+    return [{ source: "/:path*", headers: securityHeaders }];
   },
-
-  // 2️⃣  Allow TypeScript path aliases from tsconfig.json
-  // (Nothing to do here — Next.js reads tsconfig automatically)
 };
 
-module.exports = nextConfig;
+export default nextConfig;

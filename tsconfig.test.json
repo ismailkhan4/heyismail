@@ -3,6 +3,6 @@
   "compilerOptions": {
     "types": ["vitest/globals"]
   },
-  "include": ["lib/hooks/__tests__/**/*.ts", "lib/hooks/__tests__/**/*.tsx"],
+  "include": ["**/__tests__/**/*.ts", "**/__tests__/**/*.tsx"],
   "exclude": ["node_modules"]
 }
