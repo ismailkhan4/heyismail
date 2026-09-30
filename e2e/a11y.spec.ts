@@ -1,7 +1,15 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
-const PAGES = ["/", "/de", "/it", "/does-not-exist"];
+const PAGES = [
+  "/",
+  "/de",
+  "/it",
+  "/work/barrierefrei-studio",
+  "/de/work/barrierefrei-studio",
+  "/it/work/barrierefrei-studio",
+  "/does-not-exist",
+];
 const WCAG = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"];
 
 for (const path of PAGES) {
@@ -28,17 +36,20 @@ test("skip link is the first stop and moves focus to the main content", async ({
   await expect(page).toHaveURL(/#main$/);
 });
 
-test("every interactive element on the homepage shows a visible focus outline", async ({ page }) => {
-  await page.goto("/");
-  const missing = await page.evaluate(() => {
-    const els = [...document.querySelectorAll<HTMLElement>("a[href], button")].filter((el) => el.offsetParent !== null);
-    return els
-      .filter((el) => {
-        el.focus({ focusVisible: true } as FocusOptions);
-        const style = getComputedStyle(el);
-        return style.outlineStyle === "none" || style.outlineWidth === "0px";
-      })
-      .map((el) => el.outerHTML.slice(0, 80));
+for (const path of ["/", "/work/barrierefrei-studio"]) {
+  test(`every interactive element on ${path} shows a visible focus outline`, async ({ page }) => {
+    await page.goto(path);
+    const missing = await page.evaluate(() => {
+      // checkVisibility() also excludes links inside a closed <details>, which can't take focus.
+      const els = [...document.querySelectorAll<HTMLElement>("a[href], button")].filter((el) => el.checkVisibility());
+      return els
+        .filter((el) => {
+          el.focus({ focusVisible: true } as FocusOptions);
+          const style = getComputedStyle(el);
+          return style.outlineStyle === "none" || style.outlineWidth === "0px";
+        })
+        .map((el) => el.outerHTML.slice(0, 80));
+    });
+    expect(missing).toEqual([]);
   });
-  expect(missing).toEqual([]);
-});
+}

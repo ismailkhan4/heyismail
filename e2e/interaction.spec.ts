@@ -1,25 +1,33 @@
 import { expect, test } from "@playwright/test";
 
-test("mobile menu opens, closes with Escape and returns focus", async ({ page, isMobile }) => {
-  test.skip(!isMobile, "The menu button is only shown on small screens");
-  await page.goto("/");
-  const button = page.getByRole("button", { name: "Open menu" });
-  await button.click();
-  const menu = page.locator("#mobile-menu");
-  await expect(menu).toBeVisible();
-  await expect(menu.getByRole("link").first()).toBeFocused();
-  await page.keyboard.press("Escape");
-  await expect(menu).toBeHidden();
-  await expect(page.getByRole("button", { name: "Open menu" })).toBeFocused();
+test("navigation is visible on phones without opening a menu", async ({ page, isMobile }) => {
+  test.skip(!isMobile, "Phone layout only");
+  await page.goto("/de");
+  const nav = page.getByRole("navigation", { name: "Hauptnavigation" });
+  await expect(nav.getByRole("link", { name: "Kontakt", exact: true })).toBeVisible();
+  await nav.getByRole("link", { name: "Kontakt", exact: true }).click();
+  await expect(page).toHaveURL(/\/de#contact$/);
+  await expect(page.locator("#contact-heading")).toBeInViewport();
 });
 
-test("mobile menu links go to the section and close the menu", async ({ page, isMobile }) => {
-  test.skip(!isMobile, "The menu button is only shown on small screens");
-  await page.goto("/de");
-  await page.getByRole("button", { name: "Menü öffnen" }).click();
-  await page.locator("#mobile-menu").getByRole("link", { name: "Kontakt", exact: true }).click();
-  await expect(page.locator("#mobile-menu")).toBeHidden();
-  await expect(page).toHaveURL(/\/de#contact$/);
+test("copy email button copies the address and announces it", async ({ page, context, browserName }) => {
+  test.skip(browserName !== "chromium", "Clipboard permissions are Chromium-only");
+  await context.grantPermissions(["clipboard-read", "clipboard-write"]);
+  await page.goto("/");
+  await page.getByRole("button", { name: "Copy email address" }).click();
+  await expect(page.getByRole("status").filter({ hasText: "Email address copied" })).toBeVisible();
+  expect(await page.evaluate(() => navigator.clipboard.readText())).toBe("ismaeel.kheshgi@gmail.com");
+});
+
+test("the current project is labelled as in progress and links to its case study", async ({ page }) => {
+  await page.goto("/");
+  const section = page.locator("#building");
+  await expect(section.getByText("In research and design")).toBeVisible();
+  await section.getByRole("link", { name: "Read the case study" }).click();
+  await expect(page).toHaveURL(/\/work\/barrierefrei-studio$/);
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Barrierefrei Studio");
+  // Nothing on the page may claim the product is built or shipped.
+  await expect(page.getByText("No code yet", { exact: false }).first()).toBeVisible();
 });
 
 test("choosing a language is remembered and wins over the browser language", async ({ page, context }) => {
@@ -61,7 +69,7 @@ test("the hero answers who, what, where and next step without scrolling", async 
 });
 
 test("internal links resolve and in-page anchors exist", async ({ page, request }) => {
-  for (const path of ["/", "/de", "/it"]) {
+  for (const path of ["/", "/de", "/it", "/work/barrierefrei-studio", "/de/work/barrierefrei-studio"]) {
     await page.goto(path);
     const hrefs = await page.locator("a[href]").evaluateAll((as) => as.map((a) => (a as HTMLAnchorElement).href));
     for (const href of new Set(hrefs)) {

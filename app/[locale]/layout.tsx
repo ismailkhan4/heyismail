@@ -1,13 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
-import { Inter, Inter_Tight } from "next/font/google";
+import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SITE_URL, isLocale, locales } from "@/lib/i18n/config";
 import "../globals.css";
 
-// Variable fonts: one file per family instead of one per weight.
-const interTight = Inter_Tight({ subsets: ["latin"], variable: "--font-display", display: "swap" });
-const inter = Inter({ subsets: ["latin"], variable: "--font-body", display: "swap" });
+// One variable font for everything: one file instead of one per weight or family.
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 
 export const dynamicParams = false;
 
@@ -20,7 +19,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#E8F1F2",
+  themeColor: "#F7F7F2",
 };
 
 export default async function LocaleLayout({
@@ -34,7 +33,7 @@ export default async function LocaleLayout({
   if (!isLocale(locale)) notFound();
 
   return (
-    <html lang={locale} className={`${interTight.variable} ${inter.variable}`}>
+    <html lang={locale} className={inter.variable}>
       <body>
         {children}
         <Analytics />
