@@ -22,6 +22,11 @@ export function localePath(locale: Locale, path = "/"): string {
   return path === "/" ? `/${locale}` : `/${locale}${path}`;
 }
 
+/** Path of the same page in every locale, for the language switcher. */
+export function localePaths(path = "/"): Record<Locale, string> {
+  return Object.fromEntries(locales.map((l) => [l, localePath(l, path)])) as Record<Locale, string>;
+}
+
 /** hreflang map for a page that exists in the given locales (x-default → English). */
 export function languageAlternates(path: string, available: readonly Locale[] = locales) {
   const languages: Record<string, string> = {};

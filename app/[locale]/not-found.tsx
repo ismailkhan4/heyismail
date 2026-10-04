@@ -14,12 +14,12 @@ export default async function NotFound() {
     <main id="main" className="mx-auto flex min-h-screen max-w-6xl flex-col justify-center gap-6 px-4 py-24 sm:px-6">
       <title>{`${t.title} – heyIsmail`}</title>
       <meta name="robots" content="noindex" />
-      <a href={localePath(locale)} className="text-dark">
+      <a href={localePath(locale)} className="self-start rounded-sm">
         <Wordmark />
       </a>
-      <p className="font-body text-sm font-semibold uppercase tracking-[0.18em] text-accent-ink">404</p>
-      <h1 className="font-display text-4xl font-semibold tracking-tight text-dark md:text-5xl">{t.title}</h1>
-      <p className="font-body text-lg text-dark/75">{t.body}</p>
+      <p className="text-sm font-semibold text-ink-3">404</p>
+      <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">{t.title}</h1>
+      <p className="text-lg text-ink-2">{t.body}</p>
       <div>
         <Button href={localePath(locale)}>{t.cta}</Button>
       </div>

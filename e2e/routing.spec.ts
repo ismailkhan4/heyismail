@@ -63,7 +63,7 @@ test.describe("language resolution on /", () => {
 });
 
 test.describe("URLs", () => {
-  for (const path of ["/", "/de", "/it", "/robots.txt", "/sitemap.xml", "/og/en", "/og/de", "/og/it"]) {
+  for (const path of ["/", "/de", "/it", "/work/barrierefrei-studio", "/de/work/barrierefrei-studio", "/it/work/barrierefrei-studio", "/robots.txt", "/sitemap.xml", "/og/en", "/og/de", "/og/it"]) {
     test(`${path} is directly reachable`, async ({ request }) => {
       const res = await request.get(path, { headers: { "user-agent": BROWSER }, maxRedirects: 0 });
       expect(res.status()).toBe(200);
@@ -80,14 +80,14 @@ test.describe("URLs", () => {
   });
 
   test("/en paths redirect permanently to the unprefixed URL", async ({ request }) => {
-    for (const [from, to] of [["/en", "/"], ["/en/some-page", "/some-page"]]) {
+    for (const [from, to] of [["/en", "/"], ["/en/some-page", "/some-page"], ["/en/work/barrierefrei-studio", "/work/barrierefrei-studio"]]) {
       const res = await request.get(from, { maxRedirects: 0 });
       expect(res.status()).toBe(308);
       expect(new URL(res.headers()["location"], "http://x").pathname).toBe(to);
     }
   });
 
-  for (const path of ["/does-not-exist", "/de/does-not-exist", "/fr", "/projects/climaflow", "/it/projects/climaflow"]) {
+  for (const path of ["/does-not-exist", "/de/does-not-exist", "/fr", "/projects/climaflow", "/it/projects/climaflow", "/work/does-not-exist"]) {
     test(`${path} is a 404`, async ({ request }) => {
       const res = await request.get(path, { maxRedirects: 0 });
       expect(res.status()).toBe(404);

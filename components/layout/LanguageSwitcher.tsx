@@ -1,6 +1,7 @@
 "use client";
 
 import { LOCALE_COOKIE, locales, type Locale } from "@/lib/i18n/config";
+import { cn } from "@/lib/utils";
 
 const NAMES: Record<Locale, string> = { en: "English", de: "Deutsch", it: "Italiano" };
 
@@ -14,13 +15,16 @@ interface LanguageSwitcherProps {
   /** Path of this page in each language it exists in. */
   paths: Partial<Record<Locale, string>>;
   label: string;
-  className?: string;
+  /** "night" for the dark footer. */
+  tone?: "light" | "night";
 }
 
-export default function LanguageSwitcher({ current, paths, label, className }: LanguageSwitcherProps) {
+export default function LanguageSwitcher({ current, paths, label, tone = "light" }: LanguageSwitcherProps) {
+  const night = tone === "night";
+
   return (
-    <nav aria-label={label} className={className}>
-      <ul className="flex items-center gap-1">
+    <nav aria-label={label}>
+      <ul className="flex items-center gap-0.5">
         {locales.map((locale) => {
           const href = paths[locale];
           if (!href) return null;
@@ -33,9 +37,16 @@ export default function LanguageSwitcher({ current, paths, label, className }: L
                 lang={locale}
                 aria-current={isCurrent ? "page" : undefined}
                 onClick={() => rememberLocale(locale)}
-                className={`inline-flex h-8 min-w-8 items-center justify-center rounded-md px-2 font-body text-xs font-semibold tracking-wide transition-colors ${
-                  isCurrent ? "bg-dark/8 text-dark" : "text-dark/60 hover:bg-dark/5 hover:text-dark"
-                }`}
+                className={cn(
+                  "inline-flex size-10 items-center justify-center rounded-md text-xs font-semibold tracking-wide transition-colors duration-150",
+                  night
+                    ? isCurrent
+                      ? "bg-white/10 text-on-night"
+                      : "text-on-night-2 hover:bg-white/5 hover:text-on-night"
+                    : isCurrent
+                      ? "bg-sunken text-ink"
+                      : "text-ink-3 hover:bg-sunken hover:text-ink"
+                )}
               >
                 {locale.toUpperCase()}
                 <span className="sr-only">, {NAMES[locale]}</span>

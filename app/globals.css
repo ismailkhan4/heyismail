@@ -1,50 +1,72 @@
 @import "tailwindcss";
 
-/* ─── Brand tokens ─────────────────────────────────────────────
-   The four brand colors are unchanged. What changed is how they
-   are used:
+/* ─── Design tokens ─────────────────────────────────────────────
+   One light theme with a single dark band (contact). Contrast
+   ratios are measured against `canvas` (and `surface` where the
+   token sits on cards):
 
-   - brand-accent (#C5D86D) is a fill and a dark-background color.
-     As text on `light` it is 1.36:1, so it is never used that way.
-   - accent-ink (#55651A) is the same olive hue, darkened to 5.6:1
-     on `light`. It is the only accent color for text on light.
-   - Muted text never drops below dark/60 on light (5.1:1) or
-     light/60 on dark (6.5:1). Decorative lines and borders can be
-     fainter because they carry no information.                    */
+   ink        16.7:1   primary text
+   ink-2       8.9:1   secondary text
+   ink-3       5.8:1   muted text (lowest allowed for text)
+   brand-ink   7.1:1   the brand hue as text on light
+   success     6.0:1   "Done" status
+
+   `brand` (#C5D86D) is the heyIsmail lime. On light it is 1.5:1,
+   so it is only ever a fill (primary button, brand dot) with ink
+   on top (11.5:1), or text on the dark band (11.5:1).
+   `line` borders are decorative; nothing is identified by a
+   border alone.                                                  */
 @theme inline {
-  --color-light:              #E8F1F2;
-  --color-dark:               #070707;
-  --color-surface:            #292E1E;
-  --color-brand-accent:       #C5D86D;
-  --color-brand-accent-hover: #B3C55A;
-  --color-accent-ink:         #55651A;
+  --color-canvas:      #F7F7F2;
+  --color-surface:     #FFFFFF;
+  --color-sunken:      #EFF0E7;
+  --color-ink:         #16180F;
+  --color-ink-2:       #43473A;
+  --color-ink-3:       #5E6254;
+  --color-line:        #DCDFD1;
+  --color-line-strong: #A9AD9B;
 
-  --font-display: var(--font-display);
-  --font-body:    var(--font-body);
+  --color-brand:       #C5D86D;
+  --color-brand-hover: #B6CB58;
+  --color-brand-ink:   #4B5A12;
+
+  --color-night:        #16180F;
+  --color-on-night:     #F3F4EC;
+  --color-on-night-2:   #B8BCAB;
+  --color-line-night:   #3A3D31;
+
+  --color-success: #2E6B37;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {
   html {
+    color-scheme: light;
     scroll-behavior: smooth;
-    /* Anchor targets clear the fixed header. */
+    /* Anchor targets clear the sticky header on large screens. */
     scroll-padding-top: 5rem;
     -webkit-text-size-adjust: 100%;
   }
 
   body {
-    font-family: var(--font-body), system-ui, sans-serif;
-    background-color: var(--color-light);
-    color: var(--color-dark);
+    font-family: var(--font-sans);
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
     overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
   }
 
   h1, h2, h3 {
-    font-family: var(--font-display), system-ui, sans-serif;
     text-wrap: balance;
   }
 
+  p {
+    text-wrap: pretty;
+  }
+
   /* One focus style everywhere: follows the text color, so it has the
-     same contrast as the element it outlines on light and dark sections. */
+     same contrast as the element it outlines on light and dark areas. */
   :focus-visible {
     outline: 2px solid currentColor;
     outline-offset: 3px;
@@ -52,8 +74,8 @@
   }
 
   ::selection {
-    background-color: var(--color-brand-accent);
-    color: var(--color-dark);
+    background-color: var(--color-brand);
+    color: var(--color-ink);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -66,10 +88,19 @@
   }
 }
 
-.font-display {
-  font-family: var(--font-display), system-ui, sans-serif;
+/* Inline text links: underlined, darker on hover. */
+@utility link {
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+  transition: text-decoration-color 150ms ease;
+  &:hover {
+    text-decoration-color: currentColor;
+  }
 }
 
-.font-body {
-  font-family: var(--font-body), system-ui, sans-serif;
+/* Long-form text width. */
+@utility measure {
+  max-width: 68ch;
 }

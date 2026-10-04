@@ -15,6 +15,11 @@ export const profile = {
   cv: null as string | null,
 } as const;
 
+/** Pages other than the homepage (paths without the locale prefix). */
+export const routes = {
+  caseStudy: "/work/barrierefrei-studio",
+} as const;
+
 export const skills = [
   "React",
   "Next.js",

@@ -2,10 +2,17 @@ import { expect, test } from "@playwright/test";
 
 const SITE = "https://www.heyismail.com";
 
+const HOME = { en: "/", de: "/de", it: "/it", "x-default": "/" };
+const CS = "/work/barrierefrei-studio";
+const CASE_STUDY = { en: CS, de: `/de${CS}`, it: `/it${CS}`, "x-default": CS };
+
 const pages = [
-  { path: "/", lang: "en", canonical: SITE, hreflang: { en: "/", de: "/de", it: "/it", "x-default": "/" } },
-  { path: "/de", lang: "de", canonical: `${SITE}/de`, hreflang: { en: "/", de: "/de", it: "/it", "x-default": "/" } },
-  { path: "/it", lang: "it", canonical: `${SITE}/it`, hreflang: { en: "/", de: "/de", it: "/it", "x-default": "/" } },
+  { path: "/", lang: "en", canonical: SITE, hreflang: HOME },
+  { path: "/de", lang: "de", canonical: `${SITE}/de`, hreflang: HOME },
+  { path: "/it", lang: "it", canonical: `${SITE}/it`, hreflang: HOME },
+  { path: CS, lang: "en", canonical: `${SITE}${CS}`, hreflang: CASE_STUDY },
+  { path: `/de${CS}`, lang: "de", canonical: `${SITE}/de${CS}`, hreflang: CASE_STUDY },
+  { path: `/it${CS}`, lang: "it", canonical: `${SITE}/it${CS}`, hreflang: CASE_STUDY },
 ];
 
 for (const page of pages) {
@@ -48,9 +55,19 @@ test("homepage structured data describes the person accurately", async ({ page }
   expect(graph.find((n) => n["@type"] === "ProfilePage").mainEntity["@id"]).toBe(person["@id"]);
 });
 
+test("case study structured data is an in-progress article by the same person", async ({ page }) => {
+  await page.goto(CS);
+  const blocks = await page.locator('script[type="application/ld+json"]').allTextContents();
+  const graph = blocks.map((b) => JSON.parse(b)).flatMap((b) => b["@graph"] ?? [b]);
+  const article = graph.find((n) => n["@type"] === "Article");
+  expect(article.creativeWorkStatus).toBe("Incomplete");
+  expect(article.author["@id"]).toBe(`${SITE}/#person`);
+  expect(graph.find((n) => n["@type"] === "BreadcrumbList").itemListElement).toHaveLength(2);
+});
+
 test("sitemap lists every page with its alternates", async ({ request }) => {
   const xml = await (await request.get("/sitemap.xml")).text();
-  for (const path of ["/", "/de", "/it"]) {
+  for (const path of ["/", "/de", "/it", CS, `/de${CS}`, `/it${CS}`]) {
     expect(xml).toContain(`<loc>${SITE}${path}</loc>`);
   }
   expect(xml).not.toContain("climaflow");

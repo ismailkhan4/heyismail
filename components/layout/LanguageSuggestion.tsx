@@ -45,14 +45,14 @@ export default function LanguageSuggestion({ current, paths }: LanguageSuggestio
     <aside
       lang={suggested}
       aria-label={copy.text}
-      className="fixed inset-x-4 bottom-4 z-50 flex items-center gap-3 rounded-xl bg-dark p-3 pl-4 text-light shadow-lg sm:inset-x-auto sm:left-4 sm:max-w-md"
+      className="fixed inset-x-4 bottom-4 z-50 flex items-center gap-3 rounded-xl bg-night p-3 pl-4 text-on-night shadow-lg sm:inset-x-auto sm:left-4 sm:max-w-md"
     >
-      <p className="flex-1 font-body text-sm">{copy.text}</p>
+      <p className="flex-1 text-sm">{copy.text}</p>
       <a
         href={paths[suggested]}
         hrefLang={suggested}
         onClick={() => rememberLocale(suggested)}
-        className="whitespace-nowrap rounded-lg bg-brand-accent px-3 py-2 font-body text-sm font-semibold text-dark hover:bg-brand-accent-hover"
+        className="whitespace-nowrap rounded-lg bg-brand px-3 py-2 text-sm font-semibold text-ink hover:bg-brand-hover"
       >
         {copy.action}
       </a>
@@ -63,7 +63,7 @@ export default function LanguageSuggestion({ current, paths }: LanguageSuggestio
           rememberLocale(current);
           setSuggested(null);
         }}
-        className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg text-light/70 hover:bg-light/10 hover:text-light"
+        className="flex size-10 flex-shrink-0 items-center justify-center rounded-lg text-on-night-2 hover:bg-white/10 hover:text-on-night"
       >
         <X size={18} aria-hidden="true" />
       </button>

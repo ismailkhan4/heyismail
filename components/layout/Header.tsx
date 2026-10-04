@@ -1,9 +1,7 @@
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/en";
-import Button from "@/components/ui/LinkButton";
 import Wordmark from "@/components/ui/Wordmark";
 import LanguageSwitcher from "./LanguageSwitcher";
-import MobileMenu from "./MobileMenu";
 
 interface HeaderProps {
   locale: Locale;
@@ -14,37 +12,39 @@ interface HeaderProps {
   languagePaths: Partial<Record<Locale, string>>;
 }
 
+// Four links fit on a phone, so the navigation is always visible: no menu to open.
+// Phones: wordmark and languages on one row, links on the next; the header scrolls away.
+// Large screens: one sticky row.
 export default function Header({ locale, dict, homeHref, languagePaths }: HeaderProps) {
   const t = dict.nav;
   const links = [
     { href: `${homeHref}#work`, label: t.work },
-    { href: `${homeHref}#stack`, label: t.stack },
+    { href: `${homeHref}#skills`, label: t.skills },
     { href: `${homeHref}#about`, label: t.about },
     { href: `${homeHref}#contact`, label: t.contact },
   ];
-  const cta = { href: `${homeHref}#contact`, label: dict.hero.ctaPrimary };
 
   return (
     <>
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-dark focus:px-4 focus:py-2 focus:text-light"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-ink focus:px-4 focus:py-2 focus:text-canvas"
       >
         {dict.skipLink}
       </a>
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-dark/10 bg-light/90 backdrop-blur-md">
-        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 md:h-[72px] lg:px-8">
-          <a href={homeHref} aria-label={t.home} className="text-dark">
+      <header className="z-50 border-b border-line bg-canvas/95 backdrop-blur-sm lg:sticky lg:top-0">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-8 px-4 pt-3 sm:px-6 lg:h-16 lg:flex-nowrap lg:pt-0">
+          <a href={homeHref} aria-label={t.home} className="rounded-sm">
             <Wordmark />
           </a>
 
-          <nav aria-label={t.label} className="hidden lg:block">
+          <nav aria-label={t.label} className="order-last -mx-2 w-full py-1.5 lg:order-none lg:mx-0 lg:ml-auto lg:w-auto lg:py-0">
             <ul className="flex items-center gap-1">
               {links.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="rounded-lg px-3 py-2 font-body text-sm font-medium text-dark/70 transition-colors hover:bg-dark/5 hover:text-dark"
+                    className="inline-flex min-h-10 items-center rounded-md px-2 text-[15px] font-medium text-ink-2 transition-colors duration-150 hover:bg-sunken hover:text-ink lg:px-3"
                   >
                     {link.label}
                   </a>
@@ -53,19 +53,7 @@ export default function Header({ locale, dict, homeHref, languagePaths }: Header
             </ul>
           </nav>
 
-          <div className="flex items-center gap-2 lg:gap-4">
-            <LanguageSwitcher current={locale} paths={languagePaths} label={t.languageLabel} />
-            <Button href={cta.href} size="sm" className="hidden lg:inline-flex">
-              {cta.label}
-            </Button>
-            <MobileMenu
-              links={links}
-              cta={cta}
-              navLabel={t.label}
-              openLabel={t.menuOpen}
-              closeLabel={t.menuClose}
-            />
-          </div>
+          <LanguageSwitcher current={locale} paths={languagePaths} label={t.languageLabel} />
         </div>
       </header>
     </>

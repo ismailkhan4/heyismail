@@ -1,20 +1,17 @@
 import type { Metadata } from "next";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
-import LanguageSuggestion from "@/components/layout/LanguageSuggestion";
+import PageShell from "@/components/layout/PageShell";
 import Hero from "@/components/home/Hero";
+import CurrentlyBuilding from "@/components/home/CurrentlyBuilding";
 import Work from "@/components/home/Work";
-import Stack from "@/components/home/Stack";
+import Skills from "@/components/home/Skills";
 import About from "@/components/home/About";
 import Contact from "@/components/home/Contact";
 import { SITE_URL, languageAlternates, localePath, locales, ogLocale, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import type { Dictionary } from "@/lib/i18n/en";
-import { profile, skills } from "@/lib/site";
+import { profile, routes, skills } from "@/lib/site";
 
 type Props = { params: Promise<{ locale: Locale }> };
-
-const languagePaths = Object.fromEntries(locales.map((l) => [l, localePath(l)])) as Record<Locale, string>;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
@@ -42,30 +39,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function HomePage({ params }: Props) {
   const { locale } = await params;
   const dict = getDictionary(locale);
-  const homeHref = localePath(locale);
 
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData(locale, dict)) }}
-      />
-      <Header locale={locale} dict={dict} homeHref={homeHref} languagePaths={languagePaths} />
-      <main id="main">
-        <Hero t={dict.hero} />
-        <Work t={dict.work} facts={dict.facts} />
-        <Stack t={dict.stack} />
-        <About t={dict.about} />
-        <Contact t={dict.contact} />
-      </main>
-      <Footer locale={locale} dict={dict} homeHref={homeHref} languagePaths={languagePaths} />
-      <LanguageSuggestion current={locale} paths={languagePaths} />
-    </>
+    <PageShell locale={locale} dict={dict} path="/">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData(locale, dict)) }} />
+      <Hero t={dict.hero} />
+      <CurrentlyBuilding t={dict.building} status={dict.status} caseStudyHref={localePath(locale, routes.caseStudy)} />
+      <Work t={dict.work} />
+      <Skills t={dict.skills} />
+      <About t={dict.about} />
+      <Contact t={dict.contact} />
+    </PageShell>
   );
 }
 
 // Only facts that are visible on the page. Projects are not marked up as the
-// person's works: they are other companies' products he contributed to.
+// person's works: most are other companies' products he contributed to.
 function structuredData(locale: Locale, dict: Dictionary) {
   const url = `${SITE_URL}${localePath(locale)}`;
   const personId = `${SITE_URL}/#person`;

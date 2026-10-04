@@ -27,23 +27,23 @@ export async function GET(_request: Request, { params }: { params: Promise<{ loc
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "72px 80px",
-          backgroundColor: "#070707",
-          color: "#E8F1F2",
+          backgroundColor: "#16180F",
+          color: "#F3F4EC",
           fontFamily: "sans-serif",
         }}
       >
-        <div style={{ display: "flex", alignItems: "flex-end", fontSize: 36, fontWeight: 600 }}>
+        <div style={{ display: "flex", alignItems: "baseline", fontSize: 36, fontWeight: 600 }}>
           {profile.brand}
-          <span style={{ color: "#C5D86D", marginLeft: 4 }}>•</span>
+          <span style={{ width: 14, height: 14, borderRadius: 7, backgroundColor: "#C5D86D", marginLeft: 4 }} />
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ fontSize: 76, fontWeight: 700, letterSpacing: -2 }}>{profile.name}</div>
           <div style={{ display: "flex", fontSize: 40, color: "#C5D86D", marginTop: 12 }}>{t.meta.jobTitle}</div>
-          <div style={{ display: "flex", fontSize: 30, color: "rgba(232,241,242,0.75)", marginTop: 28 }}>
+          <div style={{ display: "flex", fontSize: 30, color: "#B8BCAB", marginTop: 28 }}>
             React · Next.js · React Native
           </div>
         </div>
-        <div style={{ display: "flex", fontSize: 26, color: "rgba(232,241,242,0.75)" }}>{t.footer.tagline}</div>
+        <div style={{ display: "flex", fontSize: 26, color: "#B8BCAB" }}>{t.footer.tagline}</div>
       </div>
     ),
     { width: 1200, height: 630 }
