@@ -4,7 +4,7 @@ import type { Dictionary } from "./en";
 
 export const de: Dictionary = {
   meta: {
-    title: "Muhammad Ismail – Software Engineer (Frontend) — React · Next.js · React Native",
+    title: "Ismail Muhammad – Software Engineer (Frontend) — React · Next.js · React Native",
     description:
       "Software Engineer (Frontend) mit 5 Jahren Berufserfahrung mit Web- und Mobile-Produkten auf Basis von React, Next.js und React Native. Wohnhaft in Lahore, Pakistan.",
     jobTitle: "Software Engineer (Frontend)",
@@ -26,7 +26,7 @@ export const de: Dictionary = {
     role: "Software Engineer (Frontend) mit Schwerpunkt React, Next.js und React Native.",
     summary:
       "5 Jahre Berufserfahrung mit Produkten aus EdTech, Immobilien, B2B-SaaS und KI, inklusive API- und KI-Integration. Derzeit bin ich Software Engineer bei ARVO; davor habe ich an der React-Native-App von Graana mitgearbeitet, die bei Google Play über 1 Million Downloads hat.",
-    photoAlt: "Porträt von Muhammad Ismail",
+    photoAlt: "Porträt von Ismail Muhammad",
     factsLabel: "Auf einen Blick",
     facts: [
       { term: "Standort", value: "Lahore, Pakistan · UTC+5" },
@@ -215,7 +215,7 @@ export const de: Dictionary = {
 
   caseStudy: {
     meta: {
-      title: "Barrierefrei Studio: Barrierefreiheits-Tool im Aufbau – Muhammad Ismail",
+      title: "Barrierefrei Studio: Barrierefreiheits-Tool im Aufbau – Ismail Muhammad",
       description:
         "Fallstudie eines Produkts in Recherche und Konzeption: WCAG-Prüfung im echten Browser mit Playwright und axe-core, KI-Vorschläge für Fixes, die vor der Freigabe erneut geprüft werden – für Webagenturen in Europa.",
     },

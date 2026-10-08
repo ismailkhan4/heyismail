@@ -60,7 +60,7 @@ test("no suggestion when the visitor is already on the suggested language", asyn
 test("the hero answers who, what, where and next step without scrolling", async ({ page }) => {
   await page.goto("/");
   const viewport = page.viewportSize()!;
-  for (const text of ["Muhammad Ismail", "React", "Lahore, Pakistan", "A full-time frontend role"]) {
+  for (const text of ["Ismail Muhammad", "React", "Lahore, Pakistan", "A full-time frontend role"]) {
     const box = await page.getByText(text, { exact: false }).first().boundingBox();
     expect(box, text).not.toBeNull();
     expect(box!.y, `${text} should be above the fold`).toBeLessThan(viewport.height * 1.15);
