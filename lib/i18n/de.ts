@@ -4,10 +4,10 @@ import type { Dictionary } from "./en";
 
 export const de: Dictionary = {
   meta: {
-    title: "Muhammad Ismail – Frontend-Entwickler (React, Next.js, React Native)",
+    title: "Muhammad Ismail – Software Engineer (Frontend) — React · Next.js · React Native",
     description:
-      "Frontend-Entwickler mit über 5 Jahren Berufserfahrung mit Web- und Mobile-Produkten auf Basis von React, Next.js und React Native. Wohnhaft in Lahore, Pakistan, und bereit für einen Umzug nach Deutschland oder Italien.",
-    jobTitle: "Frontend-Entwickler",
+      "Software Engineer (Frontend) mit 5 Jahren Berufserfahrung mit Web- und Mobile-Produkten auf Basis von React, Next.js und React Native. Wohnhaft in Lahore, Pakistan.",
+    jobTitle: "Software Engineer (Frontend)",
   },
 
   skipLink: "Zum Inhalt springen",
@@ -23,15 +23,14 @@ export const de: Dictionary = {
   },
 
   hero: {
-    role: "Frontend-Entwickler mit Schwerpunkt React, Next.js und React Native.",
+    role: "Software Engineer (Frontend) mit Schwerpunkt React, Next.js und React Native.",
     summary:
-      "Über 5 Jahre Berufserfahrung mit Produkten aus EdTech, Immobilien, B2B-SaaS und KI, inklusive API- und KI-Integration. Derzeit bin ich React-Entwickler bei ARVO; davor habe ich an der React-Native-App von Graana mitgearbeitet, die bei Google Play über 1 Million Downloads hat.",
+      "5 Jahre Berufserfahrung mit Produkten aus EdTech, Immobilien, B2B-SaaS und KI, inklusive API- und KI-Integration. Derzeit bin ich Software Engineer bei ARVO; davor habe ich an der React-Native-App von Graana mitgearbeitet, die bei Google Play über 1 Million Downloads hat.",
     photoAlt: "Porträt von Muhammad Ismail",
     factsLabel: "Auf einen Blick",
     facts: [
       { term: "Standort", value: "Lahore, Pakistan · UTC+5" },
-      { term: "Gesucht", value: "Festanstellung im Frontend in Deutschland oder Italien, mit Umzug" },
-      { term: "Arbeitserlaubnis", value: "Ich benötige ein Arbeitsvisum, z. B. die Blaue Karte EU" },
+      { term: "Gesucht", value: "Eine Festanstellung im Frontend" },
     ],
     ctaPrimary: "Kontakt aufnehmen",
     ctaSecondary: "Projekte ansehen",
@@ -43,13 +42,13 @@ export const de: Dictionary = {
     name: "Barrierefrei Studio",
     nameNote: "Arbeitstitel",
     summary:
-      "Ein Arbeitsbereich zur Behebung von Barrierefreiheitsmängeln für kleine Webagenturen und E-Commerce-Teams in Deutschland, Österreich und der Schweiz.",
+      "Ein Arbeitsbereich zur Behebung von Barrierefreiheitsmängeln für kleine Webagenturen und E-Commerce-Teams in Europa.",
     body:
-      "Ziel ist, die Lücke zwischen dem Finden eines WCAG-Fehlers und seiner Behebung zu schließen: Seiten in einem echten Browser prüfen, jeden Fehler auf Deutsch oder Englisch erklären, einen Code-Fix entwerfen und die Prüfung erneut ausführen, damit der Fix bestätigt ist, bevor sich jemand darauf verlässt. Die Erkennung bleibt deterministisch; KI hilft nur beim Erklären und Beheben.",
+      "Ziel ist, die Lücke zwischen dem Finden eines WCAG-Fehlers und seiner Behebung zu schließen: Seiten in einem echten Browser prüfen, jeden Fehler in verständlicher Sprache erklären, einen Code-Fix entwerfen und die Prüfung erneut ausführen, damit der Fix bestätigt ist, bevor sich jemand darauf verlässt. Die Erkennung bleibt deterministisch; KI hilft nur beim Erklären und Beheben.",
     progressLabel: "Fortschritt",
     progress: [
       { status: "done", text: "Recherche, MVP-Umfang und Architekturplan" },
-      { status: "next", text: "Scan-Kern: Worker mit Playwright und axe-core, Fortschritt live in der Oberfläche" },
+      { status: "next", text: "Grundlagen: Repository, CI, Design-Tokens und Barrierefreiheitsprüfungen" },
     ],
     stackLabel: "Geplanter Stack",
     stack: ["Next.js", "TypeScript", "Playwright", "axe-core"],
@@ -75,33 +74,33 @@ export const de: Dictionary = {
         id: "arvo",
         name: "ARVO",
         category: "EdTech · Web",
-        role: "React Developer",
+        role: "Software Engineer",
         engagement: "ARVO · aktuelle Position",
         url: "https://arvo.com.pk",
         product:
-          "Eine pakistanische Bildungsplattform, die gedruckte Schulbücher mit einem Learning-Management-System und Tools für die Schulverwaltung verbindet. ARVO nennt über 100 Partnerstandorte.",
+          "Eine pakistanische Bildungsplattform, die gedruckte und digitale Schulbücher mit einem Learning-Management-System und Tools für die Schulverwaltung verbindet. Im täglichen Einsatz an Schulen in Pakistan.",
         contribution:
           "Frontend-Arbeit im Team, das die Webplattform entwickelt: rollenbasierte Dashboards für Schüler, Lehrkräfte, Schulverwaltung und Eltern, digitale Schulbücher, Aufgabenverwaltung und Echtzeit-Benachrichtigungen, angebunden an die APIs der Plattform.",
-        stack: ["React", "Next.js"],
+        stack: ["React", "Next.js", "TypeScript"],
       },
       {
         id: "graana",
         name: "Graana",
         category: "Immobilien · Mobile",
-        role: "Mobile Application Developer",
+        role: "React Native Developer → Frontend Developer",
         engagement: "CodeNinja",
         url: "https://www.graana.com",
         product:
           "Ein Immobilienmarktplatz für Pakistan mit Angeboten im Web und in mobilen Apps. Die Android-App hat über 1 Million Downloads bei Google Play.",
         contribution:
-          "Frontend-Arbeit an der React-Native-App im Entwicklungsteam, darunter die Migration der Codebasis von Klassenkomponenten zu Funktionskomponenten mit Hooks und die Anbindung der App an die Backend-APIs.",
+          "Frontend-Arbeit an der React-Native-App im Entwicklungsteam. Als Teil des Teams habe ich die Codebasis von Klassenkomponenten auf Funktionskomponenten mit Hooks migriert und die App an die Backend-APIs angebunden. Später habe ich als Frontend Developer an mehreren internen Projekten gearbeitet.",
         stack: ["React Native", "React Hooks"],
       },
       {
         id: "whatever-ai",
         name: "Whatever AI",
         category: "KI · Web",
-        role: "Frontend Developer",
+        role: "Software Engineer",
         engagement: "Freiberuflich",
         url: "https://www.whatever-ai.com",
         product:
@@ -114,7 +113,7 @@ export const de: Dictionary = {
         id: "supervise",
         name: "Supervise",
         category: "B2B-SaaS · Web",
-        role: "Frontend Developer",
+        role: "Software Engineer",
         engagement: "Freiberuflich",
         url: "https://www.supervise.work",
         product:
@@ -127,8 +126,9 @@ export const de: Dictionary = {
         id: "vectum",
         name: "Vectum",
         category: "Logistik · Website",
-        role: "Frontend Developer",
+        role: "Software Engineer",
         engagement: "Freiberuflich · 2026",
+        // [TODO: link to vectum.it once the production domain serves this site]
         url: "https://vectum-site.vercel.app",
         product: "Die Website von VECTUM, einem italienischen Logistikunternehmen für Luftfracht, zeitkritische Sendungen sowie Straßen- und Seefracht.",
         contribution:
@@ -145,7 +145,7 @@ export const de: Dictionary = {
       { name: "Mobile", items: ["React Native", "Expo"] },
       { name: "Integration", items: ["REST APIs", "OAuth", "OpenAI API", "Stripe"] },
       { name: "Tools", items: ["Git", "GitHub", "Jira", "Figma", "Postman", "Vercel"] },
-      { name: "Grundkenntnisse", items: ["Node.js", "Express", "PostgreSQL", "MongoDB"] },
+      { name: "Backend (persönliche Projekte)", items: ["Node.js", "Express", "PostgreSQL", "MongoDB"] },
       { name: "Lerne ich gerade", items: ["Barrierefreiheit im Web (WCAG 2.2)", "Playwright", "axe-core"] },
     ],
   },
@@ -153,9 +153,9 @@ export const de: Dictionary = {
   about: {
     heading: "Über mich",
     paragraphs: [
-      "Ich bin Frontend-Entwickler aus Lahore, Pakistan. 2018 habe ich angefangen, eigenständig Software zu entwickeln, und seit 2020 arbeite ich beruflich als Entwickler – überwiegend mit React, Next.js und React Native.",
-      "Derzeit bin ich React-Entwickler bei ARVO. Davor war ich bei CodeNinja, wo ich an der Mobile-App von Graana gearbeitet habe, und ich war freiberuflich für Kunden in Großbritannien und Italien tätig.",
-      "Barrierefreiheit ist der Teil der Frontend-Arbeit, in den ich mich gerade vertiefe – Barrierefrei Studio ist mein Weg dorthin. Ich suche eine Festanstellung im Frontend in Deutschland oder Italien, für die ich umziehen kann.",
+      "Ich bin Frontend-Entwickler aus Lahore, Pakistan. 2018 habe ich angefangen, eigenständig Software zu entwickeln, und seit 2021 arbeite ich beruflich als Entwickler – überwiegend mit React, Next.js und React Native.",
+      "Derzeit bin ich Software Engineer bei ARVO. Davor war ich bei CodeNinja, wo ich an der Mobile-App von Graana gearbeitet habe, und ich war freiberuflich für Kunden in Großbritannien und Italien tätig.",
+      "Barrierefreiheit ist der Teil der Frontend-Arbeit, in den ich mich gerade vertiefe – Barrierefrei Studio ist mein Weg dorthin. Ich suche eine Festanstellung im Frontend, in der ich weiter mit React, Next.js und React Native arbeiten und mich in Barrierefreiheit vertiefen kann.",
     ],
     principlesHeading: "Wie ich arbeite",
     principles: [
@@ -189,29 +189,21 @@ export const de: Dictionary = {
     copied: "E-Mail-Adresse kopiert",
     linkedin: "LinkedIn",
     github: "GitHub",
+    instagram: "Instagram",
+    facebook: "Facebook",
     bookCall: "15-minütiges Gespräch buchen",
     detailsHeading: "Für Recruiter",
     details: [
-      { term: "Standort", value: "Lahore, Pakistan (PKT, UTC+5), 3–4 Stunden vor Berlin und Rom" },
+      { term: "Standort", value: "Lahore, Pakistan (PKT, UTC+5)" },
       { term: "Gesucht", value: "Festanstellung im Frontend: React, Next.js, React Native" },
-      { term: "Länder", value: "Deutschland oder Italien, mit Umzug" },
-      {
-        term: "Deutschland",
-        value:
-          "Ich benötige ein Arbeitsvisum, z. B. die Blaue Karte EU. Für erfahrene IT-Fachkräfte verlangt Deutschland keinen anerkannten Abschluss. Vom Arbeitgeber werden ein Jobangebot und die ausgefüllte „Erklärung zum Beschäftigungsverhältnis“ benötigt.",
-      },
-      {
-        term: "Italien",
-        value: "Die Blaue Karte EU, die nicht unter die Quoten des Decreto Flussi fällt. Der Arbeitgeber beantragt das Nulla Osta.",
-      },
-      { term: "Start", value: "Bis zur Erteilung des Visums kann ich remote starten." },
-      { term: "Sprachen", value: "Englisch (Arbeitssprache) · Deutsch A1–A2, lerne ich gerade" },
+      { term: "Sprachen", value: "Englisch (professionelle Arbeitssprache)" },
     ],
-    visaSource: "Visa-Regeln: Make it in Germany",
   },
 
   footer: {
-    tagline: "Frontend-Entwickler · Lahore, Pakistan · Bereit für einen Umzug nach Deutschland oder Italien",
+    tagline: "Software Engineer (Frontend) · Lahore, Pakistan",
+    instagramLabel: "Instagram-Profil, öffnet in neuem Tab",
+    facebookLabel: "Facebook-Profil, öffnet in neuem Tab",
     languagesLabel: "Diese Website in anderen Sprachen",
   },
 
@@ -225,12 +217,13 @@ export const de: Dictionary = {
     meta: {
       title: "Barrierefrei Studio: Barrierefreiheits-Tool im Aufbau – Muhammad Ismail",
       description:
-        "Fallstudie eines Produkts in Recherche und Konzeption: WCAG-Prüfung im echten Browser mit Playwright und axe-core, KI-Vorschläge für Fixes, die vor der Freigabe erneut geprüft werden – für Webagenturen im DACH-Raum.",
+        "Fallstudie eines Produkts in Recherche und Konzeption: WCAG-Prüfung im echten Browser mit Playwright und axe-core, KI-Vorschläge für Fixes, die vor der Freigabe erneut geprüft werden – für Webagenturen in Europa.",
     },
+    lastUpdated: "Zuletzt aktualisiert: Oktober 2026",
     back: "Alle Projekte",
     label: "Aktuelles Projekt",
     subtitle:
-      "Ein Arbeitsbereich zur Behebung von Barrierefreiheitsmängeln für kleine Webagenturen und E-Commerce-Teams in Deutschland, Österreich und der Schweiz. Das Projekt ist in Recherche und Konzeption; diese Seite trennt, was erledigt ist, von dem, was geplant ist.",
+      "Ein Arbeitsbereich zur Behebung von Barrierefreiheitsmängeln für kleine Webagenturen und E-Commerce-Teams in Europa. Das Projekt ist in Recherche und Konzeption; diese Seite trennt, was erledigt ist, von dem, was geplant ist.",
     factsLabel: "Projektdaten",
     facts: [
       { term: "Phase", value: "Recherche und Konzeption. Noch kein Code." },
@@ -243,14 +236,14 @@ export const de: Dictionary = {
     overview: {
       heading: "Überblick",
       body: [
-        "Barrierefrei Studio (Arbeitstitel) ist ein Tool zur Behebung von Barrierefreiheitsmängeln, das ich gerade konzipiere. Es prüft die Seiten einer Website in einem echten Browser, erklärt jeden WCAG-Fehler verständlich auf Deutsch oder Englisch, entwirft einen Fix auf Code-Ebene und führt die Prüfung erneut aus, um diesen Fix zu bestätigen.",
+        "Barrierefrei Studio (Arbeitstitel) ist ein Tool zur Behebung von Barrierefreiheitsmängeln, das ich gerade konzipiere. Es prüft die Seiten einer Website in einem echten Browser, erklärt jeden WCAG-Fehler in verständlicher Sprache, entwirft einen Fix auf Code-Ebene und führt die Prüfung erneut aus, um diesen Fix zu bestätigen.",
         "Außerdem leitet es durch die manuellen Prüfungen, die sich nicht automatisieren lassen, und hält die Nachweise fest, die Kunden verlangen: Verlauf der Mängel, Berichte und den Entwurf einer Erklärung zur Barrierefreiheit.",
       ],
     },
     problem: {
       heading: "Problem",
       body: [
-        "Seit dem 28. Juni 2025 gilt das Barrierefreiheitsstärkungsgesetz (BFSG) für viele Onlineshops und Dienstleistungen für Verbraucher. Agenturen, die solche Websites bauen und betreuen, hören von ihren Kunden jetzt dieselbe Frage: Sind wir barrierefrei, und was müssen wir beheben?",
+        "Seit dem 28. Juni 2025 gilt der European Accessibility Act (Richtlinie (EU) 2019/882) für viele Onlineshops und Dienstleistungen für Verbraucher in der gesamten EU. Agenturen, die solche Websites bauen und betreuen, hören von ihren Kunden jetzt dieselbe Frage: Sind wir barrierefrei, und was müssen wir beheben?",
         "Die vorhandenen Tools passen nicht gut zu dieser Aufgabe. Kostenlose Scanner listen Fehler auf, überlassen die Behebung aber den Entwicklern. Enterprise-Suiten sind für große Unternehmen bepreist. Overlay-Widgets versprechen automatische Konformität; 2025 verpflichtete die US-Handelsbehörde FTC den Overlay-Anbieter accessiBe wegen irreführender Aussagen zur Zahlung von 1 Million US-Dollar. Und automatische Regeln erfassen nur einen Teil des Problems: Tastaturbedienung, Fokusreihenfolge und ob ein Alternativtext aussagekräftig ist, muss weiterhin ein Mensch prüfen.",
       ],
     },
@@ -259,7 +252,7 @@ export const de: Dictionary = {
       items: [
         {
           title: "Kleine Webagenturen",
-          body: "Etwa 5 bis 50 Personen im DACH-Raum, die Shopify-, Shopware-, WordPress- oder Headless-Shops für viele Kunden bauen und betreuen. Sie müssen viele Websites prüfen, Entwicklern konkrete Fixes übergeben und Kunden einen verständlichen Bericht liefern.",
+          body: "Etwa 5 bis 50 Personen in Europa, die Shopify-, Shopware-, WordPress- oder Headless-Shops für viele Kunden bauen und betreuen. Sie müssen viele Websites prüfen, Entwicklern konkrete Fixes übergeben und Kunden einen verständlichen Bericht liefern.",
         },
         {
           title: "Interne E-Commerce-Teams",
@@ -275,7 +268,7 @@ export const de: Dictionary = {
       heading: "Warum ich es baue",
       body: [
         "Semantisches HTML, ARIA, Fokusmanagement und Kontraste sind per Definition Frontend-Themen, und genau hier möchte ich mich vertiefen. Ein Tool, das diese Fehler erkennen muss und dessen eigene Oberfläche sie selbst vermeiden muss, ist für mich der direkteste Weg, das gründlich zu lernen.",
-        "Außerdem ist es ein Problem, das Teams in Deutschland gerade jetzt haben, mit einem Gesetz im Hintergrund. So gibt es ein echtes Publikum, an dem sich das Produkt messen lässt, nicht nur eine Demo.",
+        "Außerdem ist es ein Problem, das Teams in ganz Europa gerade jetzt haben, mit EU-Recht im Hintergrund. So gibt es ein echtes Publikum, an dem sich das Produkt messen lässt, nicht nur eine Demo.",
       ],
     },
     status: {
@@ -289,7 +282,7 @@ export const de: Dictionary = {
         },
         { status: "done", text: "Architekturplan und die Entscheidungen weiter unten, inklusive der Frage, wo KI eingesetzt werden darf und wo nicht." },
         { status: "next", text: "Grundlagen: Repository, CI mit Typprüfung, Tests und Barrierefreiheitsprüfungen, Design-Tokens." },
-        { status: "next", text: "Scan-Kern: ein Worker, der Seiten mit Playwright öffnet und axe-core ausführt, mit Fortschritt live in der Oberfläche." },
+        { status: "planned", text: "Scan-Kern: ein Worker, der Seiten mit Playwright öffnet und axe-core ausführt, mit Fortschritt live in der Oberfläche." },
         { status: "planned", text: "KI-Erklärungen, erneut geprüfte Fix-Vorschläge, manuelle Prüfungen und Kundenberichte." },
       ],
       outcome: "Es gibt noch keinen Code und daher noch keine Demo. Screenshots und das Repository erscheinen hier, sobald Teile fertig sind.",
@@ -346,7 +339,7 @@ export const de: Dictionary = {
       intro: "KI ist hier dort nützlich, wo Kontext zählt. Sie ist nicht der Kern des Produkts, und das Produkt muss auch ohne sie funktionieren.",
       helpsHeading: "Wo KI hilft",
       helps: [
-        "Einen Fehler für genau dieses Element erklären, auf Deutsch oder Englisch, für Entwickler oder Kunden.",
+        "Einen Fehler für genau dieses Element erklären, in verständlicher Sprache, für Entwickler oder Kunden.",
         "Einen minimalen Code-Fix entwerfen, dargestellt als Diff.",
         "Alternativtexte für Bilder entwerfen, immer zur Freigabe durch einen Menschen.",
         "Aus der Struktur einer Seite eine seitenspezifische Checkliste für manuelle Prüfungen ableiten, z. B. „dieser Dialog muss den Fokus in sich halten“.",
@@ -402,7 +395,7 @@ export const de: Dictionary = {
     },
     sourcesHeading: "Quellen",
     sources: [
-      { label: "Barrierefreiheitsstärkungsgesetz (BFSG), Volltext", url: "https://www.gesetze-im-internet.de/bfsg/" },
+      { label: "Richtlinie (EU) 2019/882 (European Accessibility Act), Volltext", url: "https://eur-lex.europa.eu/eli/dir/2019/882/oj" },
       { label: "FTC: Anordnung gegen accessiBe über 1 Million US-Dollar (April 2025, Englisch)", url: "https://www.ftc.gov/news-events/news/press-releases/2025/04/ftc-approves-final-order-requiring-accessibe-pay-1-million" },
       { label: "Deque: Wie viel automatische Tests finden (Englisch)", url: "https://www.deque.com/blog/automated-testing-study-identifies-57-percent-of-digital-accessibility-issues/" },
       { label: "WCAG 2.2 (W3C, Englisch)", url: "https://www.w3.org/TR/WCAG22/" },

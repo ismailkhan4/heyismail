@@ -6,6 +6,8 @@ export const profile = {
   email: "ismaeel.kheshgi@gmail.com",
   github: "https://github.com/ismailkhan4",
   linkedin: "https://www.linkedin.com/in/heyismail",
+  instagram: "https://www.instagram.com/hey.ismail1",
+  facebook: "https://www.facebook.com/heyismail.dev",
   calendar: "https://cal.com/heyismail/15min",
   photo: "/me.png",
   city: "Lahore",

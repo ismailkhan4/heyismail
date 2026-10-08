@@ -1,10 +1,8 @@
-import { CalendarDays, FileText, Github, Linkedin, Mail } from "lucide-react";
+import { CalendarDays, Facebook, FileText, Github, Instagram, Linkedin, Mail } from "lucide-react";
 import Button from "@/components/ui/LinkButton";
 import CopyEmail from "@/components/home/CopyEmail";
 import type { Dictionary } from "@/lib/i18n/en";
 import { profile } from "@/lib/site";
-
-const VISA_SOURCE = "https://www.make-it-in-germany.com/en/visa-residence/types/eu-blue-card";
 
 // The one dark band on the page: the next step, and the facts a recruiter needs to take it.
 export default function Contact({ t }: { t: Dictionary["contact"] }) {
@@ -30,15 +28,27 @@ export default function Contact({ t }: { t: Dictionary["contact"] }) {
 
           <ul className="mt-8 flex flex-wrap gap-3">
             <li>
-              <Button href={profile.linkedin} external variant="secondaryOnNight" size="sm">
+              <Button href={profile.linkedin} external rel="me noopener" variant="secondaryOnNight" size="sm">
                 <Linkedin size={16} aria-hidden="true" />
                 {t.linkedin}
               </Button>
             </li>
             <li>
-              <Button href={profile.github} external variant="secondaryOnNight" size="sm">
+              <Button href={profile.github} external rel="me noopener" variant="secondaryOnNight" size="sm">
                 <Github size={16} aria-hidden="true" />
                 {t.github}
+              </Button>
+            </li>
+            <li>
+              <Button href={profile.instagram} external rel="me noopener" variant="secondaryOnNight" size="sm">
+                <Instagram size={16} aria-hidden="true" />
+                {t.instagram}
+              </Button>
+            </li>
+            <li>
+              <Button href={profile.facebook} external rel="me noopener" variant="secondaryOnNight" size="sm">
+                <Facebook size={16} aria-hidden="true" />
+                {t.facebook}
               </Button>
             </li>
             {profile.cv && (
@@ -72,11 +82,6 @@ export default function Contact({ t }: { t: Dictionary["contact"] }) {
               </div>
             ))}
           </dl>
-          <p className="mt-4 text-sm">
-            <a href={VISA_SOURCE} target="_blank" rel="noopener noreferrer" className="link text-on-night-2 hover:text-on-night">
-              {t.visaSource}
-            </a>
-          </p>
         </div>
       </div>
     </section>

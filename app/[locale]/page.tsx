@@ -96,8 +96,8 @@ function structuredData(locale: Locale, dict: Dictionary) {
           address: { "@type": "PostalAddress", addressLocality: profile.city, addressCountry: profile.countryCode },
         },
         knowsAbout: [...skills],
-        knowsLanguage: ["en", "de"],
-        sameAs: [profile.github, profile.linkedin],
+        knowsLanguage: ["en"],
+        sameAs: [profile.github, profile.linkedin, profile.instagram, profile.facebook],
       },
     ],
   };
