@@ -27,10 +27,10 @@ export type Status = "done" | "next" | "planned";
 
 export const en = {
   meta: {
-    title: "Muhammad Ismail – Frontend Engineer (React, Next.js, React Native)",
+    title: "Muhammad Ismail – Software Engineer (Frontend) — React · Next.js · React Native",
     description:
-      "Frontend engineer with 5+ years of professional experience on web and mobile products built with React, Next.js and React Native. Based in Lahore, Pakistan, and looking to relocate to Germany or Italy.",
-    jobTitle: "Frontend Engineer",
+      "Software engineer (frontend) with 5 years of professional experience on web and mobile products built with React, Next.js and React Native. Based in Lahore, Pakistan.",
+    jobTitle: "Software Engineer (Frontend)",
   },
 
   skipLink: "Skip to content",
@@ -46,15 +46,14 @@ export const en = {
   },
 
   hero: {
-    role: "Frontend engineer working with React, Next.js and React Native.",
+    role: "Software engineer (frontend) working with React, Next.js and React Native.",
     summary:
-      "5+ years of professional work on products in EdTech, real estate, B2B SaaS and AI, including API and AI integration. I'm a React developer at ARVO, and previously worked on Graana's React Native app, which has more than 1 million downloads on Google Play.",
+      "5 years of professional work on products in EdTech, real estate, B2B SaaS and AI, including API and AI integration. I'm a software engineer at ARVO, and previously worked on Graana's React Native app, which has more than 1 million downloads on Google Play.",
     photoAlt: "Portrait of Muhammad Ismail",
     factsLabel: "At a glance",
     facts: [
       { term: "Based in", value: "Lahore, Pakistan · UTC+5" },
-      { term: "Looking for", value: "A full-time frontend role in Germany or Italy, with relocation" },
-      { term: "Work permit", value: "I'll need a work visa, such as the EU Blue Card" },
+      { term: "Looking for", value: "A full-time frontend role" },
     ],
     ctaPrimary: "Get in touch",
     ctaSecondary: "See my work",
@@ -66,13 +65,13 @@ export const en = {
     name: "Barrierefrei Studio",
     nameNote: "working name",
     summary:
-      "An accessibility remediation workspace for small web agencies and e-commerce teams in Germany, Austria and Switzerland.",
+      "An accessibility remediation workspace for small web agencies and e-commerce teams in Europe.",
     body:
-      "The goal is to close the gap between finding a WCAG failure and fixing it: scan pages in a real browser, explain each failure in German or English, draft a code fix, then re-run the scan to check that fix before anyone relies on it. Detection stays deterministic; AI only helps explain and fix.",
+      "The goal is to close the gap between finding a WCAG failure and fixing it: scan pages in a real browser, explain each failure in plain language, draft a code fix, then re-run the scan to check that fix before anyone relies on it. Detection stays deterministic; AI only helps explain and fix.",
     progressLabel: "Progress",
     progress: [
       { status: "done" as Status, text: "Research, MVP scope and architecture plan" },
-      { status: "next" as Status, text: "Scan core: Playwright and axe-core worker with live progress" },
+      { status: "next" as Status, text: "Foundations: repository, CI, design tokens and accessibility checks" },
     ],
     stackLabel: "Planned stack",
     stack: ["Next.js", "TypeScript", "Playwright", "axe-core"],
@@ -98,33 +97,33 @@ export const en = {
         id: "arvo",
         name: "ARVO",
         category: "EdTech · Web",
-        role: "React Developer",
+        role: "Software Engineer",
         engagement: "ARVO · current role",
         url: "https://arvo.com.pk",
         product:
-          "A Pakistani education platform that pairs printed textbooks with a learning management system and campus management tools. ARVO lists 100+ partner campuses.",
+          "A Pakistani education platform that pairs printed and digital textbooks with a learning management system and campus management tools. In daily use across schools in Pakistan.",
         contribution:
           "Front-end work in the team that builds the web platform: role-based dashboards for students, teachers, school admins and parents, digital textbooks, assignment tracking and real-time notifications, connected to the platform's APIs.",
-        stack: ["React", "Next.js"],
+        stack: ["React", "Next.js", "TypeScript"],
       },
       {
         id: "graana",
         name: "Graana",
         category: "Real estate · Mobile",
-        role: "Mobile Application Developer",
+        role: "React Native Developer → Frontend Developer",
         engagement: "CodeNinja",
         url: "https://www.graana.com",
         product:
           "A real-estate marketplace for Pakistan with property listings on web and mobile. Its Android app has more than 1 million downloads on Google Play.",
         contribution:
-          "Front-end work on the React Native app in the development team, including migrating the codebase from class components to function components with Hooks and integrating the app with its back-end APIs.",
+          "Front-end work on the React Native app in the development team. Migrated the codebase from class components to function components with Hooks as part of the team, and integrated the app with its back-end APIs. Later worked across several internal projects as Frontend Developer.",
         stack: ["React Native", "React Hooks"],
       },
       {
         id: "whatever-ai",
         name: "Whatever AI",
         category: "AI · Web",
-        role: "Frontend Developer",
+        role: "Software Engineer",
         engagement: "Freelance",
         url: "https://www.whatever-ai.com",
         product:
@@ -137,7 +136,7 @@ export const en = {
         id: "supervise",
         name: "Supervise",
         category: "B2B SaaS · Web",
-        role: "Frontend Developer",
+        role: "Software Engineer",
         engagement: "Freelance",
         url: "https://www.supervise.work",
         product:
@@ -150,8 +149,9 @@ export const en = {
         id: "vectum",
         name: "Vectum",
         category: "Logistics · Website",
-        role: "Frontend Developer",
+        role: "Software Engineer",
         engagement: "Freelance · 2026",
+        // [TODO: link to vectum.it once the production domain serves this site]
         url: "https://vectum-site.vercel.app",
         product: "The website of VECTUM, an Italian logistics company for air cargo, time-critical shipments, road and sea freight.",
         contribution:
@@ -168,7 +168,7 @@ export const en = {
       { name: "Mobile", items: ["React Native", "Expo"] },
       { name: "Integration", items: ["REST APIs", "OAuth", "OpenAI API", "Stripe"] },
       { name: "Tools", items: ["Git", "GitHub", "Jira", "Figma", "Postman", "Vercel"] },
-      { name: "Familiar with", items: ["Node.js", "Express", "PostgreSQL", "MongoDB"] },
+      { name: "Backend (personal projects)", items: ["Node.js", "Express", "PostgreSQL", "MongoDB"] },
       { name: "Learning now", items: ["Web accessibility (WCAG 2.2)", "Playwright", "axe-core"] },
     ],
   },
@@ -176,9 +176,9 @@ export const en = {
   about: {
     heading: "About",
     paragraphs: [
-      "I'm a frontend engineer from Lahore, Pakistan. I started building software on my own in 2018 and have worked professionally since 2020, mostly with React, Next.js and React Native.",
-      "I'm currently a React developer at ARVO. Before that I worked at CodeNinja, where I worked on Graana's mobile app, and I've freelanced for clients in the UK and Italy.",
-      "Accessibility is the part of frontend work I'm going deeper on now, and Barrierefrei Studio is how I'm doing it. I'm looking for a full-time frontend role in Germany or Italy that I can relocate for.",
+      "I'm a frontend engineer from Lahore, Pakistan. I started building software on my own in 2018 and have worked professionally since 2021, mostly with React, Next.js and React Native.",
+      "I'm currently a software engineer at ARVO. Before that I worked at CodeNinja on Graana's mobile app, and I've freelanced for clients in the UK and Italy.",
+      "Accessibility is the part of frontend work I'm going deeper on now, and Barrierefrei Studio is how I'm doing it. I'm looking for a full-time frontend role where I can keep working with React, Next.js and React Native and keep going deeper on accessibility.",
     ],
     principlesHeading: "How I work",
     principles: [
@@ -212,29 +212,21 @@ export const en = {
     copied: "Email address copied",
     linkedin: "LinkedIn",
     github: "GitHub",
+    instagram: "Instagram",
+    facebook: "Facebook",
     bookCall: "Book a 15-minute call",
     detailsHeading: "For recruiters",
     details: [
-      { term: "Location", value: "Lahore, Pakistan (PKT, UTC+5), 3–4 hours ahead of Berlin and Rome" },
+      { term: "Location", value: "Lahore, Pakistan (PKT, UTC+5)" },
       { term: "Looking for", value: "Full-time frontend roles: React, Next.js, React Native" },
-      { term: "Countries", value: "Germany or Italy, with relocation" },
-      {
-        term: "Germany",
-        value:
-          "I'll need a work visa, such as the EU Blue Card. Germany doesn't require a recognised degree for experienced IT professionals. From the employer it needs a job offer and a completed “Declaration of Employment” form.",
-      },
-      {
-        term: "Italy",
-        value: "The EU Blue Card, which isn't subject to the Decreto Flussi quotas. The employer requests the nulla osta.",
-      },
-      { term: "Start", value: "I can start remotely while the visa is processed." },
-      { term: "Languages", value: "English (working language) · German A1–A2, currently learning" },
+      { term: "Languages", value: "English (professional working proficiency)" },
     ],
-    visaSource: "Visa rules: Make it in Germany",
   },
 
   footer: {
-    tagline: "Frontend engineer · Lahore, Pakistan · Open to relocating to Germany or Italy",
+    tagline: "Software engineer (frontend) · Lahore, Pakistan",
+    instagramLabel: "Instagram profile, opens in a new tab",
+    facebookLabel: "Facebook profile, opens in a new tab",
     languagesLabel: "This site in other languages",
   },
 
@@ -248,12 +240,13 @@ export const en = {
     meta: {
       title: "Barrierefrei Studio: accessibility tool in progress – Muhammad Ismail",
       description:
-        "Case study of a product in research and design: real-browser WCAG scanning with Playwright and axe-core, AI-drafted fixes that are re-tested before they count, for DACH web agencies.",
+        "Case study of a product in research and design: real-browser WCAG scanning with Playwright and axe-core, AI-drafted fixes that are re-tested before they count, for web agencies in Europe.",
     },
+    lastUpdated: "Last updated: October 2026",
     back: "All work",
     label: "Currently building",
     subtitle:
-      "An accessibility remediation workspace for small web agencies and e-commerce teams in Germany, Austria and Switzerland. It's in research and design; this page separates what's done from what's planned.",
+      "An accessibility remediation workspace for small web agencies and e-commerce teams in Europe. It's in research and design; this page separates what's done from what's planned.",
     factsLabel: "Project facts",
     facts: [
       { term: "Stage", value: "Research and design. No code yet." },
@@ -266,14 +259,14 @@ export const en = {
     overview: {
       heading: "Overview",
       body: [
-        "Barrierefrei Studio (a working name) is an accessibility remediation workspace I'm designing. It scans a site's pages in a real browser, explains each WCAG failure in plain German or English, drafts a code-level fix, and re-runs the scan to check that fix.",
+        "Barrierefrei Studio (a working name) is an accessibility remediation workspace I'm designing. It scans a site's pages in a real browser, explains each WCAG failure in plain language, drafts a code-level fix, and re-runs the scan to check that fix.",
         "It also guides the manual checks automation can't do, and keeps the evidence a client asks for: issue history, reports and a draft accessibility statement.",
       ],
     },
     problem: {
       heading: "Problem",
       body: [
-        "Since 28 June 2025, Germany's Accessibility Strengthening Act (Barrierefreiheitsstärkungsgesetz, BFSG) has applied to many consumer-facing online shops and services. Agencies that build and maintain those sites now get the same question from their clients: are we accessible, and what do we need to fix?",
+        "Since 28 June 2025, the European Accessibility Act (Directive (EU) 2019/882) has applied to many consumer-facing online shops and services across the EU. Agencies that build and maintain those sites now get the same question from their clients: are we accessible, and what do we need to fix?",
         "The tools on offer don't fit that job well. Free scanners list failures but leave the fix to the developer. Enterprise suites are priced for large companies. Overlay widgets promise automatic compliance; in 2025 the US Federal Trade Commission ordered one overlay vendor, accessiBe, to pay $1 million over misleading claims. And automated rules only catch part of the problem: keyboard flow, focus order and whether alt text is meaningful still need a person.",
       ],
     },
@@ -282,7 +275,7 @@ export const en = {
       items: [
         {
           title: "Small web agencies",
-          body: "Roughly 5–50 people in the DACH region, building and maintaining Shopify, Shopware, WordPress or headless shops for many clients. They need to scan many sites, hand developers concrete fixes and give clients a report they understand.",
+          body: "Roughly 5–50 people in Europe, building and maintaining Shopify, Shopware, WordPress or headless shops for many clients. They need to scan many sites, hand developers concrete fixes and give clients a report they understand.",
         },
         {
           title: "In-house e-commerce teams",
@@ -298,7 +291,7 @@ export const en = {
       heading: "Why I'm building it",
       body: [
         "Semantic HTML, ARIA, focus management and contrast are frontend problems by definition, and they're the part of frontend work I want to go deeper on. A tool that has to detect those failures, and whose own interface has to get them right, is the most direct way I know to learn them properly.",
-        "It's also a problem teams in Germany have right now, with a law behind it. That gives it a real audience to test against rather than a demo one.",
+        "It's also a problem teams across Europe have right now, with EU law behind it. That gives it a real audience to test against rather than a demo one.",
       ],
     },
     status: {
@@ -312,7 +305,7 @@ export const en = {
         },
         { status: "done" as Status, text: "Architecture plan and the decisions below, including where AI is and isn't allowed." },
         { status: "next" as Status, text: "Foundations: repository, CI with type checks, tests and accessibility checks, design tokens." },
-        { status: "next" as Status, text: "Scan core: a worker that opens pages with Playwright and runs axe-core, with progress streamed to the interface." },
+        { status: "planned" as Status, text: "Scan core: a worker that opens pages with Playwright and runs axe-core, with progress streamed to the interface." },
         { status: "planned" as Status, text: "AI explanations, re-tested fix suggestions, manual checks and client reports." },
       ],
       outcome: "There's no code yet, so there's nothing to demo. Screenshots and the repository will appear here as parts ship.",
@@ -369,7 +362,7 @@ export const en = {
       intro: "AI is useful here where context matters. It isn't the core of the product, and the product has to work with it switched off.",
       helpsHeading: "Where AI helps",
       helps: [
-        "Explaining a failure for this specific element, in German or English, for a developer or a client.",
+        "Explaining a failure for this specific element, in plain language, for a developer or a client.",
         "Drafting a minimal code fix, shown as a diff.",
         "Drafting alt text for images, always for a person to approve.",
         "Turning a page's structure into a page-specific manual checklist, such as “this dialog needs to keep focus inside it”.",
@@ -425,7 +418,7 @@ export const en = {
     },
     sourcesHeading: "Sources",
     sources: [
-      { label: "Barrierefreiheitsstärkungsgesetz (BFSG), full text", url: "https://www.gesetze-im-internet.de/bfsg/" },
+      { label: "Directive (EU) 2019/882 (European Accessibility Act), full text", url: "https://eur-lex.europa.eu/eli/dir/2019/882/oj" },
       { label: "FTC: final order requiring accessiBe to pay $1 million (April 2025)", url: "https://www.ftc.gov/news-events/news/press-releases/2025/04/ftc-approves-final-order-requiring-accessibe-pay-1-million" },
       { label: "Deque: how much automated testing finds", url: "https://www.deque.com/blog/automated-testing-study-identifies-57-percent-of-digital-accessibility-issues/" },
       { label: "WCAG 2.2 (W3C)", url: "https://www.w3.org/TR/WCAG22/" },

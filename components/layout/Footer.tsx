@@ -1,4 +1,4 @@
-import { Github, Linkedin } from "lucide-react";
+import { Facebook, Github, Instagram, Linkedin } from "lucide-react";
 import Wordmark from "@/components/ui/Wordmark";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/en";
@@ -33,7 +33,7 @@ export default function Footer({ locale, dict, homeHref, languagePaths }: Footer
               <a
                 href={profile.github}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="me noopener"
                 aria-label="GitHub"
                 className="inline-flex size-10 items-center justify-center rounded-md hover:bg-white/5 hover:text-on-night"
               >
@@ -44,11 +44,33 @@ export default function Footer({ locale, dict, homeHref, languagePaths }: Footer
               <a
                 href={profile.linkedin}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="me noopener"
                 aria-label="LinkedIn"
                 className="inline-flex size-10 items-center justify-center rounded-md hover:bg-white/5 hover:text-on-night"
               >
                 <Linkedin size={20} aria-hidden="true" />
+              </a>
+            </li>
+            <li>
+              <a
+                href={profile.instagram}
+                target="_blank"
+                rel="me noopener"
+                aria-label={dict.footer.instagramLabel}
+                className="inline-flex size-10 items-center justify-center rounded-md hover:bg-white/5 hover:text-on-night"
+              >
+                <Instagram size={20} aria-hidden="true" />
+              </a>
+            </li>
+            <li>
+              <a
+                href={profile.facebook}
+                target="_blank"
+                rel="me noopener"
+                aria-label={dict.footer.facebookLabel}
+                className="inline-flex size-10 items-center justify-center rounded-md hover:bg-white/5 hover:text-on-night"
+              >
+                <Facebook size={20} aria-hidden="true" />
               </a>
             </li>
           </ul>

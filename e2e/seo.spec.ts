@@ -51,7 +51,14 @@ test("homepage structured data describes the person accurately", async ({ page }
   const person = graph.find((n) => n["@type"] === "Person");
   expect(person.name).toBe("Muhammad Ismail");
   expect(person.homeLocation.address.addressCountry).toBe("PK");
-  expect(person.sameAs).toEqual(expect.arrayContaining(["https://github.com/ismailkhan4"]));
+  expect(person.sameAs).toEqual(
+    expect.arrayContaining([
+      "https://github.com/ismailkhan4",
+      "https://www.linkedin.com/in/heyismail",
+      "https://www.instagram.com/hey.ismail1",
+      "https://www.facebook.com/heyismail.dev",
+    ])
+  );
   expect(graph.find((n) => n["@type"] === "ProfilePage").mainEntity["@id"]).toBe(person["@id"]);
 });
 

@@ -84,6 +84,7 @@ export default function CaseStudy({ dict, homeHref }: CaseStudyProps) {
         </p>
         <h1 className="mt-3 text-4xl font-semibold tracking-[-0.03em] sm:text-5xl">{dict.building.name}</h1>
         <p className="mt-4 max-w-3xl text-lg leading-relaxed text-ink-2 sm:text-xl">{t.subtitle}</p>
+        <p className="mt-3 text-sm text-ink-3">{t.lastUpdated}</p>
 
         <dl className="mt-10 grid gap-5 border-y border-line py-6 sm:grid-cols-2 lg:grid-cols-4">
           {t.facts.map((fact) => (

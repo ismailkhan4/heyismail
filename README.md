@@ -1,6 +1,6 @@
 # heyismail.com
 
-Personal site of Muhammad Ismail, frontend engineer. Next.js 15 (App Router), Tailwind CSS v4, one font (Inter).
+Personal site of Muhammad Ismail, software engineer (frontend). Next.js 15 (App Router), Tailwind CSS v4, one font (Inter).
 
 ## Commands
 
