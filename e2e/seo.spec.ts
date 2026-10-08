@@ -49,7 +49,7 @@ test("homepage structured data describes the person accurately", async ({ page }
   const blocks = await page.locator('script[type="application/ld+json"]').allTextContents();
   const graph = blocks.map((b) => JSON.parse(b)).flatMap((b) => b["@graph"] ?? [b]);
   const person = graph.find((n) => n["@type"] === "Person");
-  expect(person.name).toBe("Muhammad Ismail");
+  expect(person.name).toBe("Ismail Muhammad");
   expect(person.homeLocation.address.addressCountry).toBe("PK");
   expect(person.sameAs).toEqual(
     expect.arrayContaining([

@@ -27,7 +27,7 @@ export type Status = "done" | "next" | "planned";
 
 export const en = {
   meta: {
-    title: "Muhammad Ismail – Software Engineer (Frontend) — React · Next.js · React Native",
+    title: "Ismail Muhammad – Software Engineer (Frontend) — React · Next.js · React Native",
     description:
       "Software engineer (frontend) with 5 years of professional experience on web and mobile products built with React, Next.js and React Native. Based in Lahore, Pakistan.",
     jobTitle: "Software Engineer (Frontend)",
@@ -49,7 +49,7 @@ export const en = {
     role: "Software engineer (frontend) working with React, Next.js and React Native.",
     summary:
       "5 years of professional work on products in EdTech, real estate, B2B SaaS and AI, including API and AI integration. I'm a software engineer at ARVO, and previously worked on Graana's React Native app, which has more than 1 million downloads on Google Play.",
-    photoAlt: "Portrait of Muhammad Ismail",
+    photoAlt: "Portrait of Ismail Muhammad",
     factsLabel: "At a glance",
     facts: [
       { term: "Based in", value: "Lahore, Pakistan · UTC+5" },
@@ -238,7 +238,7 @@ export const en = {
 
   caseStudy: {
     meta: {
-      title: "Barrierefrei Studio: accessibility tool in progress – Muhammad Ismail",
+      title: "Barrierefrei Studio: accessibility tool in progress – Ismail Muhammad",
       description:
         "Case study of a product in research and design: real-browser WCAG scanning with Playwright and axe-core, AI-drafted fixes that are re-tested before they count, for web agencies in Europe.",
     },
